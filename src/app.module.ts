@@ -9,6 +9,8 @@ import schemas from './schemas';
 import services from './services';
 import controllers from './controllers';
 import { OTPStrategy } from './passport/otp.strategy';
+import { JwtModule } from '@nestjs/jwt';
+import { JWT_CONSTANTS } from './constants';
 
 @Module({
   imports: [
@@ -18,6 +20,10 @@ import { OTPStrategy } from './passport/otp.strategy';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'uploads'),
     }),
+    JwtModule.register({
+      secret: JWT_CONSTANTS.secret
+    }),
+    
   ],
   controllers: [AppController, ...controllers],
   providers: [AppService, OTPStrategy, ...services],
