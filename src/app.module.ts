@@ -18,7 +18,7 @@ import { JWT_CONSTANTS } from './constants';
     MongooseModule.forRoot(`mongodb://localhost/${process.env.DATABASE_NAME}`),
     MongooseModule.forFeature(schemas),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'uploads'),
+      rootPath: join(__dirname, '..', 'static'),
     }),
     JwtModule.register({
       secret: JWT_CONSTANTS.secret
