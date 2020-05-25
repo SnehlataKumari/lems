@@ -6,8 +6,6 @@ export const UserSchema = new mongoose.Schema({
   name: { 
     type: String,
     required: [true, 'Name is required!'],
-    minlength: 10,
-    maxlength: 10
   },
   mobileNumber: { 
     type: String,
