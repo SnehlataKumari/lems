@@ -7,7 +7,7 @@ export const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Name is required!'],
   },
-  mobileNumber: { 
+  mobileNumber: {
     type: String,
     required: [true, 'Mobile Number is required!'],
     unique: [true, 'Mobile Number already exists!']
