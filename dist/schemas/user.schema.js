@@ -7,15 +7,20 @@ const Schema = mongoose.Schema;
 exports.UserSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, 'Name is required!'],
     },
     mobileNumber: {
         type: String,
         required: [true, 'Mobile Number is required!'],
         unique: [true, 'Mobile Number already exists!']
     },
-    class: { type: Schema.Types.ObjectId, ref: 'Class', required: true },
-    isSubscribed: { type: Boolean, default: false },
+    class: {
+        type: Schema.Types.ObjectId,
+        ref: 'Class',
+    },
+    isSubscribed: {
+        type: Boolean,
+        default: false
+    },
     isBlocked: { type: Boolean, default: false },
     role: {
         type: String,

@@ -41,12 +41,10 @@ let S3Service = (() => {
             const params = {
                 Bucket: this.bucketName,
                 Key: fileName,
-                ACL: 'private',
+                ACL: 'public-read',
                 Body: fileData,
             };
-            console.log('start of upload');
             const data = await this.s3Client.upload(params).promise();
-            console.log('End of upload');
             return {
                 response: data,
                 fileName: fileName,

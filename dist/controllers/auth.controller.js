@@ -27,14 +27,18 @@ let AuthController = (() => {
             this.jwtService = jwtService;
         }
         async requestOtp(requestBody) {
-            const { userId } = requestBody;
-            const user = await this.usersService.findById(userId);
+            const { mobileNumber } = requestBody;
+            let user = await this.usersService.findByMobileNumber(mobileNumber);
+            if (!user) {
+                user = await this.usersService.create({ mobileNumber });
+            }
             return utils_1.success('Otp generated successfully!', this.service.requestOTP(user));
         }
         async login(req) {
             const { user } = req;
             return {
                 access_token: this.jwtService.sign(user.toJSON()),
+                user
             };
             return req.user;
         }

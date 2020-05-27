@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UseGuards, Request } from "@nestjs/common";
+import { Controller, Post, Body, UseGuards, Request, UnauthorizedException } from "@nestjs/common";
 import { UsersService } from "src/services/users.service";
 import { AuthService } from "src/services/auth.service";
 import { success } from "src/utils";
@@ -15,8 +15,13 @@ export class AuthController {
 
   @Post('request-otp')
   async requestOtp(@Body() requestBody) {
-    const { userId } = requestBody;
-    const user = await this.usersService.findById(userId);
+    const { mobileNumber } = requestBody;
+    let user = await this.usersService.findByMobileNumber(mobileNumber);
+
+    if(!user) {
+      user = await this.usersService.create({mobileNumber});
+    }
+
     return success('Otp generated successfully!', this.service.requestOTP(user));
   }
 
@@ -26,9 +31,9 @@ export class AuthController {
     const {user} = req;
     return {
       access_token: this.jwtService.sign(user.toJSON()),
+      user
     };
 
     return req.user;
   }
-
 }
