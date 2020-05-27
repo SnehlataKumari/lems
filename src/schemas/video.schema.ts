@@ -1,5 +1,12 @@
 import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
+const s3Schema = new Schema({
+  ETag: String,
+  Location: String,
+  key: String,
+  Key: String,
+  Bucket: String
+});
 
 export const VideoSchema = new mongoose.Schema({
   class: { type: Schema.Types.ObjectId, ref: 'Class', required: true },
@@ -10,10 +17,7 @@ export const VideoSchema = new mongoose.Schema({
   description: {
     type: String
   },
-  url: {
-    type: String,
-    required: [true, 'Video Url is required!'],
-  }
+  s3: s3Schema,
 }, {
   timestamps: true
 });
