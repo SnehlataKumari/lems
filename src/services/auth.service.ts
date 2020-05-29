@@ -36,5 +36,9 @@ export class AuthService {
     return await this.userService.update(user, updateObj);
   }
 
+  async validateAuth(payload) {
+    return this.userService.findById(payload._id);
+  }
+
 
 }

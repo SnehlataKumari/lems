@@ -40,7 +40,6 @@ let AuthController = (() => {
                 access_token: this.jwtService.sign(user.toJSON()),
                 user
             };
-            return req.user;
         }
     };
     __decorate([

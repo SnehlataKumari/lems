@@ -41,6 +41,9 @@ let AuthService = (() => {
                 : { $addToSet: { devices: deviceId } };
             return await this.userService.update(user, updateObj);
         }
+        async validateAuth(payload) {
+            return this.userService.findById(payload._id);
+        }
     };
     AuthService = __decorate([
         common_1.Injectable(),

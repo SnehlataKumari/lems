@@ -8,4 +8,5 @@ export declare class AuthService {
     postLogin(user: any, { deviceId }: {
         deviceId: any;
     }): Promise<any>;
+    validateAuth(payload: any): Promise<any>;
 }

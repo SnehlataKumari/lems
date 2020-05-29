@@ -11,10 +11,13 @@ import controllers from './controllers';
 import { OTPStrategy } from './passport/otp.strategy';
 import { JwtModule } from '@nestjs/jwt';
 import { JWT_CONSTANTS } from './constants';
+import { PassportModule } from '@nestjs/passport';
+import { JwtStrategy } from './passport/jwt.strategy';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
+    PassportModule.register({ defaultStrategy: 'jwt' }),
     MongooseModule.forRoot(`mongodb://localhost/${process.env.DATABASE_NAME}`),
     MongooseModule.forFeature(schemas),
     ServeStaticModule.forRoot({
@@ -26,6 +29,6 @@ import { JWT_CONSTANTS } from './constants';
     
   ],
   controllers: [AppController, ...controllers],
-  providers: [AppService, OTPStrategy, ...services],
+  providers: [AppService, JwtStrategy, OTPStrategy, ...services],
 })
 export class AppModule {}

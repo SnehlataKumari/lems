@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UseGuards, Request, UnauthorizedException } from "@nestjs/common";
+import { Controller, Post, Body, UseGuards, Request } from "@nestjs/common";
 import { UsersService } from "src/services/users.service";
 import { AuthService } from "src/services/auth.service";
 import { success } from "src/utils";
@@ -33,7 +33,5 @@ export class AuthController {
       access_token: this.jwtService.sign(user.toJSON()),
       user
     };
-
-    return req.user;
   }
 }

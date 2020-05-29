@@ -20,6 +20,8 @@ const controllers_1 = require("./controllers");
 const otp_strategy_1 = require("./passport/otp.strategy");
 const jwt_1 = require("@nestjs/jwt");
 const constants_1 = require("./constants");
+const passport_1 = require("@nestjs/passport");
+const jwt_strategy_1 = require("./passport/jwt.strategy");
 let AppModule = (() => {
     let AppModule = class AppModule {
     };
@@ -27,6 +29,7 @@ let AppModule = (() => {
         common_1.Module({
             imports: [
                 config_1.ConfigModule.forRoot(),
+                passport_1.PassportModule.register({ defaultStrategy: 'jwt' }),
                 mongoose_1.MongooseModule.forRoot(`mongodb://localhost/${process.env.DATABASE_NAME}`),
                 mongoose_1.MongooseModule.forFeature(schemas_1.default),
                 serve_static_1.ServeStaticModule.forRoot({
@@ -37,7 +40,7 @@ let AppModule = (() => {
                 }),
             ],
             controllers: [app_controller_1.AppController, ...controllers_1.default],
-            providers: [app_service_1.AppService, otp_strategy_1.OTPStrategy, ...services_1.default],
+            providers: [app_service_1.AppService, jwt_strategy_1.JwtStrategy, otp_strategy_1.OTPStrategy, ...services_1.default],
         })
     ], AppModule);
     return AppModule;

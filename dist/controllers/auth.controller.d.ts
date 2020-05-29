@@ -10,5 +10,8 @@ export declare class AuthController {
         message: string;
         data: any;
     }>;
-    login(req: any): Promise<any>;
+    login(req: any): Promise<{
+        access_token: string;
+        user: any;
+    }>;
 }
