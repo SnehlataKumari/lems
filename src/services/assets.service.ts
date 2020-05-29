@@ -5,8 +5,8 @@ import { DBService } from './db.service';
 import { FileService } from './file.service';
 
 @Injectable()
-export class VideosService extends DBService {
-  constructor(@InjectModel('Video') model: Model<any>, private fileService: FileService) {
+export class AssetsService extends DBService {
+  constructor(@InjectModel('Asset') model: Model<any>, private fileService: FileService) {
     super(model);
   }
 

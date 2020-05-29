@@ -8,8 +8,9 @@ const s3Schema = new Schema({
   Bucket: String
 });
 
-export const VideoSchema = new mongoose.Schema({
+export const AssetSchema = new mongoose.Schema({
   class: { type: Schema.Types.ObjectId, ref: 'Class', required: true },
+  chapter: { type: Schema.Types.ObjectId, ref: 'Chapter', required: true },
   title: {
     type: String,
     required: [true, 'Title is required!'],

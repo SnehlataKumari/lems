@@ -1,12 +1,12 @@
 import { Controller, Body, UseInterceptors, UploadedFile, Post, Put, Param, } from '@nestjs/common';
 import { ResourceController } from './resource.controller';
-import { VideosService } from 'src/services/videos.service';
+import { AssetsService } from 'src/services/assets.service';
 import { success } from 'src/utils';
 import { FileInterceptor } from '@nestjs/platform-express';
 
-@Controller('videos')
-export class VideosController extends ResourceController {
-  constructor(service: VideosService) {
+@Controller('assets')
+export class AssetsController extends ResourceController {
+  constructor(service: AssetsService) {
     super(service)
   }
 

@@ -5,27 +5,27 @@ export class DBService {
 
   }
 
-  async findAll() {
-    return this.model.find();
+  findAll(where={}) {
+    return this.model.find(where);
   }
 
-  async create(userObject) {
+  create(userObject) {
     return this.model.create(userObject);
   }
 
-  async findByIdAndDelete(userId) {
+  findByIdAndDelete(userId) {
     return this.model.findByIdAndDelete(userId);
   }
 
-  async findByIdAndUpdate(userId, userObject, options = { new: true }) {
+  findByIdAndUpdate(userId, userObject, options = { new: true }) {
     return this.model.findByIdAndUpdate(userId, userObject, options);
   }
 
-  async findById(id) {
+  findById(id) {
     return this.model.findById(id);
   }
 
-  async findOne(query) {
+  findOne(query) {
     return this.model.findOne(query);
   }
 

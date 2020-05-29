@@ -30,10 +30,10 @@ let AssetsService = (() => {
     };
     AssetsService = __decorate([
         common_1.Injectable(),
-        __param(0, mongoose_2.InjectModel('Video')),
+        __param(0, mongoose_2.InjectModel('Asset')),
         __metadata("design:paramtypes", [mongoose_1.Model, file_service_1.FileService])
     ], AssetsService);
     return AssetsService;
 })();
 exports.AssetsService = AssetsService;
-//# sourceMappingURL=videos.service.js.map
+//# sourceMappingURL=assets.service.js.map

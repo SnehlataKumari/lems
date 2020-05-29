@@ -1806,19 +1806,24 @@
         "signature": "4d1a5f4265c00f52067c1cff38e9fe7ed6fde2a16a86a53b03b3b84471f54c9a",
         "affectsGlobalScope": false
       },
-      "../src/schemas/video.schema.ts": {
-        "version": "048a0198023f75d868bab3ef10ef3693f04732a88b8b5cc09c7b0d514b61c563",
-        "signature": "f4e71ed5674dfb8ed87bebae6eef2ac82614f0b0d8897c61949def562063bdf9",
+      "../src/schemas/asset.schema.ts": {
+        "version": "aef4983847fa49d2521fe4fa141b22dddaead3fcc1e6818457117d686df323e2",
+        "signature": "c44502f563c0d3c57143cf5a7fbd2fcb198f8fbc3590f1be7362814a885b497c",
+        "affectsGlobalScope": false
+      },
+      "../src/schemas/chapter.schema.ts": {
+        "version": "fde841f5a9c02ed565cb218c2c1d8cb09d663c4613c75e1670a6f520bbade996",
+        "signature": "e1bb7592c1835a8cb3b3aff30fc7ea3d3663bb9cba672edaa2a71b9ca8961e64",
         "affectsGlobalScope": false
       },
       "../src/schemas/index.ts": {
-        "version": "46ac417c39bd36b1d6d4aac99f06b13884a5040140c849a0cbdb7976bd84a791",
+        "version": "9c99fa72a5d5ae5ace82afb4abb535bd729baa9cbf4f088dc07e4f4a9c837712",
         "signature": "d44bdcd4f74fae62b3e4900e347298d7ca322c9441794795b395dc7db1fda182",
         "affectsGlobalScope": false
       },
       "../src/services/db.service.ts": {
-        "version": "a0a7a983f1289fabd94fbdf839316b9c7315523a78d357b6fe21b2cf5cd8ee6a",
-        "signature": "ab275a30af12c87f7f95633dbb73c79bc3e24555d95bd4d9fb6f9ae898f58e7a",
+        "version": "d5d728d8e5edb88e00ae2aef47f8e282f96a9407b6c52fc29b657d33f0cb3d2a",
+        "signature": "132820b32da1df7e9b9ec2851695e2deb90bab3a55fc841429fadc2252209ed9",
         "affectsGlobalScope": false
       },
       "../src/services/users.service.ts": {
@@ -3166,9 +3171,9 @@
         "signature": "b9c26f20c38f9683829093c55182981d87174972d66237c1d98dbe602c64d295",
         "affectsGlobalScope": false
       },
-      "../src/services/videos.service.ts": {
-        "version": "c187638097c935646eea90fc38954d903f8f7bda81cf6faffe728d2c12a59de4",
-        "signature": "af12b4fe17784ecb8f30c3309db5f38e227fa74a203eac5db5f283b478b2fbe7",
+      "../src/services/assets.service.ts": {
+        "version": "3dd8daad77f175716d37532ed5f8c9b26b77476f5d2a850ab7349091933b4f45",
+        "signature": "1bc9d1395c91d15f22d6b8ab4a98cc8c9b426289fa14a68bc68ebf0a9e04f4b0",
         "affectsGlobalScope": false
       },
       "../src/services/classes.service.ts": {
@@ -3191,9 +3196,14 @@
         "signature": "5cfbd4d3ef879466ace2eacef4a23d01ef9b3bcbbdabf2cb2a1af1b603e50303",
         "affectsGlobalScope": false
       },
+      "../src/services/chapters.service.ts": {
+        "version": "bf99544e02e013bfdbd92f8a20cffebc3ec41cbbee9ea3f45ed6bca0ecfde64e",
+        "signature": "211d90690886fa06c6e636f1df2396cf09b78cedad952abfe05eacf76e940df9",
+        "affectsGlobalScope": false
+      },
       "../src/services/index.ts": {
-        "version": "8fece42cc4105681363e4987c74a924b7a7d960612a0c2632c0520af56631fa9",
-        "signature": "6b6cd06001ba0ac03d75859334365cd29370bd614bedb1503946dee04ad36432",
+        "version": "adedb9eb72cd3ab133ac2e5078f6ec87e5485a5e48bd94de87175b0ab3998f37",
+        "signature": "9192a6ce276fff89fb0ed45f42cceb7ca4b5e33a4808859e637946ce958cd747",
         "affectsGlobalScope": false
       },
       "../src/controllers/resource.controller.ts": {
@@ -3207,8 +3217,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/classes.controller.ts": {
-        "version": "54e6b3ec6b58c4f3c30d61011c0d672b7ec9c8e1c44eaaa9de4570d8301299aa",
-        "signature": "c33db381c0efcdca6d5a2c83417bde4498283a1245aa8b91df2663667fdeafae",
+        "version": "d73ae78c295f6874cea94445bf25a19f72ddcfd50df4d32ce031a87668bd8182",
+        "signature": "cc6b3040909695d23bd58d63c6ad27bd53b05557e2bf18c1081deb7504a64825",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/platform-express/interfaces/serve-static-options.interface.d.ts": {
@@ -3291,9 +3301,9 @@
         "signature": "e3cd60be3c4f95c43420be67eaa21637585b7c1a8129f9b39983bbd294f9513c",
         "affectsGlobalScope": false
       },
-      "../src/controllers/videos.controller.ts": {
-        "version": "8b125835b886c980e68b304fc2704a91d3834b8e70fae06a3855060f7a980964",
-        "signature": "423481af15e2c6097615cefe279db14a10f91a9d6db9766f4a3963d6b45e8d62",
+      "../src/controllers/assets.controller.ts": {
+        "version": "0b1d75d8673a023ed8aae0a90eea09ed49676f69314d9641be7cce0a6559d452",
+        "signature": "9b77fc68b43d382f98771d09827dd4911962f72c7c6d82786af4968dc91d0beb",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
@@ -3431,9 +3441,14 @@
         "signature": "07669c7c1ba5000823609f86cad5a372dac893dcbe36d130eb66db73de1a04b6",
         "affectsGlobalScope": false
       },
+      "../src/controllers/chapters.controller.ts": {
+        "version": "87c755d6b489d399d5e6331dcf1e706712711685626f60b294d5845d7257f248",
+        "signature": "e81af052d2d17da386b57eb8ec8d201989cf5c0c5450c370a19f856a3102e42c",
+        "affectsGlobalScope": false
+      },
       "../src/controllers/index.ts": {
-        "version": "c199828f6fb18a98ee4368020e9e71ce34888744c3734ad027454ddbab6d6746",
-        "signature": "ca5547a707232e010ee1d36511dfb95857e52d8d105b89be81ac8f7daa403fdc",
+        "version": "c792ae4f1b343023448102b48003cef239dd8d0b3f6451fa2e0d8fa4a696435c",
+        "signature": "94677294bba1a8efbd0f0cedab53b999fb8f44cd3380aa01df57ab373d1ba0c7",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -11016,6 +11031,18 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
+      "../src/controllers/assets.controller.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/platform-express/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/controllers/resource.controller.ts",
+        "../src/services/assets.service.ts",
+        "../src/utils/index.ts"
+      ],
       "../src/controllers/auth.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/jwt/index.d.ts",
@@ -11029,6 +11056,16 @@
         "../src/services/users.service.ts",
         "../src/utils/index.ts"
       ],
+      "../src/controllers/chapters.controller.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/controllers/resource.controller.ts",
+        "../src/services/chapters.service.ts"
+      ],
       "../src/controllers/classes.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -11037,6 +11074,7 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/controllers/resource.controller.ts",
+        "../src/services/chapters.service.ts",
         "../src/services/classes.service.ts"
       ],
       "../src/controllers/index.ts": [
@@ -11045,10 +11083,11 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../src/controllers/assets.controller.ts",
         "../src/controllers/auth.controller.ts",
+        "../src/controllers/chapters.controller.ts",
         "../src/controllers/classes.controller.ts",
-        "../src/controllers/users.controller.ts",
-        "../src/controllers/videos.controller.ts"
+        "../src/controllers/users.controller.ts"
       ],
       "../src/controllers/resource.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -11068,18 +11107,6 @@
         "../node_modules/@types/node/util.d.ts",
         "../src/controllers/resource.controller.ts",
         "../src/services/users.service.ts"
-      ],
-      "../src/controllers/videos.controller.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/platform-express/index.d.ts",
-        "../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../src/controllers/resource.controller.ts",
-        "../src/services/videos.service.ts",
-        "../src/utils/index.ts"
       ],
       "../src/exception-filters/mongo-exception.filter.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -11126,6 +11153,22 @@
         "../src/services/auth.service.ts",
         "../src/services/users.service.ts"
       ],
+      "../src/schemas/asset.schema.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../src/schemas/chapter.schema.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
       "../src/schemas/class.schema.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts",
@@ -11140,9 +11183,10 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../src/schemas/asset.schema.ts",
+        "../src/schemas/chapter.schema.ts",
         "../src/schemas/class.schema.ts",
-        "../src/schemas/user.schema.ts",
-        "../src/schemas/video.schema.ts"
+        "../src/schemas/user.schema.ts"
       ],
       "../src/schemas/user.schema.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -11153,13 +11197,17 @@
         "../node_modules/@types/node/util.d.ts",
         "../src/constants/index.ts"
       ],
-      "../src/schemas/video.schema.ts": [
+      "../src/services/assets.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/mongoose/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
-        "../node_modules/@types/node/util.d.ts"
+        "../node_modules/@types/node/util.d.ts",
+        "../src/services/db.service.ts",
+        "../src/services/file.service.ts"
       ],
       "../src/services/auth.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -11170,6 +11218,17 @@
         "../node_modules/@types/node/util.d.ts",
         "../src/services/users.service.ts",
         "../src/utils/index.ts"
+      ],
+      "../src/services/chapters.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/services/db.service.ts"
       ],
       "../src/services/classes.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -11206,13 +11265,14 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../src/services/assets.service.ts",
         "../src/services/auth.service.ts",
+        "../src/services/chapters.service.ts",
         "../src/services/classes.service.ts",
         "../src/services/file.service.ts",
         "../src/services/s3.service.ts",
         "../src/services/sms.service.ts",
-        "../src/services/users.service.ts",
-        "../src/services/videos.service.ts"
+        "../src/services/users.service.ts"
       ],
       "../src/services/s3.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -11242,18 +11302,6 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/services/db.service.ts"
-      ],
-      "../src/services/videos.service.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/mongoose/index.d.ts",
-        "../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/mongoose/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../src/services/db.service.ts",
-        "../src/services/file.service.ts"
       ],
       "../src/utils/index.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -18543,26 +18591,33 @@
       "../src/app.controller.ts": [
         "../src/app.service.ts"
       ],
+      "../src/controllers/assets.controller.ts": [
+        "../src/controllers/resource.controller.ts",
+        "../src/services/assets.service.ts"
+      ],
       "../src/controllers/auth.controller.ts": [
         "../node_modules/@nestjs/jwt/index.d.ts",
         "../src/services/auth.service.ts",
         "../src/services/users.service.ts"
       ],
+      "../src/controllers/chapters.controller.ts": [
+        "../src/controllers/resource.controller.ts",
+        "../src/services/chapters.service.ts"
+      ],
       "../src/controllers/classes.controller.ts": [
         "../src/controllers/resource.controller.ts",
+        "../src/services/chapters.service.ts",
         "../src/services/classes.service.ts"
       ],
       "../src/controllers/index.ts": [
+        "../src/controllers/assets.controller.ts",
         "../src/controllers/auth.controller.ts",
+        "../src/controllers/classes.controller.ts",
         "../src/controllers/users.controller.ts"
       ],
       "../src/controllers/users.controller.ts": [
         "../src/controllers/resource.controller.ts",
         "../src/services/users.service.ts"
-      ],
-      "../src/controllers/videos.controller.ts": [
-        "../src/controllers/resource.controller.ts",
-        "../src/services/videos.service.ts"
       ],
       "../src/exception-filters/mongo-exception.filter.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -18577,6 +18632,12 @@
         "../node_modules/passport-custom/lib/index.d.ts",
         "../src/services/auth.service.ts"
       ],
+      "../src/schemas/asset.schema.ts": [
+        "../node_modules/@types/mongoose/index.d.ts"
+      ],
+      "../src/schemas/chapter.schema.ts": [
+        "../node_modules/@types/mongoose/index.d.ts"
+      ],
       "../src/schemas/class.schema.ts": [
         "../node_modules/@types/mongoose/index.d.ts"
       ],
@@ -18586,11 +18647,17 @@
       "../src/schemas/user.schema.ts": [
         "../node_modules/@types/mongoose/index.d.ts"
       ],
-      "../src/schemas/video.schema.ts": [
-        "../node_modules/@types/mongoose/index.d.ts"
+      "../src/services/assets.service.ts": [
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../src/services/db.service.ts",
+        "../src/services/file.service.ts"
       ],
       "../src/services/auth.service.ts": [
         "../src/services/users.service.ts"
+      ],
+      "../src/services/chapters.service.ts": [
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../src/services/db.service.ts"
       ],
       "../src/services/classes.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
@@ -18603,12 +18670,12 @@
         "../src/services/s3.service.ts"
       ],
       "../src/services/index.ts": [
+        "../src/services/assets.service.ts",
         "../src/services/auth.service.ts",
         "../src/services/classes.service.ts",
         "../src/services/file.service.ts",
         "../src/services/s3.service.ts",
-        "../src/services/sms.service.ts",
-        "../src/services/videos.service.ts"
+        "../src/services/sms.service.ts"
       ],
       "../src/services/s3.service.ts": [
         "../node_modules/@nestjs/config/index.d.ts"
@@ -18616,11 +18683,6 @@
       "../src/services/users.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
         "../src/services/db.service.ts"
-      ],
-      "../src/services/videos.service.ts": [
-        "../node_modules/@types/mongoose/index.d.ts",
-        "../src/services/db.service.ts",
-        "../src/services/file.service.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -19336,21 +19398,25 @@
       "../src/app.module.ts",
       "../src/app.service.ts",
       "../src/constants/index.ts",
+      "../src/controllers/assets.controller.ts",
       "../src/controllers/auth.controller.ts",
+      "../src/controllers/chapters.controller.ts",
       "../src/controllers/classes.controller.ts",
       "../src/controllers/index.ts",
       "../src/controllers/resource.controller.ts",
       "../src/controllers/users.controller.ts",
-      "../src/controllers/videos.controller.ts",
       "../src/exception-filters/mongo-exception.filter.ts",
       "../src/main.ts",
       "../src/passport/jwt.strategy.ts",
       "../src/passport/otp.strategy.ts",
+      "../src/schemas/asset.schema.ts",
+      "../src/schemas/chapter.schema.ts",
       "../src/schemas/class.schema.ts",
       "../src/schemas/index.ts",
       "../src/schemas/user.schema.ts",
-      "../src/schemas/video.schema.ts",
+      "../src/services/assets.service.ts",
       "../src/services/auth.service.ts",
+      "../src/services/chapters.service.ts",
       "../src/services/classes.service.ts",
       "../src/services/db.service.ts",
       "../src/services/file.service.ts",
@@ -19358,7 +19424,6 @@
       "../src/services/s3.service.ts",
       "../src/services/sms.service.ts",
       "../src/services/users.service.ts",
-      "../src/services/videos.service.ts",
       "../src/utils/index.ts"
     ]
   },

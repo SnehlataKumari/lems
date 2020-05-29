@@ -12,28 +12,23 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AssetsService = void 0;
+exports.ChaptersService = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("mongoose");
 const mongoose_2 = require("@nestjs/mongoose");
 const db_service_1 = require("./db.service");
-const file_service_1 = require("./file.service");
-let AssetsService = (() => {
-    let AssetsService = class AssetsService extends db_service_1.DBService {
-        constructor(model, fileService) {
+let ChaptersService = (() => {
+    let ChaptersService = class ChaptersService extends db_service_1.DBService {
+        constructor(model) {
             super(model);
-            this.fileService = fileService;
-        }
-        async saveFile(file) {
-            return this.fileService.saveFile(file);
         }
     };
-    AssetsService = __decorate([
+    ChaptersService = __decorate([
         common_1.Injectable(),
-        __param(0, mongoose_2.InjectModel('Video')),
-        __metadata("design:paramtypes", [mongoose_1.Model, file_service_1.FileService])
-    ], AssetsService);
-    return AssetsService;
+        __param(0, mongoose_2.InjectModel('Chapter')),
+        __metadata("design:paramtypes", [mongoose_1.Model])
+    ], ChaptersService);
+    return ChaptersService;
 })();
-exports.AssetsService = AssetsService;
-//# sourceMappingURL=videos.service.js.map
+exports.ChaptersService = ChaptersService;
+//# sourceMappingURL=chapters.service.js.map

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VideoSchema = void 0;
+exports.AssetSchema = void 0;
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const s3Schema = new Schema({
@@ -10,7 +10,7 @@ const s3Schema = new Schema({
     Key: String,
     Bucket: String
 });
-exports.VideoSchema = new mongoose.Schema({
+exports.AssetSchema = new mongoose.Schema({
     class: { type: Schema.Types.ObjectId, ref: 'Class', required: true },
     chapter: { type: Schema.Types.ObjectId, ref: 'Chapter', required: true },
     title: {
@@ -24,4 +24,4 @@ exports.VideoSchema = new mongoose.Schema({
 }, {
     timestamps: true
 });
-//# sourceMappingURL=video.schema.js.map
+//# sourceMappingURL=asset.schema.js.map
