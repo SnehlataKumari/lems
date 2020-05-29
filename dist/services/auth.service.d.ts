@@ -5,4 +5,7 @@ export declare class AuthService {
     requestOTP(user: any): Promise<any>;
     validateUser(mobileNumber: any, otp: any): Promise<any>;
     clearOTP(user: any): Promise<any>;
+    postLogin(user: any, { deviceId }: {
+        deviceId: any;
+    }): Promise<any>;
 }

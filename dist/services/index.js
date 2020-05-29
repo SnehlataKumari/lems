@@ -6,12 +6,14 @@ const classes_service_1 = require("./classes.service");
 const file_service_1 = require("./file.service");
 const auth_service_1 = require("./auth.service");
 const s3_service_1 = require("./s3.service");
+const sms_service_1 = require("./sms.service");
 exports.default = [
     users_service_1.UsersService,
     videos_service_1.VideosService,
     classes_service_1.ClassesService,
     file_service_1.FileService,
     auth_service_1.AuthService,
-    s3_service_1.S3Service
+    s3_service_1.S3Service,
+    sms_service_1.SmsService
 ];
 //# sourceMappingURL=index.js.map

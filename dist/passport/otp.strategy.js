@@ -14,6 +14,7 @@ const passport_custom_1 = require("passport-custom");
 const passport_1 = require("@nestjs/passport");
 const common_1 = require("@nestjs/common");
 const auth_service_1 = require("../services/auth.service");
+const users_service_1 = require("../services/users.service");
 let OTPStrategy = (() => {
     let OTPStrategy = class OTPStrategy extends passport_1.PassportStrategy(passport_custom_1.Strategy, 'otpStrategy') {
         constructor(authService) {
@@ -21,11 +22,15 @@ let OTPStrategy = (() => {
             this.authService = authService;
         }
         async validate(req) {
-            const { mobileNumber, otp } = req.body;
+            const { mobileNumber, otp, deviceId } = req.body;
             const user = await this.authService.validateUser(mobileNumber, otp);
             if (!user) {
-                throw new common_1.UnauthorizedException();
+                throw new common_1.UnauthorizedException('Otp not matched!');
             }
+            if (!deviceId) {
+                throw new common_1.UnauthorizedException('Device id is required!');
+            }
+            await this.authService.postLogin(user, { deviceId });
             return await this.authService.clearOTP(user);
         }
     };

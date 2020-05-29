@@ -13,6 +13,7 @@ exports.UserSchema = new mongoose.Schema({
         required: [true, 'Mobile Number is required!'],
         unique: [true, 'Mobile Number already exists!']
     },
+    devices: [String],
     class: {
         type: Schema.Types.ObjectId,
         ref: 'Class',

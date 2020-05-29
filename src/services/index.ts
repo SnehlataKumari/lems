@@ -4,6 +4,7 @@ import { ClassesService } from "./classes.service";
 import { FileService } from "./file.service";
 import { AuthService } from "./auth.service";
 import { S3Service } from "./s3.service";
+import { SmsService } from "./sms.service";
 
 export default [
   UsersService,
@@ -11,5 +12,6 @@ export default [
   ClassesService,
   FileService,
   AuthService,
-  S3Service
+  S3Service,
+  SmsService
 ];

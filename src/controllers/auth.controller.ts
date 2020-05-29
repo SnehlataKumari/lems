@@ -28,7 +28,7 @@ export class AuthController {
   @UseGuards(AuthGuard('otpStrategy'))
   @Post('login')
   async login(@Request() req) {
-    const {user} = req;
+    const { user } = req;
     return {
       access_token: this.jwtService.sign(user.toJSON()),
       user

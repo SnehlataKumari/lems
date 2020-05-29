@@ -3,21 +3,31 @@ import { PassportStrategy } from '@nestjs/passport';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { AuthService } from 'src/services/auth.service';
 import { Request } from 'express';
+import { UsersService } from 'src/services/users.service';
 
 @Injectable()
 export class OTPStrategy extends PassportStrategy(Strategy, 'otpStrategy') {
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService
+  ) {
     super();
   }
 
   async validate(req: Request): Promise<any> {
-    const {mobileNumber, otp} = req.body;
+    const { mobileNumber, otp, deviceId } = req.body;
     const user = await this.authService.validateUser(mobileNumber, otp);
     if (!user) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('Otp not matched!');
     }
 
+    if (!deviceId) {
+      throw new UnauthorizedException('Device id is required!');
+    }
+
+    await this.authService.postLogin(user, { deviceId });
     return await this.authService.clearOTP(user);
   }
+  
+  
   
 }

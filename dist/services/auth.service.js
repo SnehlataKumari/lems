@@ -35,6 +35,12 @@ let AuthService = (() => {
                 otp: ''
             });
         }
+        async postLogin(user, { deviceId }) {
+            const updateObj = user.devices.length == 2 && !user.devices.includes(deviceId)
+                ? { devices: [deviceId] }
+                : { $addToSet: { devices: deviceId } };
+            return await this.userService.update(user, updateObj);
+        }
     };
     AuthService = __decorate([
         common_1.Injectable(),
