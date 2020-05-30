@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChapterSchema = void 0;
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-exports.ChapterSchema = new mongoose.Schema({
+const ChapterSchema = new mongoose.Schema({
     title: {
         type: String,
         unique: [true, 'Chapter title already exists!'],
@@ -20,4 +20,11 @@ exports.ChapterSchema = new mongoose.Schema({
 }, {
     timestamps: true
 });
+exports.ChapterSchema = ChapterSchema;
+ChapterSchema.virtual('assets', {
+    ref: 'Asset',
+    localField: '_id',
+    foreignField: 'chapter',
+});
+ChapterSchema.set('toJSON', { virtuals: true });
 //# sourceMappingURL=chapter.schema.js.map

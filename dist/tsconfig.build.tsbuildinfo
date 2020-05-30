@@ -1907,13 +1907,13 @@
         "affectsGlobalScope": false
       },
       "../src/schemas/asset.schema.ts": {
-        "version": "aef4983847fa49d2521fe4fa141b22dddaead3fcc1e6818457117d686df323e2",
+        "version": "d978a74f8341c2b44bc118236531bef866e19b963d3f5076e1f4d09866779b52",
         "signature": "c44502f563c0d3c57143cf5a7fbd2fcb198f8fbc3590f1be7362814a885b497c",
         "affectsGlobalScope": false
       },
       "../src/schemas/chapter.schema.ts": {
-        "version": "fde841f5a9c02ed565cb218c2c1d8cb09d663c4613c75e1670a6f520bbade996",
-        "signature": "e1bb7592c1835a8cb3b3aff30fc7ea3d3663bb9cba672edaa2a71b9ca8961e64",
+        "version": "7dd597a3d0778f629ddf58d07bbe9baa738baf08d1748fba9ea917ea69ca1ae6",
+        "signature": "b1de9f2530cda18c6a4945437aac1ee7ee21853bb6f3f916ded1ba84eac6481d",
         "affectsGlobalScope": false
       },
       "../src/schemas/index.ts": {
@@ -1922,8 +1922,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/db.service.ts": {
-        "version": "d5d728d8e5edb88e00ae2aef47f8e282f96a9407b6c52fc29b657d33f0cb3d2a",
-        "signature": "132820b32da1df7e9b9ec2851695e2deb90bab3a55fc841429fadc2252209ed9",
+        "version": "41ad4c0ce5d824d6e7c8aec4a3db14d8d65218cae0edda6fc90e5e264f00b3d1",
+        "signature": "a8fdcb2a2e0ff7cbae5938add04200603417255aaf5e4e9e0064264ebda2dc98",
         "affectsGlobalScope": false
       },
       "../src/services/users.service.ts": {
@@ -3303,7 +3303,7 @@
       },
       "../src/services/index.ts": {
         "version": "adedb9eb72cd3ab133ac2e5078f6ec87e5485a5e48bd94de87175b0ab3998f37",
-        "signature": "376f539507e3bc77c5f0336ae47a8c9a2c299b08777133bea3f29b2d0e77d648",
+        "signature": "f60945046f61aa775ec47c54fa19844a32109fc7dbf43fa9fbe98b6768ea2890",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -3337,7 +3337,7 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/classes.controller.ts": {
-        "version": "d73ae78c295f6874cea94445bf25a19f72ddcfd50df4d32ce031a87668bd8182",
+        "version": "284835995abf68515578ffe85100feba88fe1dfd6c9e34955d2249c133117051",
         "signature": "cc6b3040909695d23bd58d63c6ad27bd53b05557e2bf18c1081deb7504a64825",
         "affectsGlobalScope": false
       },
@@ -3422,8 +3422,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/assets.controller.ts": {
-        "version": "0b1d75d8673a023ed8aae0a90eea09ed49676f69314d9641be7cce0a6559d452",
-        "signature": "9b77fc68b43d382f98771d09827dd4911962f72c7c6d82786af4968dc91d0beb",
+        "version": "9716cfe74e69ea01efabc8d8d52a7a185cbe82eedd4be7c606595b4adb2da102",
+        "signature": "bd39767b04720aea5893789faee3d6b1218900041d5a1ca2d2528547eb2c4161",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/jwt/dist/interfaces/jwt-module-options.interface.d.ts": {
@@ -3468,7 +3468,7 @@
       },
       "../src/controllers/index.ts": {
         "version": "c792ae4f1b343023448102b48003cef239dd8d0b3f6451fa2e0d8fa4a696435c",
-        "signature": "476d1b9b29b3fcd7c1e5112fcb2ccabbca4875e0fa611c7e8799b87657b3c2e5",
+        "signature": "94677294bba1a8efbd0f0cedab53b999fb8f44cd3380aa01df57ab373d1ba0c7",
         "affectsGlobalScope": false
       },
       "../node_modules/passport-custom/lib/index.d.ts": {
@@ -18697,7 +18697,7 @@
       "../src/services/index.ts": [
         "../src/services/assets.service.ts",
         "../src/services/auth.service.ts",
-        "../src/services/classes.service.ts",
+        "../src/services/chapters.service.ts",
         "../src/services/file.service.ts",
         "../src/services/s3.service.ts",
         "../src/services/sms.service.ts"

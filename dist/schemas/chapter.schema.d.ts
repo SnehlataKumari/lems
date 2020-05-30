@@ -1,2 +1,3 @@
 import * as mongoose from 'mongoose';
-export declare const ChapterSchema: mongoose.Schema<any>;
+declare const ChapterSchema: mongoose.Schema<any>;
+export { ChapterSchema };

@@ -18,7 +18,8 @@ export const AssetSchema = new mongoose.Schema({
   description: {
     type: String
   },
-  s3: s3Schema,
+  videoS3: s3Schema,
+  pdfS3: s3Schema,
 }, {
   timestamps: true
 });

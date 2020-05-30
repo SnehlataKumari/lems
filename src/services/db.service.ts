@@ -29,6 +29,10 @@ export class DBService {
     return this.model.findOne(query);
   }
 
+  find(query={}) {
+    return this.model.find(query);
+  }
+
 
   async update(model, updateObject) {
     return this.findByIdAndUpdate(model._id, updateObject);

@@ -24,9 +24,9 @@ let ClassesController = (() => {
             this.chapterService = chapterService;
         }
         async getAllChapters(classId) {
-            return this.chapterService.findAll({
+            return this.chapterService.find({
                 class: classId
-            }).populate('class');
+            }).populate('class').populate('assets');
         }
     };
     __decorate([

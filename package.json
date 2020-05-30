@@ -30,6 +30,7 @@
     "@nestjs/platform-express": "^7.0.0",
     "@nestjs/serve-static": "^2.1.1",
     "aws-sdk": "^2.683.0",
+    "lodash": "^4.17.15",
     "mongoose": "^5.9.15",
     "passport": "^0.4.1",
     "passport-custom": "^1.1.1",

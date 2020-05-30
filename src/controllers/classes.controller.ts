@@ -14,8 +14,8 @@ export class ClassesController extends ResourceController {
 
   @Get('/:id/chapters')
   async getAllChapters(@Param('id') classId) {
-    return this.chapterService.findAll({
+    return this.chapterService.find({
       class: classId
-    }).populate('class');
+    }).populate('class').populate('assets');
   }
 }
