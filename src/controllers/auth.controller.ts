@@ -1,16 +1,18 @@
-import { Controller, Post, Body, UseGuards, Request } from "@nestjs/common";
+import { Controller, Post, Body, UseGuards, Request, UnauthorizedException } from "@nestjs/common";
 import { UsersService } from "src/services/users.service";
 import { AuthService } from "src/services/auth.service";
 import { success } from "src/utils";
 import { AuthGuard } from "@nestjs/passport";
 import { JwtService } from '@nestjs/jwt';
+import { SmsService } from "src/services/sms.service";
 
 @Controller('auth')
 export class AuthController {
   constructor(
     private service: AuthService,
     private usersService: UsersService,
-    private jwtService: JwtService
+    private jwtService: JwtService,
+    private smsService: SmsService
   ) {}
 
   @Post('request-otp')
@@ -22,7 +24,35 @@ export class AuthController {
       user = await this.usersService.create({mobileNumber});
     }
 
-    return success('Otp generated successfully!', this.service.requestOTP(user));
+    const requestOtp = await this.service.requestOTP(user);
+    await this.smsService.sendOtp(user);
+    return success('Otp generated successfully!', requestOtp);
+  }
+  
+  @Post('create-admin')
+  async createAdmin(@Body() requestBody) {
+    const { mobileNumber, name, password, username } = requestBody;
+    console.log({mobileNumber});
+    
+    let user = await this.usersService.create({ mobileNumber, name, password, username, role: 'ADMIN' });
+    console.log({user});
+    
+    return success('Admin created successfully!', { user, access_token: this.jwtService.sign(user.toJSON())});
+  }
+  
+  @Post('login-admin')
+  async loginAdmin(@Body() requestBody) {
+    const { password, username } = requestBody;
+    const user = await this.usersService.findOne({
+      username,
+      password,
+      role: 'ADMIN'
+    });
+
+    if (!user) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+    return success('Admin created successfully!', { user, access_token: this.jwtService.sign(user.toJSON())});
   }
 
   @UseGuards(AuthGuard('otpStrategy'))

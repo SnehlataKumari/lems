@@ -10,7 +10,7 @@ const s3Schema = new Schema({
     Key: String,
     Bucket: String
 });
-exports.AssetSchema = new mongoose.Schema({
+const AssetSchema = new mongoose.Schema({
     class: { type: Schema.Types.ObjectId, ref: 'Class', required: true },
     chapter: { type: Schema.Types.ObjectId, ref: 'Chapter', required: true },
     title: {
@@ -25,4 +25,6 @@ exports.AssetSchema = new mongoose.Schema({
 }, {
     timestamps: true
 });
+exports.AssetSchema = AssetSchema;
+AssetSchema.index({ title: 'text', description: 'text' });
 //# sourceMappingURL=asset.schema.js.map

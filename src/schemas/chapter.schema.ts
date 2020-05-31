@@ -25,6 +25,8 @@ ChapterSchema.virtual('assets', {
   foreignField: 'chapter', // is equal to `foreignField`
 });
 
+ChapterSchema.index({ title: 'text', description: 'text'});
+
 ChapterSchema.set('toJSON', {virtuals: true});
 
 export {ChapterSchema};

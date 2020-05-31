@@ -1,8 +1,8 @@
 import { AssetsService } from "./assets.service";
+import { ClassesService } from "./classes.service";
 import { FileService } from "./file.service";
 import { AuthService } from "./auth.service";
 import { S3Service } from "./s3.service";
 import { SmsService } from "./sms.service";
-import { ChaptersService } from "./chapters.service";
-declare const _default: (typeof ChaptersService | typeof AssetsService | typeof AuthService | typeof FileService | typeof S3Service | typeof SmsService)[];
+declare const _default: (typeof SmsService | typeof AssetsService | typeof ClassesService | typeof FileService | typeof AuthService | typeof S3Service)[];
 export default _default;

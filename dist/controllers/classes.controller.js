@@ -23,17 +23,21 @@ let ClassesController = (() => {
             super(service);
             this.chapterService = chapterService;
         }
-        async getAllChapters(classId) {
-            return this.chapterService.find({
-                class: classId
-            }).populate('class').populate('assets');
+        async getAllChapters(classId, queries) {
+            let where = { class: classId };
+            if (queries && queries.search) {
+                where = Object.assign(Object.assign({}, where), { $text: { $search: queries.search } });
+            }
+            console.log(where);
+            return this.chapterService.find(where).populate('class')
+                .populate('assets');
         }
     };
     __decorate([
         common_1.Get('/:id/chapters'),
-        __param(0, common_1.Param('id')),
+        __param(0, common_1.Param('id')), __param(1, common_1.Query()),
         __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
+        __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", Promise)
     ], ClassesController.prototype, "getAllChapters", null);
     ClassesController = __decorate([

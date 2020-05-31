@@ -26,5 +26,6 @@ ChapterSchema.virtual('assets', {
     localField: '_id',
     foreignField: 'chapter',
 });
+ChapterSchema.index({ title: 'text', description: 'text' });
 ChapterSchema.set('toJSON', { virtuals: true });
 //# sourceMappingURL=chapter.schema.js.map

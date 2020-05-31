@@ -1,2 +1,3 @@
 import * as mongoose from 'mongoose';
-export declare const AssetSchema: mongoose.Schema<any>;
+declare const AssetSchema: mongoose.Schema<any>;
+export { AssetSchema };

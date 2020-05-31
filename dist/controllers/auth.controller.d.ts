@@ -1,12 +1,22 @@
 import { UsersService } from "src/services/users.service";
 import { AuthService } from "src/services/auth.service";
 import { JwtService } from '@nestjs/jwt';
+import { SmsService } from "src/services/sms.service";
 export declare class AuthController {
     private service;
     private usersService;
     private jwtService;
-    constructor(service: AuthService, usersService: UsersService, jwtService: JwtService);
+    private smsService;
+    constructor(service: AuthService, usersService: UsersService, jwtService: JwtService, smsService: SmsService);
     requestOtp(requestBody: any): Promise<{
+        message: string;
+        data: any;
+    }>;
+    createAdmin(requestBody: any): Promise<{
+        message: string;
+        data: any;
+    }>;
+    loginAdmin(requestBody: any): Promise<{
         message: string;
         data: any;
     }>;

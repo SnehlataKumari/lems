@@ -19,12 +19,14 @@ const auth_service_1 = require("../services/auth.service");
 const utils_1 = require("../utils");
 const passport_1 = require("@nestjs/passport");
 const jwt_1 = require("@nestjs/jwt");
+const sms_service_1 = require("../services/sms.service");
 let AuthController = (() => {
     let AuthController = class AuthController {
-        constructor(service, usersService, jwtService) {
+        constructor(service, usersService, jwtService, smsService) {
             this.service = service;
             this.usersService = usersService;
             this.jwtService = jwtService;
+            this.smsService = smsService;
         }
         async requestOtp(requestBody) {
             const { mobileNumber } = requestBody;
@@ -32,7 +34,28 @@ let AuthController = (() => {
             if (!user) {
                 user = await this.usersService.create({ mobileNumber });
             }
-            return utils_1.success('Otp generated successfully!', this.service.requestOTP(user));
+            const requestOtp = await this.service.requestOTP(user);
+            await this.smsService.sendOtp(user);
+            return utils_1.success('Otp generated successfully!', requestOtp);
+        }
+        async createAdmin(requestBody) {
+            const { mobileNumber, name, password, username } = requestBody;
+            console.log({ mobileNumber });
+            let user = await this.usersService.create({ mobileNumber, name, password, username, role: 'ADMIN' });
+            console.log({ user });
+            return utils_1.success('Admin created successfully!', { user, access_token: this.jwtService.sign(user.toJSON()) });
+        }
+        async loginAdmin(requestBody) {
+            const { password, username } = requestBody;
+            const user = await this.usersService.findOne({
+                username,
+                password,
+                role: 'ADMIN'
+            });
+            if (!user) {
+                throw new common_1.UnauthorizedException('Invalid credentials');
+            }
+            return utils_1.success('Admin created successfully!', { user, access_token: this.jwtService.sign(user.toJSON()) });
         }
         async login(req) {
             const { user } = req;
@@ -50,6 +73,20 @@ let AuthController = (() => {
         __metadata("design:returntype", Promise)
     ], AuthController.prototype, "requestOtp", null);
     __decorate([
+        common_1.Post('create-admin'),
+        __param(0, common_1.Body()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], AuthController.prototype, "createAdmin", null);
+    __decorate([
+        common_1.Post('login-admin'),
+        __param(0, common_1.Body()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], AuthController.prototype, "loginAdmin", null);
+    __decorate([
         common_1.UseGuards(passport_1.AuthGuard('otpStrategy')),
         common_1.Post('login'),
         __param(0, common_1.Request()),
@@ -61,7 +98,8 @@ let AuthController = (() => {
         common_1.Controller('auth'),
         __metadata("design:paramtypes", [auth_service_1.AuthService,
             users_service_1.UsersService,
-            jwt_1.JwtService])
+            jwt_1.JwtService,
+            sms_service_1.SmsService])
     ], AuthController);
     return AuthController;
 })();

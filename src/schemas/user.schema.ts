@@ -7,6 +7,12 @@ export const UserSchema = new mongoose.Schema({
     type: String,
     // required: [true, 'Name is required!'],
   },
+  password: { // Only for admin
+    type: String
+  },
+  username: { //only for admin
+    type: String
+  },
   mobileNumber: {
     type: String,
     required: [true, 'Mobile Number is required!'],

@@ -8,6 +8,12 @@ exports.UserSchema = new mongoose.Schema({
     name: {
         type: String,
     },
+    password: {
+        type: String
+    },
+    username: {
+        type: String
+    },
     mobileNumber: {
         type: String,
         required: [true, 'Mobile Number is required!'],
