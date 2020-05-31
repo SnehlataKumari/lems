@@ -5582,8 +5582,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/classes.controller.ts": {
-        "version": "fb81fa037d0a4de07145193d8a4a1c8ede286a5a1fd65a2a53cd989448dbb0b9",
-        "signature": "0e9ed7d0833a633443d8d5579218d1380dce401a0851b9f4b69421135db38bdb",
+        "version": "1a77b7f3a6891dbf0dbf093701679366dc924c5c5878243dac7305bcea7c830a",
+        "signature": "7ef6954cb22d3e1a145f80b5a7133ebed4ce24849196ed04ed4884e62360e1c4",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/platform-express/interfaces/serve-static-options.interface.d.ts": {
@@ -5707,8 +5707,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/chapters.controller.ts": {
-        "version": "f4d6a13dc213091026ca726bf1c7b7ea766abb182c3e2d47c20b5b8136398231",
-        "signature": "d58818e7bd62842d779dcfc2ec0e8d8505330da7359d3e9c9f0e9b87849cc633",
+        "version": "75faeb5a833b69a9e5f80a798d27f35ceead6be9fb670010e13f05302f3de83a",
+        "signature": "8630bd7c1debf2fc1853fa20770afadddfeb657a3d42003e6d64d57f24069540",
         "affectsGlobalScope": false
       },
       "../src/controllers/index.ts": {
@@ -18616,7 +18616,8 @@
         "../src/controllers/resource.controller.ts",
         "../src/passport/auth.guard.ts",
         "../src/services/assets.service.ts",
-        "../src/services/chapters.service.ts"
+        "../src/services/chapters.service.ts",
+        "../src/utils/index.ts"
       ],
       "../src/controllers/classes.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -18629,7 +18630,8 @@
         "../src/passport/auth.guard.ts",
         "../src/services/assets.service.ts",
         "../src/services/chapters.service.ts",
-        "../src/services/classes.service.ts"
+        "../src/services/classes.service.ts",
+        "../src/utils/index.ts"
       ],
       "../src/controllers/index.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",

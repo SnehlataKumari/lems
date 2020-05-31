@@ -7,5 +7,8 @@ export declare class ClassesController extends ResourceController {
     private assetService;
     constructor(service: ClassesService, chapterService: ChaptersService, assetService: AssetsService);
     getAllChapters(classId: any, queries: any): Promise<any[]>;
-    getAllAssets(id: any): Promise<any[]>;
+    getAllAssets(id: any): Promise<{
+        message: string;
+        data: any;
+    }>;
 }

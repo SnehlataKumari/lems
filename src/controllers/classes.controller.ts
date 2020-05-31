@@ -4,6 +4,7 @@ import { ClassesService } from 'src/services/classes.service';
 import { ChaptersService } from 'src/services/chapters.service';
 import { JwtAuthGuard } from 'src/passport/auth.guard';
 import { AssetsService } from 'src/services/assets.service';
+import { success } from 'src/utils';
 
 @Controller('classes')
 export class ClassesController extends ResourceController {
@@ -34,8 +35,8 @@ export class ClassesController extends ResourceController {
   @UseGuards(JwtAuthGuard)
   @Get('/:id/assets')
   async getAllAssets(@Param('id') id) {
-    return this.assetService.find({
+    return success('Success!', this.assetService.find({
       class: id
-    });
+    }))
   }
 }

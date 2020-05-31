@@ -18,6 +18,7 @@ const resource_controller_1 = require("./resource.controller");
 const chapters_service_1 = require("../services/chapters.service");
 const assets_service_1 = require("../services/assets.service");
 const auth_guard_1 = require("../passport/auth.guard");
+const utils_1 = require("../utils");
 let ChaptersController = (() => {
     let ChaptersController = class ChaptersController extends resource_controller_1.ResourceController {
         constructor(service, assetService) {
@@ -25,9 +26,9 @@ let ChaptersController = (() => {
             this.assetService = assetService;
         }
         async getAllAssets(id) {
-            return this.assetService.find({
+            return utils_1.success('Success!', this.assetService.find({
                 chapter: id
-            });
+            }));
         }
     };
     __decorate([
