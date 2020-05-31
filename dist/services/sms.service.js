@@ -19,6 +19,9 @@ let SmsService = (() => {
             this.config = config;
             this.twilioAccountSid = this.config.get('twilioAccountSid');
             this.twilioAuthToken = this.config.get('twilioAuthToken');
+            console.log({
+                twilioAccountSid: this.twilioAccountSid, twilioAuthToken: this.twilioAuthToken
+            });
             this.client = twilio(this.twilioAccountSid, this.twilioAuthToken);
         }
         async sendMessage({ body, to }) {
