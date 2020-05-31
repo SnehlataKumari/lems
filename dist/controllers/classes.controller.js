@@ -17,11 +17,14 @@ const common_1 = require("@nestjs/common");
 const resource_controller_1 = require("./resource.controller");
 const classes_service_1 = require("../services/classes.service");
 const chapters_service_1 = require("../services/chapters.service");
+const auth_guard_1 = require("../passport/auth.guard");
+const assets_service_1 = require("../services/assets.service");
 let ClassesController = (() => {
     let ClassesController = class ClassesController extends resource_controller_1.ResourceController {
-        constructor(service, chapterService) {
+        constructor(service, chapterService, assetService) {
             super(service);
             this.chapterService = chapterService;
+            this.assetService = assetService;
         }
         async getAllChapters(classId, queries) {
             let where = { class: classId };
@@ -32,6 +35,11 @@ let ClassesController = (() => {
             return this.chapterService.find(where).populate('class')
                 .populate('assets');
         }
+        async getAllAssets(id) {
+            return this.assetService.find({
+                class: id
+            });
+        }
     };
     __decorate([
         common_1.Get('/:id/chapters'),
@@ -40,10 +48,19 @@ let ClassesController = (() => {
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", Promise)
     ], ClassesController.prototype, "getAllChapters", null);
+    __decorate([
+        common_1.UseGuards(auth_guard_1.JwtAuthGuard),
+        common_1.Get('/:id/assets'),
+        __param(0, common_1.Param('id')),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], ClassesController.prototype, "getAllAssets", null);
     ClassesController = __decorate([
         common_1.Controller('classes'),
         __metadata("design:paramtypes", [classes_service_1.ClassesService,
-            chapters_service_1.ChaptersService])
+            chapters_service_1.ChaptersService,
+            assets_service_1.AssetsService])
     ], ClassesController);
     return ClassesController;
 })();

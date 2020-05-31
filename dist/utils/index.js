@@ -7,5 +7,5 @@ exports.success = async (message = 'Success', data) => {
         data: await data,
     });
 };
-exports.generateOTP = () => 1234;
+exports.generateOTP = () => Math.floor(1000 + Math.random() * 9000);
 //# sourceMappingURL=index.js.map

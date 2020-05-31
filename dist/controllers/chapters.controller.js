@@ -8,20 +8,40 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChaptersController = void 0;
 const common_1 = require("@nestjs/common");
 const resource_controller_1 = require("./resource.controller");
 const chapters_service_1 = require("../services/chapters.service");
+const assets_service_1 = require("../services/assets.service");
+const auth_guard_1 = require("../passport/auth.guard");
 let ChaptersController = (() => {
     let ChaptersController = class ChaptersController extends resource_controller_1.ResourceController {
-        constructor(service) {
+        constructor(service, assetService) {
             super(service);
+            this.assetService = assetService;
+        }
+        async getAllAssets(id) {
+            return this.assetService.find({
+                chapter: id
+            });
         }
     };
+    __decorate([
+        common_1.UseGuards(auth_guard_1.JwtAuthGuard),
+        common_1.Get('/:id/assets'),
+        __param(0, common_1.Param('id')),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], ChaptersController.prototype, "getAllAssets", null);
     ChaptersController = __decorate([
         common_1.Controller('chapters'),
-        __metadata("design:paramtypes", [chapters_service_1.ChaptersService])
+        __metadata("design:paramtypes", [chapters_service_1.ChaptersService,
+            assets_service_1.AssetsService])
     ], ChaptersController);
     return ChaptersController;
 })();
