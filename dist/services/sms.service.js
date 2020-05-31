@@ -17,8 +17,8 @@ let SmsService = (() => {
     let SmsService = class SmsService {
         constructor(config) {
             this.config = config;
-            this.twilioAccountSid = this.config.get('twilioAccountSid');
-            this.twilioAuthToken = this.config.get('twilioAuthToken');
+            this.twilioAccountSid = this.config.get('TwilioAccountSid');
+            this.twilioAuthToken = this.config.get('TwilioAuthToken');
             console.log({
                 twilioAccountSid: this.twilioAccountSid, twilioAuthToken: this.twilioAuthToken
             });
