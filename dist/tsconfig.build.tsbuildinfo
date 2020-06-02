@@ -1491,9 +1491,14 @@
         "signature": "baf608b3f1bf90782d8b003287213bceae5e9b31f56c2ce676e223ea85ea10b2",
         "affectsGlobalScope": false
       },
+      "../src/privacy-policy.ts": {
+        "version": "3dd484c0205518848638037383bb464893a5762ac1cff2061d1c3666071af421",
+        "signature": "b7d1c0c32805379fd1f4bb804326a01a24442c2dad71f6be123f2f8dfec2264c",
+        "affectsGlobalScope": false
+      },
       "../src/app.controller.ts": {
-        "version": "ef76a5ec3feefb4f2dc4fc1aa8e36ae8e00f17b6c2bda78396525f204e998fe6",
-        "signature": "3293b0d1d6a7f902316e164fcf36ae099f1bbb0224484586eaab30d9dea78d32",
+        "version": "2ff86b2cc7458b763ee7048ac5c5c12e153aac3c876771f97d45a13f5524ceaa",
+        "signature": "26e0d3b2e4c65811764cc6bfee16e902808e33a27110514e5330630c59980bb6",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/config/dist/types/config.type.d.ts": {
@@ -18541,7 +18546,8 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/app.service.ts",
-        "../src/passport/auth.guard.ts"
+        "../src/passport/auth.guard.ts",
+        "../src/privacy-policy.ts"
       ],
       "../src/app.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -18721,6 +18727,13 @@
         "../node_modules/passport-custom/lib/index.d.ts",
         "../src/services/auth.service.ts",
         "../src/services/users.service.ts"
+      ],
+      "../src/privacy-policy.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
       ],
       "../src/schemas/asset.schema.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -32737,6 +32750,7 @@
       "../src/passport/auth.guard.ts",
       "../src/passport/jwt.strategy.ts",
       "../src/passport/otp.strategy.ts",
+      "../src/privacy-policy.ts",
       "../src/schemas/asset.schema.ts",
       "../src/schemas/chapter.schema.ts",
       "../src/schemas/class.schema.ts",

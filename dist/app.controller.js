@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
 const app_service_1 = require("./app.service");
+const privacy_policy_1 = require("./privacy-policy");
 let AppController = (() => {
     let AppController = class AppController {
         constructor(appService) {
@@ -20,6 +21,9 @@ let AppController = (() => {
         getHello() {
             return this.appService.getHello();
         }
+        sendPrivacyPolicy() {
+            return privacy_policy_1.privacy;
+        }
     };
     __decorate([
         common_1.Get(),
@@ -27,6 +31,12 @@ let AppController = (() => {
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", String)
     ], AppController.prototype, "getHello", null);
+    __decorate([
+        common_1.Get('privacy-policy'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", String)
+    ], AppController.prototype, "sendPrivacyPolicy", null);
     AppController = __decorate([
         common_1.Controller(),
         __metadata("design:paramtypes", [app_service_1.AppService])
