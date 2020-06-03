@@ -8,6 +8,7 @@ const auth_service_1 = require("./auth.service");
 const s3_service_1 = require("./s3.service");
 const sms_service_1 = require("./sms.service");
 const chapters_service_1 = require("./chapters.service");
+const subject_service_1 = require("./subject.service");
 exports.default = [
     users_service_1.UsersService,
     assets_service_1.AssetsService,
@@ -17,6 +18,7 @@ exports.default = [
     s3_service_1.S3Service,
     sms_service_1.SmsService,
     classes_service_1.ClassesService,
-    chapters_service_1.ChaptersService
+    chapters_service_1.ChaptersService,
+    subject_service_1.SubjectsService
 ];
 //# sourceMappingURL=index.js.map

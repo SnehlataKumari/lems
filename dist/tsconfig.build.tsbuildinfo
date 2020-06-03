@@ -1907,7 +1907,7 @@
         "affectsGlobalScope": false
       },
       "../src/schemas/class.schema.ts": {
-        "version": "7f7bc56600c42432f005211c3633ba95f24600ca336dd4c0d4c8392065382a58",
+        "version": "4dd402442cf44331da3f952f07b73a67e394875a194c40da7e057599b3f29dd1",
         "signature": "4d1a5f4265c00f52067c1cff38e9fe7ed6fde2a16a86a53b03b3b84471f54c9a",
         "affectsGlobalScope": false
       },
@@ -1921,8 +1921,13 @@
         "signature": "b1de9f2530cda18c6a4945437aac1ee7ee21853bb6f3f916ded1ba84eac6481d",
         "affectsGlobalScope": false
       },
+      "../src/schemas/subject.schema.ts": {
+        "version": "ce16edb4a2dc9eff1dc3c965b0c601e2cc4227a17e0737f377879002ae7c3210",
+        "signature": "c4bcc068e685f49cad93127547fdf89f83939f48b232b9024de2aee1ade9c965",
+        "affectsGlobalScope": false
+      },
       "../src/schemas/index.ts": {
-        "version": "9c99fa72a5d5ae5ace82afb4abb535bd729baa9cbf4f088dc07e4f4a9c837712",
+        "version": "f9d63cce2c9d54c7710378f7e28e9a2d713753eb59f20d4a787d05f6c7a1ced7",
         "signature": "d44bdcd4f74fae62b3e4900e347298d7ca322c9441794795b395dc7db1fda182",
         "affectsGlobalScope": false
       },
@@ -5551,9 +5556,14 @@
         "signature": "211d90690886fa06c6e636f1df2396cf09b78cedad952abfe05eacf76e940df9",
         "affectsGlobalScope": false
       },
+      "../src/services/subject.service.ts": {
+        "version": "61ecb9fe8268db4e5b1879e9fbad959e36233eca361a378e42f22d6d59ed22e8",
+        "signature": "695c00e7a8f196dd006ffe75bcca681ff3412667e710c6e640b7cd32ea18a7be",
+        "affectsGlobalScope": false
+      },
       "../src/services/index.ts": {
-        "version": "adedb9eb72cd3ab133ac2e5078f6ec87e5485a5e48bd94de87175b0ab3998f37",
-        "signature": "a8437656abddad760dba2bee414b14547ebd52be189bb23ba43c99ab16d75d4a",
+        "version": "5a9258933d80696f62b5c01a56e69cedecbba1d21a38e8a9d810b5e052377b4c",
+        "signature": "27b37c9549a4b014065c4d07769b2be86a20768685841a164968706452abdc4c",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -5716,9 +5726,14 @@
         "signature": "8630bd7c1debf2fc1853fa20770afadddfeb657a3d42003e6d64d57f24069540",
         "affectsGlobalScope": false
       },
+      "../src/controllers/subject.controller.ts": {
+        "version": "4003fc307b4f5c1205f87433bb45e1ec18641ccf7611bc7c15fe01aecb25483f",
+        "signature": "92a4d424e3115144ed814267168601168fe5d75f4f1c3db0a24a8852d3acab53",
+        "affectsGlobalScope": false
+      },
       "../src/controllers/index.ts": {
-        "version": "c792ae4f1b343023448102b48003cef239dd8d0b3f6451fa2e0d8fa4a696435c",
-        "signature": "8f5e7109edb9a36a72066af5320b701c6f22f8e5b6a1a66390ee3e1d66490179",
+        "version": "8bbf2f024ddee8c0daf6f7e0ef014afb4be700aa0c37bc88ae23de027840de11",
+        "signature": "e7a8ef5cb301d80d34a644e2a15ee5b5d05af924b06e05945bc04c37725a38f6",
         "affectsGlobalScope": false
       },
       "../node_modules/passport-custom/lib/index.d.ts": {
@@ -18649,6 +18664,7 @@
         "../src/controllers/auth.controller.ts",
         "../src/controllers/chapters.controller.ts",
         "../src/controllers/classes.controller.ts",
+        "../src/controllers/subject.controller.ts",
         "../src/controllers/users.controller.ts"
       ],
       "../src/controllers/resource.controller.ts": [
@@ -18662,6 +18678,16 @@
         "../src/passport/auth.guard.ts",
         "../src/passport/jwt.strategy.ts",
         "../src/utils/index.ts"
+      ],
+      "../src/controllers/subject.controller.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/controllers/resource.controller.ts",
+        "../src/services/subject.service.ts"
       ],
       "../src/controllers/users.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -18768,7 +18794,16 @@
         "../src/schemas/asset.schema.ts",
         "../src/schemas/chapter.schema.ts",
         "../src/schemas/class.schema.ts",
+        "../src/schemas/subject.schema.ts",
         "../src/schemas/user.schema.ts"
+      ],
+      "../src/schemas/subject.schema.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
       ],
       "../src/schemas/user.schema.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -18854,6 +18889,7 @@
         "../src/services/file.service.ts",
         "../src/services/s3.service.ts",
         "../src/services/sms.service.ts",
+        "../src/services/subject.service.ts",
         "../src/services/users.service.ts"
       ],
       "../src/services/s3.service.ts": [
@@ -18875,6 +18911,17 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/twilio/index.d.ts"
+      ],
+      "../src/services/subject.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/services/db.service.ts"
       ],
       "../src/services/users.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -31499,6 +31546,10 @@
         "../src/controllers/classes.controller.ts",
         "../src/controllers/users.controller.ts"
       ],
+      "../src/controllers/subject.controller.ts": [
+        "../src/controllers/resource.controller.ts",
+        "../src/services/subject.service.ts"
+      ],
       "../src/controllers/users.controller.ts": [
         "../src/controllers/resource.controller.ts",
         "../src/services/users.service.ts"
@@ -31532,6 +31583,9 @@
       "../src/schemas/index.ts": [
         "../node_modules/@types/mongoose/index.d.ts"
       ],
+      "../src/schemas/subject.schema.ts": [
+        "../node_modules/@types/mongoose/index.d.ts"
+      ],
       "../src/schemas/user.schema.ts": [
         "../node_modules/@types/mongoose/index.d.ts"
       ],
@@ -31560,16 +31614,20 @@
       "../src/services/index.ts": [
         "../src/services/assets.service.ts",
         "../src/services/auth.service.ts",
-        "../src/services/classes.service.ts",
         "../src/services/file.service.ts",
         "../src/services/s3.service.ts",
-        "../src/services/sms.service.ts"
+        "../src/services/sms.service.ts",
+        "../src/services/subject.service.ts"
       ],
       "../src/services/s3.service.ts": [
         "../node_modules/@nestjs/config/index.d.ts"
       ],
       "../src/services/sms.service.ts": [
         "../node_modules/@nestjs/config/index.d.ts"
+      ],
+      "../src/services/subject.service.ts": [
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../src/services/db.service.ts"
       ],
       "../src/services/users.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
@@ -32744,6 +32802,7 @@
       "../src/controllers/classes.controller.ts",
       "../src/controllers/index.ts",
       "../src/controllers/resource.controller.ts",
+      "../src/controllers/subject.controller.ts",
       "../src/controllers/users.controller.ts",
       "../src/exception-filters/mongo-exception.filter.ts",
       "../src/main.ts",
@@ -32755,6 +32814,7 @@
       "../src/schemas/chapter.schema.ts",
       "../src/schemas/class.schema.ts",
       "../src/schemas/index.ts",
+      "../src/schemas/subject.schema.ts",
       "../src/schemas/user.schema.ts",
       "../src/services/assets.service.ts",
       "../src/services/auth.service.ts",
@@ -32765,6 +32825,7 @@
       "../src/services/index.ts",
       "../src/services/s3.service.ts",
       "../src/services/sms.service.ts",
+      "../src/services/subject.service.ts",
       "../src/services/users.service.ts",
       "../src/utils/index.ts"
     ]
