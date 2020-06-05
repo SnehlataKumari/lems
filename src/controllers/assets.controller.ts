@@ -1,9 +1,7 @@
-import { Controller, Body, UseInterceptors, UploadedFile, Post, Put, Param, UploadedFiles, } from '@nestjs/common';
-import { FileInterceptor, FileFieldsInterceptor } from '@nestjs/platform-express';
+import { Controller, Body, Post, Put, Param } from '@nestjs/common';
 import { ResourceController } from './resource.controller';
 import { AssetsService } from 'src/services/assets.service';
 import { success } from 'src/utils';
-import { find } from 'lodash';
 
 @Controller('assets')
 export class AssetsController extends ResourceController {
@@ -11,31 +9,14 @@ export class AssetsController extends ResourceController {
     super(service)
   }
 
-  // @Post()
-  // @UseInterceptors(FileInterceptor('file'))
-  // async createVideo(@Body() createObject, @UploadedFile() file) {
-  //   const {response} = await this.service.saveFile(file);
-  //   return success('Resource created successfully!', this.service.create({ ...createObject, s3: response}));
-  // }
-
   @Post()
-  @UseInterceptors(FileFieldsInterceptor([
-    { name: 'video', maxCount: 1 },
-    { name: 'pdf', maxCount: 1 }
-  ]))
-  async createAsset(@Body() createObject, @UploadedFiles() files) {
-    const { videoS3, pdfS3 } = await this.uploadAssetsTos3(files);
-    return success('Asset created successfully!', this.service.create({ ...createObject, videoS3, pdfS3 }));
+  async createAsset(@Body() createObject) {
+    return success('Asset created successfully!', this.service.create({ ...createObject }));
   }
   
   @Put(':id')
-  @UseInterceptors(FileFieldsInterceptor([
-    { name: 'video', maxCount: 1 },
-    { name: 'pdf', maxCount: 1 }
-  ]))
-  async updateAsset(@Param('id') id, @Body() updateObject, @UploadedFiles() files) {
-    const uploadedS3Details = await this.uploadAssetsTos3(files);
-    const updatedObject = { ...updateObject, ...uploadedS3Details };
+  async updateAsset(@Param('id') id, @Body() updateObject) {
+    const updatedObject = { ...updateObject};
     return success('Asset updated successfully!', this.service.findByIdAndUpdate(id, updatedObject));
   }
 

@@ -2,11 +2,11 @@ import { ResourceController } from './resource.controller';
 import { AssetsService } from 'src/services/assets.service';
 export declare class AssetsController extends ResourceController {
     constructor(service: AssetsService);
-    createAsset(createObject: any, files: any): Promise<{
+    createAsset(createObject: any): Promise<{
         message: string;
         data: any;
     }>;
-    updateAsset(id: any, updateObject: any, files: any): Promise<{
+    updateAsset(id: any, updateObject: any): Promise<{
         message: string;
         data: any;
     }>;

@@ -14,7 +14,6 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AssetsController = void 0;
 const common_1 = require("@nestjs/common");
-const platform_express_1 = require("@nestjs/platform-express");
 const resource_controller_1 = require("./resource.controller");
 const assets_service_1 = require("../services/assets.service");
 const utils_1 = require("../utils");
@@ -23,13 +22,11 @@ let AssetsController = (() => {
         constructor(service) {
             super(service);
         }
-        async createAsset(createObject, files) {
-            const { videoS3, pdfS3 } = await this.uploadAssetsTos3(files);
-            return utils_1.success('Asset created successfully!', this.service.create(Object.assign(Object.assign({}, createObject), { videoS3, pdfS3 })));
+        async createAsset(createObject) {
+            return utils_1.success('Asset created successfully!', this.service.create(Object.assign({}, createObject)));
         }
-        async updateAsset(id, updateObject, files) {
-            const uploadedS3Details = await this.uploadAssetsTos3(files);
-            const updatedObject = Object.assign(Object.assign({}, updateObject), uploadedS3Details);
+        async updateAsset(id, updateObject) {
+            const updatedObject = Object.assign({}, updateObject);
             return utils_1.success('Asset updated successfully!', this.service.findByIdAndUpdate(id, updatedObject));
         }
         async uploadAssetsTos3(files) {
@@ -49,24 +46,16 @@ let AssetsController = (() => {
     };
     __decorate([
         common_1.Post(),
-        common_1.UseInterceptors(platform_express_1.FileFieldsInterceptor([
-            { name: 'video', maxCount: 1 },
-            { name: 'pdf', maxCount: 1 }
-        ])),
-        __param(0, common_1.Body()), __param(1, common_1.UploadedFiles()),
+        __param(0, common_1.Body()),
         __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object, Object]),
+        __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", Promise)
     ], AssetsController.prototype, "createAsset", null);
     __decorate([
         common_1.Put(':id'),
-        common_1.UseInterceptors(platform_express_1.FileFieldsInterceptor([
-            { name: 'video', maxCount: 1 },
-            { name: 'pdf', maxCount: 1 }
-        ])),
-        __param(0, common_1.Param('id')), __param(1, common_1.Body()), __param(2, common_1.UploadedFiles()),
+        __param(0, common_1.Param('id')), __param(1, common_1.Body()),
         __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object, Object, Object]),
+        __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", Promise)
     ], AssetsController.prototype, "updateAsset", null);
     AssetsController = __decorate([
