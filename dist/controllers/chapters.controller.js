@@ -30,6 +30,9 @@ let ChaptersController = (() => {
                 chapter: id
             }));
         }
+        findAllChapters(query) {
+            return utils_1.success('List found successfully', this.service.findAll(query));
+        }
     };
     __decorate([
         common_1.UseGuards(auth_guard_1.JwtAuthGuard),
@@ -39,6 +42,14 @@ let ChaptersController = (() => {
         __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", Promise)
     ], ChaptersController.prototype, "getAllAssets", null);
+    __decorate([
+        common_1.UseGuards(auth_guard_1.JwtAuthGuard),
+        common_1.Get(),
+        __param(0, common_1.Query()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], ChaptersController.prototype, "findAllChapters", null);
     ChaptersController = __decorate([
         common_1.Controller('chapters'),
         __metadata("design:paramtypes", [chapters_service_1.ChaptersService,

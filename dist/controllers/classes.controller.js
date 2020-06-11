@@ -20,12 +20,14 @@ const chapters_service_1 = require("../services/chapters.service");
 const auth_guard_1 = require("../passport/auth.guard");
 const assets_service_1 = require("../services/assets.service");
 const utils_1 = require("../utils");
+const subject_service_1 = require("../services/subject.service");
 let ClassesController = (() => {
     let ClassesController = class ClassesController extends resource_controller_1.ResourceController {
-        constructor(service, chapterService, assetService) {
+        constructor(service, chapterService, assetService, subjectService) {
             super(service);
             this.chapterService = chapterService;
             this.assetService = assetService;
+            this.subjectService = subjectService;
         }
         async getAllChapters(classId, queries) {
             let where = { class: classId };
@@ -40,6 +42,9 @@ let ClassesController = (() => {
             return utils_1.success('Success!', this.assetService.find({
                 class: id
             }));
+        }
+        async getAllSubjects(id) {
+            return utils_1.success('Success!', this.subjectService.find());
         }
     };
     __decorate([
@@ -57,11 +62,20 @@ let ClassesController = (() => {
         __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", Promise)
     ], ClassesController.prototype, "getAllAssets", null);
+    __decorate([
+        common_1.UseGuards(auth_guard_1.JwtAuthGuard),
+        common_1.Get('/:id/subjects'),
+        __param(0, common_1.Param('id')),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], ClassesController.prototype, "getAllSubjects", null);
     ClassesController = __decorate([
         common_1.Controller('classes'),
         __metadata("design:paramtypes", [classes_service_1.ClassesService,
             chapters_service_1.ChaptersService,
-            assets_service_1.AssetsService])
+            assets_service_1.AssetsService,
+            subject_service_1.SubjectsService])
     ], ClassesController);
     return ClassesController;
 })();

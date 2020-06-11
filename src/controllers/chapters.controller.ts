@@ -1,4 +1,4 @@
-import { Controller, Get, Param, UseGuards, } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards, Query, } from '@nestjs/common';
 import { ResourceController } from './resource.controller';
 import { ChaptersService } from 'src/services/chapters.service';
 import { AssetsService } from 'src/services/assets.service';
@@ -20,5 +20,11 @@ export class ChaptersController extends ResourceController {
     return success('Success!', this.assetService.find({
       chapter: id
     }));
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get()
+  findAllChapters(@Query() query) {
+    return success('List found successfully', this.service.findAll(query));
   }
 }

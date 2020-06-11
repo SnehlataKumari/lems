@@ -13,6 +13,7 @@ const s3Schema = new Schema({
 const AssetSchema = new mongoose.Schema({
     class: { type: Schema.Types.ObjectId, ref: 'Class', required: true },
     chapter: { type: Schema.Types.ObjectId, ref: 'Chapter', required: true },
+    subject: { type: Schema.Types.ObjectId, ref: 'Subject', required: true },
     title: {
         type: String,
         required: [true, 'Title is required!'],

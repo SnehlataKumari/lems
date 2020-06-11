@@ -16,8 +16,13 @@ const SubjectSchema = new mongoose.Schema({
     timestamps: true
 });
 exports.SubjectSchema = SubjectSchema;
-SubjectSchema.virtual('classes', {
-    ref: 'Class',
+SubjectSchema.virtual('chapters', {
+    ref: 'Chapter',
+    localField: '_id',
+    foreignField: 'subject',
+});
+SubjectSchema.virtual('assets', {
+    ref: 'Asset',
     localField: '_id',
     foreignField: 'subject',
 });

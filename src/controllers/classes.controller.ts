@@ -5,13 +5,16 @@ import { ChaptersService } from 'src/services/chapters.service';
 import { JwtAuthGuard } from 'src/passport/auth.guard';
 import { AssetsService } from 'src/services/assets.service';
 import { success } from 'src/utils';
+import { SubjectsService } from 'src/services/subject.service';
 
 @Controller('classes')
 export class ClassesController extends ResourceController {
   constructor(
     service: ClassesService,
     private chapterService: ChaptersService,
-    private assetService: AssetsService
+    private assetService: AssetsService,
+    private subjectService: SubjectsService
+
   ) {
     super(service)
   }
@@ -38,5 +41,11 @@ export class ClassesController extends ResourceController {
     return success('Success!', this.assetService.find({
       class: id
     }))
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('/:id/subjects')
+  async getAllSubjects(@Param('id') id) {
+    return success('Success!', this.subjectService.find())
   }
 }

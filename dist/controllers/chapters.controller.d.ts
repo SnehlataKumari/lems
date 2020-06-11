@@ -8,4 +8,8 @@ export declare class ChaptersController extends ResourceController {
         message: string;
         data: any;
     }>;
+    findAllChapters(query: any): Promise<{
+        message: string;
+        data: any;
+    }>;
 }

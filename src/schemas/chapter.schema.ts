@@ -15,6 +15,11 @@ const ChapterSchema = new mongoose.Schema({
     ref: 'Class',
     required: true
   },
+  subject: {
+    type: Schema.Types.ObjectId,
+    ref: 'Subject',
+    required: true
+  },
 }, {
   timestamps: true
 });
