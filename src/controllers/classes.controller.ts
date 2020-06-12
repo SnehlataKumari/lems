@@ -26,11 +26,6 @@ export class ClassesController extends ResourceController {
     if(queries && queries.search) {
       where = { ...where, $text: { $search: queries.search } };
     }
-
-    console.log(where); 
-    
-    // {$text: {$search: "text you are searching for"}}
-    
     return this.chapterService.find(where).populate('class')
     .populate('assets');
   }
@@ -46,6 +41,8 @@ export class ClassesController extends ResourceController {
   @UseGuards(JwtAuthGuard)
   @Get('/:id/subjects')
   async getAllSubjects(@Param('id') id) {
-    return success('Success!', this.subjectService.find())
+    return success('Success!', this.subjectService.find({
+      class: id
+    }))
   }
 }

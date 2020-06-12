@@ -34,7 +34,6 @@ let ClassesController = (() => {
             if (queries && queries.search) {
                 where = Object.assign(Object.assign({}, where), { $text: { $search: queries.search } });
             }
-            console.log(where);
             return this.chapterService.find(where).populate('class')
                 .populate('assets');
         }
@@ -44,7 +43,9 @@ let ClassesController = (() => {
             }));
         }
         async getAllSubjects(id) {
-            return utils_1.success('Success!', this.subjectService.find());
+            return utils_1.success('Success!', this.subjectService.find({
+                class: id
+            }));
         }
     };
     __decorate([
