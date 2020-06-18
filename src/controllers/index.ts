@@ -4,6 +4,7 @@ import { AssetsController } from "./assets.controller";
 import { AuthController } from "./auth.controller";
 import { ChaptersController } from "./chapters.controller";
 import { SubjectsController } from "./subject.controller";
+import { PaymentsController } from "./payments.controller";
 
 export default [
   UsersController,
@@ -11,5 +12,6 @@ export default [
   AssetsController,
   AuthController,
   ChaptersController,
-  SubjectsController
+  SubjectsController,
+  PaymentsController
 ];

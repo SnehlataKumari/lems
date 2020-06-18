@@ -27,6 +27,9 @@ let AssetsService = (() => {
         async saveFile(file) {
             return this.fileService.saveFile(file);
         }
+        async withIsSubscribedKey(assetsList, user) {
+            return assetsList.map(a => (Object.assign(Object.assign({}, a.toJSON()), { isSubscribed: user.isSubscribed })));
+        }
     };
     AssetsService = __decorate([
         common_1.Injectable(),

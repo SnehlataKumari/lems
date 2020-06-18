@@ -9,7 +9,7 @@ export declare class ClassesController extends ResourceController {
     private subjectService;
     constructor(service: ClassesService, chapterService: ChaptersService, assetService: AssetsService, subjectService: SubjectsService);
     getAllChapters(classId: any, queries: any): Promise<any[]>;
-    getAllAssets(id: any): Promise<{
+    getAllAssets(id: any, req: any): Promise<{
         message: string;
         data: any;
     }>;

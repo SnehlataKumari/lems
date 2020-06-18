@@ -37,10 +37,12 @@ let ClassesController = (() => {
             return this.chapterService.find(where).populate('class')
                 .populate('assets');
         }
-        async getAllAssets(id) {
-            return utils_1.success('Success!', this.assetService.find({
+        async getAllAssets(id, req) {
+            const assetsList = await this.assetService.find({
                 class: id
-            }));
+            });
+            const assetsListWithisSubscribed = await this.assetService.withIsSubscribedKey(assetsList, req.user);
+            return utils_1.success('Success!', assetsListWithisSubscribed);
         }
         async getAllSubjects(id) {
             return utils_1.success('Success!', this.subjectService.find({
@@ -58,9 +60,9 @@ let ClassesController = (() => {
     __decorate([
         common_1.UseGuards(auth_guard_1.JwtAuthGuard),
         common_1.Get('/:id/assets'),
-        __param(0, common_1.Param('id')),
+        __param(0, common_1.Param('id')), __param(1, common_1.Req()),
         __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
+        __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", Promise)
     ], ClassesController.prototype, "getAllAssets", null);
     __decorate([

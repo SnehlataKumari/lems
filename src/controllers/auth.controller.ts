@@ -17,16 +17,23 @@ export class AuthController {
 
   @Post('request-otp')
   async requestOtp(@Body() requestBody) {
-    const { mobileNumber } = requestBody;
-    let user = await this.usersService.findByMobileNumber(mobileNumber);
-
-    if(!user) {
-      user = await this.usersService.create({mobileNumber});
+    try {
+      const { mobileNumber } = requestBody;
+      let user = await this.usersService.findByMobileNumber(mobileNumber);
+  
+      if(!user) {
+        user = await this.usersService.create({mobileNumber});
+      }
+  
+      const requestOtp = await this.service.requestOTP(user);
+      await this.smsService.sendOtp(user);
+      return success('Otp generated successfully!', requestOtp);
+      
+    } catch (error) {
+      console.error(error);
+      
+      return 'Error'
     }
-
-    const requestOtp = await this.service.requestOTP(user);
-    await this.smsService.sendOtp(user);
-    return success('Otp generated successfully!', requestOtp);
   }
   
   @Post('create-admin')

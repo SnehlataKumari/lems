@@ -13,4 +13,8 @@ export class AssetsService extends DBService {
   async saveFile(file) {
     return this.fileService.saveFile(file);
   }
+
+  async withIsSubscribedKey(assetsList, user) {
+    return assetsList.map(a => ({...a.toJSON(), isSubscribed: user.isSubscribed}));
+  }
 }

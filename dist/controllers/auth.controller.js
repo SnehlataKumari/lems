@@ -29,14 +29,20 @@ let AuthController = (() => {
             this.smsService = smsService;
         }
         async requestOtp(requestBody) {
-            const { mobileNumber } = requestBody;
-            let user = await this.usersService.findByMobileNumber(mobileNumber);
-            if (!user) {
-                user = await this.usersService.create({ mobileNumber });
+            try {
+                const { mobileNumber } = requestBody;
+                let user = await this.usersService.findByMobileNumber(mobileNumber);
+                if (!user) {
+                    user = await this.usersService.create({ mobileNumber });
+                }
+                const requestOtp = await this.service.requestOTP(user);
+                await this.smsService.sendOtp(user);
+                return utils_1.success('Otp generated successfully!', requestOtp);
             }
-            const requestOtp = await this.service.requestOTP(user);
-            await this.smsService.sendOtp(user);
-            return utils_1.success('Otp generated successfully!', requestOtp);
+            catch (error) {
+                console.error(error);
+                return 'Error';
+            }
         }
         async createAdmin(requestBody) {
             const { mobileNumber, name, password, username } = requestBody;

@@ -6,7 +6,7 @@ export declare class SubjectsController extends ResourceController {
     private assetService;
     private chaptersService;
     constructor(service: SubjectsService, assetService: AssetsService, chaptersService: ChaptersService);
-    getAllAssets(id: any): Promise<{
+    getAllAssets(id: any, req: any): Promise<{
         message: string;
         data: any;
     }>;

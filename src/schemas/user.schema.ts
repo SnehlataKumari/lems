@@ -2,6 +2,12 @@ import * as mongoose from 'mongoose';
 import { getKeys, USER_ROLES } from 'src/constants';
 const Schema = mongoose.Schema;
 
+const paymentSchema = new Schema({
+  paymentId: {type: String, required: true}
+}, {
+  timestamps: true
+});
+
 export const UserSchema = new mongoose.Schema({
   name: { 
     type: String,
@@ -34,7 +40,8 @@ export const UserSchema = new mongoose.Schema({
     enum: getKeys(USER_ROLES),
     default: USER_ROLES['USER'].key
   },
-  otp: String
+  otp: String,
+  payments: [paymentSchema]
 }, {
   timestamps: true
 });

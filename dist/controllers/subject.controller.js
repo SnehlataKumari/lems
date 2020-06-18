@@ -27,10 +27,12 @@ let SubjectsController = (() => {
             this.assetService = assetService;
             this.chaptersService = chaptersService;
         }
-        async getAllAssets(id) {
-            return utils_1.success('Success!', this.assetService.find({
+        async getAllAssets(id, req) {
+            const assetsList = await this.assetService.find({
                 subject: id
-            }));
+            });
+            const assetsListWithisSubscribed = await this.assetService.withIsSubscribedKey(assetsList, req.user);
+            return utils_1.success('Success!', assetsListWithisSubscribed);
         }
         async getAllChapters(id) {
             return utils_1.success('Success!', this.chaptersService.find({
@@ -41,9 +43,9 @@ let SubjectsController = (() => {
     __decorate([
         common_1.UseGuards(auth_guard_1.JwtAuthGuard),
         common_1.Get('/:id/assets'),
-        __param(0, common_1.Param('id')),
+        __param(0, common_1.Param('id')), __param(1, common_1.Req()),
         __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
+        __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", Promise)
     ], SubjectsController.prototype, "getAllAssets", null);
     __decorate([

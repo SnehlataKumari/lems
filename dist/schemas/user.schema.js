@@ -4,6 +4,11 @@ exports.UserSchema = void 0;
 const mongoose = require("mongoose");
 const constants_1 = require("../constants");
 const Schema = mongoose.Schema;
+const paymentSchema = new Schema({
+    paymentId: { type: String, required: true }
+}, {
+    timestamps: true
+});
 exports.UserSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -34,7 +39,8 @@ exports.UserSchema = new mongoose.Schema({
         enum: constants_1.getKeys(constants_1.USER_ROLES),
         default: constants_1.USER_ROLES['USER'].key
     },
-    otp: String
+    otp: String,
+    payments: [paymentSchema]
 }, {
     timestamps: true
 });

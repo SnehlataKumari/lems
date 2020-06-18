@@ -11,7 +11,7 @@ export declare class AuthController {
     requestOtp(requestBody: any): Promise<{
         message: string;
         data: any;
-    }>;
+    } | "Error">;
     createAdmin(requestBody: any): Promise<{
         message: string;
         data: any;

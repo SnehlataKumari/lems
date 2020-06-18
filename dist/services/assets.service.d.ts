@@ -8,4 +8,5 @@ export declare class AssetsService extends DBService {
         response: any;
         fileName: any;
     }>;
+    withIsSubscribedKey(assetsList: any, user: any): Promise<any>;
 }

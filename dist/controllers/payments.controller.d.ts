@@ -1,8 +1,8 @@
 import { UsersService } from 'src/services/users.service';
 import { ResourceController } from './resource.controller';
-export declare class UsersController extends ResourceController {
+export declare class PaymentsController extends ResourceController {
     constructor(service: UsersService);
-    findAll(): Promise<{
+    createPayment(req: any): Promise<{
         message: string;
         data: any;
     }>;

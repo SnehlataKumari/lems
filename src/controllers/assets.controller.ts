@@ -1,12 +1,21 @@
-import { Controller, Body, Post, Put, Param } from '@nestjs/common';
+import { Controller, Body, Post, Put, Param, Get, Req, UseGuards } from '@nestjs/common';
 import { ResourceController } from './resource.controller';
 import { AssetsService } from 'src/services/assets.service';
 import { success } from 'src/utils';
+import { JwtAuthGuard } from 'src/passport/auth.guard';
 
 @Controller('assets')
 export class AssetsController extends ResourceController {
   constructor(service: AssetsService) {
     super(service)
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get()
+  async findAllAssets(@Req() req) {
+    const assetsList = await this.service.findAll();
+    const assetsListWithisSubscribed = await this.service.withIsSubscribedKey(assetsList, req.user);
+    return success('List found successfully', assetsListWithisSubscribed);
   }
 
   @Post()
