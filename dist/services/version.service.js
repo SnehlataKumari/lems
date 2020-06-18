@@ -12,36 +12,23 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AssetsService = void 0;
+exports.VersionService = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("mongoose");
 const mongoose_2 = require("@nestjs/mongoose");
 const db_service_1 = require("./db.service");
-const file_service_1 = require("./file.service");
-const version_service_1 = require("./version.service");
-let AssetsService = (() => {
-    let AssetsService = class AssetsService extends db_service_1.DBService {
-        constructor(model, fileService, versionService) {
+let VersionService = (() => {
+    let VersionService = class VersionService extends db_service_1.DBService {
+        constructor(model) {
             super(model);
-            this.fileService = fileService;
-            this.versionService = versionService;
-        }
-        async saveFile(file) {
-            return this.fileService.saveFile(file);
-        }
-        async withIsSubscribedKey(assetsList, user) {
-            const { version } = (await this.versionService.findOne({}));
-            return assetsList.map(a => (Object.assign(Object.assign({}, a.toJSON()), { isSubscribed: user.isSubscribed, version })));
         }
     };
-    AssetsService = __decorate([
+    VersionService = __decorate([
         common_1.Injectable(),
-        __param(0, mongoose_2.InjectModel('Asset')),
-        __metadata("design:paramtypes", [mongoose_1.Model,
-            file_service_1.FileService,
-            version_service_1.VersionService])
-    ], AssetsService);
-    return AssetsService;
+        __param(0, mongoose_2.InjectModel('Version')),
+        __metadata("design:paramtypes", [mongoose_1.Model])
+    ], VersionService);
+    return VersionService;
 })();
-exports.AssetsService = AssetsService;
-//# sourceMappingURL=assets.service.js.map
+exports.VersionService = VersionService;
+//# sourceMappingURL=version.service.js.map

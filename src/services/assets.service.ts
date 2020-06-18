@@ -3,10 +3,15 @@ import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { DBService } from './db.service';
 import { FileService } from './file.service';
+import { VersionService } from './version.service';
 
 @Injectable()
 export class AssetsService extends DBService {
-  constructor(@InjectModel('Asset') model: Model<any>, private fileService: FileService) {
+  constructor(
+    @InjectModel('Asset') model: Model<any>,
+    private fileService: FileService,
+    private versionService: VersionService,
+  ) {
     super(model);
   }
 
@@ -15,6 +20,7 @@ export class AssetsService extends DBService {
   }
 
   async withIsSubscribedKey(assetsList, user) {
-    return assetsList.map(a => ({...a.toJSON(), isSubscribed: user.isSubscribed}));
+    const {version} = (await this.versionService.findOne({}));
+    return assetsList.map(a => ({ ...a.toJSON(), isSubscribed: user.isSubscribed, version }));
   }
 }

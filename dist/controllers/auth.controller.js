@@ -20,13 +20,16 @@ const utils_1 = require("../utils");
 const passport_1 = require("@nestjs/passport");
 const jwt_1 = require("@nestjs/jwt");
 const sms_service_1 = require("../services/sms.service");
+const version_service_1 = require("../services/version.service");
+const auth_guard_1 = require("../passport/auth.guard");
 let AuthController = (() => {
     let AuthController = class AuthController {
-        constructor(service, usersService, jwtService, smsService) {
+        constructor(service, usersService, jwtService, smsService, versionService) {
             this.service = service;
             this.usersService = usersService;
             this.jwtService = jwtService;
             this.smsService = smsService;
+            this.versionService = versionService;
         }
         async requestOtp(requestBody) {
             try {
@@ -70,6 +73,17 @@ let AuthController = (() => {
                 user
             };
         }
+        async updateVersion(req) {
+            const { body } = req;
+            const version = await this.versionService.findOne({});
+            if (!version) {
+                await this.versionService.create(body);
+            }
+            else {
+                await this.versionService.update(version, body);
+            }
+            return this.versionService.findOne({});
+        }
     };
     __decorate([
         common_1.Post('request-otp'),
@@ -100,12 +114,21 @@ let AuthController = (() => {
         __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", Promise)
     ], AuthController.prototype, "login", null);
+    __decorate([
+        common_1.UseGuards(auth_guard_1.JwtAuthGuard),
+        common_1.Post('update-version'),
+        __param(0, common_1.Request()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], AuthController.prototype, "updateVersion", null);
     AuthController = __decorate([
         common_1.Controller('auth'),
         __metadata("design:paramtypes", [auth_service_1.AuthService,
             users_service_1.UsersService,
             jwt_1.JwtService,
-            sms_service_1.SmsService])
+            sms_service_1.SmsService,
+            version_service_1.VersionService])
     ], AuthController);
     return AuthController;
 })();

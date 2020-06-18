@@ -5,6 +5,8 @@ import { success } from "src/utils";
 import { AuthGuard } from "@nestjs/passport";
 import { JwtService } from '@nestjs/jwt';
 import { SmsService } from "src/services/sms.service";
+import { VersionService } from "src/services/version.service";
+import { JwtAuthGuard } from "src/passport/auth.guard";
 
 @Controller('auth')
 export class AuthController {
@@ -12,7 +14,8 @@ export class AuthController {
     private service: AuthService,
     private usersService: UsersService,
     private jwtService: JwtService,
-    private smsService: SmsService
+    private smsService: SmsService,
+    private versionService: VersionService
   ) {}
 
   @Post('request-otp')
@@ -70,5 +73,21 @@ export class AuthController {
       access_token: this.jwtService.sign(user.toJSON()),
       user
     };
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('update-version')
+  async updateVersion(@Request() req) {
+    const {body} = req;
+
+    const version = await this.versionService.findOne({});
+    if(!version) {
+      await this.versionService.create(body);
+    } else {
+      await this.versionService.update(version, body);
+    }
+
+    return this.versionService.findOne({});
+    
   }
 }

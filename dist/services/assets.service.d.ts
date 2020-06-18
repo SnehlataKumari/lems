@@ -1,9 +1,11 @@
 import { Model } from 'mongoose';
 import { DBService } from './db.service';
 import { FileService } from './file.service';
+import { VersionService } from './version.service';
 export declare class AssetsService extends DBService {
     private fileService;
-    constructor(model: Model<any>, fileService: FileService);
+    private versionService;
+    constructor(model: Model<any>, fileService: FileService, versionService: VersionService);
     saveFile(file: any): Promise<{
         response: any;
         fileName: any;
