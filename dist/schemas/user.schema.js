@@ -25,10 +25,6 @@ exports.UserSchema = new mongoose.Schema({
         unique: [true, 'Mobile Number already exists!']
     },
     devices: [String],
-    class: {
-        type: Schema.Types.ObjectId,
-        ref: 'Class',
-    },
     isSubscribed: {
         type: Boolean,
         default: false
