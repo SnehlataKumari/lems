@@ -1,33 +1,22 @@
 import { Injectable } from "@nestjs/common";
-import * as twilio from "twilio";
 import { ConfigService } from "@nestjs/config";
+import { TwillioService } from "./twillio.service";
+import { DummySmsService } from "./dummySms.service";
 
 @Injectable()
 export class SmsService {
-  
-  twilioAccountSid; 
-  twilioAuthToken;
-  client;
-  
   constructor(
+    private twillioService: TwillioService,
+    private dummySmsService: DummySmsService,
     private config: ConfigService
-  ) {
-    this.twilioAccountSid = this.config.get('TwilioAccountSid');
-    this.twilioAuthToken = this.config.get('TwilioAuthToken');
+  ) { }
 
-    console.log({
-      twilioAccountSid: this.twilioAccountSid, twilioAuthToken: this.twilioAuthToken
-    });
-    
-    this.client = twilio(this.twilioAccountSid, this.twilioAuthToken);
+  getClient() {
+    return this[this.config.get('smsService')];
   }
 
   async sendMessage ({body, to}) {
-    return this.client.messages.create({
-      body,
-      to,  // Text this number
-      from: '+12058830527' // From a valid Twilio number
-    });
+    return this.getClient().sendMessage({ body, to });
   }
 
   async sendOtp(user) {

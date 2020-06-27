@@ -1,6 +1,4 @@
 import { Injectable } from "@nestjs/common";
-import { promises as fsPromises } from 'fs';
-import { join } from 'path';
 import { S3Service } from "./s3.service";
 
 @Injectable()

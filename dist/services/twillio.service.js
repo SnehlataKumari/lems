@@ -9,39 +9,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SmsService = void 0;
+exports.TwillioService = void 0;
 const common_1 = require("@nestjs/common");
+const twilio = require("twilio");
 const config_1 = require("@nestjs/config");
-const twillio_service_1 = require("./twillio.service");
-const dummySms_service_1 = require("./dummySms.service");
-let SmsService = (() => {
-    let SmsService = class SmsService {
-        constructor(twillioService, dummySmsService, config) {
-            this.twillioService = twillioService;
-            this.dummySmsService = dummySmsService;
+let TwillioService = (() => {
+    let TwillioService = class TwillioService {
+        constructor(config) {
             this.config = config;
-        }
-        getClient() {
-            return this[this.config.get('smsService')];
+            this.twilioAccountSid = this.config.get('TwilioAccountSid');
+            this.twilioAuthToken = this.config.get('TwilioAuthToken');
+            this.client = twilio(this.twilioAccountSid, this.twilioAuthToken);
         }
         async sendMessage({ body, to }) {
-            return this.getClient().sendMessage({ body, to });
-        }
-        async sendOtp(user) {
-            const body = `Your otp to login in rehani app is ${user.otp}`;
-            const to = `+91${user.mobileNumber}`;
-            return this.sendMessage({
-                body, to
+            return this.client.messages.create({
+                body,
+                to,
+                from: '+12058830527'
             });
         }
     };
-    SmsService = __decorate([
+    TwillioService = __decorate([
         common_1.Injectable(),
-        __metadata("design:paramtypes", [twillio_service_1.TwillioService,
-            dummySms_service_1.DummySmsService,
-            config_1.ConfigService])
-    ], SmsService);
-    return SmsService;
+        __metadata("design:paramtypes", [config_1.ConfigService])
+    ], TwillioService);
+    return TwillioService;
 })();
-exports.SmsService = SmsService;
-//# sourceMappingURL=sms.service.js.map
+exports.TwillioService = TwillioService;
+//# sourceMappingURL=twillio.service.js.map

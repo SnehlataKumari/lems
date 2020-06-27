@@ -8,6 +8,8 @@ import { SmsService } from "./sms.service";
 import { ChaptersService } from "./chapters.service";
 import { SubjectsService } from "./subject.service";
 import { VersionService } from "./version.service";
+import { TwillioService } from "./twillio.service";
+import { DummySmsService } from "./dummySms.service";
 
 export default [
   UsersService,
@@ -20,5 +22,7 @@ export default [
   ClassesService,
   ChaptersService,
   SubjectsService,
-  VersionService
+  VersionService,
+  TwillioService,
+  DummySmsService
 ];

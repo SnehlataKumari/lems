@@ -1137,7 +1137,7 @@
         "affectsGlobalScope": false
       },
       "../src/app.service.ts": {
-        "version": "eaf8514ce110fa428a93a27408df4d06d133dbd9ed0a775c315ddfdd507853a9",
+        "version": "5d4242d50092a353e5ab1f06663a89dbc714c7d9d70072ea03c83c5b14750f05",
         "signature": "d8f4cb0109c1b399d657807fd6af504d74a9300325e0fc915abdbf658b464a97",
         "affectsGlobalScope": false
       },
@@ -1497,7 +1497,7 @@
         "affectsGlobalScope": false
       },
       "../src/app.controller.ts": {
-        "version": "2ff86b2cc7458b763ee7048ac5c5c12e153aac3c876771f97d45a13f5524ceaa",
+        "version": "9f5818179e6875dae3147c4204fd3491ddaedf2ba17c5fd10e6bc78858a55136",
         "signature": "26e0d3b2e4c65811764cc6bfee16e902808e33a27110514e5330630c59980bb6",
         "affectsGlobalScope": false
       },
@@ -3282,7 +3282,7 @@
         "affectsGlobalScope": false
       },
       "../src/services/file.service.ts": {
-        "version": "19dccbbeaf7d6b7d96bd5bec979e3449e8e257d94db8243843adf6fd108f56a9",
+        "version": "52f40f419eb96ac8f1c6fb79784e3f153a9a2e5c71f74f24c52b26a7abcb7781",
         "signature": "b9c26f20c38f9683829093c55182981d87174972d66237c1d98dbe602c64d295",
         "affectsGlobalScope": false
       },
@@ -5556,9 +5556,19 @@
         "signature": "8905ad26553a8a796a73aec028c4e084f681780a18c8ca9e17839083e45094e9",
         "affectsGlobalScope": false
       },
+      "../src/services/twillio.service.ts": {
+        "version": "96abe88623a8bfae3b89c1674454d95c9b26a3c2ecc084375e26b63a9f515b9f",
+        "signature": "3dfa6f4d53823b8d59f5273e4d642bb6ad92b805f0769c7f412a0ac6f4b6e898",
+        "affectsGlobalScope": false
+      },
+      "../src/services/dummysms.service.ts": {
+        "version": "a3d20f5e791ef86066292484bb5926bfcd695144f0074a96265805ee68bced8b",
+        "signature": "94b1bdadcb2769065ed3753f0232849810bd456b1589f13cfb3e90ae14927d28",
+        "affectsGlobalScope": false
+      },
       "../src/services/sms.service.ts": {
-        "version": "0a9762accad27bac3ef86a9266e362794e34b963ccc6991afba41d74aa28bd89",
-        "signature": "4e825ae13ae4f0455f6c278699d62bf13a5c87b0a9b4fd4fee9f054d97a32157",
+        "version": "1a498e9bc08647b8533af0d97319b3131971bd4053de14241b147142e0a10245",
+        "signature": "fffc32adeb2c84b7ce54b83743eecc3a4d743dbc56cc20120ab7cf4b62d19b7c",
         "affectsGlobalScope": false
       },
       "../src/services/chapters.service.ts": {
@@ -5572,8 +5582,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/index.ts": {
-        "version": "e4d72a7d770266aa831b7643e04acb4bb919c15d18039001137b0dd8f39991da",
-        "signature": "9192a6ce276fff89fb0ed45f42cceb7ca4b5e33a4808859e637946ce958cd747",
+        "version": "2b7f52ec73c98e86e96225dfc4f18d7ec8ed1a0ea83cf3f41d5ae8a99943d1a1",
+        "signature": "4a061421709f94f90a6fd663d842247227610f7df1fd9dbeed7594084274efce",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -5682,7 +5692,7 @@
         "affectsGlobalScope": false
       },
       "../src/app.module.ts": {
-        "version": "dcf2afa99a3e8fbce0984d7b48d037138ae4ceb48ef15ec33008e0eea480981e",
+        "version": "d3ecae6357c19c74cdbe5b4bba282a7659a96b5a83d4bfe1393917dcb978f724",
         "signature": "9fc7f7b6ad854404973b8cba8e6d883f758237991968e9a3965d716d46f1da88",
         "affectsGlobalScope": false
       },
@@ -5692,7 +5702,7 @@
         "affectsGlobalScope": false
       },
       "../src/main.ts": {
-        "version": "16541527aa90dba222f7bbe501d17faac3edc0db5cc0dc25eca0c90ccc54c051",
+        "version": "0f7fa9235196d60289c37059264a022966cb9d299e0c0fe9786441467622fd04",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
         "affectsGlobalScope": false
       },
@@ -18686,11 +18696,18 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
+      "../src/services/dummysms.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
       "../src/services/file.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/path.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -18706,10 +18723,12 @@
         "../src/services/auth.service.ts",
         "../src/services/chapters.service.ts",
         "../src/services/classes.service.ts",
+        "../src/services/dummysms.service.ts",
         "../src/services/file.service.ts",
         "../src/services/s3.service.ts",
         "../src/services/sms.service.ts",
         "../src/services/subject.service.ts",
+        "../src/services/twillio.service.ts",
         "../src/services/users.service.ts",
         "../src/services/version.service.ts"
       ],
@@ -18731,7 +18750,8 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
-        "../node_modules/twilio/index.d.ts"
+        "../src/services/dummysms.service.ts",
+        "../src/services/twillio.service.ts"
       ],
       "../src/services/subject.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -18743,6 +18763,16 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/services/db.service.ts"
+      ],
+      "../src/services/twillio.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/config/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/twilio/index.d.ts"
       ],
       "../src/services/users.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -31314,19 +31344,26 @@
         "../src/services/assets.service.ts",
         "../src/services/auth.service.ts",
         "../src/services/classes.service.ts",
+        "../src/services/dummysms.service.ts",
         "../src/services/file.service.ts",
         "../src/services/s3.service.ts",
-        "../src/services/sms.service.ts"
+        "../src/services/sms.service.ts",
+        "../src/services/twillio.service.ts"
       ],
       "../src/services/s3.service.ts": [
         "../node_modules/@nestjs/config/index.d.ts"
       ],
       "../src/services/sms.service.ts": [
-        "../node_modules/@nestjs/config/index.d.ts"
+        "../node_modules/@nestjs/config/index.d.ts",
+        "../src/services/dummysms.service.ts",
+        "../src/services/twillio.service.ts"
       ],
       "../src/services/subject.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
         "../src/services/db.service.ts"
+      ],
+      "../src/services/twillio.service.ts": [
+        "../node_modules/@nestjs/config/index.d.ts"
       ],
       "../src/services/users.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
@@ -32510,11 +32547,13 @@
       "../src/services/chapters.service.ts",
       "../src/services/classes.service.ts",
       "../src/services/db.service.ts",
+      "../src/services/dummysms.service.ts",
       "../src/services/file.service.ts",
       "../src/services/index.ts",
       "../src/services/s3.service.ts",
       "../src/services/sms.service.ts",
       "../src/services/subject.service.ts",
+      "../src/services/twillio.service.ts",
       "../src/services/users.service.ts",
       "../src/services/version.service.ts",
       "../src/utils/index.ts"
