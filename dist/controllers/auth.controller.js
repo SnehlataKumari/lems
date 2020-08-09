@@ -54,7 +54,6 @@ let AuthController = (() => {
                 value = await schema.validateAsync({ name: name, email: email, password: password });
             }
             catch (err) {
-                console.log(err);
                 throw new common_1.BadRequestException(err.message);
             }
             var salt = bcrypt.genSaltSync(10);

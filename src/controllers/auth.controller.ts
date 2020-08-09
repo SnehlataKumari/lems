@@ -39,16 +39,11 @@ export class AuthController {
   @Post('sign-up')
   async signUp(@Body() req) {
 
-    // Validate email trim, case sensitive(small letter), valid email, password strength validate, encrypt, name trim
-    // Step 2: Create a token: To verify email address which we will send to email.
-
      const { email , password , name } = req;
     let value;
-
     try {
       value = await schema.validateAsync({ name: name, email: email, password: password  });
     } catch (err) {
-      console.log(err);
       throw new BadRequestException(err.message);
     }
     var salt = bcrypt.genSaltSync(10);
@@ -77,8 +72,6 @@ export class AuthController {
     }
     
   }
-
-
 
   @Post('login')
   async login(@Body() user) {

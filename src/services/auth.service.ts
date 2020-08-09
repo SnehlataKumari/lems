@@ -14,14 +14,11 @@ export class AuthService {
     if (!userModel) {
       throw new UnauthorizedException('User not registered!');
     }
-
     const comparePassword = bcrypt.compareSync(password, userModel.password);
     if (userModel.isEmailVerified === true && comparePassword) {
       return requestBody;
     }
-    
     throw new UnauthorizedException('unauthorised!');
-
   }
 }
   // async requestOTP(user) {
