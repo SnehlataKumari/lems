@@ -6,7 +6,7 @@ import { DummySmsService } from "./dummySms.service";
 @Injectable()
 export class SmsService {
   constructor(
-    private twillioService: TwillioService,
+    // private twillioService: TwillioService,
     private dummySmsService: DummySmsService,
     private config: ConfigService
   ) { }

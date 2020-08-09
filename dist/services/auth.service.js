@@ -13,36 +13,23 @@ exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
 const utils_1 = require("../utils");
 const users_service_1 = require("./users.service");
+const bcrypt = require("bcryptjs");
 let AuthService = (() => {
     let AuthService = class AuthService {
         constructor(userService) {
             this.userService = userService;
         }
-        async requestOTP(user) {
-            user.otp = utils_1.generateOTP();
-            user.save();
-            return user;
-        }
-        async validateUser(mobileNumber, otp) {
-            const user = await this.userService.findByMobileNumber(mobileNumber);
-            if (user && user.otp === otp) {
-                return user;
+        async login(requestBody) {
+            const { email, password } = requestBody;
+            const userModel = await this.userService.findByEmail(email);
+            if (!userModel) {
+                throw new common_1.UnauthorizedException('User not registered!');
             }
-            throw new common_1.UnauthorizedException();
-        }
-        async clearOTP(user) {
-            return this.userService.update(user, {
-                otp: ''
-            });
-        }
-        async postLogin(user, { deviceId }) {
-            const updateObj = user.devices.length == 2 && !user.devices.includes(deviceId)
-                ? { devices: [deviceId] }
-                : { $addToSet: { devices: deviceId } };
-            return await this.userService.update(user, updateObj);
-        }
-        async validateAuth(payload) {
-            return this.userService.findById(payload._id);
+            const comparePassword = bcrypt.compareSync(password, userModel.password);
+            if (userModel.isEmailVerified === true && comparePassword) {
+                return requestBody;
+            }
+            throw new common_1.UnauthorizedException('unauthorised!');
         }
     };
     AuthService = __decorate([

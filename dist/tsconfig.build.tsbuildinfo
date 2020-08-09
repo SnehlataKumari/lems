@@ -1896,13 +1896,8 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
         "affectsGlobalScope": false
       },
-      "../src/constants/index.ts": {
-        "version": "b2c5f33adb1f160ddd04b9af2f6f9fa84914ea2980450e4d0dbfdfea781767c4",
-        "signature": "9bd50e5b327fd244c7a96ec1967deb451521205f378f6ccadc062a6dbc482479",
-        "affectsGlobalScope": false
-      },
       "../src/schemas/user.schema.ts": {
-        "version": "5e7cabe496e32768c1fc3f030a69bf97a42f8f31321e534d01a77cc6f7ea43d2",
+        "version": "3fb1cbdc790b1e449dd42920bb5c1cd48fdc7f32d208a1f76086d93e8f92f006",
         "signature": "33b6d9f5900752b91a05e8ec298b94fec72ab453cbb20021183b577561396086",
         "affectsGlobalScope": false
       },
@@ -1931,8 +1926,13 @@
         "signature": "c21a3479f433cfaa2571f92f27ce2a877235fca8c17fa796a7c0e0418dc4cb37",
         "affectsGlobalScope": false
       },
+      "../src/schemas/login.schema.ts": {
+        "version": "78742774900446fbbcdc5d54aae4eea201e91aec038927a55831b4dfd23a1e1d",
+        "signature": "57aee6893dba39b2b37dd946b0a912736e2927b7fcabee1577d5200f12a9fe3a",
+        "affectsGlobalScope": false
+      },
       "../src/schemas/index.ts": {
-        "version": "ef147ba7558685cbd41166115ea1ae63159311e2cf7f8a303fa19abf56f017ca",
+        "version": "707e499b5442e9ef94727c1c01fa60109ea15dfecd8a414327e6d5107a36b546",
         "signature": "d44bdcd4f74fae62b3e4900e347298d7ca322c9441794795b395dc7db1fda182",
         "affectsGlobalScope": false
       },
@@ -1942,8 +1942,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/users.service.ts": {
-        "version": "b9a0326214b2b9c2cc72b52fdc012998aae3931a86d676a04aa91b673000e08c",
-        "signature": "c9b6b330bf336e1b33e012f39dcd944f28902f24a06f8f522dabe54e338fbf5a",
+        "version": "60a25557354688ad3309a5a484d883f5c8995a5c12aaafdc1117f4230e710b2d",
+        "signature": "6761224304e65d858da95c289b25957176dc5061a890a192b9e7d292e718147a",
         "affectsGlobalScope": false
       },
       "../node_modules/aws-sdk/lib/error.d.ts": {
@@ -3307,8 +3307,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/auth.service.ts": {
-        "version": "cea0360d44fddcdc5952bd6fc3ed0b481cb6a6179a7d59286ebdedb9e0ad4b9a",
-        "signature": "1ef7a8e22c3e62bc32c3cb305973dce5c55a0fe4571d6dda32d4f66a00aae1c2",
+        "version": "27d911e3556e1263c8b1caca80949bfab838726c914f67615abc06a6ad0d2b2d",
+        "signature": "e319169d70232cac0672385fd345cd0bc6d123452f30c8e271f64e9cd963f5a7",
         "affectsGlobalScope": false
       },
       "../node_modules/twilio/lib/jwt/taskrouter/taskroutercapability.d.ts": {
@@ -5567,8 +5567,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/sms.service.ts": {
-        "version": "1a498e9bc08647b8533af0d97319b3131971bd4053de14241b147142e0a10245",
-        "signature": "fffc32adeb2c84b7ce54b83743eecc3a4d743dbc56cc20120ab7cf4b62d19b7c",
+        "version": "5ec95b259a10543a1a9c2c2dd566917bd566add8d786f41b3e909be70ea3726e",
+        "signature": "b1e05fc0f35af30b07740ee04018848351eae047a7304e3f841f38e435ec4be5",
         "affectsGlobalScope": false
       },
       "../src/services/chapters.service.ts": {
@@ -5581,9 +5581,14 @@
         "signature": "695c00e7a8f196dd006ffe75bcca681ff3412667e710c6e640b7cd32ea18a7be",
         "affectsGlobalScope": false
       },
+      "../src/services/login.service.ts": {
+        "version": "79a2647d513cb0899325ae594c69f644c58914921cd21160308e39e18d99e43c",
+        "signature": "1116af4e9624c8616100236703ade4766c4379f6bde4d22e58e45f8e20e63be9",
+        "affectsGlobalScope": false
+      },
       "../src/services/index.ts": {
-        "version": "2b7f52ec73c98e86e96225dfc4f18d7ec8ed1a0ea83cf3f41d5ae8a99943d1a1",
-        "signature": "4a061421709f94f90a6fd663d842247227610f7df1fd9dbeed7594084274efce",
+        "version": "9f7e4e9be7af9dd5eec45907bfa35743cf10d5e217b3877ab1b6d33bc82ff9a7",
+        "signature": "2e1e2a6922c891b3bae05765b09f159a1dd3e518abb010a97450877547f67b3e",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -5601,9 +5606,14 @@
         "signature": "d306be26f96b4bd9b279cd7da9d1355d5ce4060a2bb254489c1b95c87057eb38",
         "affectsGlobalScope": false
       },
+      "../src/constants/index.ts": {
+        "version": "b2c5f33adb1f160ddd04b9af2f6f9fa84914ea2980450e4d0dbfdfea781767c4",
+        "signature": "9bd50e5b327fd244c7a96ec1967deb451521205f378f6ccadc062a6dbc482479",
+        "affectsGlobalScope": false
+      },
       "../src/passport/jwt.strategy.ts": {
-        "version": "1bc310eacc2b73fb74d49eb272bba5b97354b94b718c351e6890dc11be26d783",
-        "signature": "26e5095654e61d20c078181f31f0f1d339fb9efbced83c8206c1c9bbf255b895",
+        "version": "28817f1dba19f50f4108041309e19da9e7344386f1a0b8289c51dea6bb187ae1",
+        "signature": "1de6c8888ec9ed146c1747f6b5fd3caf9854d5d46a7509dad7fdf6bf39afc711",
         "affectsGlobalScope": false
       },
       "../src/controllers/resource.controller.ts": {
@@ -5657,8 +5667,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/auth.controller.ts": {
-        "version": "93a7a8986a1458e54723dd1a6309182892d08d955bb74618889a9dce47c81c0a",
-        "signature": "31d29f7a9ea530fec9d27749c97c42bdefd386a2370d7829204e2ee9c69f1ee6",
+        "version": "feb21959ee7a16600e1f6d4f9c30717731c99382274330fd140cd781ca549981",
+        "signature": "eec718b146a0bc4905233a30780b5a4ddb5dad615aead3b01761910d6be77de9",
         "affectsGlobalScope": false
       },
       "../src/controllers/chapters.controller.ts": {
@@ -5676,8 +5686,13 @@
         "signature": "69758f730abb4fa9d60fa9dbe7bd80f48fd31a3a79ca920b0dd0398a8bb1c248",
         "affectsGlobalScope": false
       },
+      "../src/controllers/login.controller.ts": {
+        "version": "58268706186ce82364d0a68947ded0501846f306da753a39fa13300b802bc690",
+        "signature": "40ca96bd873c31665f401e43d6f458f27e2c2413d76abf0214e94201f1fd2cf4",
+        "affectsGlobalScope": false
+      },
       "../src/controllers/index.ts": {
-        "version": "de74b2f73997983ff1b268b24a85f1fd2d99a82008b766eb59c956896f964a4d",
+        "version": "0483d73b70ef10e44395704629bd9f536455255e03b6cf710ecb5ca4d0532dd7",
         "signature": "6e503d7b6fe0a26ad643c09f36bec1cf4f7c261eed3db7a77425d9e897d44dff",
         "affectsGlobalScope": false
       },
@@ -5687,8 +5702,8 @@
         "affectsGlobalScope": false
       },
       "../src/passport/otp.strategy.ts": {
-        "version": "03469649d0cf59e8798252fd6abbfee65385eede48a401ab945dac807a8e16dc",
-        "signature": "3f98d81fec78b8b282fcdf0c55895774e24d630eba29324bf0289b1e96cb0801",
+        "version": "6e7074d9d3c36bd161ce248dab865467bc27231f3d121589634da011ae70330a",
+        "signature": "9312bc7eb66d7182c8ae1481374fe4990e70566461919a31219d78601c5a6bba",
         "affectsGlobalScope": false
       },
       "../src/app.module.ts": {
@@ -18422,6 +18437,7 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/passport/auth.guard.ts",
+        "../src/schemas/user.schema.ts",
         "../src/services/auth.service.ts",
         "../src/services/sms.service.ts",
         "../src/services/users.service.ts",
@@ -18466,9 +18482,21 @@
         "../src/controllers/auth.controller.ts",
         "../src/controllers/chapters.controller.ts",
         "../src/controllers/classes.controller.ts",
+        "../src/controllers/login.controller.ts",
         "../src/controllers/payments.controller.ts",
         "../src/controllers/subject.controller.ts",
         "../src/controllers/users.controller.ts"
+      ],
+      "../src/controllers/login.controller.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/controllers/resource.controller.ts",
+        "../src/services/login.service.ts",
+        "../src/utils/index.ts"
       ],
       "../src/controllers/payments.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -18614,9 +18642,18 @@
         "../src/schemas/asset.schema.ts",
         "../src/schemas/chapter.schema.ts",
         "../src/schemas/class.schema.ts",
+        "../src/schemas/login.schema.ts",
         "../src/schemas/subject.schema.ts",
         "../src/schemas/user.schema.ts",
         "../src/schemas/version.schema.ts"
+      ],
+      "../src/schemas/login.schema.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
       ],
       "../src/schemas/subject.schema.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -18632,8 +18669,7 @@
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../src/constants/index.ts"
+        "../node_modules/@types/node/util.d.ts"
       ],
       "../src/schemas/version.schema.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -18725,12 +18761,24 @@
         "../src/services/classes.service.ts",
         "../src/services/dummysms.service.ts",
         "../src/services/file.service.ts",
+        "../src/services/login.service.ts",
         "../src/services/s3.service.ts",
         "../src/services/sms.service.ts",
         "../src/services/subject.service.ts",
         "../src/services/twillio.service.ts",
         "../src/services/users.service.ts",
         "../src/services/version.service.ts"
+      ],
+      "../src/services/login.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/services/db.service.ts"
       ],
       "../src/services/s3.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -31265,6 +31313,10 @@
         "../src/controllers/subject.controller.ts",
         "../src/controllers/users.controller.ts"
       ],
+      "../src/controllers/login.controller.ts": [
+        "../src/controllers/resource.controller.ts",
+        "../src/services/login.service.ts"
+      ],
       "../src/controllers/payments.controller.ts": [
         "../src/controllers/resource.controller.ts",
         "../src/services/users.service.ts"
@@ -31292,7 +31344,6 @@
         "../src/services/auth.service.ts"
       ],
       "../src/passport/otp.strategy.ts": [
-        "../node_modules/@types/express/index.d.ts",
         "../node_modules/passport-custom/lib/index.d.ts",
         "../src/services/auth.service.ts"
       ],
@@ -31306,6 +31357,9 @@
         "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../src/schemas/index.ts": [
+        "../node_modules/@types/mongoose/index.d.ts"
+      ],
+      "../src/schemas/login.schema.ts": [
         "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../src/schemas/subject.schema.ts": [
@@ -31347,16 +31401,18 @@
         "../src/services/dummysms.service.ts",
         "../src/services/file.service.ts",
         "../src/services/s3.service.ts",
-        "../src/services/sms.service.ts",
-        "../src/services/twillio.service.ts"
+        "../src/services/sms.service.ts"
+      ],
+      "../src/services/login.service.ts": [
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../src/services/db.service.ts"
       ],
       "../src/services/s3.service.ts": [
         "../node_modules/@nestjs/config/index.d.ts"
       ],
       "../src/services/sms.service.ts": [
         "../node_modules/@nestjs/config/index.d.ts",
-        "../src/services/dummysms.service.ts",
-        "../src/services/twillio.service.ts"
+        "../src/services/dummysms.service.ts"
       ],
       "../src/services/subject.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
@@ -32525,6 +32581,7 @@
       "../src/controllers/chapters.controller.ts",
       "../src/controllers/classes.controller.ts",
       "../src/controllers/index.ts",
+      "../src/controllers/login.controller.ts",
       "../src/controllers/payments.controller.ts",
       "../src/controllers/resource.controller.ts",
       "../src/controllers/subject.controller.ts",
@@ -32539,6 +32596,7 @@
       "../src/schemas/chapter.schema.ts",
       "../src/schemas/class.schema.ts",
       "../src/schemas/index.ts",
+      "../src/schemas/login.schema.ts",
       "../src/schemas/subject.schema.ts",
       "../src/schemas/user.schema.ts",
       "../src/schemas/version.schema.ts",
@@ -32550,6 +32608,7 @@
       "../src/services/dummysms.service.ts",
       "../src/services/file.service.ts",
       "../src/services/index.ts",
+      "../src/services/login.service.ts",
       "../src/services/s3.service.ts",
       "../src/services/sms.service.ts",
       "../src/services/subject.service.ts",

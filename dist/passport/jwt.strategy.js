@@ -24,9 +24,6 @@ let JwtStrategy = (() => {
             });
             this.authServie = authServie;
         }
-        async validate(payload) {
-            return await this.authServie.validateAuth(payload);
-        }
     };
     JwtStrategy = __decorate([
         common_1.Injectable(),

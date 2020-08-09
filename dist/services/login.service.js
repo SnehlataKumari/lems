@@ -8,25 +8,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.OTPStrategy = void 0;
-const passport_custom_1 = require("passport-custom");
-const passport_1 = require("@nestjs/passport");
+exports.LoginService = void 0;
 const common_1 = require("@nestjs/common");
-const auth_service_1 = require("../services/auth.service");
-const users_service_1 = require("../services/users.service");
-let OTPStrategy = (() => {
-    let OTPStrategy = class OTPStrategy extends passport_1.PassportStrategy(passport_custom_1.Strategy, 'otpStrategy') {
-        constructor(authService) {
-            super();
-            this.authService = authService;
+const mongoose_1 = require("mongoose");
+const mongoose_2 = require("@nestjs/mongoose");
+const db_service_1 = require("./db.service");
+let LoginService = (() => {
+    let LoginService = class LoginService extends db_service_1.DBService {
+        constructor(model) {
+            super(model);
         }
     };
-    OTPStrategy = __decorate([
+    LoginService = __decorate([
         common_1.Injectable(),
-        __metadata("design:paramtypes", [auth_service_1.AuthService])
-    ], OTPStrategy);
-    return OTPStrategy;
+        __param(0, mongoose_2.InjectModel('Login')),
+        __metadata("design:paramtypes", [mongoose_1.Model])
+    ], LoginService);
+    return LoginService;
 })();
-exports.OTPStrategy = OTPStrategy;
-//# sourceMappingURL=otp.strategy.js.map
+exports.LoginService = LoginService;
+//# sourceMappingURL=login.service.js.map

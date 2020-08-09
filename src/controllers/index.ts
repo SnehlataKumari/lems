@@ -5,6 +5,7 @@ import { AuthController } from "./auth.controller";
 import { ChaptersController } from "./chapters.controller";
 import { SubjectsController } from "./subject.controller";
 import { PaymentsController } from "./payments.controller";
+import { LoginController } from "./login.controller";
 
 export default [
   UsersController,
@@ -13,5 +14,6 @@ export default [
   AuthController,
   ChaptersController,
   SubjectsController,
-  PaymentsController
+  PaymentsController,
+  LoginController,
 ];

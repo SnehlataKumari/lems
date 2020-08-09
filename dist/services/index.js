@@ -10,8 +10,8 @@ const sms_service_1 = require("./sms.service");
 const chapters_service_1 = require("./chapters.service");
 const subject_service_1 = require("./subject.service");
 const version_service_1 = require("./version.service");
-const twillio_service_1 = require("./twillio.service");
 const dummySms_service_1 = require("./dummySms.service");
+const login_service_1 = require("./login.service");
 exports.default = [
     users_service_1.UsersService,
     assets_service_1.AssetsService,
@@ -24,7 +24,7 @@ exports.default = [
     chapters_service_1.ChaptersService,
     subject_service_1.SubjectsService,
     version_service_1.VersionService,
-    twillio_service_1.TwillioService,
-    dummySms_service_1.DummySmsService
+    dummySms_service_1.DummySmsService,
+    login_service_1.LoginService
 ];
 //# sourceMappingURL=index.js.map

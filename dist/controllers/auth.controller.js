@@ -17,11 +17,27 @@ const common_1 = require("@nestjs/common");
 const users_service_1 = require("../services/users.service");
 const auth_service_1 = require("../services/auth.service");
 const utils_1 = require("../utils");
-const passport_1 = require("@nestjs/passport");
 const jwt_1 = require("@nestjs/jwt");
 const sms_service_1 = require("../services/sms.service");
 const version_service_1 = require("../services/version.service");
 const auth_guard_1 = require("../passport/auth.guard");
+const Joi = require("@hapi/joi");
+const bcrypt = require("bcryptjs");
+const user_schema_1 = require("../schemas/user.schema");
+const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+const schema = Joi.object({
+    name: Joi
+        .string()
+        .trim()
+        .min(3)
+        .max(30)
+        .required(),
+    password: Joi
+        .string()
+        .pattern(passwordExpression)
+        .required(),
+    email: Joi.string().trim().lowercase().email()
+});
 let AuthController = (() => {
     let AuthController = class AuthController {
         constructor(service, usersService, jwtService, smsService, versionService) {
@@ -31,97 +47,63 @@ let AuthController = (() => {
             this.smsService = smsService;
             this.versionService = versionService;
         }
-        async requestOtp(requestBody) {
+        async signUp(req) {
+            const { email, password, name } = req;
+            let value;
             try {
-                const { mobileNumber } = requestBody;
-                let user = await this.usersService.findByMobileNumber(mobileNumber);
-                if (!user) {
-                    user = await this.usersService.create({ mobileNumber });
-                }
-                const requestOtp = await this.service.requestOTP(user);
-                await this.smsService.sendOtp(user);
-                return utils_1.success('Otp generated successfully!', requestOtp);
+                value = await schema.validateAsync({ name: name, email: email, password: password });
             }
-            catch (error) {
-                console.error(error);
-                return 'Error';
+            catch (err) {
+                console.log(err);
+                throw new common_1.BadRequestException(err.message);
             }
-        }
-        async createAdmin(requestBody) {
-            const { mobileNumber, name, password, username } = requestBody;
-            console.log({ mobileNumber });
-            let user = await this.usersService.create({ mobileNumber, name, password, username, role: 'ADMIN' });
-            console.log({ user });
-            return utils_1.success('Admin created successfully!', { user, access_token: this.jwtService.sign(user.toJSON()) });
-        }
-        async loginAdmin(requestBody) {
-            const { password, username } = requestBody;
-            const user = await this.usersService.findOne({
-                username,
-                password,
-                role: 'ADMIN'
-            });
-            if (!user) {
-                throw new common_1.UnauthorizedException('Invalid credentials');
-            }
-            return utils_1.success('Admin created successfully!', { user, access_token: this.jwtService.sign(user.toJSON()) });
-        }
-        async login(req) {
-            const { user } = req;
+            var salt = bcrypt.genSaltSync(10);
+            var hash = bcrypt.hashSync(password, salt);
+            const user = await this.usersService.create({ email, password: hash, name });
+            const users = this.usersService.getPublicDetails(user);
+            const verifyEmail = this.jwtService.sign(user.toJSON());
+            const link = `http://localhost:3000/auth/verify/${verifyEmail}`;
             return {
-                access_token: this.jwtService.sign(user.toJSON()),
-                user
+                link,
+                message: "signed up successfully!",
+                users
             };
         }
-        async updateVersion(req) {
-            const { body } = req;
-            const version = await this.versionService.findOne({});
-            if (!version) {
-                await this.versionService.create(body);
+        async verify(token) {
+            const user = this.jwtService.verify(token);
+            const id = user._id;
+            console.log(id, 'id');
+            if (user) {
+                await this.usersService.findByIdAndUpdate(id, { isEmailVerified: true });
+                return `Email <b>${user.email}</b> Verified Successfully`;
             }
-            else {
-                await this.versionService.update(version, body);
-            }
-            return this.versionService.findOne({});
+        }
+        async login(user) {
+            const data = await this.service.login(user);
+            return utils_1.success('logged in successfully!', data.email);
         }
     };
     __decorate([
-        common_1.Post('request-otp'),
+        common_1.Post('sign-up'),
         __param(0, common_1.Body()),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", Promise)
-    ], AuthController.prototype, "requestOtp", null);
+    ], AuthController.prototype, "signUp", null);
     __decorate([
-        common_1.Post('create-admin'),
-        __param(0, common_1.Body()),
+        common_1.Get('verify/:token'),
+        __param(0, common_1.Param('token')),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", Promise)
-    ], AuthController.prototype, "createAdmin", null);
+    ], AuthController.prototype, "verify", null);
     __decorate([
-        common_1.Post('login-admin'),
-        __param(0, common_1.Body()),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
-        __metadata("design:returntype", Promise)
-    ], AuthController.prototype, "loginAdmin", null);
-    __decorate([
-        common_1.UseGuards(passport_1.AuthGuard('otpStrategy')),
         common_1.Post('login'),
-        __param(0, common_1.Request()),
+        __param(0, common_1.Body()),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", Promise)
     ], AuthController.prototype, "login", null);
-    __decorate([
-        common_1.UseGuards(auth_guard_1.JwtAuthGuard),
-        common_1.Post('update-version'),
-        __param(0, common_1.Request()),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
-        __metadata("design:returntype", Promise)
-    ], AuthController.prototype, "updateVersion", null);
     AuthController = __decorate([
         common_1.Controller('auth'),
         __metadata("design:paramtypes", [auth_service_1.AuthService,

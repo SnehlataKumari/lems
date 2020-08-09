@@ -10,21 +10,14 @@ export declare class AuthController {
     private smsService;
     private versionService;
     constructor(service: AuthService, usersService: UsersService, jwtService: JwtService, smsService: SmsService, versionService: VersionService);
-    requestOtp(requestBody: any): Promise<{
+    signUp(req: any): Promise<{
+        link: string;
         message: string;
-        data: any;
-    } | "Error">;
-    createAdmin(requestBody: any): Promise<{
+        users: any;
+    }>;
+    verify(token: any): Promise<string>;
+    login(user: any): Promise<{
         message: string;
         data: any;
     }>;
-    loginAdmin(requestBody: any): Promise<{
-        message: string;
-        data: any;
-    }>;
-    login(req: any): Promise<{
-        access_token: string;
-        user: any;
-    }>;
-    updateVersion(req: any): Promise<any>;
 }

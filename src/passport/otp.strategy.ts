@@ -13,20 +13,20 @@ export class OTPStrategy extends PassportStrategy(Strategy, 'otpStrategy') {
     super();
   }
 
-  async validate(req: Request): Promise<any> {
-    const { mobileNumber, otp, deviceId } = req.body;
-    const user = await this.authService.validateUser(mobileNumber, otp);
-    if (!user) {
-      throw new UnauthorizedException('Otp not matched!');
-    }
+  // async validate(req: Request): Promise<any> {
+  //   const { email } = req.body;
+  //   const user = await this.authService.validateUser(email);
+  //   // if (!user) {
+  //   //   throw new UnauthorizedException('Otp not matched!');
+  //   // }
 
-    if (!deviceId) {
-      throw new UnauthorizedException('Device id is required!');
-    }
+  //   // if (!deviceId) {
+  //   //   throw new UnauthorizedException('Device id is required!');
+  //   // }
 
-    await this.authService.postLogin(user, { deviceId });
-    return await this.authService.clearOTP(user);
-  }
+  //   // await this.authService.postLogin(user, { deviceId });
+  //   return await this.authService.clearOTP(user);
+  // }
   
   
   

@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UseGuards, Request, UnauthorizedException } from "@nestjs/common";
+import { Controller, Post, Get, Body, UseGuards, Request, UnauthorizedException, BadRequestException, Param } from "@nestjs/common";
 import { UsersService } from "src/services/users.service";
 import { AuthService } from "src/services/auth.service";
 import { success } from "src/utils";
@@ -7,6 +7,24 @@ import { JwtService } from '@nestjs/jwt';
 import { SmsService } from "src/services/sms.service";
 import { VersionService } from "src/services/version.service";
 import { JwtAuthGuard } from "src/passport/auth.guard";
+import * as Joi from '@hapi/joi';
+import * as bcrypt from 'bcryptjs';
+import { UserSchema } from "src/schemas/user.schema";
+
+const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+const schema = Joi.object({
+  name: Joi
+    .string()
+    .trim()
+    .min(3)
+    .max(30)
+    .required(),
+  password: Joi
+    .string()
+    .pattern(passwordExpression)
+    .required(),
+  email: Joi.string().trim().lowercase().email()
+});
 
 @Controller('auth')
 export class AuthController {
@@ -18,76 +36,53 @@ export class AuthController {
     private versionService: VersionService
   ) {}
 
-  @Post('request-otp')
-  async requestOtp(@Body() requestBody) {
+  @Post('sign-up')
+  async signUp(@Body() req) {
+
+    // Validate email trim, case sensitive(small letter), valid email, password strength validate, encrypt, name trim
+    // Step 2: Create a token: To verify email address which we will send to email.
+
+     const { email , password , name } = req;
+    let value;
+
     try {
-      const { mobileNumber } = requestBody;
-      let user = await this.usersService.findByMobileNumber(mobileNumber);
-  
-      if(!user) {
-        user = await this.usersService.create({mobileNumber});
-      }
-  
-      const requestOtp = await this.service.requestOTP(user);
-      await this.smsService.sendOtp(user);
-      return success('Otp generated successfully!', requestOtp);
-      
-    } catch (error) {
-      console.error(error);
-      
-      return 'Error'
+      value = await schema.validateAsync({ name: name, email: email, password: password  });
+    } catch (err) {
+      console.log(err);
+      throw new BadRequestException(err.message);
     }
-  }
-  
-  @Post('create-admin')
-  async createAdmin(@Body() requestBody) {
-    const { mobileNumber, name, password, username } = requestBody;
-    console.log({mobileNumber});
-    
-    let user = await this.usersService.create({ mobileNumber, name, password, username, role: 'ADMIN' });
-    console.log({user});
-    
-    return success('Admin created successfully!', { user, access_token: this.jwtService.sign(user.toJSON())});
-  }
-  
-  @Post('login-admin')
-  async loginAdmin(@Body() requestBody) {
-    const { password, username } = requestBody;
-    const user = await this.usersService.findOne({
-      username,
-      password,
-      role: 'ADMIN'
-    });
-
-    if (!user) {
-      throw new UnauthorizedException('Invalid credentials');
-    }
-    return success('Admin created successfully!', { user, access_token: this.jwtService.sign(user.toJSON())});
-  }
-
-  @UseGuards(AuthGuard('otpStrategy'))
-  @Post('login')
-  async login(@Request() req) {
-    const { user } = req;
+    var salt = bcrypt.genSaltSync(10);
+    var hash = bcrypt.hashSync(password , salt);
+    const user = await this.usersService.create({ email, password:hash, name });
+    const users = this.usersService.getPublicDetails(user);
+    const verifyEmail = this.jwtService.sign(user.toJSON());
+    const link = `http://localhost:3000/auth/verify/${verifyEmail}`;
+ 
     return {
-      access_token: this.jwtService.sign(user.toJSON()),
-      user
+      link,
+      message: "signed up successfully!",
+      users
     };
   }
 
-  @UseGuards(JwtAuthGuard)
-  @Post('update-version')
-  async updateVersion(@Request() req) {
-    const {body} = req;
-
-    const version = await this.versionService.findOne({});
-    if(!version) {
-      await this.versionService.create(body);
-    } else {
-      await this.versionService.update(version, body);
-    }
-
-    return this.versionService.findOne({});
+  @Get('verify/:token')
+  async verify(@Param('token') token) {
+    const user = this.jwtService.verify(token);
+    const id = user._id;
+    console.log(id,'id');
     
+    if(user){
+      await this.usersService.findByIdAndUpdate(id, {isEmailVerified: true});
+      return `Email <b>${user.email}</b> Verified Successfully`;
+    }
+    
+  }
+
+
+
+  @Post('login')
+  async login(@Body() user) {
+    const data = await this.service.login(user);
+    return success('logged in successfully!' , data.email);
   }
 }

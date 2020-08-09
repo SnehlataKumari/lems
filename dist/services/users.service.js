@@ -17,15 +17,19 @@ const common_1 = require("@nestjs/common");
 const mongoose_1 = require("mongoose");
 const mongoose_2 = require("@nestjs/mongoose");
 const db_service_1 = require("./db.service");
+const lodash_1 = require("lodash");
 let UsersService = (() => {
     let UsersService = class UsersService extends db_service_1.DBService {
         constructor(model) {
             super(model);
+            this.publicKeys = ['_id', 'name', 'email', 'isEmailVerified'];
         }
-        async findByMobileNumber(mobileNumber) {
-            return this.findOne({
-                mobileNumber
-            });
+        findByEmail(email) {
+            const user = this.findOne({ email });
+            return user;
+        }
+        getPublicDetails(user) {
+            return lodash_1.pick(user, this.publicKeys);
         }
     };
     UsersService = __decorate([

@@ -12,12 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SmsService = void 0;
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
-const twillio_service_1 = require("./twillio.service");
 const dummySms_service_1 = require("./dummySms.service");
 let SmsService = (() => {
     let SmsService = class SmsService {
-        constructor(twillioService, dummySmsService, config) {
-            this.twillioService = twillioService;
+        constructor(dummySmsService, config) {
             this.dummySmsService = dummySmsService;
             this.config = config;
         }
@@ -37,8 +35,7 @@ let SmsService = (() => {
     };
     SmsService = __decorate([
         common_1.Injectable(),
-        __metadata("design:paramtypes", [twillio_service_1.TwillioService,
-            dummySms_service_1.DummySmsService,
+        __metadata("design:paramtypes", [dummySms_service_1.DummySmsService,
             config_1.ConfigService])
     ], SmsService);
     return SmsService;
