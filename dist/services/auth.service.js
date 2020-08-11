@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
-const utils_1 = require("../utils");
 const users_service_1 = require("./users.service");
 const bcrypt = require("bcryptjs");
 let AuthService = (() => {
@@ -27,9 +26,14 @@ let AuthService = (() => {
             }
             const comparePassword = bcrypt.compareSync(password, userModel.password);
             if (userModel.isEmailVerified === true && comparePassword) {
-                return requestBody;
+                return userModel;
             }
             throw new common_1.UnauthorizedException('unauthorised!');
+        }
+        async encryptPassword(password) {
+            const salt = bcrypt.genSaltSync(10);
+            const hash = bcrypt.hashSync(password, salt);
+            return hash;
         }
     };
     AuthService = __decorate([

@@ -8,9 +8,11 @@ import { SmsService } from "./sms.service";
 import { ChaptersService } from "./chapters.service";
 import { SubjectsService } from "./subject.service";
 import { VersionService } from "./version.service";
-import { TwillioService } from "./twillio.service";
+// import { TwillioService } from "./twillio.service";
 import { DummySmsService } from "./dummySms.service";
-import { LoginService } from "./login.service";
+import { TokensService } from "./tokens.service";
+import { EmailService } from "./email.service";
+import { NodeMailerService } from "./nodemailer.service";
 
 export default [
   UsersService,
@@ -26,5 +28,7 @@ export default [
   VersionService,
   // TwillioService,
   DummySmsService,
-  LoginService
+  TokensService,
+  NodeMailerService,
+  EmailService,
 ];

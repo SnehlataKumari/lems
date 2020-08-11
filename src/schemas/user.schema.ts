@@ -1,12 +1,4 @@
 import * as mongoose from 'mongoose';
-// import { getKeys, USER_ROLES } from 'src/constants';
-const Schema = mongoose.Schema;
-
-// const paymentSchema = new Schema({
-//   paymentId: {type: String, required: true}
-// }, {
-//   timestamps: true
-// });
 
 export const UserSchema = new mongoose.Schema({
   name: {

@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ResourceController = void 0;
 const common_1 = require("@nestjs/common");
 const utils_1 = require("../utils");
-const jwt_strategy_1 = require("../passport/jwt.strategy");
 const auth_guard_1 = require("../passport/auth.guard");
 let ResourceController = (() => {
     class ResourceController {

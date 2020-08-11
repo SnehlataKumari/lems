@@ -11,7 +11,9 @@ const chapters_service_1 = require("./chapters.service");
 const subject_service_1 = require("./subject.service");
 const version_service_1 = require("./version.service");
 const dummySms_service_1 = require("./dummySms.service");
-const login_service_1 = require("./login.service");
+const tokens_service_1 = require("./tokens.service");
+const email_service_1 = require("./email.service");
+const nodemailer_service_1 = require("./nodemailer.service");
 exports.default = [
     users_service_1.UsersService,
     assets_service_1.AssetsService,
@@ -25,6 +27,8 @@ exports.default = [
     subject_service_1.SubjectsService,
     version_service_1.VersionService,
     dummySms_service_1.DummySmsService,
-    login_service_1.LoginService
+    tokens_service_1.TokensService,
+    nodemailer_service_1.NodeMailerService,
+    email_service_1.EmailService,
 ];
 //# sourceMappingURL=index.js.map

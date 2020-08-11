@@ -7,7 +7,6 @@ const auth_controller_1 = require("./auth.controller");
 const chapters_controller_1 = require("./chapters.controller");
 const subject_controller_1 = require("./subject.controller");
 const payments_controller_1 = require("./payments.controller");
-const login_controller_1 = require("./login.controller");
 exports.default = [
     users_controller_1.UsersController,
     classes_controller_1.ClassesController,
@@ -16,6 +15,5 @@ exports.default = [
     chapters_controller_1.ChaptersController,
     subject_controller_1.SubjectsController,
     payments_controller_1.PaymentsController,
-    login_controller_1.LoginController,
 ];
 //# sourceMappingURL=index.js.map

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, UseGuards, Req, Body, } from '@nestjs/common';
+import { Controller, Post, UseGuards, Req } from '@nestjs/common';
 import { UsersService } from 'src/services/users.service';
 import { ResourceController } from './resource.controller';
 import { success } from 'src/utils';

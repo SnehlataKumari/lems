@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
 
 const ClassSchema = new mongoose.Schema({
   name: {

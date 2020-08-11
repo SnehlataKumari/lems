@@ -14,10 +14,11 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginController = void 0;
 const common_1 = require("@nestjs/common");
-const login_service_1 = require("../services/login.service");
+const login_service_1 = require("src/services/login.service");
 const resource_controller_1 = require("./resource.controller");
 const utils_1 = require("../utils");
 let LoginController = (() => {
+    var _a;
     let LoginController = class LoginController extends resource_controller_1.ResourceController {
         constructor(service) {
             super(service);
@@ -35,7 +36,7 @@ let LoginController = (() => {
     ], LoginController.prototype, "createResource", null);
     LoginController = __decorate([
         common_1.Controller('login'),
-        __metadata("design:paramtypes", [login_service_1.LoginService])
+        __metadata("design:paramtypes", [typeof (_a = typeof login_service_1.LoginService !== "undefined" && login_service_1.LoginService) === "function" ? _a : Object])
     ], LoginController);
     return LoginController;
 })();

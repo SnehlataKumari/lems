@@ -14,7 +14,6 @@ const passport_custom_1 = require("passport-custom");
 const passport_1 = require("@nestjs/passport");
 const common_1 = require("@nestjs/common");
 const auth_service_1 = require("../services/auth.service");
-const users_service_1 = require("../services/users.service");
 let OTPStrategy = (() => {
     let OTPStrategy = class OTPStrategy extends passport_1.PassportStrategy(passport_custom_1.Strategy, 'otpStrategy') {
         constructor(authService) {

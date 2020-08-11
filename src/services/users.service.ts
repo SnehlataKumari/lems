@@ -1,8 +1,27 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { DBService } from './db.service';
 import { pick } from 'lodash';
+import * as Joi from '@hapi/joi';
+
+
+const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+const passwordSchema = Joi
+  .string()
+  .pattern(passwordExpression)
+  .required();
+
+const schema = Joi.object({
+  name: Joi
+    .string()
+    .trim()
+    .min(3)
+    .max(30)
+    .required(),
+  password: passwordSchema,
+  email: Joi.string().trim().lowercase().email()
+});
 
 @Injectable()
 export class UsersService extends DBService {
@@ -11,13 +30,46 @@ export class UsersService extends DBService {
   }
 
   findByEmail(email) {
-    const user = this.findOne({email});
-    return user;
+    return this.findOne({email});
   }
 
    publicKeys = ['_id', 'name', 'email', 'isEmailVerified'];
 
    getPublicDetails(user) {
      return pick(user, this.publicKeys);
+   }
+
+
+   passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+   schema = Joi.object({
+    name: Joi
+      .string()
+      .trim()
+      .min(3)
+      .max(30)
+      .required(),
+    password: Joi
+      .string()
+      .pattern(this.passwordExpression)
+      .required(),
+    email: Joi.string().trim().lowercase().email()
+  });
+
+
+   async validateUsers(name, email ,password){
+     try {
+       await schema.validateAsync({ name, email, password });
+     } catch (err) {
+       throw new BadRequestException(err.message);
+     }
+     
+   }
+
+   async validatePassword(password){
+     try {
+       await passwordSchema.validateAsync(password);
+     } catch (err) {
+       throw new BadRequestException(err.message);
+     }
    }
 }

@@ -20,66 +20,106 @@ const utils_1 = require("../utils");
 const jwt_1 = require("@nestjs/jwt");
 const sms_service_1 = require("../services/sms.service");
 const version_service_1 = require("../services/version.service");
-const auth_guard_1 = require("../passport/auth.guard");
-const Joi = require("@hapi/joi");
-const bcrypt = require("bcryptjs");
-const user_schema_1 = require("../schemas/user.schema");
-const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
-const schema = Joi.object({
-    name: Joi
-        .string()
-        .trim()
-        .min(3)
-        .max(30)
-        .required(),
-    password: Joi
-        .string()
-        .pattern(passwordExpression)
-        .required(),
-    email: Joi.string().trim().lowercase().email()
-});
+const tokens_service_1 = require("../services/tokens.service");
+const config_1 = require("@nestjs/config");
+const email_service_1 = require("../services/email.service");
 let AuthController = (() => {
     let AuthController = class AuthController {
-        constructor(service, usersService, jwtService, smsService, versionService) {
+        constructor(config, service, usersService, tokensService, jwtService, emailService, smsService, versionService) {
+            this.config = config;
             this.service = service;
             this.usersService = usersService;
+            this.tokensService = tokensService;
             this.jwtService = jwtService;
+            this.emailService = emailService;
             this.smsService = smsService;
             this.versionService = versionService;
         }
+        get hostUrl() {
+            return this.config.get('HOST_URL');
+        }
         async signUp(req) {
             const { email, password, name } = req;
-            let value;
-            try {
-                value = await schema.validateAsync({ name: name, email: email, password: password });
-            }
-            catch (err) {
-                throw new common_1.BadRequestException(err.message);
-            }
-            var salt = bcrypt.genSaltSync(10);
-            var hash = bcrypt.hashSync(password, salt);
+            const tokenType = 'VERIFY_EMAIL';
+            await this.usersService.validateUsers(name, email, password);
+            const hash = await this.service.encryptPassword(password);
             const user = await this.usersService.create({ email, password: hash, name });
             const users = this.usersService.getPublicDetails(user);
-            const verifyEmail = this.jwtService.sign(user.toJSON());
-            const link = `http://localhost:3000/auth/verify/${verifyEmail}`;
+            const token = this.jwtService.sign(users);
+            await this.tokensService.create({ token, type: tokenType });
+            const link = `${this.hostUrl}/auth/verify/${token}`;
+            await this.emailService.sendVerificationLink(users, link);
             return {
-                link,
-                message: "signed up successfully!",
+                message: "Verification link sent to your email!",
+                users
+            };
+        }
+        async resendVerificationLink(requestBody) {
+            const tokenType = 'VERIFY_EMAIL';
+            const { email } = requestBody;
+            const userModel = await this.usersService.findByEmail(email);
+            if (!userModel) {
+                throw new common_1.UnauthorizedException('Email not found!');
+            }
+            if (userModel.isEmailVerified) {
+                throw new common_1.BadRequestException('Email is already verified!');
+            }
+            const users = this.usersService.getPublicDetails(userModel);
+            const token = this.jwtService.sign(users);
+            await this.tokensService.create({ token, type: tokenType });
+            const link = `${this.hostUrl}/auth/verify/${token}`;
+            await this.emailService.sendVerificationLink(users, link);
+            return {
+                message: "Verification link sent successfully!",
                 users
             };
         }
         async verify(token) {
+            const tokenType = "VERIFY_EMAIL";
             const user = this.jwtService.verify(token);
+            const isTokenExist = await this.tokensService.findByTokenAndType(token, tokenType);
+            if (!isTokenExist) {
+                throw new common_1.UnauthorizedException('Invalid token!');
+            }
+            await this.tokensService.findByTokenAndTypeAndDelete(token, tokenType);
             const id = user._id;
-            console.log(id, 'id');
             if (user) {
                 await this.usersService.findByIdAndUpdate(id, { isEmailVerified: true });
                 return `Email <b>${user.email}</b> Verified Successfully`;
             }
         }
         async login(user) {
-            const data = await this.service.login(user);
-            return utils_1.success('logged in successfully!', data.email);
+            const tokenType = 'LOGIN';
+            const userModel = await this.service.login(user);
+            const token = this.jwtService.sign(userModel.toJSON());
+            await this.tokensService.create({ token, type: tokenType });
+            const users = this.usersService.getPublicDetails(userModel);
+            return utils_1.success('logged in successfully!', { users, token });
+        }
+        async forgot(body) {
+            const tokenType = 'FORGOT_PASSWORD';
+            const userModel = await this.usersService.findByEmail(body.email.toLowerCase());
+            if (!userModel) {
+                throw new common_1.UnauthorizedException('Email not found!');
+            }
+            const user = this.usersService.getPublicDetails(userModel);
+            const token = this.jwtService.sign(user);
+            await this.tokensService.create({ token, type: tokenType });
+            return token;
+        }
+        async resetPassword(requestBody) {
+            const { password, token } = requestBody;
+            const tokenType = 'FORGOT_PASSWORD';
+            const verifyToken = this.jwtService.verify(token);
+            const isTokenExist = await this.tokensService.findByTokenAndType(token, tokenType);
+            if (!isTokenExist) {
+                throw new common_1.UnauthorizedException('Invalid token!');
+            }
+            await this.tokensService.findByTokenAndTypeAndDelete(token, tokenType);
+            await this.usersService.validatePassword(password);
+            const hash = await this.service.encryptPassword(password);
+            await this.usersService.findByIdAndUpdate(verifyToken._id, { password: hash });
+            return utils_1.success('Password reset successful!', {});
         }
     };
     __decorate([
@@ -89,6 +129,13 @@ let AuthController = (() => {
         __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", Promise)
     ], AuthController.prototype, "signUp", null);
+    __decorate([
+        common_1.Post('resend-verification-email'),
+        __param(0, common_1.Body()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], AuthController.prototype, "resendVerificationLink", null);
     __decorate([
         common_1.Get('verify/:token'),
         __param(0, common_1.Param('token')),
@@ -103,11 +150,28 @@ let AuthController = (() => {
         __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", Promise)
     ], AuthController.prototype, "login", null);
+    __decorate([
+        common_1.Post('forgot-password'),
+        __param(0, common_1.Body()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], AuthController.prototype, "forgot", null);
+    __decorate([
+        common_1.Post('reset-password'),
+        __param(0, common_1.Body()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], AuthController.prototype, "resetPassword", null);
     AuthController = __decorate([
         common_1.Controller('auth'),
-        __metadata("design:paramtypes", [auth_service_1.AuthService,
+        __metadata("design:paramtypes", [config_1.ConfigService,
+            auth_service_1.AuthService,
             users_service_1.UsersService,
+            tokens_service_1.TokensService,
             jwt_1.JwtService,
+            email_service_1.EmailService,
             sms_service_1.SmsService,
             version_service_1.VersionService])
     ], AuthController);

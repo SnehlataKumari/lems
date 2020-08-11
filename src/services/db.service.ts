@@ -29,6 +29,10 @@ export class DBService {
     return this.model.findOne(query);
   }
 
+  findOneAndDelete(query = {}) {
+    return this.model.findOneAndDelete(query);
+  }
+
   find(query={}) {
     return this.model.find(query);
   }

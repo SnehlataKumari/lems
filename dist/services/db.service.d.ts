@@ -10,6 +10,7 @@ export declare class DBService {
     }): import("mongoose").DocumentQuery<any, any, {}>;
     findById(id: any): import("mongoose").DocumentQuery<any, any, {}>;
     findOne(query: any): import("mongoose").DocumentQuery<any, any, {}>;
+    findOneAndDelete(query?: {}): import("mongoose").DocumentQuery<any, any, {}>;
     find(query?: {}): import("mongoose").DocumentQuery<any[], any, {}>;
     update(model: any, updateObject: any): Promise<any>;
 }

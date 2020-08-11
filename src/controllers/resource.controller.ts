@@ -1,7 +1,5 @@
-import { Get, Post, Body, Delete, Param, Put, UseGuards, Req } from '@nestjs/common';
+import { Get, Post, Body, Delete, Param, Put, UseGuards } from '@nestjs/common';
 import { success } from 'src/utils';
-import { JwtStrategy } from 'src/passport/jwt.strategy';
-import { AuthGuard } from '@nestjs/passport';
 import { JwtAuthGuard } from 'src/passport/auth.guard';
 
 export class ResourceController {

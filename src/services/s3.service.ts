@@ -1,7 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import * as AWS  from "aws-sdk";
-import {v4 as uuid} from 'uuid';
 
 @Injectable()
 export class S3Service {
