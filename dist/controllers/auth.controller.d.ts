@@ -37,4 +37,8 @@ export declare class AuthController {
         data: any;
     }>;
     checkToken(req: any): any;
+    logout(user: any): Promise<{
+        message: string;
+        data: any;
+    }>;
 }

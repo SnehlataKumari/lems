@@ -177,4 +177,19 @@ export class AuthController {
   checkToken(@Request() req) {
     return req.user;
   }
+
+  @Post('logout')
+  async logout(@Body() user) {
+    const tokenType = 'LOGIN';
+    this.jwtService.verify(user.token);
+    const isTokenExist = await this.tokensService.findByTokenAndType(
+      user.token,
+      tokenType,
+    );
+    if (!isTokenExist) {
+      throw new UnauthorizedException('Invalid token!');
+    }
+    await this.tokensService.findByTokenAndTypeAndDelete(user.token, tokenType);
+    return success('logged out successfully!', {});
+  }
 }

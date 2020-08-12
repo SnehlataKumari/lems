@@ -26,7 +26,6 @@ const email_service_1 = require("../services/email.service");
 const Joi = require("@hapi/joi");
 const joivalidation_decorators_1 = require("../decorators/joivalidation.decorators");
 const validatetoken_decorators_1 = require("../decorators/validatetoken.decorators");
-const jwttokenauth_guard_1 = require("../passport/jwttokenauth.guard");
 const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 const passwordSchema = Joi.string()
     .pattern(passwordExpression)
@@ -147,6 +146,16 @@ let AuthController = (() => {
         checkToken(req) {
             return req.user;
         }
+        async logout(user) {
+            const tokenType = 'LOGIN';
+            this.jwtService.verify(user.token);
+            const isTokenExist = await this.tokensService.findByTokenAndType(user.token, tokenType);
+            if (!isTokenExist) {
+                throw new common_1.UnauthorizedException('Invalid token!');
+            }
+            await this.tokensService.findByTokenAndTypeAndDelete(user.token, tokenType);
+            return utils_1.success('logged out successfully!', {});
+        }
     };
     __decorate([
         joivalidation_decorators_1.JoiValidation(userSchema),
@@ -199,6 +208,13 @@ let AuthController = (() => {
         __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", void 0)
     ], AuthController.prototype, "checkToken", null);
+    __decorate([
+        common_1.Post('logout'),
+        __param(0, common_1.Body()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], AuthController.prototype, "logout", null);
     AuthController = __decorate([
         common_1.Controller('auth'),
         __metadata("design:paramtypes", [config_1.ConfigService,
