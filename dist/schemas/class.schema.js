@@ -7,9 +7,9 @@ const ClassSchema = new mongoose.Schema({
         type: String,
         unique: [true, 'Class name already exists!'],
         required: [true, 'Name is required!'],
-    }
+    },
 }, {
-    timestamps: true
+    timestamps: true,
 });
 exports.ClassSchema = ClassSchema;
 ClassSchema.virtual('subjects', {

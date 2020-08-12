@@ -1,4 +1,4 @@
-import { Model } from "mongoose";
+import { Model } from 'mongoose';
 export declare class DBService {
     private model;
     constructor(model: Model<any>);

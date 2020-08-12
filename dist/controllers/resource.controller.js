@@ -30,7 +30,7 @@ let ResourceController = (() => {
         async deleteResource(id) {
             await this.service.findByIdAndDelete(id);
             return utils_1.success('Resource deleted successfully!', {
-                id
+                id,
             });
         }
         async updateResource(id, resourceObject) {
@@ -71,5 +71,4 @@ let ResourceController = (() => {
     return ResourceController;
 })();
 exports.ResourceController = ResourceController;
-;
 //# sourceMappingURL=resource.controller.js.map

@@ -30,7 +30,7 @@ let AssetsService = (() => {
             return this.fileService.saveFile(file);
         }
         async withIsSubscribedKey(assetsList, user) {
-            const { version } = (await this.versionService.findOne({}));
+            const { version } = await this.versionService.findOne({});
             return assetsList.map(a => (Object.assign(Object.assign({}, a.toJSON()), { isSubscribed: user.isSubscribed, version })));
         }
     };

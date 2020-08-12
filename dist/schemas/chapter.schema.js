@@ -15,15 +15,15 @@ const ChapterSchema = new mongoose.Schema({
     class: {
         type: Schema.Types.ObjectId,
         ref: 'Class',
-        required: true
+        required: true,
     },
     subject: {
         type: Schema.Types.ObjectId,
         ref: 'Subject',
-        required: true
+        required: true,
     },
 }, {
-    timestamps: true
+    timestamps: true,
 });
 exports.ChapterSchema = ChapterSchema;
 ChapterSchema.virtual('assets', {

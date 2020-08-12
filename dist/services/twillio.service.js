@@ -25,7 +25,7 @@ let TwillioService = (() => {
             return this.client.messages.create({
                 body,
                 to,
-                from: '+12058830527'
+                from: '+12058830527',
             });
         }
     };

@@ -5,14 +5,14 @@ const mongoose = require("mongoose");
 exports.TokenSchema = new mongoose.Schema({
     token: {
         type: String,
-        required: true
+        required: true,
     },
     type: {
         type: String,
         enum: ['LOGIN', 'VERIFY_EMAIL', 'FORGOT_PASSWORD'],
-        required: true
-    }
+        required: true,
+    },
 }, {
-    timestamps: true
+    timestamps: true,
 });
 //# sourceMappingURL=token.schema.js.map

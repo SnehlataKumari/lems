@@ -27,7 +27,7 @@ let ChaptersController = (() => {
         }
         async getAllAssets(id, req) {
             const assetsList = await this.assetService.find({
-                chapter: id
+                chapter: id,
             });
             const assetsListWithisSubscribed = await this.assetService.withIsSubscribedKey(assetsList, req.user);
             return utils_1.success('Success!', assetsListWithisSubscribed);
@@ -54,8 +54,7 @@ let ChaptersController = (() => {
     ], ChaptersController.prototype, "findAllChapters", null);
     ChaptersController = __decorate([
         common_1.Controller('chapters'),
-        __metadata("design:paramtypes", [chapters_service_1.ChaptersService,
-            assets_service_1.AssetsService])
+        __metadata("design:paramtypes", [chapters_service_1.ChaptersService, assets_service_1.AssetsService])
     ], ChaptersController);
     return ChaptersController;
 })();

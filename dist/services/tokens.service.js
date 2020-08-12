@@ -27,7 +27,8 @@ let TokensService = (() => {
         }
         findByTokenAndType(token, type) {
             return this.findOne({
-                token, type
+                token,
+                type,
             });
         }
     };

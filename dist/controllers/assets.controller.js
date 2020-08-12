@@ -46,7 +46,7 @@ let AssetsController = (() => {
             }
             return {
                 videoS3,
-                pdfS3
+                pdfS3,
             };
         }
     };

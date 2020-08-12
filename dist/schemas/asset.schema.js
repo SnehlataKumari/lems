@@ -8,7 +8,7 @@ const s3Schema = new Schema({
     Location: String,
     key: String,
     Key: String,
-    Bucket: String
+    Bucket: String,
 });
 const AssetSchema = new mongoose.Schema({
     class: { type: Schema.Types.ObjectId, ref: 'Class', required: true },
@@ -19,12 +19,12 @@ const AssetSchema = new mongoose.Schema({
         required: [true, 'Title is required!'],
     },
     description: {
-        type: String
+        type: String,
     },
     videoS3: s3Schema,
     pdfS3: s3Schema,
 }, {
-    timestamps: true
+    timestamps: true,
 });
 exports.AssetSchema = AssetSchema;
 AssetSchema.index({ title: 'text', description: 'text' });

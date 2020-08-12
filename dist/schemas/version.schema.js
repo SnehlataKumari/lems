@@ -7,9 +7,9 @@ const VersionSchema = new mongoose.Schema({
         type: String,
         unique: [true, 'Version name already exists!'],
         required: [true, 'Version is required!'],
-    }
+    },
 }, {
-    timestamps: true
+    timestamps: true,
 });
 exports.VersionSchema = VersionSchema;
 //# sourceMappingURL=version.schema.js.map

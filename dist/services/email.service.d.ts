@@ -1,4 +1,4 @@
-import { NodeMailerService } from "./nodemailer.service";
+import { NodeMailerService } from './nodemailer.service';
 export declare class EmailService {
     private nodeMailerService;
     constructor(nodeMailerService: NodeMailerService);

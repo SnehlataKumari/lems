@@ -81,10 +81,7 @@ export class AuthController {
     const link = `${this.hostUrl}/auth/verify/${token}`;
     await this.emailService.sendVerificationLink(users, link);
 
-    return {
-      message: 'Verification link sent successfully!',
-      users,
-    };
+    return 'Verification link sent successfully!';
   }
 
   @Get('verify/:token')

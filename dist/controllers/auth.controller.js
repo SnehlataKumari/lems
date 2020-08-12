@@ -43,15 +43,19 @@ let AuthController = (() => {
             const tokenType = 'VERIFY_EMAIL';
             await this.usersService.validateUsers(name, email, password);
             const hash = await this.service.encryptPassword(password);
-            const user = await this.usersService.create({ email, password: hash, name });
+            const user = await this.usersService.create({
+                email,
+                password: hash,
+                name,
+            });
             const users = this.usersService.getPublicDetails(user);
             const token = this.jwtService.sign(users);
             await this.tokensService.create({ token, type: tokenType });
             const link = `${this.hostUrl}/auth/verify/${token}`;
             await this.emailService.sendVerificationLink(users, link);
             return {
-                message: "Verification link sent to your email!",
-                users
+                message: 'Verification link sent to your email!',
+                users,
             };
         }
         async resendVerificationLink(requestBody) {
@@ -69,13 +73,10 @@ let AuthController = (() => {
             await this.tokensService.create({ token, type: tokenType });
             const link = `${this.hostUrl}/auth/verify/${token}`;
             await this.emailService.sendVerificationLink(users, link);
-            return {
-                message: "Verification link sent successfully!",
-                users
-            };
+            return 'Verification link sent successfully!';
         }
         async verify(token) {
-            const tokenType = "VERIFY_EMAIL";
+            const tokenType = 'VERIFY_EMAIL';
             const user = this.jwtService.verify(token);
             const isTokenExist = await this.tokensService.findByTokenAndType(token, tokenType);
             if (!isTokenExist) {
@@ -118,7 +119,9 @@ let AuthController = (() => {
             await this.tokensService.findByTokenAndTypeAndDelete(token, tokenType);
             await this.usersService.validatePassword(password);
             const hash = await this.service.encryptPassword(password);
-            await this.usersService.findByIdAndUpdate(verifyToken._id, { password: hash });
+            await this.usersService.findByIdAndUpdate(verifyToken._id, {
+                password: hash,
+            });
             return utils_1.success('Password reset successful!', {});
         }
     };

@@ -10,7 +10,7 @@ exports.UserSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
     password: {
         type: String,
@@ -18,7 +18,7 @@ exports.UserSchema = new mongoose.Schema({
     },
     isEmailVerified: {
         type: Boolean,
-        default: false
+        default: false,
     },
 });
 //# sourceMappingURL=user.schema.js.map

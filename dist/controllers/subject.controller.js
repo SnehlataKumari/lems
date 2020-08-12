@@ -29,14 +29,14 @@ let SubjectsController = (() => {
         }
         async getAllAssets(id, req) {
             const assetsList = await this.assetService.find({
-                subject: id
+                subject: id,
             });
             const assetsListWithisSubscribed = await this.assetService.withIsSubscribedKey(assetsList, req.user);
             return utils_1.success('Success!', assetsListWithisSubscribed);
         }
         async getAllChapters(id) {
             return utils_1.success('Success!', this.chaptersService.find({
-                subject: id
+                subject: id,
             }));
         }
     };

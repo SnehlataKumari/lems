@@ -12,7 +12,8 @@ let DummySmsService = (() => {
     let DummySmsService = class DummySmsService {
         async sendMessage({ body, to }) {
             console.log({
-                body, to
+                body,
+                to,
             });
         }
     };

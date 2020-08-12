@@ -11,13 +11,13 @@ const SubjectSchema = new mongoose.Schema({
     class: {
         type: Schema.Types.ObjectId,
         ref: 'Class',
-        required: true
+        required: true,
     },
     description: {
         type: String,
-    }
+    },
 }, {
-    timestamps: true
+    timestamps: true,
 });
 exports.SubjectSchema = SubjectSchema;
 SubjectSchema.virtual('chapters', {

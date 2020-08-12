@@ -36,7 +36,7 @@ let AppModule = (() => {
                     rootPath: path_1.join(__dirname, '..', 'static'),
                 }),
                 jwt_1.JwtModule.register({
-                    secret: constants_1.JWT_CONSTANTS.secret
+                    secret: constants_1.JWT_CONSTANTS.secret,
                 }),
             ],
             controllers: [app_controller_1.AppController, ...controllers_1.default],

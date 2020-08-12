@@ -29,7 +29,8 @@ let SmsService = (() => {
             const body = `Your otp to login in rehani app is ${user.otp}`;
             const to = `+91${user.mobileNumber}`;
             return this.sendMessage({
-                body, to
+                body,
+                to,
             });
         }
     };

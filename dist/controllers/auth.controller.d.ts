@@ -1,11 +1,11 @@
-import { UsersService } from "src/services/users.service";
-import { AuthService } from "src/services/auth.service";
+import { UsersService } from 'src/services/users.service';
+import { AuthService } from 'src/services/auth.service';
 import { JwtService } from '@nestjs/jwt';
-import { SmsService } from "src/services/sms.service";
-import { VersionService } from "src/services/version.service";
-import { TokensService } from "src/services/tokens.service";
-import { ConfigService } from "@nestjs/config";
-import { EmailService } from "src/services/email.service";
+import { SmsService } from 'src/services/sms.service';
+import { VersionService } from 'src/services/version.service';
+import { TokensService } from 'src/services/tokens.service';
+import { ConfigService } from '@nestjs/config';
+import { EmailService } from 'src/services/email.service';
 export declare class AuthController {
     private config;
     private service;
@@ -21,10 +21,7 @@ export declare class AuthController {
         message: string;
         users: any;
     }>;
-    resendVerificationLink(requestBody: any): Promise<{
-        message: string;
-        users: any;
-    }>;
+    resendVerificationLink(requestBody: any): Promise<string>;
     verify(token: any): Promise<string>;
     login(user: any): Promise<{
         message: string;

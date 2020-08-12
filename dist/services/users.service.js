@@ -20,19 +20,20 @@ const db_service_1 = require("./db.service");
 const lodash_1 = require("lodash");
 const Joi = require("@hapi/joi");
 const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
-const passwordSchema = Joi
-    .string()
+const passwordSchema = Joi.string()
     .pattern(passwordExpression)
     .required();
 const schema = Joi.object({
-    name: Joi
-        .string()
+    name: Joi.string()
         .trim()
         .min(3)
         .max(30)
         .required(),
     password: passwordSchema,
-    email: Joi.string().trim().lowercase().email()
+    email: Joi.string()
+        .trim()
+        .lowercase()
+        .email(),
 });
 let UsersService = (() => {
     let UsersService = class UsersService extends db_service_1.DBService {
@@ -41,17 +42,18 @@ let UsersService = (() => {
             this.publicKeys = ['_id', 'name', 'email', 'isEmailVerified'];
             this.passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
             this.schema = Joi.object({
-                name: Joi
-                    .string()
+                name: Joi.string()
                     .trim()
                     .min(3)
                     .max(30)
                     .required(),
-                password: Joi
-                    .string()
+                password: Joi.string()
                     .pattern(this.passwordExpression)
                     .required(),
-                email: Joi.string().trim().lowercase().email()
+                email: Joi.string()
+                    .trim()
+                    .lowercase()
+                    .email(),
             });
         }
         findByEmail(email) {

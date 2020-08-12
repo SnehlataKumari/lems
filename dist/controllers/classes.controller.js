@@ -34,19 +34,21 @@ let ClassesController = (() => {
             if (queries && queries.search) {
                 where = Object.assign(Object.assign({}, where), { $text: { $search: queries.search } });
             }
-            return this.chapterService.find(where).populate('class')
+            return this.chapterService
+                .find(where)
+                .populate('class')
                 .populate('assets');
         }
         async getAllAssets(id, req) {
             const assetsList = await this.assetService.find({
-                class: id
+                class: id,
             });
             const assetsListWithisSubscribed = await this.assetService.withIsSubscribedKey(assetsList, req.user);
             return utils_1.success('Success!', assetsListWithisSubscribed);
         }
         async getAllSubjects(id) {
             return utils_1.success('Success!', this.subjectService.find({
-                class: id
+                class: id,
             }));
         }
     };

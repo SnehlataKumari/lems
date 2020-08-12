@@ -1,5 +1,5 @@
-import { ConfigService } from "@nestjs/config";
-import { DummySmsService } from "./dummySms.service";
+import { ConfigService } from '@nestjs/config';
+import { DummySmsService } from './dummySms.service';
 export declare class SmsService {
     private dummySmsService;
     private config;
