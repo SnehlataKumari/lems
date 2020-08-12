@@ -6,7 +6,6 @@ import {
   UnauthorizedException,
   BadRequestException,
   Param,
-  UsePipes,
 } from '@nestjs/common';
 import { UsersService } from 'src/services/users.service';
 import { AuthService } from 'src/services/auth.service';
@@ -18,7 +17,6 @@ import { TokensService } from 'src/services/tokens.service';
 import { ConfigService } from '@nestjs/config';
 import { EmailService } from 'src/services/email.service';
 import Joi = require('@hapi/joi');
-import { JoiValidationPipe } from 'src/pipes/joivalidation.pipe';
 import { JoiValidation } from 'src/decorators/joivalidation.decorators';
 
 const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;

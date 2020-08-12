@@ -1,5 +1,3 @@
-import { JoiValidationPipe } from "./joivalidation.pipe";
+import { JoiValidationPipe } from './joivalidation.pipe';
 
-export default [
-  JoiValidationPipe
-]
+export default [JoiValidationPipe];

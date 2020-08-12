@@ -3412,17 +3412,17 @@
         "affectsGlobalScope": false
       },
       "../src/pipes/joivalidation.pipe.ts": {
-        "version": "e2f4017288d0d41d720020d6a09719856d732b7e144c53a263a90d3a3e1becb9",
-        "signature": "716c95701ce8933f8cac2b7be171fc14f83d9e1026ab8d6194a3f67e06263538",
+        "version": "5ea2a67598a7d850a55e92faecaac95c0f783e676ad1d037d08011718240898b",
+        "signature": "4399fd3bd9d936acaba1cdfe4b1c4111928d21d193bb2bfd092f551eec8ee4db",
         "affectsGlobalScope": false
       },
       "../src/decorators/joivalidation.decorators.ts": {
-        "version": "7bbe8ff87f57f052d20f217fd1126890e89c4f445c250452f87848923c22de50",
+        "version": "8a04a4fba343a8b02449c1f404992a83d72b58c67922392d0e3099eee1e217e4",
         "signature": "d950ec5a4cce00be6439612ea51eb4fa3ef277c342e29c59cbcd706e7801c86e",
         "affectsGlobalScope": false
       },
       "../src/controllers/auth.controller.ts": {
-        "version": "bd7a7fd8b35ffb3592fd1f4679924881b13b225819aa1ec83e1fecf1094bd8ad",
+        "version": "d0e4ce17d585f778b9722de67c3cec534b44efa0b4177f7aa66e27ee03ee9662",
         "signature": "7a0234270e29371330ef84a2c489ce98722f6e94d15ba047f4e128ac9399b633",
         "affectsGlobalScope": false
       },
@@ -3476,13 +3476,8 @@
         "signature": "2b220a68f67a7714c1d46bf8b5c039eb68ad4fc43830bf4240465ef02db714dc",
         "affectsGlobalScope": false
       },
-      "../src/pipes/index.ts": {
-        "version": "444edb624e29bce7e5022cfe285f1bce28d52923c1b6a01c7f75294b629b492f",
-        "signature": "f552bc704b01bb0bd6928c504303ae20e0346aabb66e400c1ad36c112215a439",
-        "affectsGlobalScope": false
-      },
       "../src/app.module.ts": {
-        "version": "48d649f0d883f1b8ec63f28e28d0ec3c0feefc3919cfcc742dda0182628733a8",
+        "version": "0115158ae0c83cc0142718541a825856a34ba75563f7fbbd938d5d3bce4ef375",
         "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644",
         "affectsGlobalScope": false
       },
@@ -3494,6 +3489,11 @@
       "../src/main.ts": {
         "version": "27a236b1818b3720df79b6996a76f47a7abaaf558e161aacb576c96badd6213e",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "affectsGlobalScope": false
+      },
+      "../src/pipes/index.ts": {
+        "version": "76b685d887ed083f0e4ce3d0df5cae53bb5c5ec3b543c783dbf2e74695952d14",
+        "signature": "dd214b9a5151d3e9b3194e26caa5428ece1f72e2525019d72ae3bfd87f22d2c1",
         "affectsGlobalScope": false
       },
       "../node_modules/twilio/lib/jwt/taskrouter/taskroutercapability.d.ts": {
@@ -18428,7 +18428,6 @@
         "../src/controllers/index.ts",
         "../src/passport/jwt.strategy.ts",
         "../src/passport/otp.strategy.ts",
-        "../src/pipes/index.ts",
         "../src/schemas/index.ts",
         "../src/services/index.ts"
       ],
@@ -18470,7 +18469,6 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/decorators/joivalidation.decorators.ts",
-        "../src/pipes/joivalidation.pipe.ts",
         "../src/services/auth.service.ts",
         "../src/services/email.service.ts",
         "../src/services/sms.service.ts",

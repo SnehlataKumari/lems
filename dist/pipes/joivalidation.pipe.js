@@ -16,7 +16,7 @@ let JoiValidationPipe = (() => {
         constructor(schema) {
             this.schema = schema;
         }
-        transform(value, metadata) {
+        transform(value) {
             const { error } = this.schema.validate(value);
             if (error) {
                 throw new common_1.BadRequestException('Validation failed');

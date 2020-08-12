@@ -3,7 +3,5 @@ import { ObjectSchema } from '@hapi/joi';
 import { JoiValidationPipe } from 'src/pipes/joivalidation.pipe';
 
 export function JoiValidation(schema: ObjectSchema) {
-  return applyDecorators(
-    UsePipes(new JoiValidationPipe(schema)),
-  );
+  return applyDecorators(UsePipes(new JoiValidationPipe(schema)));
 }

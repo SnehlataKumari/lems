@@ -24,7 +24,6 @@ const tokens_service_1 = require("../services/tokens.service");
 const config_1 = require("@nestjs/config");
 const email_service_1 = require("../services/email.service");
 const Joi = require("@hapi/joi");
-const joivalidation_pipe_1 = require("../pipes/joivalidation.pipe");
 const joivalidation_decorators_1 = require("../decorators/joivalidation.decorators");
 const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 const passwordSchema = Joi.string()
