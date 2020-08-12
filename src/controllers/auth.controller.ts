@@ -18,8 +18,9 @@ import { TokensService } from 'src/services/tokens.service';
 import { ConfigService } from '@nestjs/config';
 import { EmailService } from 'src/services/email.service';
 import Joi = require('@hapi/joi');
-import { JoiValidation } from 'src/decorators/joivalidation.decorators';
-import { ValidateToken } from 'src/decorators/validatetoken.decorators';
+import { JoiValidation } from 'src/decorators/joivalidation.decorator';
+import { ValidateToken } from 'src/decorators/validatetoken.decorator';
+import { LoggedInUser } from 'src/decorators/loggedinuser.decorator';
 
 const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 const passwordSchema = Joi.string()
@@ -55,6 +56,7 @@ export class AuthController {
     return this.config.get('HOST_URL');
   }
 
+  // TODO: Move business logic to AuthService
   @JoiValidation(userSchema)
   @Post('sign-up')
   async signUp(@Body() req) {
@@ -66,20 +68,25 @@ export class AuthController {
       password: hash,
       name,
     });
-    const users = this.usersService.getPublicDetails(user);
-    const token = this.jwtService.sign(users);
-    await this.tokensService.create({ token, type: tokenType });
+    const userModel = this.usersService.getPublicDetails(user);
+    const token = this.jwtService.sign(userModel);
+    await this.tokensService.create({
+      token,
+      type: tokenType,
+      userId: userModel._id,
+    });
     const link = `${this.hostUrl}/auth/verify/${token}`;
 
-    await this.emailService.sendVerificationLink(users, link);
+    await this.emailService.sendVerificationLink(userModel, link);
 
     return {
       link,
       message: 'Verification link sent to your email!',
-      users,
+      userModel,
     };
   }
 
+  // TODO: Move business logic to AuthService
   @Post('resend-verification-email')
   async resendVerificationLink(@Body() requestBody) {
     const tokenType = 'VERIFY_EMAIL';
@@ -94,14 +101,16 @@ export class AuthController {
       throw new BadRequestException('Email is already verified!');
     }
 
-    // TODO: Delete existing token
-    // await this.tokensService.findOneAndDelete({type: tokenType});
-
-    const users = this.usersService.getPublicDetails(userModel);
-    const token = this.jwtService.sign(users);
-    await this.tokensService.create({ token, type: tokenType });
+    await this.tokensService.deleteUsersToken(userModel, tokenType);
+    const userObj = this.usersService.getPublicDetails(userModel);
+    const token = this.jwtService.sign(userObj);
+    await this.tokensService.create({
+      token,
+      type: tokenType,
+      userId: userModel._id,
+    });
     const link = `${this.hostUrl}/auth/verify/${token}`;
-    await this.emailService.sendVerificationLink(users, link);
+    await this.emailService.sendVerificationLink(userObj, link);
 
     return { message: 'Verification link sent successfully!', link };
   }
@@ -125,16 +134,22 @@ export class AuthController {
     }
   }
 
+  // TODO: Move business logic to AuthService
   @Post('login')
-  async login(@Body() user) {
+  async login(@Body() requestBody) {
     const tokenType = 'LOGIN';
-    const userModel = await this.service.login(user);
+    const userModel = await this.service.login(requestBody);
     const token = this.jwtService.sign(userModel.toJSON());
-    await this.tokensService.create({ token, type: tokenType });
-    const users = this.usersService.getPublicDetails(userModel);
-    return success('logged in successfully!', { users, token });
+    await this.tokensService.create({
+      token,
+      type: tokenType,
+      userId: userModel._id,
+    });
+    const user = this.usersService.getPublicDetails(userModel);
+    return success('logged in successfully!', { user, token });
   }
 
+  // TODO: Move business logic to AuthService
   @Post('forgot-password')
   async forgot(@Body() body) {
     const tokenType = 'FORGOT_PASSWORD';
@@ -146,7 +161,11 @@ export class AuthController {
     }
     const user = this.usersService.getPublicDetails(userModel);
     const token = this.jwtService.sign(user);
-    await this.tokensService.create({ token, type: tokenType });
+    await this.tokensService.create({
+      token,
+      type: tokenType,
+      userId: userModel._id,
+    });
     return token;
   }
 
@@ -178,18 +197,11 @@ export class AuthController {
     return req.user;
   }
 
+  @ValidateToken()
   @Post('logout')
-  async logout(@Body() user) {
+  async logout(@LoggedInUser() loggedInUser) {
     const tokenType = 'LOGIN';
-    this.jwtService.verify(user.token);
-    const isTokenExist = await this.tokensService.findByTokenAndType(
-      user.token,
-      tokenType,
-    );
-    if (!isTokenExist) {
-      throw new UnauthorizedException('Invalid token!');
-    }
-    await this.tokensService.findByTokenAndTypeAndDelete(user.token, tokenType);
+    await this.tokensService.deleteUsersToken(loggedInUser, tokenType);
     return success('logged out successfully!', {});
   }
 }

@@ -1,10 +1,14 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from './users.service';
 import * as bcrypt from 'bcryptjs';
+import { TokensService } from './tokens.service';
 
 @Injectable()
 export class AuthService {
-  constructor(private userService: UsersService) {}
+  constructor(
+    private userService: UsersService,
+    private tokenService: TokensService,
+  ) {}
 
   async login(requestBody) {
     const { email, password } = requestBody;
@@ -26,11 +30,7 @@ export class AuthService {
   }
 
   async isValidAuthToken(token) {
-    // TODO: Check if token exist in db.
-    // If it exists then return true;
-    // else return false;
-
-    return true;
+    return await this.tokenService.findByTokenAndType(token, 'LOGIN');
   }
 
   getUserById(id) {

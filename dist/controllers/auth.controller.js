@@ -24,8 +24,9 @@ const tokens_service_1 = require("../services/tokens.service");
 const config_1 = require("@nestjs/config");
 const email_service_1 = require("../services/email.service");
 const Joi = require("@hapi/joi");
-const joivalidation_decorators_1 = require("../decorators/joivalidation.decorators");
-const validatetoken_decorators_1 = require("../decorators/validatetoken.decorators");
+const joivalidation_decorator_1 = require("../decorators/joivalidation.decorator");
+const validatetoken_decorator_1 = require("../decorators/validatetoken.decorator");
+const loggedinuser_decorator_1 = require("../decorators/loggedinuser.decorator");
 const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 const passwordSchema = Joi.string()
     .pattern(passwordExpression)
@@ -66,15 +67,19 @@ let AuthController = (() => {
                 password: hash,
                 name,
             });
-            const users = this.usersService.getPublicDetails(user);
-            const token = this.jwtService.sign(users);
-            await this.tokensService.create({ token, type: tokenType });
+            const userModel = this.usersService.getPublicDetails(user);
+            const token = this.jwtService.sign(userModel);
+            await this.tokensService.create({
+                token,
+                type: tokenType,
+                userId: userModel._id,
+            });
             const link = `${this.hostUrl}/auth/verify/${token}`;
-            await this.emailService.sendVerificationLink(users, link);
+            await this.emailService.sendVerificationLink(userModel, link);
             return {
                 link,
                 message: 'Verification link sent to your email!',
-                users,
+                userModel,
             };
         }
         async resendVerificationLink(requestBody) {
@@ -87,11 +92,16 @@ let AuthController = (() => {
             if (userModel.isEmailVerified) {
                 throw new common_1.BadRequestException('Email is already verified!');
             }
-            const users = this.usersService.getPublicDetails(userModel);
-            const token = this.jwtService.sign(users);
-            await this.tokensService.create({ token, type: tokenType });
+            await this.tokensService.deleteUsersToken(userModel, tokenType);
+            const userObj = this.usersService.getPublicDetails(userModel);
+            const token = this.jwtService.sign(userObj);
+            await this.tokensService.create({
+                token,
+                type: tokenType,
+                userId: userModel._id,
+            });
             const link = `${this.hostUrl}/auth/verify/${token}`;
-            await this.emailService.sendVerificationLink(users, link);
+            await this.emailService.sendVerificationLink(userObj, link);
             return { message: 'Verification link sent successfully!', link };
         }
         async verify(token) {
@@ -108,13 +118,17 @@ let AuthController = (() => {
                 return `Email <b>${user.email}</b> Verified Successfully`;
             }
         }
-        async login(user) {
+        async login(requestBody) {
             const tokenType = 'LOGIN';
-            const userModel = await this.service.login(user);
+            const userModel = await this.service.login(requestBody);
             const token = this.jwtService.sign(userModel.toJSON());
-            await this.tokensService.create({ token, type: tokenType });
-            const users = this.usersService.getPublicDetails(userModel);
-            return utils_1.success('logged in successfully!', { users, token });
+            await this.tokensService.create({
+                token,
+                type: tokenType,
+                userId: userModel._id,
+            });
+            const user = this.usersService.getPublicDetails(userModel);
+            return utils_1.success('logged in successfully!', { user, token });
         }
         async forgot(body) {
             const tokenType = 'FORGOT_PASSWORD';
@@ -124,7 +138,11 @@ let AuthController = (() => {
             }
             const user = this.usersService.getPublicDetails(userModel);
             const token = this.jwtService.sign(user);
-            await this.tokensService.create({ token, type: tokenType });
+            await this.tokensService.create({
+                token,
+                type: tokenType,
+                userId: userModel._id,
+            });
             return token;
         }
         async resetPassword(requestBody) {
@@ -146,19 +164,14 @@ let AuthController = (() => {
         checkToken(req) {
             return req.user;
         }
-        async logout(user) {
+        async logout(loggedInUser) {
             const tokenType = 'LOGIN';
-            this.jwtService.verify(user.token);
-            const isTokenExist = await this.tokensService.findByTokenAndType(user.token, tokenType);
-            if (!isTokenExist) {
-                throw new common_1.UnauthorizedException('Invalid token!');
-            }
-            await this.tokensService.findByTokenAndTypeAndDelete(user.token, tokenType);
+            await this.tokensService.deleteUsersToken(loggedInUser, tokenType);
             return utils_1.success('logged out successfully!', {});
         }
     };
     __decorate([
-        joivalidation_decorators_1.JoiValidation(userSchema),
+        joivalidation_decorator_1.JoiValidation(userSchema),
         common_1.Post('sign-up'),
         __param(0, common_1.Body()),
         __metadata("design:type", Function),
@@ -201,7 +214,7 @@ let AuthController = (() => {
         __metadata("design:returntype", Promise)
     ], AuthController.prototype, "resetPassword", null);
     __decorate([
-        validatetoken_decorators_1.ValidateToken(),
+        validatetoken_decorator_1.ValidateToken(),
         common_1.Get('check-token'),
         __param(0, common_1.Request()),
         __metadata("design:type", Function),
@@ -209,8 +222,9 @@ let AuthController = (() => {
         __metadata("design:returntype", void 0)
     ], AuthController.prototype, "checkToken", null);
     __decorate([
+        validatetoken_decorator_1.ValidateToken(),
         common_1.Post('logout'),
-        __param(0, common_1.Body()),
+        __param(0, loggedinuser_decorator_1.LoggedInUser()),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", Promise)

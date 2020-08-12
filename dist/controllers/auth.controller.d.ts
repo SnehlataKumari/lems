@@ -20,14 +20,14 @@ export declare class AuthController {
     signUp(req: any): Promise<{
         link: string;
         message: string;
-        users: any;
+        userModel: any;
     }>;
     resendVerificationLink(requestBody: any): Promise<{
         message: string;
         link: string;
     }>;
     verify(token: any): Promise<string>;
-    login(user: any): Promise<{
+    login(requestBody: any): Promise<{
         message: string;
         data: any;
     }>;
@@ -37,7 +37,7 @@ export declare class AuthController {
         data: any;
     }>;
     checkToken(req: any): any;
-    logout(user: any): Promise<{
+    logout(loggedInUser: any): Promise<{
         message: string;
         data: any;
     }>;

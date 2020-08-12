@@ -13,10 +13,12 @@ exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
 const users_service_1 = require("./users.service");
 const bcrypt = require("bcryptjs");
+const tokens_service_1 = require("./tokens.service");
 let AuthService = (() => {
     let AuthService = class AuthService {
-        constructor(userService) {
+        constructor(userService, tokenService) {
             this.userService = userService;
+            this.tokenService = tokenService;
         }
         async login(requestBody) {
             const { email, password } = requestBody;
@@ -36,7 +38,7 @@ let AuthService = (() => {
             return hash;
         }
         async isValidAuthToken(token) {
-            return true;
+            return await this.tokenService.findByTokenAndType(token, 'LOGIN');
         }
         getUserById(id) {
             return this.userService.findById(id);
@@ -44,7 +46,8 @@ let AuthService = (() => {
     };
     AuthService = __decorate([
         common_1.Injectable(),
-        __metadata("design:paramtypes", [users_service_1.UsersService])
+        __metadata("design:paramtypes", [users_service_1.UsersService,
+            tokens_service_1.TokensService])
     ], AuthService);
     return AuthService;
 })();

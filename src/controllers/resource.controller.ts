@@ -1,17 +1,17 @@
-import { Get, Post, Body, Delete, Param, Put, UseGuards } from '@nestjs/common';
+import { Get, Post, Body, Delete, Param, Put } from '@nestjs/common';
 import { success } from 'src/utils';
-import { JwtTokenAuthGuard } from 'src/passport/jwttokenauth.guard';
+import { ValidateToken } from 'src/decorators/validatetoken.decorator';
 
 export class ResourceController {
   constructor(public service) {}
 
-  @UseGuards(JwtTokenAuthGuard)
+  @ValidateToken()
   @Get()
   findAll() {
     return success('List found successfully', this.service.findAll());
   }
 
-  @UseGuards(JwtTokenAuthGuard)
+  @ValidateToken()
   @Post()
   createResource(@Body() createObject) {
     return success(
@@ -20,7 +20,7 @@ export class ResourceController {
     );
   }
 
-  @UseGuards(JwtTokenAuthGuard)
+  @ValidateToken()
   @Delete('/:id')
   async deleteResource(@Param('id') id) {
     await this.service.findByIdAndDelete(id);
@@ -29,7 +29,7 @@ export class ResourceController {
     });
   }
 
-  @UseGuards(JwtTokenAuthGuard)
+  @ValidateToken()
   @Put('/:id')
   async updateResource(@Param('id') id, @Body() resourceObject) {
     return success(

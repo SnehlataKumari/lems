@@ -11,6 +11,11 @@ export const TokenSchema = new mongoose.Schema(
       enum: ['LOGIN', 'VERIFY_EMAIL', 'FORGOT_PASSWORD'],
       required: true,
     },
+    userId: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'User',
+      required: true,
+    },
   },
   {
     timestamps: true,

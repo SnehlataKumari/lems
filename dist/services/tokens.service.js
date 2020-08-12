@@ -31,6 +31,12 @@ let TokensService = (() => {
                 type,
             });
         }
+        deleteUsersToken(userModel, tokenType) {
+            return this.findOneAndDelete({
+                userId: userModel._id,
+                type: tokenType,
+            });
+        }
     };
     TokensService = __decorate([
         common_1.Injectable(),

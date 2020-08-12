@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ResourceController = void 0;
 const common_1 = require("@nestjs/common");
 const utils_1 = require("../utils");
-const jwttokenauth_guard_1 = require("../passport/jwttokenauth.guard");
+const validatetoken_decorator_1 = require("../decorators/validatetoken.decorator");
 let ResourceController = (() => {
     class ResourceController {
         constructor(service) {
@@ -38,14 +38,14 @@ let ResourceController = (() => {
         }
     }
     __decorate([
-        common_1.UseGuards(jwttokenauth_guard_1.JwtTokenAuthGuard),
+        validatetoken_decorator_1.ValidateToken(),
         common_1.Get(),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", void 0)
     ], ResourceController.prototype, "findAll", null);
     __decorate([
-        common_1.UseGuards(jwttokenauth_guard_1.JwtTokenAuthGuard),
+        validatetoken_decorator_1.ValidateToken(),
         common_1.Post(),
         __param(0, common_1.Body()),
         __metadata("design:type", Function),
@@ -53,7 +53,7 @@ let ResourceController = (() => {
         __metadata("design:returntype", void 0)
     ], ResourceController.prototype, "createResource", null);
     __decorate([
-        common_1.UseGuards(jwttokenauth_guard_1.JwtTokenAuthGuard),
+        validatetoken_decorator_1.ValidateToken(),
         common_1.Delete('/:id'),
         __param(0, common_1.Param('id')),
         __metadata("design:type", Function),
@@ -61,7 +61,7 @@ let ResourceController = (() => {
         __metadata("design:returntype", Promise)
     ], ResourceController.prototype, "deleteResource", null);
     __decorate([
-        common_1.UseGuards(jwttokenauth_guard_1.JwtTokenAuthGuard),
+        validatetoken_decorator_1.ValidateToken(),
         common_1.Put('/:id'),
         __param(0, common_1.Param('id')), __param(1, common_1.Body()),
         __metadata("design:type", Function),

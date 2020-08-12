@@ -19,4 +19,11 @@ export class TokensService extends DBService {
       type,
     });
   }
+
+  deleteUsersToken(userModel, tokenType) {
+    return this.findOneAndDelete({
+      userId: userModel._id,
+      type: tokenType,
+    });
+  }
 }
