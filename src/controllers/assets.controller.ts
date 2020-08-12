@@ -11,7 +11,7 @@ import {
 import { ResourceController } from './resource.controller';
 import { AssetsService } from 'src/services/assets.service';
 import { success } from 'src/utils';
-import { JwtAuthGuard } from 'src/passport/auth.guard';
+import { JwtAuthGuard } from 'src/passport/jwtauth.guard';
 
 @Controller('assets')
 export class AssetsController extends ResourceController {

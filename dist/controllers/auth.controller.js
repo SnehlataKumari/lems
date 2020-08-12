@@ -23,6 +23,25 @@ const version_service_1 = require("../services/version.service");
 const tokens_service_1 = require("../services/tokens.service");
 const config_1 = require("@nestjs/config");
 const email_service_1 = require("../services/email.service");
+const Joi = require("@hapi/joi");
+const joivalidation_pipe_1 = require("../pipes/joivalidation.pipe");
+const joivalidation_decorators_1 = require("../decorators/joivalidation.decorators");
+const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+const passwordSchema = Joi.string()
+    .pattern(passwordExpression)
+    .required();
+const userSchema = Joi.object({
+    name: Joi.string()
+        .trim()
+        .min(3)
+        .max(30)
+        .required(),
+    password: passwordSchema,
+    email: Joi.string()
+        .trim()
+        .lowercase()
+        .email(),
+});
 let AuthController = (() => {
     let AuthController = class AuthController {
         constructor(config, service, usersService, tokensService, jwtService, emailService, smsService, versionService) {
@@ -41,7 +60,6 @@ let AuthController = (() => {
         async signUp(req) {
             const { email, password, name } = req;
             const tokenType = 'VERIFY_EMAIL';
-            await this.usersService.validateUsers(name, email, password);
             const hash = await this.service.encryptPassword(password);
             const user = await this.usersService.create({
                 email,
@@ -126,6 +144,7 @@ let AuthController = (() => {
         }
     };
     __decorate([
+        joivalidation_decorators_1.JoiValidation(userSchema),
         common_1.Post('sign-up'),
         __param(0, common_1.Body()),
         __metadata("design:type", Function),

@@ -13,6 +13,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { JWT_CONSTANTS } from './constants';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './passport/jwt.strategy';
+import pipes from './pipes';
 
 @Module({
   imports: [

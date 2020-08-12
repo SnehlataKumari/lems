@@ -23,52 +23,17 @@ const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16
 const passwordSchema = Joi.string()
     .pattern(passwordExpression)
     .required();
-const schema = Joi.object({
-    name: Joi.string()
-        .trim()
-        .min(3)
-        .max(30)
-        .required(),
-    password: passwordSchema,
-    email: Joi.string()
-        .trim()
-        .lowercase()
-        .email(),
-});
 let UsersService = (() => {
     let UsersService = class UsersService extends db_service_1.DBService {
         constructor(model) {
             super(model);
             this.publicKeys = ['_id', 'name', 'email', 'isEmailVerified'];
-            this.passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
-            this.schema = Joi.object({
-                name: Joi.string()
-                    .trim()
-                    .min(3)
-                    .max(30)
-                    .required(),
-                password: Joi.string()
-                    .pattern(this.passwordExpression)
-                    .required(),
-                email: Joi.string()
-                    .trim()
-                    .lowercase()
-                    .email(),
-            });
         }
         findByEmail(email) {
             return this.findOne({ email });
         }
         getPublicDetails(user) {
             return lodash_1.pick(user, this.publicKeys);
-        }
-        async validateUsers(name, email, password) {
-            try {
-                await schema.validateAsync({ name, email, password });
-            }
-            catch (err) {
-                throw new common_1.BadRequestException(err.message);
-            }
         }
         async validatePassword(password) {
             try {

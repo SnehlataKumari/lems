@@ -6,6 +6,7 @@ import {
   UnauthorizedException,
   BadRequestException,
   Param,
+  UsePipes,
 } from '@nestjs/common';
 import { UsersService } from 'src/services/users.service';
 import { AuthService } from 'src/services/auth.service';
@@ -16,7 +17,27 @@ import { VersionService } from 'src/services/version.service';
 import { TokensService } from 'src/services/tokens.service';
 import { ConfigService } from '@nestjs/config';
 import { EmailService } from 'src/services/email.service';
+import Joi = require('@hapi/joi');
+import { JoiValidationPipe } from 'src/pipes/joivalidation.pipe';
+import { JoiValidation } from 'src/decorators/joivalidation.decorators';
 
+const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+const passwordSchema = Joi.string()
+  .pattern(passwordExpression)
+  .required();
+
+const userSchema = Joi.object({
+  name: Joi.string()
+    .trim()
+    .min(3)
+    .max(30)
+    .required(),
+  password: passwordSchema,
+  email: Joi.string()
+    .trim()
+    .lowercase()
+    .email(),
+});
 @Controller('auth')
 export class AuthController {
   constructor(
@@ -34,11 +55,11 @@ export class AuthController {
     return this.config.get('HOST_URL');
   }
 
+  @JoiValidation(userSchema)
   @Post('sign-up')
   async signUp(@Body() req) {
     const { email, password, name } = req;
     const tokenType = 'VERIFY_EMAIL';
-    await this.usersService.validateUsers(name, email, password);
     const hash = await this.service.encryptPassword(password);
     const user = await this.usersService.create({
       email,

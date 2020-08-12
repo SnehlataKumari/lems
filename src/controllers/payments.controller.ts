@@ -2,7 +2,7 @@ import { Controller, Post, UseGuards, Req } from '@nestjs/common';
 import { UsersService } from 'src/services/users.service';
 import { ResourceController } from './resource.controller';
 import { success } from 'src/utils';
-import { JwtAuthGuard } from 'src/passport/auth.guard';
+import { JwtAuthGuard } from 'src/passport/jwtauth.guard';
 
 @Controller('payments')
 export class PaymentsController extends ResourceController {

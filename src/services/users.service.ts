@@ -10,19 +10,6 @@ const passwordSchema = Joi.string()
   .pattern(passwordExpression)
   .required();
 
-const schema = Joi.object({
-  name: Joi.string()
-    .trim()
-    .min(3)
-    .max(30)
-    .required(),
-  password: passwordSchema,
-  email: Joi.string()
-    .trim()
-    .lowercase()
-    .email(),
-});
-
 @Injectable()
 export class UsersService extends DBService {
   constructor(@InjectModel('User') model: Model<any>) {
@@ -37,30 +24,6 @@ export class UsersService extends DBService {
 
   getPublicDetails(user) {
     return pick(user, this.publicKeys);
-  }
-
-  passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
-  schema = Joi.object({
-    name: Joi.string()
-      .trim()
-      .min(3)
-      .max(30)
-      .required(),
-    password: Joi.string()
-      .pattern(this.passwordExpression)
-      .required(),
-    email: Joi.string()
-      .trim()
-      .lowercase()
-      .email(),
-  });
-
-  async validateUsers(name, email, password) {
-    try {
-      await schema.validateAsync({ name, email, password });
-    } catch (err) {
-      throw new BadRequestException(err.message);
-    }
   }
 
   async validatePassword(password) {

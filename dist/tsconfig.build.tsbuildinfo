@@ -1841,9 +1841,14 @@
         "signature": "9394b8abce1852e2c88a2cba979672f399c5d429bb7b26ee4056799fc5ec6d24",
         "affectsGlobalScope": false
       },
+      "../node_modules/@types/hapi__joi/index.d.ts": {
+        "version": "2c16d2d0e5ff2a2741c2b1e108d388316e4494ddcd394f46155516816bacc32a",
+        "signature": "2c16d2d0e5ff2a2741c2b1e108d388316e4494ddcd394f46155516816bacc32a",
+        "affectsGlobalScope": false
+      },
       "../src/services/users.service.ts": {
-        "version": "3768999953607e6e3b9d00b795a0ed8c131d41a364c8325ca7a0b2b0bc86b024",
-        "signature": "000e73033d9d26b8f9e5a92fa9927d7f448c00e661ed0c62b9c027c61c652921",
+        "version": "6e56fdf057c09e6b803c56f156b0c8f1cad4d412d93c18270ee61b6fa7611b81",
+        "signature": "9605ea1c52258bbfea47efc2d51b7233a3bbc3dfea62b0e9d10e50577f3b97cd",
         "affectsGlobalScope": false
       },
       "../node_modules/aws-sdk/lib/error.d.ts": {
@@ -3346,13 +3351,13 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
         "affectsGlobalScope": false
       },
-      "../src/passport/auth.guard.ts": {
+      "../src/passport/jwtauth.guard.ts": {
         "version": "51fc903ffa25cb72c7ecc1aa1fed8c9d5bf7c6dd2f7f0efe9d5fa1d7490b020c",
         "signature": "e9629b89f6cd33a040577695d89edf882e66287d30c87121f5fc07f404decd25",
         "affectsGlobalScope": false
       },
       "../src/controllers/resource.controller.ts": {
-        "version": "f4db6290a6aa21171ec382bf62baecde1e82481da6aa046b73adfc0fe9be8571",
+        "version": "7272bb89ac4949d076b25955e71c0e9ac68c1dd2e58ae2e8a33b701459ac3f95",
         "signature": "9d30e84e206d2127bf15420ebc37f656584c1932caa0f67f4cc01b90694afbf3",
         "affectsGlobalScope": false
       },
@@ -3362,12 +3367,12 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/classes.controller.ts": {
-        "version": "4ec17bee9255cce7d3ef12da760f46da1d749f62d62af57a1421683e4f20fb74",
+        "version": "6209899966db7c93d74fa3855752864430df800cf622c6dda20892d69d8ec8be",
         "signature": "797334e1525ab7f574c3674a547c34fb5249e1b85df3ac6a3abef5579f123a33",
         "affectsGlobalScope": false
       },
       "../src/controllers/assets.controller.ts": {
-        "version": "d757dedb75d8c82305d0285acfdb9a78f055c6e53c8c83d600758196b5020ecd",
+        "version": "ece4d1ec82f71fc8ddf1e177d0c308c86d0706b59d9a274adda692cb207eb4c5",
         "signature": "bc52fa4292a883091e67fdf5c4f567abfd32c11b6dc3748ab05ef7bc266163b5",
         "affectsGlobalScope": false
       },
@@ -3406,29 +3411,39 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
         "affectsGlobalScope": false
       },
+      "../src/pipes/joivalidation.pipe.ts": {
+        "version": "e2f4017288d0d41d720020d6a09719856d732b7e144c53a263a90d3a3e1becb9",
+        "signature": "716c95701ce8933f8cac2b7be171fc14f83d9e1026ab8d6194a3f67e06263538",
+        "affectsGlobalScope": false
+      },
+      "../src/decorators/joivalidation.decorators.ts": {
+        "version": "7bbe8ff87f57f052d20f217fd1126890e89c4f445c250452f87848923c22de50",
+        "signature": "d950ec5a4cce00be6439612ea51eb4fa3ef277c342e29c59cbcd706e7801c86e",
+        "affectsGlobalScope": false
+      },
       "../src/controllers/auth.controller.ts": {
-        "version": "b962671f7abc25a46e712b99e151ca9ac96bdc9a6c825ae636949609192f4e4f",
+        "version": "bd7a7fd8b35ffb3592fd1f4679924881b13b225819aa1ec83e1fecf1094bd8ad",
         "signature": "7a0234270e29371330ef84a2c489ce98722f6e94d15ba047f4e128ac9399b633",
         "affectsGlobalScope": false
       },
       "../src/controllers/chapters.controller.ts": {
-        "version": "47d4c118ecdf7cd72ce16c730384a235026b1f5fdcf5c7c509878ba6fecfbf49",
+        "version": "ce91cf757390cd70f15b398e756d7ebfbca6a7c8a7eed3472709cced933ab72d",
         "signature": "e50a814590d9cfe2493f7f2a045be5ba04c1c3408939abfb16ff423b99e20adc",
         "affectsGlobalScope": false
       },
       "../src/controllers/subject.controller.ts": {
-        "version": "ed1da29ce6f20a2ad43ecf42ddd3166861f54b3e60a37bf502650a58540096bd",
+        "version": "f383e791dbc7b965d776f176a326c4252d32c0619bbd5b33fb0e1f6711494ab5",
         "signature": "bf59986606df2853ad3955cd3704ee59ce53ea805325a35bda4673bcf0973249",
         "affectsGlobalScope": false
       },
       "../src/controllers/payments.controller.ts": {
-        "version": "49e9a14975c4e53933fe34c294244d7117eb324a93dd14bd9a340dabc570ab98",
+        "version": "9cf67c2e5916f5aecd4bee592e8dcc1b213441acb0817edea941d6f3a2ef1c7b",
         "signature": "d0894aad858fe608abf1b7de6cc290ebc49eccf57aba6bfbcb9e6464278997b5",
         "affectsGlobalScope": false
       },
       "../src/controllers/index.ts": {
         "version": "5e89f7521e6fab9d11d7ba0a1312b6f47495b9f1da935cd4f4758d22aa15c5a1",
-        "signature": "50941d6502e5b812f667cffa0eb2ce8f0802c8677e32fe96468e04a5193f51f6",
+        "signature": "d988620d85c7367b209143769ad69a13a734f1be5c3a1a3c45de476b2ca311a5",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -3461,8 +3476,13 @@
         "signature": "2b220a68f67a7714c1d46bf8b5c039eb68ad4fc43830bf4240465ef02db714dc",
         "affectsGlobalScope": false
       },
+      "../src/pipes/index.ts": {
+        "version": "444edb624e29bce7e5022cfe285f1bce28d52923c1b6a01c7f75294b629b492f",
+        "signature": "f552bc704b01bb0bd6928c504303ae20e0346aabb66e400c1ad36c112215a439",
+        "affectsGlobalScope": false
+      },
       "../src/app.module.ts": {
-        "version": "0115158ae0c83cc0142718541a825856a34ba75563f7fbbd938d5d3bce4ef375",
+        "version": "48d649f0d883f1b8ec63f28e28d0ec3c0feefc3919cfcc742dda0182628733a8",
         "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644",
         "affectsGlobalScope": false
       },
@@ -3474,21 +3494,6 @@
       "../src/main.ts": {
         "version": "27a236b1818b3720df79b6996a76f47a7abaaf558e161aacb576c96badd6213e",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
-        "affectsGlobalScope": false
-      },
-      "../src/pipes/validation.pipe.ts": {
-        "version": "1b679c068c6bb5accd7653acbe49d38268a1782b7089d1835afdb17fac5c6935",
-        "signature": "e1cadc13932ff86a99a50f9ecbdae5b79b0255741bf41d3c3dd81f46edaab011",
-        "affectsGlobalScope": false
-      },
-      "../src/pipes/joivalidation.pipe.ts": {
-        "version": "e2f4017288d0d41d720020d6a09719856d732b7e144c53a263a90d3a3e1becb9",
-        "signature": "30d340ae19e9e56354bd7c8b7dd0d9f8125f82d804a8123f874046b087c15c82",
-        "affectsGlobalScope": false
-      },
-      "../src/pipes/index.ts": {
-        "version": "d41e7396923028cd67910843c28d360dbd9f4944cb6c5b2c2f94038726a1ef36",
-        "signature": "10d057e1d082a1d8ea49b575fe222d9c22ccbbe6615bed677caf522ae8f119d4",
         "affectsGlobalScope": false
       },
       "../node_modules/twilio/lib/jwt/taskrouter/taskroutercapability.d.ts": {
@@ -8100,6 +8105,13 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/ts3.7/index.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@types/hapi__joi/index.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
       "../node_modules/@types/istanbul-lib-coverage/index.d.ts": [
@@ -18416,6 +18428,7 @@
         "../src/controllers/index.ts",
         "../src/passport/jwt.strategy.ts",
         "../src/passport/otp.strategy.ts",
+        "../src/pipes/index.ts",
         "../src/schemas/index.ts",
         "../src/services/index.ts"
       ],
@@ -18442,7 +18455,7 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/controllers/resource.controller.ts",
-        "../src/passport/auth.guard.ts",
+        "../src/passport/jwtauth.guard.ts",
         "../src/services/assets.service.ts",
         "../src/utils/index.ts"
       ],
@@ -18451,10 +18464,13 @@
         "../node_modules/@nestjs/config/index.d.ts",
         "../node_modules/@nestjs/jwt/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/hapi__joi/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../src/decorators/joivalidation.decorators.ts",
+        "../src/pipes/joivalidation.pipe.ts",
         "../src/services/auth.service.ts",
         "../src/services/email.service.ts",
         "../src/services/sms.service.ts",
@@ -18471,7 +18487,7 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/controllers/resource.controller.ts",
-        "../src/passport/auth.guard.ts",
+        "../src/passport/jwtauth.guard.ts",
         "../src/services/assets.service.ts",
         "../src/services/chapters.service.ts",
         "../src/utils/index.ts"
@@ -18484,7 +18500,7 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/controllers/resource.controller.ts",
-        "../src/passport/auth.guard.ts",
+        "../src/passport/jwtauth.guard.ts",
         "../src/services/assets.service.ts",
         "../src/services/chapters.service.ts",
         "../src/services/classes.service.ts",
@@ -18513,7 +18529,7 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/controllers/resource.controller.ts",
-        "../src/passport/auth.guard.ts",
+        "../src/passport/jwtauth.guard.ts",
         "../src/services/users.service.ts",
         "../src/utils/index.ts"
       ],
@@ -18524,7 +18540,7 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
-        "../src/passport/auth.guard.ts",
+        "../src/passport/jwtauth.guard.ts",
         "../src/utils/index.ts"
       ],
       "../src/controllers/subject.controller.ts": [
@@ -18535,7 +18551,7 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/controllers/resource.controller.ts",
-        "../src/passport/auth.guard.ts",
+        "../src/passport/jwtauth.guard.ts",
         "../src/services/assets.service.ts",
         "../src/services/chapters.service.ts",
         "../src/services/subject.service.ts",
@@ -18551,6 +18567,16 @@
         "../src/controllers/resource.controller.ts",
         "../src/services/users.service.ts",
         "../src/utils/index.ts"
+      ],
+      "../src/decorators/joivalidation.decorators.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/hapi__joi/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/pipes/joivalidation.pipe.ts"
       ],
       "../src/exception-filters/mongo-exception.filter.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -18573,15 +18599,6 @@
         "../src/app.module.ts",
         "../src/exception-filters/mongo-exception.filter.ts"
       ],
-      "../src/passport/auth.guard.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/passport/index.d.ts",
-        "../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts",
-        "../node_modules/@types/node/util.d.ts"
-      ],
       "../src/passport/jwt.strategy.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/passport/index.d.ts",
@@ -18593,6 +18610,15 @@
         "../node_modules/@types/passport-jwt/index.d.ts",
         "../src/constants/index.ts",
         "../src/services/auth.service.ts"
+      ],
+      "../src/passport/jwtauth.guard.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/passport/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
       ],
       "../src/passport/otp.strategy.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -18611,20 +18637,12 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
-        "../src/pipes/joivalidation.pipe.ts",
-        "../src/pipes/validation.pipe.ts"
+        "../src/pipes/joivalidation.pipe.ts"
       ],
       "../src/pipes/joivalidation.pipe.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts",
-        "../node_modules/@types/node/util.d.ts"
-      ],
-      "../src/pipes/validation.pipe.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/hapi__joi/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
@@ -18871,6 +18889,7 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/hapi__joi/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -21037,6 +21056,13 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/ts3.7/index.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@types/hapi__joi/index.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
       "../node_modules/@types/istanbul-lib-coverage/index.d.ts": [
@@ -31375,31 +31401,31 @@
         "../src/controllers/resource.controller.ts",
         "../src/services/users.service.ts"
       ],
+      "../src/decorators/joivalidation.decorators.ts": [
+        "../node_modules/@types/hapi__joi/index.d.ts"
+      ],
       "../src/exception-filters/mongo-exception.filter.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@types/mongodb/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts"
       ],
-      "../src/passport/auth.guard.ts": [
-        "../node_modules/@nestjs/passport/index.d.ts"
-      ],
       "../src/passport/jwt.strategy.ts": [
         "../node_modules/@types/passport-jwt/index.d.ts",
         "../src/services/auth.service.ts"
+      ],
+      "../src/passport/jwtauth.guard.ts": [
+        "../node_modules/@nestjs/passport/index.d.ts"
       ],
       "../src/passport/otp.strategy.ts": [
         "../node_modules/passport-custom/lib/index.d.ts",
         "../src/services/auth.service.ts"
       ],
       "../src/pipes/index.ts": [
-        "../src/pipes/joivalidation.pipe.ts",
-        "../src/pipes/validation.pipe.ts"
+        "../src/pipes/joivalidation.pipe.ts"
       ],
       "../src/pipes/joivalidation.pipe.ts": [
-        "../node_modules/@nestjs/common/index.d.ts"
-      ],
-      "../src/pipes/validation.pipe.ts": [
-        "../node_modules/@nestjs/common/index.d.ts"
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/hapi__joi/index.d.ts"
       ],
       "../src/schemas/asset.schema.ts": [
         "../node_modules/@types/mongoose/index.d.ts"
@@ -31730,6 +31756,7 @@
       "../node_modules/@types/express-serve-static-core/index.d.ts",
       "../node_modules/@types/express/index.d.ts",
       "../node_modules/@types/graceful-fs/index.d.ts",
+      "../node_modules/@types/hapi__joi/index.d.ts",
       "../node_modules/@types/istanbul-lib-coverage/index.d.ts",
       "../node_modules/@types/istanbul-lib-report/index.d.ts",
       "../node_modules/@types/istanbul-reports/index.d.ts",
@@ -32647,14 +32674,14 @@
       "../src/controllers/resource.controller.ts",
       "../src/controllers/subject.controller.ts",
       "../src/controllers/users.controller.ts",
+      "../src/decorators/joivalidation.decorators.ts",
       "../src/exception-filters/mongo-exception.filter.ts",
       "../src/main.ts",
-      "../src/passport/auth.guard.ts",
       "../src/passport/jwt.strategy.ts",
+      "../src/passport/jwtauth.guard.ts",
       "../src/passport/otp.strategy.ts",
       "../src/pipes/index.ts",
       "../src/pipes/joivalidation.pipe.ts",
-      "../src/pipes/validation.pipe.ts",
       "../src/privacy-policy.ts",
       "../src/schemas/asset.schema.ts",
       "../src/schemas/chapter.schema.ts",

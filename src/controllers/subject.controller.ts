@@ -1,7 +1,7 @@
 import { Controller, UseGuards, Get, Param, Req } from '@nestjs/common';
 import { ResourceController } from './resource.controller';
 import { SubjectsService } from 'src/services/subject.service';
-import { JwtAuthGuard } from 'src/passport/auth.guard';
+import { JwtAuthGuard } from 'src/passport/jwtauth.guard';
 import { success } from 'src/utils';
 import { AssetsService } from 'src/services/assets.service';
 import { ChaptersService } from 'src/services/chapters.service';
