@@ -24,4 +24,16 @@ export class AuthService {
     const hash = bcrypt.hashSync(password, salt);
     return hash;
   }
+
+  async isValidAuthToken(token) {
+    // TODO: Check if token exist in db.
+    // If it exists then return true;
+    // else return false;
+
+    return true;
+  }
+
+  getUserById(id) {
+    return this.userService.findById(id);
+  }
 }

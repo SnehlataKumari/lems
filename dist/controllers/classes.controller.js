@@ -17,7 +17,7 @@ const common_1 = require("@nestjs/common");
 const resource_controller_1 = require("./resource.controller");
 const classes_service_1 = require("../services/classes.service");
 const chapters_service_1 = require("../services/chapters.service");
-const jwtauth_guard_1 = require("../passport/jwtauth.guard");
+const jwttokenauth_guard_1 = require("../passport/jwttokenauth.guard");
 const assets_service_1 = require("../services/assets.service");
 const utils_1 = require("../utils");
 const subject_service_1 = require("../services/subject.service");
@@ -60,7 +60,7 @@ let ClassesController = (() => {
         __metadata("design:returntype", Promise)
     ], ClassesController.prototype, "getAllChapters", null);
     __decorate([
-        common_1.UseGuards(jwtauth_guard_1.JwtAuthGuard),
+        common_1.UseGuards(jwttokenauth_guard_1.JwtTokenAuthGuard),
         common_1.Get('/:id/assets'),
         __param(0, common_1.Param('id')), __param(1, common_1.Req()),
         __metadata("design:type", Function),
@@ -68,7 +68,7 @@ let ClassesController = (() => {
         __metadata("design:returntype", Promise)
     ], ClassesController.prototype, "getAllAssets", null);
     __decorate([
-        common_1.UseGuards(jwtauth_guard_1.JwtAuthGuard),
+        common_1.UseGuards(jwttokenauth_guard_1.JwtTokenAuthGuard),
         common_1.Get('/:id/subjects'),
         __param(0, common_1.Param('id')),
         __metadata("design:type", Function),

@@ -2,7 +2,7 @@ import { Controller, Get, Param, Query, UseGuards, Req } from '@nestjs/common';
 import { ResourceController } from './resource.controller';
 import { ClassesService } from 'src/services/classes.service';
 import { ChaptersService } from 'src/services/chapters.service';
-import { JwtAuthGuard } from 'src/passport/jwtauth.guard';
+import { JwtTokenAuthGuard } from 'src/passport/jwttokenauth.guard';
 import { AssetsService } from 'src/services/assets.service';
 import { success } from 'src/utils';
 import { SubjectsService } from 'src/services/subject.service';
@@ -31,7 +31,7 @@ export class ClassesController extends ResourceController {
       .populate('assets');
   }
 
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtTokenAuthGuard)
   @Get('/:id/assets')
   async getAllAssets(@Param('id') id, @Req() req) {
     const assetsList = await this.assetService.find({
@@ -46,7 +46,7 @@ export class ClassesController extends ResourceController {
     return success('Success!', assetsListWithisSubscribed);
   }
 
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtTokenAuthGuard)
   @Get('/:id/subjects')
   async getAllSubjects(@Param('id') id) {
     return success(

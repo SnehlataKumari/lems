@@ -17,12 +17,21 @@ const constants_1 = require("../constants");
 const auth_service_1 = require("../services/auth.service");
 let JwtStrategy = (() => {
     let JwtStrategy = class JwtStrategy extends passport_1.PassportStrategy(passport_jwt_1.Strategy) {
-        constructor(authServie) {
+        constructor(authService) {
             super({
                 jwtFromRequest: passport_jwt_1.ExtractJwt.fromAuthHeaderAsBearerToken(),
                 secretOrKey: constants_1.JWT_CONSTANTS.secret,
+                passReqToCallback: true,
             });
-            this.authServie = authServie;
+            this.authService = authService;
+        }
+        async validate(request, payload) {
+            const token = passport_jwt_1.ExtractJwt.fromAuthHeaderAsBearerToken()(request);
+            const isValidToken = await this.authService.isValidAuthToken(token);
+            if (!isValidToken) {
+                throw new common_1.UnauthorizedException('Token not found!');
+            }
+            return await this.authService.getUserById(payload._id);
         }
     };
     JwtStrategy = __decorate([

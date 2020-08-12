@@ -17,7 +17,7 @@ const common_1 = require("@nestjs/common");
 const resource_controller_1 = require("./resource.controller");
 const assets_service_1 = require("../services/assets.service");
 const utils_1 = require("../utils");
-const jwtauth_guard_1 = require("../passport/jwtauth.guard");
+const jwttokenauth_guard_1 = require("../passport/jwttokenauth.guard");
 let AssetsController = (() => {
     let AssetsController = class AssetsController extends resource_controller_1.ResourceController {
         constructor(service) {
@@ -51,7 +51,7 @@ let AssetsController = (() => {
         }
     };
     __decorate([
-        common_1.UseGuards(jwtauth_guard_1.JwtAuthGuard),
+        common_1.UseGuards(jwttokenauth_guard_1.JwtTokenAuthGuard),
         common_1.Get(),
         __param(0, common_1.Req()),
         __metadata("design:type", Function),

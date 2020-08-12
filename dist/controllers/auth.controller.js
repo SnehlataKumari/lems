@@ -25,6 +25,8 @@ const config_1 = require("@nestjs/config");
 const email_service_1 = require("../services/email.service");
 const Joi = require("@hapi/joi");
 const joivalidation_decorators_1 = require("../decorators/joivalidation.decorators");
+const validatetoken_decorators_1 = require("../decorators/validatetoken.decorators");
+const jwttokenauth_guard_1 = require("../passport/jwttokenauth.guard");
 const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 const passwordSchema = Joi.string()
     .pattern(passwordExpression)
@@ -71,6 +73,7 @@ let AuthController = (() => {
             const link = `${this.hostUrl}/auth/verify/${token}`;
             await this.emailService.sendVerificationLink(users, link);
             return {
+                link,
                 message: 'Verification link sent to your email!',
                 users,
             };
@@ -90,7 +93,7 @@ let AuthController = (() => {
             await this.tokensService.create({ token, type: tokenType });
             const link = `${this.hostUrl}/auth/verify/${token}`;
             await this.emailService.sendVerificationLink(users, link);
-            return 'Verification link sent successfully!';
+            return { message: 'Verification link sent successfully!', link };
         }
         async verify(token) {
             const tokenType = 'VERIFY_EMAIL';
@@ -141,6 +144,9 @@ let AuthController = (() => {
             });
             return utils_1.success('Password reset successful!', {});
         }
+        checkToken(req) {
+            return req.user;
+        }
     };
     __decorate([
         joivalidation_decorators_1.JoiValidation(userSchema),
@@ -185,6 +191,14 @@ let AuthController = (() => {
         __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", Promise)
     ], AuthController.prototype, "resetPassword", null);
+    __decorate([
+        validatetoken_decorators_1.ValidateToken(),
+        common_1.Get('check-token'),
+        __param(0, common_1.Request()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], AuthController.prototype, "checkToken", null);
     AuthController = __decorate([
         common_1.Controller('auth'),
         __metadata("design:paramtypes", [config_1.ConfigService,

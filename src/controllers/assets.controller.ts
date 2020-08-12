@@ -11,7 +11,7 @@ import {
 import { ResourceController } from './resource.controller';
 import { AssetsService } from 'src/services/assets.service';
 import { success } from 'src/utils';
-import { JwtAuthGuard } from 'src/passport/jwtauth.guard';
+import { JwtTokenAuthGuard } from 'src/passport/jwttokenauth.guard';
 
 @Controller('assets')
 export class AssetsController extends ResourceController {
@@ -19,7 +19,7 @@ export class AssetsController extends ResourceController {
     super(service);
   }
 
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtTokenAuthGuard)
   @Get()
   async findAllAssets(@Req() req) {
     const assetsList = await this.service.findAll();

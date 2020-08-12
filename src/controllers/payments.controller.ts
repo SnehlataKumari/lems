@@ -2,7 +2,7 @@ import { Controller, Post, UseGuards, Req } from '@nestjs/common';
 import { UsersService } from 'src/services/users.service';
 import { ResourceController } from './resource.controller';
 import { success } from 'src/utils';
-import { JwtAuthGuard } from 'src/passport/jwtauth.guard';
+import { JwtTokenAuthGuard } from 'src/passport/jwttokenauth.guard';
 
 @Controller('payments')
 export class PaymentsController extends ResourceController {
@@ -10,7 +10,7 @@ export class PaymentsController extends ResourceController {
     super(service);
   }
 
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtTokenAuthGuard)
   @Post('on-payment-successfull')
   async createPayment(@Req() req) {
     const { user, body } = req;

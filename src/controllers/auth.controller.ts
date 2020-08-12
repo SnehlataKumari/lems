@@ -6,6 +6,7 @@ import {
   UnauthorizedException,
   BadRequestException,
   Param,
+  Request,
 } from '@nestjs/common';
 import { UsersService } from 'src/services/users.service';
 import { AuthService } from 'src/services/auth.service';
@@ -18,6 +19,7 @@ import { ConfigService } from '@nestjs/config';
 import { EmailService } from 'src/services/email.service';
 import Joi = require('@hapi/joi');
 import { JoiValidation } from 'src/decorators/joivalidation.decorators';
+import { ValidateToken } from 'src/decorators/validatetoken.decorators';
 
 const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 const passwordSchema = Joi.string()
@@ -72,6 +74,7 @@ export class AuthController {
     await this.emailService.sendVerificationLink(users, link);
 
     return {
+      link,
       message: 'Verification link sent to your email!',
       users,
     };
@@ -100,7 +103,7 @@ export class AuthController {
     const link = `${this.hostUrl}/auth/verify/${token}`;
     await this.emailService.sendVerificationLink(users, link);
 
-    return 'Verification link sent successfully!';
+    return { message: 'Verification link sent successfully!', link };
   }
 
   @Get('verify/:token')
@@ -167,5 +170,11 @@ export class AuthController {
       password: hash,
     });
     return success('Password reset successful!', {});
+  }
+
+  @ValidateToken()
+  @Get('check-token')
+  checkToken(@Request() req) {
+    return req.user;
   }
 }

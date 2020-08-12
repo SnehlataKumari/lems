@@ -3207,8 +3207,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/auth.service.ts": {
-        "version": "a60944bc0e45ebd7d607103a2708aa9d5aef4d33518a6600eacec513a5949cb3",
-        "signature": "f4af2909d6bf2966a33fa275994afe9d8882cc7819b7d25fd0b2a45ac6c7ef3d",
+        "version": "8d30e427c32b92f3d6365066238da48ff8462a4eaa9eaa40da0a34bf8125fd0c",
+        "signature": "b093d9a197dbfaecec8fbadc5d8e858a0a0a4a3b42836486a6ea0f2b285bccf4",
         "affectsGlobalScope": false
       },
       "../src/services/dummysms.service.ts": {
@@ -3248,7 +3248,7 @@
       },
       "../src/services/index.ts": {
         "version": "077649c69ddc86e5613d2db2a8ddf461b1059b6b455697920b79d3f5de84ec83",
-        "signature": "687a2a5f924e60cbe057c5eab0cf98691cb8433831cb5626a6bef736705f8fec",
+        "signature": "9782886b5fd57928ff2dbf8ce71991c5ab3a5c0e31c5ce70f842b261f7fcf4a7",
         "affectsGlobalScope": false
       },
       "../src/utils/index.ts": {
@@ -3351,13 +3351,13 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
         "affectsGlobalScope": false
       },
-      "../src/passport/jwtauth.guard.ts": {
-        "version": "51fc903ffa25cb72c7ecc1aa1fed8c9d5bf7c6dd2f7f0efe9d5fa1d7490b020c",
-        "signature": "e9629b89f6cd33a040577695d89edf882e66287d30c87121f5fc07f404decd25",
+      "../src/passport/jwttokenauth.guard.ts": {
+        "version": "21853f5777b51bb9acf6fe1ebd1251fe16ff76ee38b534d68849ce6d9f787394",
+        "signature": "de471b3ed511fdb167c432a44bfd045eb00d0e88d3e21a07ed3125a36335f971",
         "affectsGlobalScope": false
       },
       "../src/controllers/resource.controller.ts": {
-        "version": "7272bb89ac4949d076b25955e71c0e9ac68c1dd2e58ae2e8a33b701459ac3f95",
+        "version": "78c301e4a56729d7da81d2ac49a269e22f5e4612eafea726e3b514e20e725d7d",
         "signature": "9d30e84e206d2127bf15420ebc37f656584c1932caa0f67f4cc01b90694afbf3",
         "affectsGlobalScope": false
       },
@@ -3367,12 +3367,12 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/classes.controller.ts": {
-        "version": "6209899966db7c93d74fa3855752864430df800cf622c6dda20892d69d8ec8be",
+        "version": "dee32fc01d04f8617468404c6969379bb1c9425824578a1127b5d1f11bb0d503",
         "signature": "797334e1525ab7f574c3674a547c34fb5249e1b85df3ac6a3abef5579f123a33",
         "affectsGlobalScope": false
       },
       "../src/controllers/assets.controller.ts": {
-        "version": "ece4d1ec82f71fc8ddf1e177d0c308c86d0706b59d9a274adda692cb207eb4c5",
+        "version": "fb577f036ccdca1f67ae8f379035d57ff6b8373cc5ec558434119fa871353df8",
         "signature": "bc52fa4292a883091e67fdf5c4f567abfd32c11b6dc3748ab05ef7bc266163b5",
         "affectsGlobalScope": false
       },
@@ -3421,23 +3421,28 @@
         "signature": "d950ec5a4cce00be6439612ea51eb4fa3ef277c342e29c59cbcd706e7801c86e",
         "affectsGlobalScope": false
       },
+      "../src/decorators/validatetoken.decorators.ts": {
+        "version": "82ee9a4fa812ee46de83df7cd0a7c7afd6e718fd6a6ee235bb221853c632914e",
+        "signature": "4ace0cfd2681c3eeab850c8a89f1c3466452bed66ca6183ee74a092451a0d3df",
+        "affectsGlobalScope": false
+      },
       "../src/controllers/auth.controller.ts": {
-        "version": "d0e4ce17d585f778b9722de67c3cec534b44efa0b4177f7aa66e27ee03ee9662",
-        "signature": "7a0234270e29371330ef84a2c489ce98722f6e94d15ba047f4e128ac9399b633",
+        "version": "032fda07b97cf468be5efd04ecc435694ec70f4fc8295bcb6f17db1d91a1b9fa",
+        "signature": "4d448c8fceca315c005ca8a0969aa1de27ea521adee11bfd3951b8c241b80e05",
         "affectsGlobalScope": false
       },
       "../src/controllers/chapters.controller.ts": {
-        "version": "ce91cf757390cd70f15b398e756d7ebfbca6a7c8a7eed3472709cced933ab72d",
+        "version": "a36cffe3d9e16896641d2a1cbde10e8080de3016653b1906070bd92bd2907acc",
         "signature": "e50a814590d9cfe2493f7f2a045be5ba04c1c3408939abfb16ff423b99e20adc",
         "affectsGlobalScope": false
       },
       "../src/controllers/subject.controller.ts": {
-        "version": "f383e791dbc7b965d776f176a326c4252d32c0619bbd5b33fb0e1f6711494ab5",
+        "version": "ea4acca5a7a1c7632df97ae55bdcdd5478d8b6313396fba56681308dd31816d7",
         "signature": "bf59986606df2853ad3955cd3704ee59ce53ea805325a35bda4673bcf0973249",
         "affectsGlobalScope": false
       },
       "../src/controllers/payments.controller.ts": {
-        "version": "9cf67c2e5916f5aecd4bee592e8dcc1b213441acb0817edea941d6f3a2ef1c7b",
+        "version": "a659f37926d241c124e672adeaacbfa60a3ed6f0863ed3058b4ac2f9cf5140f6",
         "signature": "d0894aad858fe608abf1b7de6cc290ebc49eccf57aba6bfbcb9e6464278997b5",
         "affectsGlobalScope": false
       },
@@ -3472,8 +3477,8 @@
         "affectsGlobalScope": false
       },
       "../src/passport/jwt.strategy.ts": {
-        "version": "b82f6f936edd5ec34b82cd31582fef56a6c6c0d216b56559499c26c67f356e23",
-        "signature": "2b220a68f67a7714c1d46bf8b5c039eb68ad4fc43830bf4240465ef02db714dc",
+        "version": "d08bdf1a7e95130338e9bc0195206b6d56fcb397446fb616fce7419b510bd159",
+        "signature": "d91aeb45c0ffee528c226b44bde0540ffd41ff1733040bf0986486adce79bb90",
         "affectsGlobalScope": false
       },
       "../src/app.module.ts": {
@@ -18454,7 +18459,7 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/controllers/resource.controller.ts",
-        "../src/passport/jwtauth.guard.ts",
+        "../src/passport/jwttokenauth.guard.ts",
         "../src/services/assets.service.ts",
         "../src/utils/index.ts"
       ],
@@ -18469,6 +18474,8 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/decorators/joivalidation.decorators.ts",
+        "../src/decorators/validatetoken.decorators.ts",
+        "../src/passport/jwttokenauth.guard.ts",
         "../src/services/auth.service.ts",
         "../src/services/email.service.ts",
         "../src/services/sms.service.ts",
@@ -18485,7 +18492,7 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/controllers/resource.controller.ts",
-        "../src/passport/jwtauth.guard.ts",
+        "../src/passport/jwttokenauth.guard.ts",
         "../src/services/assets.service.ts",
         "../src/services/chapters.service.ts",
         "../src/utils/index.ts"
@@ -18498,7 +18505,7 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/controllers/resource.controller.ts",
-        "../src/passport/jwtauth.guard.ts",
+        "../src/passport/jwttokenauth.guard.ts",
         "../src/services/assets.service.ts",
         "../src/services/chapters.service.ts",
         "../src/services/classes.service.ts",
@@ -18527,7 +18534,7 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/controllers/resource.controller.ts",
-        "../src/passport/jwtauth.guard.ts",
+        "../src/passport/jwttokenauth.guard.ts",
         "../src/services/users.service.ts",
         "../src/utils/index.ts"
       ],
@@ -18538,7 +18545,7 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
-        "../src/passport/jwtauth.guard.ts",
+        "../src/passport/jwttokenauth.guard.ts",
         "../src/utils/index.ts"
       ],
       "../src/controllers/subject.controller.ts": [
@@ -18549,7 +18556,7 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/controllers/resource.controller.ts",
-        "../src/passport/jwtauth.guard.ts",
+        "../src/passport/jwttokenauth.guard.ts",
         "../src/services/assets.service.ts",
         "../src/services/chapters.service.ts",
         "../src/services/subject.service.ts",
@@ -18575,6 +18582,15 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/pipes/joivalidation.pipe.ts"
+      ],
+      "../src/decorators/validatetoken.decorators.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/passport/jwttokenauth.guard.ts"
       ],
       "../src/exception-filters/mongo-exception.filter.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -18609,7 +18625,7 @@
         "../src/constants/index.ts",
         "../src/services/auth.service.ts"
       ],
-      "../src/passport/jwtauth.guard.ts": [
+      "../src/passport/jwttokenauth.guard.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/passport/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -31411,7 +31427,7 @@
         "../node_modules/@types/passport-jwt/index.d.ts",
         "../src/services/auth.service.ts"
       ],
-      "../src/passport/jwtauth.guard.ts": [
+      "../src/passport/jwttokenauth.guard.ts": [
         "../node_modules/@nestjs/passport/index.d.ts"
       ],
       "../src/passport/otp.strategy.ts": [
@@ -31456,6 +31472,7 @@
         "../src/services/version.service.ts"
       ],
       "../src/services/auth.service.ts": [
+        "../node_modules/@types/mongoose/index.d.ts",
         "../src/services/users.service.ts"
       ],
       "../src/services/chapters.service.ts": [
@@ -32673,10 +32690,11 @@
       "../src/controllers/subject.controller.ts",
       "../src/controllers/users.controller.ts",
       "../src/decorators/joivalidation.decorators.ts",
+      "../src/decorators/validatetoken.decorators.ts",
       "../src/exception-filters/mongo-exception.filter.ts",
       "../src/main.ts",
       "../src/passport/jwt.strategy.ts",
-      "../src/passport/jwtauth.guard.ts",
+      "../src/passport/jwttokenauth.guard.ts",
       "../src/passport/otp.strategy.ts",
       "../src/pipes/index.ts",
       "../src/pipes/joivalidation.pipe.ts",

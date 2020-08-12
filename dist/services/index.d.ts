@@ -7,5 +7,5 @@ import { SmsService } from './sms.service';
 import { DummySmsService } from './dummySms.service';
 import { EmailService } from './email.service';
 import { NodeMailerService } from './nodemailer.service';
-declare const _default: (typeof AssetsService | typeof ClassesService | typeof FileService | typeof AuthService | typeof S3Service | typeof SmsService | typeof DummySmsService | typeof NodeMailerService | typeof EmailService)[];
+declare const _default: (typeof AuthService | typeof AssetsService | typeof ClassesService | typeof FileService | typeof S3Service | typeof SmsService | typeof DummySmsService | typeof NodeMailerService | typeof EmailService)[];
 export default _default;

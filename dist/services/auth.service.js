@@ -35,6 +35,12 @@ let AuthService = (() => {
             const hash = bcrypt.hashSync(password, salt);
             return hash;
         }
+        async isValidAuthToken(token) {
+            return true;
+        }
+        getUserById(id) {
+            return this.userService.findById(id);
+        }
     };
     AuthService = __decorate([
         common_1.Injectable(),

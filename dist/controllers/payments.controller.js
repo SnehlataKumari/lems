@@ -17,7 +17,7 @@ const common_1 = require("@nestjs/common");
 const users_service_1 = require("../services/users.service");
 const resource_controller_1 = require("./resource.controller");
 const utils_1 = require("../utils");
-const jwtauth_guard_1 = require("../passport/jwtauth.guard");
+const jwttokenauth_guard_1 = require("../passport/jwttokenauth.guard");
 let PaymentsController = (() => {
     let PaymentsController = class PaymentsController extends resource_controller_1.ResourceController {
         constructor(service) {
@@ -32,7 +32,7 @@ let PaymentsController = (() => {
         }
     };
     __decorate([
-        common_1.UseGuards(jwtauth_guard_1.JwtAuthGuard),
+        common_1.UseGuards(jwttokenauth_guard_1.JwtTokenAuthGuard),
         common_1.Post('on-payment-successfull'),
         __param(0, common_1.Req()),
         __metadata("design:type", Function),
