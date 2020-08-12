@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Query, UseGuards, Req, } from '@nestjs/common';
+import { Controller, Get, Param, Query, UseGuards, Req } from '@nestjs/common';
 import { ResourceController } from './resource.controller';
 import { ClassesService } from 'src/services/classes.service';
 import { ChaptersService } from 'src/services/chapters.service';
@@ -13,40 +13,47 @@ export class ClassesController extends ResourceController {
     service: ClassesService,
     private chapterService: ChaptersService,
     private assetService: AssetsService,
-    private subjectService: SubjectsService
-
+    private subjectService: SubjectsService,
   ) {
-    super(service)
+    super(service);
   }
 
   @Get('/:id/chapters')
   async getAllChapters(@Param('id') classId, @Query() queries) {
     let where: any = { class: classId };
 
-    if(queries && queries.search) {
+    if (queries && queries.search) {
       where = { ...where, $text: { $search: queries.search } };
     }
-    return this.chapterService.find(where).populate('class')
-    .populate('assets');
+    return this.chapterService
+      .find(where)
+      .populate('class')
+      .populate('assets');
   }
 
   @UseGuards(JwtAuthGuard)
   @Get('/:id/assets')
   async getAllAssets(@Param('id') id, @Req() req) {
     const assetsList = await this.assetService.find({
-      class: id
-    })
+      class: id,
+    });
 
-    const assetsListWithisSubscribed = await this.assetService.withIsSubscribedKey(assetsList, req.user);
+    const assetsListWithisSubscribed = await this.assetService.withIsSubscribedKey(
+      assetsList,
+      req.user,
+    );
 
-    return success('Success!', assetsListWithisSubscribed)
+    return success('Success!', assetsListWithisSubscribed);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get('/:id/subjects')
   async getAllSubjects(@Param('id') id) {
-    return success('Success!', this.subjectService.find({
-      class: id
-    }))
+    return success(
+      'Success!',
+      this.subjectService.find({
+        class: id,
+      }),
+    );
   }
 }

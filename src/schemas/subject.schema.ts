@@ -1,23 +1,26 @@
 import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const SubjectSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    // unique: [true, 'Subject title already exists!'],
-    required: [true, 'Subject title is required!'],
+const SubjectSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      // unique: [true, 'Subject title already exists!'],
+      required: [true, 'Subject title is required!'],
+    },
+    class: {
+      type: Schema.Types.ObjectId,
+      ref: 'Class',
+      required: true,
+    },
+    description: {
+      type: String,
+    },
   },
-  class: {
-    type: Schema.Types.ObjectId,
-    ref: 'Class',
-    required: true
+  {
+    timestamps: true,
   },
-  description: {
-    type: String,
-  }
-}, {
-  timestamps: true
-});
+);
 
 SubjectSchema.virtual('chapters', {
   ref: 'Chapter', // The model to use

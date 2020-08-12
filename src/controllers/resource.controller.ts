@@ -3,7 +3,6 @@ import { success } from 'src/utils';
 import { JwtAuthGuard } from 'src/passport/auth.guard';
 
 export class ResourceController {
-
   constructor(public service) {}
 
   @UseGuards(JwtAuthGuard)
@@ -15,7 +14,10 @@ export class ResourceController {
   @UseGuards(JwtAuthGuard)
   @Post()
   createResource(@Body() createObject) {
-    return success('Resource created successfully!', this.service.create(createObject));
+    return success(
+      'Resource created successfully!',
+      this.service.create(createObject),
+    );
   }
 
   @UseGuards(JwtAuthGuard)
@@ -23,13 +25,16 @@ export class ResourceController {
   async deleteResource(@Param('id') id) {
     await this.service.findByIdAndDelete(id);
     return success('Resource deleted successfully!', {
-      id
+      id,
     });
   }
 
   @UseGuards(JwtAuthGuard)
   @Put('/:id')
   async updateResource(@Param('id') id, @Body() resourceObject) {
-    return success('Resource updated successfully!', this.service.findByIdAndUpdate(id, resourceObject));
+    return success(
+      'Resource updated successfully!',
+      this.service.findByIdAndUpdate(id, resourceObject),
+    );
   }
-};
+}

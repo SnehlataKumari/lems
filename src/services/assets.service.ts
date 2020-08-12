@@ -20,7 +20,11 @@ export class AssetsService extends DBService {
   }
 
   async withIsSubscribedKey(assetsList, user) {
-    const {version} = (await this.versionService.findOne({}));
-    return assetsList.map(a => ({ ...a.toJSON(), isSubscribed: user.isSubscribed, version }));
+    const { version } = await this.versionService.findOne({});
+    return assetsList.map(a => ({
+      ...a.toJSON(),
+      isSubscribed: user.isSubscribed,
+      version,
+    }));
   }
 }

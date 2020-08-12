@@ -1,11 +1,9 @@
-import { Model } from "mongoose";
+import { Model } from 'mongoose';
 
 export class DBService {
-  constructor(private model: Model<any>) {
+  constructor(private model: Model<any>) {}
 
-  }
-
-  findAll(where={}) {
+  findAll(where = {}) {
     return this.model.find(where);
   }
 
@@ -33,10 +31,9 @@ export class DBService {
     return this.model.findOneAndDelete(query);
   }
 
-  find(query={}) {
+  find(query = {}) {
     return this.model.find(query);
   }
-
 
   async update(model, updateObject) {
     return this.findByIdAndUpdate(model._id, updateObject);

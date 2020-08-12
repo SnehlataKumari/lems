@@ -11,7 +11,7 @@ export class MongooseExceptionFilter implements ExceptionFilter {
     const request = ctx.getRequest<Request>();
     const status = 401;
     console.log(exception);
-   
+
     // const errors = exception.errors;
     // const errorMessage = {};
     // for (const errorField in errors) {
@@ -40,7 +40,7 @@ export class MongoDBExceptionFilter implements ExceptionFilter {
     const request = ctx.getRequest<Request>();
     const status = 401;
     console.log(exception);
-   
+
     // const errors = exception.errors;
     // const errorMessage = {};
     // for (const errorField in errors) {

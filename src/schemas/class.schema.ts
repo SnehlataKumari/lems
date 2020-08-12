@@ -1,15 +1,18 @@
 import * as mongoose from 'mongoose';
 // const Schema = mongoose.Schema;
 
-const ClassSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    unique: [true, 'Class name already exists!'],
-    required: [true, 'Name is required!'],
-  }
-}, {
-  timestamps: true
-});
+const ClassSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      unique: [true, 'Class name already exists!'],
+      required: [true, 'Name is required!'],
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
 
 ClassSchema.virtual('subjects', {
   ref: 'Subject', // The model to use
@@ -17,4 +20,4 @@ ClassSchema.virtual('subjects', {
   foreignField: 'class', // is equal to `foreignField`
 });
 
-export {ClassSchema};
+export { ClassSchema };

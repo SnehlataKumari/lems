@@ -1,17 +1,15 @@
-import { Injectable } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
-import * as AWS  from "aws-sdk";
+import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import * as AWS from 'aws-sdk';
 
 @Injectable()
 export class S3Service {
-
   s3Client;
   bucketName;
 
   constructor(private configService: ConfigService) {
     this.bucketName = this.configService.get('S3Bucket');
 
-    
     AWS.config.update({
       accessKeyId: this.configService.get('AWSAccessKeyId'),
       secretAccessKey: this.configService.get('AWSSecretKey'),
@@ -36,10 +34,7 @@ export class S3Service {
     };
   }
 
-  async uploadFile(
-    fileName,
-    fileData
-  ) {
+  async uploadFile(fileName, fileData) {
     const params = {
       Bucket: this.bucketName,
       Key: fileName,
@@ -52,7 +47,5 @@ export class S3Service {
       response: data,
       fileName: fileName,
     };
-    
   }
-
 }

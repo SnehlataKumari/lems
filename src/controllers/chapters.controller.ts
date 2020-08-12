@@ -1,4 +1,4 @@
-import { Controller, Get, Param, UseGuards, Query, Req, } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards, Query, Req } from '@nestjs/common';
 import { ResourceController } from './resource.controller';
 import { ChaptersService } from 'src/services/chapters.service';
 import { AssetsService } from 'src/services/assets.service';
@@ -7,21 +7,21 @@ import { success } from 'src/utils';
 
 @Controller('chapters')
 export class ChaptersController extends ResourceController {
-  constructor(
-    service: ChaptersService,
-    private assetService: AssetsService
-  ) {
-    super(service)
+  constructor(service: ChaptersService, private assetService: AssetsService) {
+    super(service);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get('/:id/assets')
   async getAllAssets(@Param('id') id, @Req() req) {
     const assetsList = await this.assetService.find({
-      chapter: id
+      chapter: id,
     });
 
-    const assetsListWithisSubscribed = await this.assetService.withIsSubscribedKey(assetsList, req.user);
+    const assetsListWithisSubscribed = await this.assetService.withIsSubscribedKey(
+      assetsList,
+      req.user,
+    );
     return success('Success!', assetsListWithisSubscribed);
   }
 

@@ -5,26 +5,29 @@ const s3Schema = new Schema({
   Location: String,
   key: String,
   Key: String,
-  Bucket: String
+  Bucket: String,
 });
 
-const AssetSchema = new mongoose.Schema({
-  class: { type: Schema.Types.ObjectId, ref: 'Class', required: true },
-  chapter: { type: Schema.Types.ObjectId, ref: 'Chapter', required: true },
-  subject: { type: Schema.Types.ObjectId, ref: 'Subject', required: true },
-  title: {
-    type: String,
-    required: [true, 'Title is required!'],
+const AssetSchema = new mongoose.Schema(
+  {
+    class: { type: Schema.Types.ObjectId, ref: 'Class', required: true },
+    chapter: { type: Schema.Types.ObjectId, ref: 'Chapter', required: true },
+    subject: { type: Schema.Types.ObjectId, ref: 'Subject', required: true },
+    title: {
+      type: String,
+      required: [true, 'Title is required!'],
+    },
+    description: {
+      type: String,
+    },
+    videoS3: s3Schema,
+    pdfS3: s3Schema,
   },
-  description: {
-    type: String
+  {
+    timestamps: true,
   },
-  videoS3: s3Schema,
-  pdfS3: s3Schema,
-}, {
-  timestamps: true
-});
+);
 
 AssetSchema.index({ title: 'text', description: 'text' });
 
-export {AssetSchema};
+export { AssetSchema };

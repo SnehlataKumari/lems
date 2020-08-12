@@ -24,9 +24,8 @@ import { JwtStrategy } from './passport/jwt.strategy';
       rootPath: join(__dirname, '..', 'static'),
     }),
     JwtModule.register({
-      secret: JWT_CONSTANTS.secret
+      secret: JWT_CONSTANTS.secret,
     }),
-    
   ],
   controllers: [AppController, ...controllers],
   providers: [AppService, JwtStrategy, OTPStrategy, ...services],

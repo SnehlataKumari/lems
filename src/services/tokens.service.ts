@@ -10,12 +10,13 @@ export class TokensService extends DBService {
   }
 
   findByTokenAndTypeAndDelete(token, type) {
-    return this.findOneAndDelete({token, type});
+    return this.findOneAndDelete({ token, type });
   }
 
   findByTokenAndType(token, type) {
     return this.findOne({
-      token, type
+      token,
+      type,
     });
   }
 }

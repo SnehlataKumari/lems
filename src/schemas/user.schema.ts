@@ -8,7 +8,7 @@ export const UserSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   password: {
     type: String,
@@ -16,9 +16,8 @@ export const UserSchema = new mongoose.Schema({
   },
   isEmailVerified: {
     type: Boolean,
-    default: false
+    default: false,
   },
-
 });
 
 //   mobileNumber: {
@@ -38,4 +37,3 @@ export const UserSchema = new mongoose.Schema({
 // }, {
 //   timestamps: true
 // }
-
