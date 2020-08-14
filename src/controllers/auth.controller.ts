@@ -59,31 +59,33 @@ export class AuthController {
   // TODO: Move business logic to AuthService
   @JoiValidation(userSchema)
   @Post('sign-up')
-  async signUp(@Body() req) {
-    const { email, password, name } = req;
-    const tokenType = 'VERIFY_EMAIL';
-    const hash = await this.service.encryptPassword(password);
-    const user = await this.usersService.create({
-      email,
-      password: hash,
-      name,
-    });
-    const userModel = this.usersService.getPublicDetails(user);
-    const token = this.jwtService.sign(userModel);
-    await this.tokensService.create({
-      token,
-      type: tokenType,
-      userId: userModel._id,
-    });
-    const link = `${this.hostUrl}/auth/verify/${token}`;
+  async signUp(@Body() requestBody) {
+    // const { email, password, name } = req;
+    const users = this.service.signUp(requestBody);
+    return users;
+    // const tokenType = 'VERIFY_EMAIL';
+    // const hash = await this.service.encryptPassword(password);
+    // const user = await this.usersService.create({
+    //   email,
+    //   password: hash,
+    //   name,
+    // });
+    // const userModel = this.usersService.getPublicDetails(user);
+    // const token = this.jwtService.sign(userModel);
+    // await this.tokensService.create({
+    //   token,
+    //   type: tokenType,
+    //   userId: userModel._id,
+    // });
+    // const link = `${this.hostUrl}/auth/verify/${token}`;
 
-    await this.emailService.sendVerificationLink(userModel, link);
+    // await this.emailService.sendVerificationLink(userModel, link);
 
-    return {
-      link,
-      message: 'Verification link sent to your email!',
-      userModel,
-    };
+    // return {
+    //   link,
+    //   message: 'Verification link sent to your email!',
+    //   userModel,
+    // };
   }
 
   // TODO: Move business logic to AuthService
