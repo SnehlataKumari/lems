@@ -1,9 +1,17 @@
 export const getKeys = constant =>
   Reflect.ownKeys(constant).map(constantKey => constant[constantKey].key);
 
+export const TOKEN_TYPES = {
+  LOGIN: { key: 'LOGIN', label: 'LOGIN' },
+  VERIFY_EMAIL: { key: 'VERIFY_EMAIL', label: 'VERIFY_EMAIL' },
+  FORGOT_PASSWORD: { key: 'FORGOT_PASSWORD', label: 'FORGOT_PASSWORD' },
+};
+
 export const USER_ROLES = {
-  USER: { key: 'USER', label: 'User' },
+  TEACHER: { key: 'TEACHER', label: 'Teacher' },
+  STUDENT: { key: 'STUDENT', label: 'Student' },
   ADMIN: { key: 'ADMIN', label: 'Admin' },
+  SUB_ADMIN: { key: 'SUB_ADMIN', label: 'SubAdmin' },
 };
 
 export const JWT_CONSTANTS = {

@@ -1,24 +1,35 @@
 import * as mongoose from 'mongoose';
+import { getKeys, USER_ROLES } from 'src/constants';
 
-export const UserSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, 'Name is required!'],
+export const UserSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: [true, 'Name is required!'],
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    isEmailVerified: {
+      type: Boolean,
+      default: false,
+    },
+    role: {
+      type: String,
+      enum: getKeys(USER_ROLES),
+      default: USER_ROLES['STUDENT'].key,
+    },
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
+  {
+    timestamps: true,
   },
-  password: {
-    type: String,
-    required: true,
-  },
-  isEmailVerified: {
-    type: Boolean,
-    default: false,
-  },
-});
+);
 
 //   mobileNumber: {
 //     type: String,
@@ -27,13 +38,6 @@ export const UserSchema = new mongoose.Schema({
 //   },
 //   devices: [String],
 //   isBlocked: {type: Boolean,default: false},
-//   role: {
-//     type: String,
-//     enum: getKeys(USER_ROLES),
-//     default: USER_ROLES['USER'].key
-//   },
 //   otp: String,
 //   payments: [paymentSchema]
-// }, {
-//   timestamps: true
-// }
+// }, import { getKeys, TOKEN_TYPES } from 'src/constants';

@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import { getKeys, TOKEN_TYPES } from 'src/constants';
 
 export const TokenSchema = new mongoose.Schema(
   {
@@ -8,7 +9,7 @@ export const TokenSchema = new mongoose.Schema(
     },
     type: {
       type: String,
-      enum: ['LOGIN', 'VERIFY_EMAIL', 'FORGOT_PASSWORD'],
+      enum: getKeys(TOKEN_TYPES),
       required: true,
     },
     userId: {

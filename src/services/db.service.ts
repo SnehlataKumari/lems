@@ -1,7 +1,15 @@
 import { Model } from 'mongoose';
+import { pick } from 'lodash';
 
-export class DBService {
+export abstract class DBService {
   constructor(private model: Model<any>) {}
+
+  // TODO: Make it abstract
+  publicKeys = ['_id'];
+
+  getPublicDetails(user) {
+    return pick(user, this.publicKeys);
+  }
 
   findAll(where = {}) {
     return this.model.find(where);
