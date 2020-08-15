@@ -11,7 +11,11 @@ export const USER_ROLES = {
   TEACHER: { key: 'TEACHER', label: 'Teacher' },
   STUDENT: { key: 'STUDENT', label: 'Student' },
   ADMIN: { key: 'ADMIN', label: 'Admin' },
-  SUB_ADMIN: { key: 'SUB_ADMIN', label: 'SubAdmin' },
+};
+
+export const GENDER = {
+  MALE: { key: 'MALE', label: 'Male' },
+  FEMALE: { key: 'FEMALE', label: 'Female' },
 };
 
 export const JWT_CONSTANTS = {

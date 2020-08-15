@@ -1,12 +1,7 @@
 import { Controller, Post, Get, Body, Param, Request } from '@nestjs/common';
-import { UsersService } from 'src/services/users.service';
 import { AuthService } from 'src/services/auth.service';
-import { JwtService } from '@nestjs/jwt';
-import { SmsService } from 'src/services/sms.service';
-import { VersionService } from 'src/services/version.service';
 import { TokensService } from 'src/services/tokens.service';
 import { ConfigService } from '@nestjs/config';
-import { EmailService } from 'src/services/email.service';
 import Joi = require('@hapi/joi');
 import { JoiValidation } from 'src/decorators/joivalidation.decorator';
 import { ValidateToken } from 'src/decorators/validatetoken.decorator';
@@ -20,10 +15,20 @@ const passwordSchema = Joi.string()
   .required();
 
 const userSchema = Joi.object({
-  name: Joi.string()
+  firstName: Joi.string()
     .trim()
     .min(3)
     .max(30)
+    .required(),
+  lastName: Joi.string()
+    .trim()
+    .min(3)
+    .max(30)
+    .required(),
+  phone: Joi.string()
+    .trim()
+    .min(10)
+    .max(10)
     .required(),
   password: passwordSchema,
   email: Joi.string()
@@ -31,17 +36,17 @@ const userSchema = Joi.object({
     .lowercase()
     .email(),
 });
+
+const teacherSchema = Joi.object({
+  user: userSchema,
+}).unknown(true);
+
 @Controller('auth')
 export class AuthController {
   constructor(
     private config: ConfigService,
     private service: AuthService,
-    private usersService: UsersService,
     private tokensService: TokensService,
-    private jwtService: JwtService,
-    private emailService: EmailService,
-    private smsService: SmsService,
-    private versionService: VersionService,
   ) {}
 
   get hostUrl() {
@@ -51,8 +56,20 @@ export class AuthController {
   @JoiValidation(userSchema)
   @Post('sign-up')
   async signUp(@Body() requestBody) {
-    const { email, password, name } = requestBody;
-    return await this.service.signUp({ email, password, name });
+    const { email, password, firstName, lastName, phone } = requestBody;
+    return await this.service.signUp({
+      email,
+      password,
+      firstName,
+      lastName,
+      phone,
+    });
+  }
+
+  @JoiValidation(teacherSchema)
+  @Post('signup-teacher')
+  async signupTeacher(@Body() requestBody) {
+    return await this.service.signUpTeacher(requestBody);
   }
 
   @Post('resend-verification-email')

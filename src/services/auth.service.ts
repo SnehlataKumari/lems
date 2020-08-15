@@ -11,6 +11,7 @@ import { ConfigService } from '@nestjs/config';
 import { EmailService } from 'src/services/email.service';
 import { success } from 'src/utils';
 import { TOKEN_TYPES } from 'src/constants';
+import { TeachersService } from './teachers.service';
 
 @Injectable()
 export class AuthService {
@@ -20,19 +21,22 @@ export class AuthService {
     private configs: ConfigService,
     private jwtService: JwtService,
     private emailsService: EmailService,
+    private teacherService: TeachersService,
   ) {}
 
   get hostUrl() {
     return this.configs.get('HOST_URL');
   }
 
-  async signUp({ email, password, name }) {
+  async signUp({ email, password, firstName, lastName, phone }) {
     const tokenType = TOKEN_TYPES['VERIFY_EMAIL'].key;
     const hash = await this.encryptPassword(password);
     const user = await this.userService.create({
       email,
       password: hash,
-      name,
+      firstName,
+      lastName,
+      phone,
     });
     const userModel = this.userService.getPublicDetails(user);
     const token = this.jwtService.sign(userModel);
@@ -45,6 +49,30 @@ export class AuthService {
     await this.emailsService.sendVerificationLink(userModel, link);
     return {
       message: 'Verification link sent to your email!',
+      userModel,
+    };
+  }
+
+  async signUpTeacher(requestBody) {
+    const { user: userObject, teacher: teacherObject } = requestBody;
+    const tokenType = TOKEN_TYPES['VERIFY_EMAIL'].key;
+    const hash = await this.encryptPassword(userObject.password);
+    const user = await this.userService.create({
+      ...userObject,
+      password: hash,
+    });
+    const userModel = this.userService.getPublicDetails(user);
+    const token = this.jwtService.sign(userModel);
+    await this.tokenService.create({
+      token,
+      type: tokenType,
+      userId: userModel._id,
+    });
+    await this.teacherService.create(teacherObject);
+    const link = `${this.hostUrl}/auth/verify/${token}`;
+    await this.emailsService.sendVerificationLink(userModel, link);
+    return {
+      message: 'Verification link for Teacher is sent to your email!',
       userModel,
     };
   }
@@ -96,6 +124,8 @@ export class AuthService {
       throw new UnauthorizedException('User not registered!');
     }
     const comparePassword = bcrypt.compareSync(password, userModel.password);
+    console.log(userModel.password);
+
     if (!comparePassword) {
       throw new UnauthorizedException('wrong password!');
     }

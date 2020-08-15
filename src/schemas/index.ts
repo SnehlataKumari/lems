@@ -5,6 +5,7 @@ import { ChapterSchema } from './chapter.schema';
 import { SubjectSchema } from './subject.schema';
 import { VersionSchema } from './version.schema';
 import { TokenSchema } from './token.schema';
+import { TeacherSchema } from './teacher.schema';
 
 export default [
   { name: 'Class', schema: ClassSchema },
@@ -14,4 +15,5 @@ export default [
   { name: 'Subject', schema: SubjectSchema },
   { name: 'Version', schema: VersionSchema },
   { name: 'Token', schema: TokenSchema },
+  { name: 'Teacher', schema: TeacherSchema },
 ];

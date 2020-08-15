@@ -1,15 +1,27 @@
 import * as mongoose from 'mongoose';
-import { getKeys, USER_ROLES } from 'src/constants';
+import { getKeys, USER_ROLES, GENDER } from 'src/constants';
 
 export const UserSchema = new mongoose.Schema(
   {
-    name: {
+    firstName: {
       type: String,
       required: [true, 'Name is required!'],
+    },
+    lastName: {
+      type: String,
+      required: [true, 'Name is required!'],
+    },
+    gender: {
+      type: String,
+      enum: getKeys(GENDER),
     },
     email: {
       type: String,
       required: true,
+      unique: true,
+    },
+    phone: {
+      type: Number,
       unique: true,
     },
     password: {
@@ -30,14 +42,3 @@ export const UserSchema = new mongoose.Schema(
     timestamps: true,
   },
 );
-
-//   mobileNumber: {
-//     type: String,
-//     required: [true, 'Mobile Number is required!'],
-//     unique: [true, 'Mobile Number already exists!']
-//   },
-//   devices: [String],
-//   isBlocked: {type: Boolean,default: false},
-//   otp: String,
-//   payments: [paymentSchema]
-// }, import { getKeys, TOKEN_TYPES } from 'src/constants';

@@ -13,6 +13,7 @@ import { DummySmsService } from './dummySms.service';
 import { TokensService } from './tokens.service';
 import { EmailService } from './email.service';
 import { NodeMailerService } from './nodemailer.service';
+import { TeachersService } from './teachers.service';
 
 export default [
   UsersService,
@@ -31,4 +32,5 @@ export default [
   TokensService,
   NodeMailerService,
   EmailService,
+  TeachersService,
 ];
