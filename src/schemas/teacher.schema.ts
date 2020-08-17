@@ -2,6 +2,11 @@ import * as mongoose from 'mongoose';
 
 export const TeacherSchema = new mongoose.Schema(
   {
+    userId: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'User',
+      required: true,
+    },
     highestQualification: {
       type: String,
     },
@@ -56,8 +61,7 @@ export const TeacherSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    // TODO: Rename screenShortOfInternet
-    screenShortOfInternet: {
+    screenShotOfInternet: {
       type: String,
     },
     associationWithLems: {
@@ -78,6 +82,9 @@ export const TeacherSchema = new mongoose.Schema(
     termsAndConditions: {
       type: Boolean,
       default: false,
+    },
+    hasAcceptedRegistrationRequest: {
+      type: Boolean,
     },
   },
   {

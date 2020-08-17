@@ -61,14 +61,16 @@ export class AuthService {
       ...userObject,
       password: hash,
     });
+    
     const userModel = this.userService.getPublicDetails(user);
+
     const token = this.jwtService.sign(userModel);
     await this.tokenService.create({
       token,
       type: tokenType,
       userId: userModel._id,
     });
-    await this.teacherService.create(teacherObject);
+    await this.teacherService.create({...teacherObject, userId: user._id});
     const link = `${this.hostUrl}/auth/verify/${token}`;
     await this.emailsService.sendVerificationLink(userModel, link);
     return {

@@ -101,11 +101,11 @@ export class AuthController {
     return await this.service.resetPassword(password, token);
   }
 
-  @ValidateToken()
-  @Get('check-token')
-  checkToken(@Request() req) {
-    return req.user;
-  }
+  // @ValidateToken()
+  // @Get('check-token')
+  // checkToken(@Request() req) {
+  //   return req.user;
+  // }
 
   @ValidateToken()
   @Post('logout')
