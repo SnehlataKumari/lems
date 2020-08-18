@@ -10,8 +10,6 @@ export class MongooseExceptionFilter implements ExceptionFilter {
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
     const status = 401;
-    console.log(exception);
-
     // const errors = exception.errors;
     // const errorMessage = {};
     // for (const errorField in errors) {

@@ -14,7 +14,9 @@ import { TokensService } from './tokens.service';
 import { EmailService } from './email.service';
 import { NodeMailerService } from './nodemailer.service';
 import { TeachersService } from './teachers.service';
-
+import { ProductsService } from './products.service';
+import { CoursesService } from './courses.service';
+import { LiveStreamsService } from './liveStreams.service';
 export default [
   UsersService,
   AssetsService,
@@ -33,4 +35,7 @@ export default [
   NodeMailerService,
   EmailService,
   TeachersService,
+  ProductsService,
+  CoursesService,
+  LiveStreamsService,
 ];

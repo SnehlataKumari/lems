@@ -46,4 +46,8 @@ export abstract class DBService {
   update(model, updateObject) {
     return this.findByIdAndUpdate(model._id, updateObject);
   }
+
+  delete( query ){
+    return this.model.remove( query );
+  }
 }
