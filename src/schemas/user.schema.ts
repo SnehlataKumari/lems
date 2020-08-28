@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import { getKeys, USER_ROLES, GENDER } from 'src/constants';
+import { getKeys, USER_ROLES,} from 'src/constants';
 
 export const UserSchema = new mongoose.Schema(
   {
@@ -13,7 +13,7 @@ export const UserSchema = new mongoose.Schema(
     },
     gender: {
       type: String,
-      enum: getKeys(GENDER),
+      // enum: getKeys(GENDER),
     },
     email: {
       type: String,
@@ -26,7 +26,6 @@ export const UserSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: true,
     },
     isEmailVerified: {
       type: Boolean,

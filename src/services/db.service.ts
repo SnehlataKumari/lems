@@ -4,6 +4,10 @@ import { pick } from 'lodash';
 export abstract class DBService {
   constructor(private model: Model<any>) {}
 
+  getModel() {
+    return this.model;
+  }
+
   // TODO: Make it abstract
   publicKeys = ['_id'];
 

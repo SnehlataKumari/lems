@@ -14,7 +14,7 @@ export const TeacherSchema = new mongoose.Schema(
       type: String,
     },
     teachingExperience: {
-      type: Number,
+      type: String,
       required: true,
     },
     primaryTeachingSubjects: {
@@ -47,7 +47,6 @@ export const TeacherSchema = new mongoose.Schema(
     },
     dateOfBirth: {
       type: String,
-      required: true,
     },
     typeOfInternetConnection: {
       type: String,

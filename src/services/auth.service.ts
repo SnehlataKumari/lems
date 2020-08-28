@@ -28,15 +28,12 @@ export class AuthService {
     return this.configs.get('HOST_URL');
   }
 
-  async signUp({ email, password, firstName, lastName, phone }) {
+  async signUp(requestBody) {
     const tokenType = TOKEN_TYPES['VERIFY_EMAIL'].key;
-    const hash = await this.encryptPassword(password);
+    const hash = await this.encryptPassword(requestBody.password);
     const user = await this.userService.create({
-      email,
-      password: hash,
-      firstName,
-      lastName,
-      phone,
+      ...requestBody,
+      password: hash
     });
     const userModel = this.userService.getPublicDetails(user);
     const token = this.jwtService.sign(userModel);
@@ -54,25 +51,44 @@ export class AuthService {
   }
 
   async signUpTeacher(requestBody) {
+    // try {
+    //   const session = await this.userService.getModel().db.startSession();
+    //   session.startTransaction();
+
+    //   try { } catch (error) {
+    //     await session.abortTransaction();
+    //     this.logger.error(`Administrator '${newAdmin.email}' couldn\'t create or update`);
+    //     this.logger.error(error);
+    //   } finally {
+    //     session.endSession();
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+      
+    //   // this.logger.error(error);
+    //   // this.logger.error('Transaction couldn\'t create');
+    // }
+    
     const { user: userObject, teacher: teacherObject } = requestBody;
-    const tokenType = TOKEN_TYPES['VERIFY_EMAIL'].key;
-    const hash = await this.encryptPassword(userObject.password);
+    // const tokenType = TOKEN_TYPES['VERIFY_EMAIL'].key;
+    // const hash = await this.encryptPassword(userObject.password);
+    // console.log(hash);
     const user = await this.userService.create({
       ...userObject,
-      password: hash,
     });
     
     const userModel = this.userService.getPublicDetails(user);
 
-    const token = this.jwtService.sign(userModel);
-    await this.tokenService.create({
-      token,
-      type: tokenType,
-      userId: userModel._id,
-    });
+    // const token = this.jwtService.sign(userModel);
+    // await this.tokenService.create({
+    //   token,
+    //   type: tokenType,
+    //   userId: userModel._id,
+    // });
+    
     await this.teacherService.create({...teacherObject, userId: user._id});
-    const link = `${this.hostUrl}/auth/verify/${token}`;
-    await this.emailsService.sendVerificationLink(userModel, link);
+    // const link = `${this.hostUrl}/auth/verify/${token}`;
+    await this.emailsService.sendVerificationLink(userModel,'You have successfully signed-in with LEMS');
     return {
       message: 'Verification link for Teacher is sent to your email!',
       userModel,
@@ -126,8 +142,6 @@ export class AuthService {
       throw new UnauthorizedException('User not registered!');
     }
     const comparePassword = bcrypt.compareSync(password, userModel.password);
-    console.log(userModel.password);
-
     if (!comparePassword) {
       throw new UnauthorizedException('wrong password!');
     }

@@ -13,10 +13,10 @@ export const USER_ROLES = {
   ADMIN: { key: 'ADMIN', label: 'Admin' },
 };
 
-export const GENDER = {
-  MALE: { key: 'MALE', label: 'Male' },
-  FEMALE: { key: 'FEMALE', label: 'Female' },
-};
+// export const GENDER = {
+//   MALE: { key: 'MALE', label: 'Male' },
+//   FEMALE: { key: 'FEMALE', label: 'Female' },
+// };
 
 export const JWT_CONSTANTS = {
   secret: process.env.SECRET || 'dontcare',

@@ -1,4 +1,5 @@
-import { Controller, Post, Get, Body, Param, Request } from '@nestjs/common';
+import { Controller, Post, Get, Body, Param, Request, UseInterceptors, UploadedFile, UploadedFiles } from '@nestjs/common';
+import { FileInterceptor, FileFieldsInterceptor } from '@nestjs/platform-express';
 import { AuthService } from 'src/services/auth.service';
 import { TokensService } from 'src/services/tokens.service';
 import { ConfigService } from '@nestjs/config';
@@ -11,8 +12,7 @@ import { TOKEN_TYPES } from 'src/constants';
 
 const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 const passwordSchema = Joi.string()
-  .pattern(passwordExpression)
-  .required();
+  .pattern(passwordExpression);
 
 const userSchema = Joi.object({
   firstName: Joi.string()
@@ -35,6 +35,7 @@ const userSchema = Joi.object({
     .trim()
     .lowercase()
     .email(),
+  gender: Joi.string(),
 });
 
 const teacherSchema = Joi.object({
@@ -56,20 +57,23 @@ export class AuthController {
   @JoiValidation(userSchema)
   @Post('sign-up')
   async signUp(@Body() requestBody) {
-    const { email, password, firstName, lastName, phone } = requestBody;
-    return await this.service.signUp({
-      email,
-      password,
-      firstName,
-      lastName,
-      phone,
-    });
+    return await this.service.signUp(requestBody);
   }
 
-  @JoiValidation(teacherSchema)
+  @UseInterceptors(FileFieldsInterceptor([
+    { name: 'resumeFile', maxCount: 1 },
+    { name: 'internetConnectionFile', maxCount: 1 },
+  ]))
+  // @JoiValidation(teacherSchema)
   @Post('signup-teacher')
-  async signupTeacher(@Body() requestBody) {
-    return await this.service.signUpTeacher(requestBody);
+  async signupTeacher(@Body() requestBody, @UploadedFiles() files) {
+    console.log(files);
+    console.log(requestBody);
+    
+    
+
+    // return await this.service.signUpTeacher(requestBody);
+    return 'asdf';
   }
 
   @Post('resend-verification-email')
