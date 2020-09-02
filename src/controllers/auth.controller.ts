@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Body, Param, Request, UseInterceptors, UploadedFile, UploadedFiles } from '@nestjs/common';
+import { Controller, Post, Get, Body, Param, Request, UseInterceptors, UploadedFile, UploadedFiles, Put, Req } from '@nestjs/common';
 import { FileInterceptor, FileFieldsInterceptor } from '@nestjs/platform-express';
 import { AuthService } from 'src/services/auth.service';
 import { TokensService } from 'src/services/tokens.service';
@@ -67,13 +67,9 @@ export class AuthController {
   // @JoiValidation(teacherSchema)
   @Post('signup-teacher')
   async signupTeacher(@Body() requestBody, @UploadedFiles() files) {
-    console.log(files);
     console.log(requestBody);
-    
-    
 
-    // return await this.service.signUpTeacher(requestBody);
-    return 'asdf';
+    return await this.service.signUpTeacher(requestBody, files); 
   }
 
   @Post('resend-verification-email')
@@ -87,22 +83,46 @@ export class AuthController {
     const { email, password } = requestBody;
     return await this.service.login({ email, password });
   }
+  
+  @Post('login-admin')
+  async loginAdmin(@Body() requestBody) {
+    const { email, password } = requestBody;
+    return await this.service.login({ email, password }, 'ADMIN');
+  }
+  
+  @Post('login-teacher')
+  async loginUser(@Body() requestBody) {
+    const { email, password } = requestBody;
+    return await this.service.login({ email, password }, 'TEACHER');
+  }
 
   @Get('verify/:token')
   async verify(@Param('token') token) {
     return await this.service.verifyToken(token);
   }
 
-  @Post('forgot-password')
+  @Post('forgot-password-teacher')
   async forgot(@Body() requestBody) {
     const { email } = requestBody;
-    return await this.service.forgotPassword(email);
+    return await this.service.forgotPassword(email, 'TEACHER');
+  }
+
+  @Post('forgot-password-admin')
+  async forgotAdmin(@Body() requestBody) {
+    const { email } = requestBody;
+    return await this.service.forgotPassword(email, 'ADMIN');
+  }
+  
+  @Post('forgot-password-student')
+  async forgotStudent(@Body() requestBody) {
+    const { email } = requestBody;
+    return await this.service.forgotPassword(email, 'STUDENT');
   }
 
   @Post('reset-password')
   async resetPassword(@Body() requestBody) {
-    const { password, token } = requestBody;
-    return await this.service.resetPassword(password, token);
+    const { currentPassword, token } = requestBody;
+    return await this.service.resetPassword(currentPassword, token);
   }
 
   // @ValidateToken()
@@ -118,4 +138,19 @@ export class AuthController {
     await this.tokensService.deleteUsersToken(loggedInUser, tokenType);
     return success('logged out successfully!', {});
   }
+
+  @ValidateToken()
+  @Post('change-password')
+  async changePassword(@Req() req, @Body() requestBody) {
+    const { user: loggedInUser } = req;
+    return await this.service.changePassword(loggedInUser, requestBody)
+  }
+
+  @ValidateToken()
+  @Post('edit-profile')
+  async editProfile(@Req() req, @Body() requestBody) {
+    const { user: loggedInUser } = req;
+    return await this.service.editProfile(loggedInUser, requestBody)
+  }
+
 }

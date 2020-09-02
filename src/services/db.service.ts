@@ -9,10 +9,14 @@ export abstract class DBService {
   }
 
   // TODO: Make it abstract
-  publicKeys = ['_id'];
+  publicKeys = [];
 
-  getPublicDetails(user) {
-    return pick(user, this.publicKeys);
+  getPublicDetails(model) {
+    const obj = model.toJSON();
+    if(this.publicKeys.length === 0) {
+      return obj
+    }
+    return pick(obj, this.publicKeys);
   }
 
   findAll(where = {}) {

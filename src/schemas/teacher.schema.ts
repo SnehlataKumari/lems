@@ -1,5 +1,126 @@
 import * as mongoose from 'mongoose';
 
+var subjectSchema = new mongoose.Schema({
+  Math: {
+    type: Boolean,
+  },
+  Physics: {
+    type: Boolean,
+  },
+  Chemistry: {
+    type: Boolean,
+  },
+  Biology:  {
+    type: Boolean,
+  },
+  ComputerScience:  {
+    type: Boolean,
+  },
+  English:  {
+    type: Boolean,
+  },
+  Hindi:  {
+    type: Boolean,
+  },
+  Sanskrit:  {
+    type: Boolean,
+  },
+  German:  {
+    type: Boolean,
+  },
+  French:  {
+    type: Boolean,
+  },
+  SocialStudies:  {
+    type: Boolean,
+  },
+  EVS:  {
+    type: Boolean,
+  },
+  BussinessStudies:  {
+    type: Boolean,
+  },
+  Accountancy:  {
+    type: Boolean,
+  },
+  Arabic:  {
+    type: Boolean,
+  },
+  Others: {
+    type: Boolean,
+  },
+});
+
+var gradeToTeachSchema = new mongoose.Schema({
+  '1 to 5': {
+    type: Boolean,
+  },
+  '6 to 8': {
+    type: Boolean,
+  },
+  '9 & 10': {
+    type: Boolean,
+  },
+  '11 & 12 (Regular Curriculum)': {
+    type: Boolean,
+  },
+  '11 & 12 (JEE Mains Level)': {
+    type: Boolean,
+  },
+  Others: {
+    type: Boolean,
+  },
+});
+
+var availableTimeSchema = new mongoose.Schema({
+  '6-7 am': {
+    type: Boolean,
+  },
+  '7-8 am': {
+    type: Boolean,
+  },
+  '8-9 am': {
+    type: Boolean,
+  },
+  '2-3 pm': {
+    type: Boolean,
+  },
+  '3-4 pm': {
+    type: Boolean,
+  },
+  '4-5 pm': {
+    type: Boolean,
+  },
+  '5-6 am': {
+    type: Boolean,
+  },
+  '6-7 pm': {
+    type: Boolean,
+  },
+  '8-9 pm': {
+    type: Boolean,
+  },
+  'Full Time': {
+    type: Boolean,
+  },
+});
+
+
+var boardSchema = new mongoose.Schema({
+  CBSC: {
+    type: Boolean,
+  },
+  ICSC: {
+    type: Boolean,
+  },
+  IGCSE: {
+    type: Boolean,
+  },
+  Others: {
+    type: Boolean,
+  },
+});
+
 export const TeacherSchema = new mongoose.Schema(
   {
     userId: {
@@ -18,18 +139,19 @@ export const TeacherSchema = new mongoose.Schema(
       required: true,
     },
     primaryTeachingSubjects: {
-      type: String,
+      type: [subjectSchema],
       required: true,
     },
     secondaryTeachingSubjects: {
-      type: String,
+      type: [subjectSchema],
+      required: true,
     },
     gradeToTeach: {
-      type: String,
+      type: [gradeToTeachSchema],
       required: true,
     },
     board: {
-      type: String,
+      type: [boardSchema],
       required: true,
     },
     weekDaysTeachingHours: {
@@ -39,13 +161,14 @@ export const TeacherSchema = new mongoose.Schema(
       type: String,
     },
     availableTime: {
-      type: String,
+      type: [availableTimeSchema],
     },
     currentOccupation: {
       type: String,
       required: true,
     },
     dateOfBirth: {
+      // type: [],
       type: String,
     },
     typeOfInternetConnection: {
@@ -61,13 +184,9 @@ export const TeacherSchema = new mongoose.Schema(
       required: true,
     },
     screenShotOfInternet: {
-      type: String,
+      type: [],
     },
     associationWithLems: {
-      type: String,
-      required: true,
-    },
-    location: {
       type: String,
       required: true,
     },
@@ -75,15 +194,26 @@ export const TeacherSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    resume: {
+    location: {
       type: String,
+      required: true,
+    },
+    resume: {
+      type: [],
     },
     termsAndConditions: {
       type: Boolean,
       default: false,
     },
+    aboutMe: {
+      type: String
+    },
+    extraField: {
+      type: String
+    },
     hasAcceptedRegistrationRequest: {
       type: Boolean,
+      default: false,
     },
   },
   {

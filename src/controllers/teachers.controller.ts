@@ -1,9 +1,10 @@
-import { Controller, Get, Delete, Body, Param, Post } from '@nestjs/common';
+import { Controller, Get, Put, Delete, Body, Param, Post, Req } from '@nestjs/common';
 import { TeachersService } from 'src/services/teachers.service';
 import { ResourceController } from './resource.controller';
 import { success } from 'src/utils';
 import Joi = require('@hapi/joi');
 import { JoiValidationPipe } from 'src/pipes/joivalidation.pipe';
+import { ValidateToken } from 'src/decorators/validatetoken.decorator';
 
 const acceptRequestSchema = Joi.object({
   accept: Joi.boolean()
@@ -20,6 +21,12 @@ export class TeachersController extends ResourceController {
     return success('List found successfully', this.service.findAll());
   }
 
+  @Get(':teacherId')
+  async findById(@Req() req) {
+    const teacherId = req.teacherId;
+    return success('List found successfully', this.service.findById(teacherId));
+  }
+
   @Delete(':teacherId')
   async deleteTeacherById(@Param('teacherId') teacherId){
     await this.service.deleteTeacherById(teacherId);
@@ -30,5 +37,22 @@ export class TeachersController extends ResourceController {
   async acceptRejectRegistrationRequest(@Body(new JoiValidationPipe(acceptRequestSchema)) requestBody, @Param('teacherId') teacherId ) {
     return await this.service.hasAcceptedRegistrationRequest (requestBody, teacherId);
   }
+
+  @Put('edit-teacher-profile')
+  async editTeacherProfile(@Body() requestBody, @Param() token) {
+    await this.service.editTeacherProfile(requestBody, token);
+    return success('Profile updated successfully', {});
+  }
+
+  @ValidateToken()
+  @Get('get-teacher-details')
+  async getTeacherDetails(@Req() req) {
+    const { user: loggedInUser } = req;
+    const teacherModel = await this.service.findOne({
+      userId: loggedInUser._id
+    });
+    return success('Teacher found!', this.service.getPublicDetails(teacherModel) );
+  }
+
 
 }

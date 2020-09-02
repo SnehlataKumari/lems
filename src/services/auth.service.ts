@@ -24,11 +24,23 @@ export class AuthService {
     private teacherService: TeachersService,
   ) {}
 
-  get hostUrl() {
-    return this.configs.get('HOST_URL');
+  hostUrl(role) {
+    if(role === 'ADMIN') {
+      return this.configs.get('HOSTFE_URL_ADMIN');
+    }
+    
+    if(role === 'STUDENT') {
+      return this.configs.get('HOSTFE_URL_STUDENT');
+    }
+   
+    if(role === 'TEACHER') {
+      return this.configs.get('HOSTFE_URL_TEACHER');
+    }
+
+    return this.configs.get('HOSTFE_URL');
   }
 
-  async signUp(requestBody) {
+  async signUp(requestBody, role='STUDENT') {
     const tokenType = TOKEN_TYPES['VERIFY_EMAIL'].key;
     const hash = await this.encryptPassword(requestBody.password);
     const user = await this.userService.create({
@@ -42,7 +54,7 @@ export class AuthService {
       type: tokenType,
       userId: userModel._id,
     });
-    const link = `${this.hostUrl}/auth/verify/${token}`;
+    const link = `${this.hostUrl(role)}/auth/verify/${token}`;
     await this.emailsService.sendVerificationLink(userModel, link);
     return {
       message: 'Verification link sent to your email!',
@@ -50,11 +62,11 @@ export class AuthService {
     };
   }
 
-  async signUpTeacher(requestBody) {
+  async signUpTeacher(requestBody,files) {
+    // TODO: Adde transaction
     // try {
     //   const session = await this.userService.getModel().db.startSession();
     //   session.startTransaction();
-
     //   try { } catch (error) {
     //     await session.abortTransaction();
     //     this.logger.error(`Administrator '${newAdmin.email}' couldn\'t create or update`);
@@ -63,30 +75,31 @@ export class AuthService {
     //     session.endSession();
     //   }
     // } catch (error) {
-    //   console.log(error);
-      
     //   // this.logger.error(error);
     //   // this.logger.error('Transaction couldn\'t create');
     // }
+
     
     const { user: userObject, teacher: teacherObject } = requestBody;
+    const hash = await this.encryptPassword(userObject.email);
     // const tokenType = TOKEN_TYPES['VERIFY_EMAIL'].key;
     // const hash = await this.encryptPassword(userObject.password);
-    // console.log(hash);
     const user = await this.userService.create({
       ...userObject,
+      password: hash,
+      role: 'TEACHER'
     });
-    
     const userModel = this.userService.getPublicDetails(user);
-
     // const token = this.jwtService.sign(userModel);
     // await this.tokenService.create({
     //   token,
     //   type: tokenType,
     //   userId: userModel._id,
     // });
-    
-    await this.teacherService.create({...teacherObject, userId: user._id});
+
+    // TODO: Change teacher schema to have dateOfBirth of type Date
+    const dateOfBirth = teacherObject.dateOfBirth._i;
+    const x = await this.teacherService.create({ ...teacherObject, userId: user._id, dateOfBirth: dateOfBirth, resume: files.resumeFile, screenShotOfInternet: files.internetConnectionFile});
     // const link = `${this.hostUrl}/auth/verify/${token}`;
     await this.emailsService.sendVerificationLink(userModel,'You have successfully signed-in with LEMS');
     return {
@@ -113,7 +126,7 @@ export class AuthService {
     }
   }
 
-  async resendVerificationLink(email) {
+  async resendVerificationLink(email, role='STUDENT') {
     const tokenType = TOKEN_TYPES['VERIFY_EMAIL'].key;
     const userModel = await this.userService.findByEmail(email);
     if (!userModel) {
@@ -130,14 +143,15 @@ export class AuthService {
       type: tokenType,
       userId: userModel._id,
     });
-    const link = `${this.hostUrl}/auth/verify/${token}`;
+    const link = `${this.hostUrl(role)}/auth/verify/${token}`;
     await this.emailsService.sendVerificationLink(userObj, link);
     return { message: 'Verification link sent successfully!' };
   }
 
-  async login({ email, password }) {
+  // TODO: pass role
+  async login({ email, password }, role='STUDENT') {
     const tokenType = TOKEN_TYPES['LOGIN'].key;
-    const userModel = await this.userService.findByEmail(email);
+    const userModel = await this.userService.findOne({email, role});
     if (!userModel) {
       throw new UnauthorizedException('User not registered!');
     }
@@ -145,24 +159,30 @@ export class AuthService {
     if (!comparePassword) {
       throw new UnauthorizedException('wrong password!');
     }
-    if (userModel.isEmailVerified === true) {
-      const token = this.jwtService.sign(userModel.toJSON());
-      await this.tokenService.create({
-        token,
-        type: tokenType,
-        userId: userModel._id,
-      });
-      const user = this.userService.getPublicDetails(userModel);
-      return success('logged in successfully!', { user, token });
-    }
-    throw new UnauthorizedException('Email not verified!');
+    // if (userModel.isEmailVerified !== true) {
+    //   throw new UnauthorizedException('Email not verified!');
+    // }
+
+    const token = this.jwtService.sign(userModel.toJSON());
+    await this.tokenService.delete({
+      type: tokenType,
+      userId: userModel._id,
+    });
+    await this.tokenService.create({
+      token,
+      type: tokenType,
+      userId: userModel._id,
+    });
+    const user = this.userService.getPublicDetails(userModel);
+    return success('logged in successfully!', { user, token });
   }
 
-  async forgotPassword(email) {
+  // TODO:  FIND BY ROLE ALSO
+  async forgotPassword(email, role = 'STUDENT') {
     const tokenType = TOKEN_TYPES['FORGOT_PASSWORD'].key;
-    const userModel = await this.userService.findByEmail(email.toLowerCase());
+    const userModel = await this.userService.findOne({email: email.toLowerCase(), role});
     if (!userModel) {
-      throw new UnauthorizedException('Email not found!');
+      throw new UnauthorizedException('User not found!');
     }
     const user = this.userService.getPublicDetails(userModel);
     const token = this.jwtService.sign(user);
@@ -171,10 +191,14 @@ export class AuthService {
       type: tokenType,
       userId: userModel._id,
     });
-    return forgotToken;
+
+    const link = `${this.hostUrl(role)}/reset-password/${token}`;
+    await this.emailsService.sendVerificationLink(userModel, link);
+    return { message: 'link sent to your email-address', 
+      forgotToken};
   }
 
-  async resetPassword(password, token) {
+  async resetPassword(currentPassword, token) {
     const tokenType = TOKEN_TYPES['FORGOT_PASSWORD'].key;
     const verifyToken = this.jwtService.verify(token);
     const isTokenExist = await this.tokenService.findByTokenAndType(
@@ -184,9 +208,9 @@ export class AuthService {
     if (!isTokenExist) {
       throw new UnauthorizedException('Invalid token!');
     }
+    // await this.userService.validatePassword(currentPassword);
     await this.tokenService.findByTokenAndTypeAndDelete(token, tokenType);
-    await this.userService.validatePassword(password);
-    const hash = await this.encryptPassword(password);
+    const hash = await this.encryptPassword(currentPassword);
     await this.userService.findByIdAndUpdate(verifyToken._id, {
       password: hash,
     });
@@ -209,4 +233,25 @@ export class AuthService {
   getUserById(id) {
     return this.userService.findById(id);
   }
+
+  async changePassword(loggedInUser, requestBody) {
+    const { oldPassword, newPassword, confirmPassword } = requestBody;
+    const comparePassword = bcrypt.compareSync(oldPassword, loggedInUser.password);
+    if (!comparePassword) {
+      throw new UnauthorizedException('wrong password!');
+    }
+      const hashNewPassword = await this.encryptPassword(newPassword);
+      return await this.userService.update(loggedInUser, { password: hashNewPassword });
+  }
+
+  async editProfile(loggedInUser, requestBody) {
+    const userId = loggedInUser._id;
+    const teacher = await this.teacherService.findOne({userId:userId});
+     await this.userService.update(loggedInUser, requestBody.user);
+   if(!teacher) {
+     throw new UnauthorizedException('user not found!');
+   }
+    await this.teacherService.update(teacher, requestBody.teacher);
+  }
+
 }

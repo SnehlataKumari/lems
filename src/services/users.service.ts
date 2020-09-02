@@ -15,8 +15,6 @@ export class UsersService extends DBService {
     super(model);
   }
 
-  publicKeys = ['_id', 'name', 'email', 'isEmailVerified', 'role'];
-
   findByEmail(email) {
     return this.findOne({ email });
   }

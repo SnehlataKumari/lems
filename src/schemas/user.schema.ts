@@ -3,6 +3,9 @@ import { getKeys, USER_ROLES,} from 'src/constants';
 
 export const UserSchema = new mongoose.Schema(
   {
+    // profileImage: {
+    //   type: []
+    // },
     firstName: {
       type: String,
       required: [true, 'Name is required!'],
