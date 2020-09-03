@@ -63,6 +63,7 @@ export class AuthService {
   }
 
   async signUpTeacher(requestBody,files) {
+
     // TODO: Adde transaction
     // try {
     //   const session = await this.userService.getModel().db.startSession();
@@ -78,8 +79,6 @@ export class AuthService {
     //   // this.logger.error(error);
     //   // this.logger.error('Transaction couldn\'t create');
     // }
-
-    
     const { user: userObject, teacher: teacherObject } = requestBody;
     const hash = await this.encryptPassword(userObject.email);
     // const tokenType = TOKEN_TYPES['VERIFY_EMAIL'].key;
@@ -98,7 +97,9 @@ export class AuthService {
     // });
 
     // TODO: Change teacher schema to have dateOfBirth of type Date
-    const dateOfBirth = teacherObject.dateOfBirth._i;
+    const dateOfBirth = teacherObject.dateOfBirth;
+    console.log(dateOfBirth,'dddddddddddddddddddddddddddddddddddddddddddddddd');
+    
     const x = await this.teacherService.create({ ...teacherObject, userId: user._id, dateOfBirth: dateOfBirth, resume: files.resumeFile, screenShotOfInternet: files.internetConnectionFile});
     // const link = `${this.hostUrl}/auth/verify/${token}`;
     await this.emailsService.sendVerificationLink(userModel,'You have successfully signed-in with LEMS');

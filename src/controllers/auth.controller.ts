@@ -67,8 +67,6 @@ export class AuthController {
   // @JoiValidation(teacherSchema)
   @Post('signup-teacher')
   async signupTeacher(@Body() requestBody, @UploadedFiles() files) {
-    console.log(requestBody);
-
     return await this.service.signUpTeacher(requestBody, files); 
   }
 

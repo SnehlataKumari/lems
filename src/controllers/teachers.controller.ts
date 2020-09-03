@@ -21,6 +21,16 @@ export class TeachersController extends ResourceController {
     return success('List found successfully', this.service.findAll());
   }
 
+  @ValidateToken()
+  @Get('get-teacher-details')
+  async getTeacherDetails(@Req() req) {
+    const { user: loggedInUser } = req;
+    const teacherModel = await this.service.findOne({
+      userId: loggedInUser._id
+    }).populate('userId');
+    return success('Teacher found!', this.service.getPublicDetails(teacherModel));
+  }
+
   @Get(':teacherId')
   async findById(@Req() req) {
     const teacherId = req.teacherId;
@@ -43,16 +53,5 @@ export class TeachersController extends ResourceController {
     await this.service.editTeacherProfile(requestBody, token);
     return success('Profile updated successfully', {});
   }
-
-  @ValidateToken()
-  @Get('get-teacher-details')
-  async getTeacherDetails(@Req() req) {
-    const { user: loggedInUser } = req;
-    const teacherModel = await this.service.findOne({
-      userId: loggedInUser._id
-    });
-    return success('Teacher found!', this.service.getPublicDetails(teacherModel) );
-  }
-
 
 }

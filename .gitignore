@@ -3,7 +3,7 @@
 /node_modules
 /uploads
 /static
-/dist
+#/dist
 
 # Logs
 logs
