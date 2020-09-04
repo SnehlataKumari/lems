@@ -47,6 +47,9 @@ class DBService {
     delete(query) {
         return this.model.remove(query);
     }
+    removeModel(model) {
+        return model.remove();
+    }
 }
 exports.DBService = DBService;
 //# sourceMappingURL=db.service.js.map

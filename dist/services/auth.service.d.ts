@@ -5,6 +5,7 @@ import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { EmailService } from 'src/services/email.service';
 import { TeachersService } from './teachers.service';
+import { DBTransactionService } from './dbtransaction.service';
 export declare class AuthService {
     private userService;
     private tokenService;
@@ -12,7 +13,8 @@ export declare class AuthService {
     private jwtService;
     private emailsService;
     private teacherService;
-    constructor(userService: UsersService, tokenService: TokensService, configs: ConfigService, jwtService: JwtService, emailsService: EmailService, teacherService: TeachersService);
+    private transaction;
+    constructor(userService: UsersService, tokenService: TokensService, configs: ConfigService, jwtService: JwtService, emailsService: EmailService, teacherService: TeachersService, transaction: DBTransactionService);
     hostUrl(role: any): any;
     getUserToken(userObj: any): string;
     signUp(requestBody: any, role?: string): Promise<{
@@ -21,7 +23,7 @@ export declare class AuthService {
     }>;
     signUpTeacher(requestBody: any, files: any): Promise<{
         message: string;
-        userModel: any;
+        user: any;
     }>;
     verifyToken(token: any): Promise<string>;
     resendVerificationLink(email: any, role?: string): Promise<{

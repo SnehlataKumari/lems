@@ -13,7 +13,7 @@ export declare class AuthController {
     }>;
     signupTeacher(requestBody: any, files: any): Promise<{
         message: string;
-        userModel: any;
+        user: any;
     }>;
     resendVerificationLink(requestBody: any): Promise<{
         message: string;

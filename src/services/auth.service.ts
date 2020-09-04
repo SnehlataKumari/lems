@@ -12,6 +12,7 @@ import { EmailService } from 'src/services/email.service';
 import { success } from 'src/utils';
 import { TOKEN_TYPES } from 'src/constants';
 import { TeachersService } from './teachers.service';
+import { DBTransactionService } from './dbtransaction.service';
 
 @Injectable()
 export class AuthService {
@@ -22,18 +23,19 @@ export class AuthService {
     private jwtService: JwtService,
     private emailsService: EmailService,
     private teacherService: TeachersService,
-  ) {}
+    private transaction: DBTransactionService
+  ) { }
 
   hostUrl(role) {
-    if(role === 'ADMIN') {
+    if (role === 'ADMIN') {
       return this.configs.get('HOSTFE_URL_ADMIN');
     }
-    
-    if(role === 'STUDENT') {
+
+    if (role === 'STUDENT') {
       return this.configs.get('HOSTFE_URL_STUDENT');
     }
-   
-    if(role === 'TEACHER') {
+
+    if (role === 'TEACHER') {
       return this.configs.get('HOSTFE_URL_TEACHER');
     }
 
@@ -41,10 +43,10 @@ export class AuthService {
   }
 
   getUserToken(userObj) {
-    return this.jwtService.sign({...userObj, profileImage: ''});
+    return this.jwtService.sign({ ...userObj, profileImage: '' });
   }
 
-  async signUp(requestBody, role='STUDENT') {
+  async signUp(requestBody, role = 'STUDENT') {
     const tokenType = TOKEN_TYPES['VERIFY_EMAIL'].key;
     const hash = await this.encryptPassword(requestBody.password);
     const user = await this.userService.create({
@@ -66,49 +68,60 @@ export class AuthService {
     };
   }
 
-  async signUpTeacher(requestBody,files) {
+  async signUpTeacher(requestBody, files) {
+    // console.log(requestBody.user);
+    
+    // return await this.transaction.transaction(async (options) => {});
+    let userModel;
+    let teacherModel;
+    try {
+      const { user: userObject, teacher: teacherObject } = requestBody;
+      const hash = await this.encryptPassword(userObject.email);
+      // const tokenType = TOKEN_TYPES['VERIFY_EMAIL'].key;
+      // const hash = await this.encryptPassword(userObject.password);
+      // console.log(requestBody.user);
+      console.log(userObject);
+      
+      userModel = await this.userService.create({
+        ...userObject,
+        password: hash,
+        role: 'TEACHER'
+      });
 
-    // TODO: Adde transaction
-    // try {
-    //   const session = await this.userService.getModel().db.startSession();
-    //   session.startTransaction();
-    //   try { } catch (error) {
-    //     await session.abortTransaction();
-    //     this.logger.error(`Administrator '${newAdmin.email}' couldn\'t create or update`);
-    //     this.logger.error(error);
-    //   } finally {
-    //     session.endSession();
-    //   }
-    // } catch (error) {
-    //   // this.logger.error(error);
-    //   // this.logger.error('Transaction couldn\'t create');
-    // }
-    const { user: userObject, teacher: teacherObject } = requestBody;
-    const hash = await this.encryptPassword(userObject.email);
-    // const tokenType = TOKEN_TYPES['VERIFY_EMAIL'].key;
-    // const hash = await this.encryptPassword(userObject.password);
-    const user = await this.userService.create({
-      ...userObject,
-      password: hash,
-      role: 'TEACHER'
-    });
-    const userModel = this.userService.getPublicDetails(user);
-    // const token = this.getUserToken(userModel.toJSON);
-    // await this.tokenService.create({
-    //   token,
-    //   type: tokenType,
-    //   userId: userModel._id,
-    // });
+      console.log(userModel);
+      
+      const user = this.userService.getPublicDetails(userModel);
+      // TODO: Change teacher schema to have dateOfBirth of type Date
+      const dateOfBirth = teacherObject.dateOfBirth;
+      teacherModel = await this.teacherService.create({
+        ...teacherObject, userId: user._id,
+        dateOfBirth: dateOfBirth,
+        resume: files.resumeFile,
+        screenShotOfInternet: files.internetConnectionFile
+      });
 
-    // TODO: Change teacher schema to have dateOfBirth of type Date
-    const dateOfBirth = teacherObject.dateOfBirth;
-    await this.teacherService.create({ ...teacherObject, userId: user._id, dateOfBirth: dateOfBirth, resume: files.resumeFile, screenShotOfInternet: files.internetConnectionFile});
-    // const link = `${this.hostUrl}/auth/verify/${token}`;
-    await this.emailsService.sendVerificationLink(userModel,'You have successfully signed-in with LEMS');
-    return {
-      message: 'Verification link for Teacher is sent to your email!',
-      userModel,
-    };
+      console.log(teacherModel);
+      
+
+      // const link = `${this.hostUrl}/auth/verify/${token}`;
+      await this.emailsService.sendVerificationLink(user, 'You have successfully signed-in with LEMS');
+      return {
+        message: 'Verification link for Teacher is sent to your email!',
+        user,
+      };
+    } catch (error) {
+      console.log(error);
+      
+      if(userModel) {
+        await this.userService.removeModel(userModel);
+      }
+      if(teacherModel) {
+        await this.teacherService.removeModel(teacherModel);
+      }
+
+      throw error;
+    }
+    
   }
 
   async verifyToken(token) {
@@ -129,7 +142,7 @@ export class AuthService {
     }
   }
 
-  async resendVerificationLink(email, role='STUDENT') {
+  async resendVerificationLink(email, role = 'STUDENT') {
     const tokenType = TOKEN_TYPES['VERIFY_EMAIL'].key;
     const userModel = await this.userService.findByEmail(email);
     if (!userModel) {
@@ -152,9 +165,9 @@ export class AuthService {
   }
 
   // TODO: pass role
-  async login({ email, password }, role='STUDENT') {
+  async login({ email, password }, role = 'STUDENT') {
     const tokenType = TOKEN_TYPES['LOGIN'].key;
-    const userModel = await this.userService.findOne({email, role});
+    const userModel = await this.userService.findOne({ email, role });
     if (!userModel) {
       throw new UnauthorizedException('User not registered!');
     }
@@ -183,7 +196,7 @@ export class AuthService {
   // TODO:  FIND BY ROLE ALSO
   async forgotPassword(email, role = 'STUDENT') {
     const tokenType = TOKEN_TYPES['FORGOT_PASSWORD'].key;
-    const userModel = await this.userService.findOne({email: email.toLowerCase(), role});
+    const userModel = await this.userService.findOne({ email: email.toLowerCase(), role });
     if (!userModel) {
       throw new UnauthorizedException('User not found!');
     }
@@ -197,8 +210,10 @@ export class AuthService {
 
     const link = `${this.hostUrl(role)}/reset-password/${token}`;
     await this.emailsService.sendVerificationLink(userModel, link);
-    return { message: 'link sent to your email-address', 
-      forgotToken};
+    return {
+      message: 'link sent to your email-address',
+      forgotToken
+    };
   }
 
   async resetPassword(currentPassword, token) {
@@ -243,14 +258,14 @@ export class AuthService {
     if (!comparePassword) {
       throw new UnauthorizedException('wrong password!');
     }
-      const hashNewPassword = await this.encryptPassword(newPassword);
-      return await this.userService.update(loggedInUser, { password: hashNewPassword });
+    const hashNewPassword = await this.encryptPassword(newPassword);
+    return await this.userService.update(loggedInUser, { password: hashNewPassword });
   }
 
   async editProfile(loggedInUser, requestBody) {
     const userId = loggedInUser._id;
-    const teacher = await this.teacherService.findOne({userId:userId});
-    if(!teacher) {
+    const teacher = await this.teacherService.findOne({ userId: userId });
+    if (!teacher) {
       throw new UnauthorizedException('user not found!');
     }
     const userModel = await this.userService.update(loggedInUser, requestBody.user);

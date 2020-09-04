@@ -22,4 +22,5 @@ export declare abstract class DBService {
     } & {
         deletedCount?: number;
     }>;
+    removeModel(model: any): any;
 }

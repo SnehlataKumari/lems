@@ -20,15 +20,17 @@ const email_service_1 = require("./email.service");
 const utils_1 = require("../utils");
 const constants_1 = require("../constants");
 const teachers_service_1 = require("./teachers.service");
+const dbtransaction_service_1 = require("./dbtransaction.service");
 let AuthService = (() => {
     let AuthService = class AuthService {
-        constructor(userService, tokenService, configs, jwtService, emailsService, teacherService) {
+        constructor(userService, tokenService, configs, jwtService, emailsService, teacherService, transaction) {
             this.userService = userService;
             this.tokenService = tokenService;
             this.configs = configs;
             this.jwtService = jwtService;
             this.emailsService = emailsService;
             this.teacherService = teacherService;
+            this.transaction = transaction;
         }
         hostUrl(role) {
             if (role === 'ADMIN') {
@@ -64,17 +66,34 @@ let AuthService = (() => {
             };
         }
         async signUpTeacher(requestBody, files) {
-            const { user: userObject, teacher: teacherObject } = requestBody;
-            const hash = await this.encryptPassword(userObject.email);
-            const user = await this.userService.create(Object.assign(Object.assign({}, userObject), { password: hash, role: 'TEACHER' }));
-            const userModel = this.userService.getPublicDetails(user);
-            const dateOfBirth = teacherObject.dateOfBirth;
-            await this.teacherService.create(Object.assign(Object.assign({}, teacherObject), { userId: user._id, dateOfBirth: dateOfBirth, resume: files.resumeFile, screenShotOfInternet: files.internetConnectionFile }));
-            await this.emailsService.sendVerificationLink(userModel, 'You have successfully signed-in with LEMS');
-            return {
-                message: 'Verification link for Teacher is sent to your email!',
-                userModel,
-            };
+            let userModel;
+            let teacherModel;
+            try {
+                const { user: userObject, teacher: teacherObject } = requestBody;
+                const hash = await this.encryptPassword(userObject.email);
+                console.log(userObject);
+                userModel = await this.userService.create(Object.assign(Object.assign({}, userObject), { password: hash, role: 'TEACHER' }));
+                console.log(userModel);
+                const user = this.userService.getPublicDetails(userModel);
+                const dateOfBirth = teacherObject.dateOfBirth;
+                teacherModel = await this.teacherService.create(Object.assign(Object.assign({}, teacherObject), { userId: user._id, dateOfBirth: dateOfBirth, resume: files.resumeFile, screenShotOfInternet: files.internetConnectionFile }));
+                console.log(teacherModel);
+                await this.emailsService.sendVerificationLink(user, 'You have successfully signed-in with LEMS');
+                return {
+                    message: 'Verification link for Teacher is sent to your email!',
+                    user,
+                };
+            }
+            catch (error) {
+                console.log(error);
+                if (userModel) {
+                    await this.userService.removeModel(userModel);
+                }
+                if (teacherModel) {
+                    await this.teacherService.removeModel(teacherModel);
+                }
+                throw error;
+            }
         }
         async verifyToken(token) {
             const tokenType = constants_1.TOKEN_TYPES['VERIFY_EMAIL'].key;
@@ -149,8 +168,10 @@ let AuthService = (() => {
             });
             const link = `${this.hostUrl(role)}/reset-password/${token}`;
             await this.emailsService.sendVerificationLink(userModel, link);
-            return { message: 'link sent to your email-address',
-                forgotToken };
+            return {
+                message: 'link sent to your email-address',
+                forgotToken
+            };
         }
         async resetPassword(currentPassword, token) {
             const tokenType = constants_1.TOKEN_TYPES['FORGOT_PASSWORD'].key;
@@ -207,7 +228,8 @@ let AuthService = (() => {
             config_1.ConfigService,
             jwt_1.JwtService,
             email_service_1.EmailService,
-            teachers_service_1.TeachersService])
+            teachers_service_1.TeachersService,
+            dbtransaction_service_1.DBTransactionService])
     ], AuthService);
     return AuthService;
 })();

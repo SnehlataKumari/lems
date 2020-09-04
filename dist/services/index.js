@@ -18,6 +18,7 @@ const teachers_service_1 = require("./teachers.service");
 const products_service_1 = require("./products.service");
 const courses_service_1 = require("./courses.service");
 const liveStreams_service_1 = require("./liveStreams.service");
+const dbtransaction_service_1 = require("./dbtransaction.service");
 exports.default = [
     users_service_1.UsersService,
     assets_service_1.AssetsService,
@@ -38,5 +39,6 @@ exports.default = [
     products_service_1.ProductsService,
     courses_service_1.CoursesService,
     liveStreams_service_1.LiveStreamsService,
+    dbtransaction_service_1.DBTransactionService,
 ];
 //# sourceMappingURL=index.js.map

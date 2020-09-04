@@ -1862,8 +1862,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/db.service.ts": {
-        "version": "c045663d9107f39902e20eaecef346a17073a8a45946a6e6b7e78ba027b9173c",
-        "signature": "5c193a640e5404b55994a659e900843cba3b080c4d78ee07ae4750ae0a994bef",
+        "version": "38c2858f30857d89acccbcce41336ab81602eac7f480156c7e3e0b8d1f97fa6d",
+        "signature": "64882f64ad48f756c25cc3725b9318da26f60d346167e71084da854d307b7ecd",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/hapi__joi/index.d.ts": {
@@ -3291,9 +3291,14 @@
         "signature": "c4afd96d81d2fa2232704f894e8c3eaf872e948430cc117c3a357239fc98cfc1",
         "affectsGlobalScope": false
       },
+      "../src/services/dbtransaction.service.ts": {
+        "version": "c72f087ec2636022be6bb1ca9fbca2897f0dcac2bd204d291a105143d28581ed",
+        "signature": "f4c926a96587612e75d99eafc230ec1eadb80cf972ebae293d0fe2e6e3276f0e",
+        "affectsGlobalScope": false
+      },
       "../src/services/auth.service.ts": {
-        "version": "82308c158b66effcdea64aa97b2e6cf57c18d0079b570f575787ff563dd580aa",
-        "signature": "2dbe025857d64e783fe10db203bdbcb81ed36ba644281eb08d0eb71f82f42a39",
+        "version": "06b7f438391af3b18df469f934f51519216a577134108aa2deaaba3e680bf4a8",
+        "signature": "2fe2ac813884d7d5547b3d917e6535c2fe0c2034586d68422af0af9014864782",
         "affectsGlobalScope": false
       },
       "../src/services/dummySms.service.ts": {
@@ -3332,8 +3337,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/index.ts": {
-        "version": "a244f726bb6bbdb3991b8544fbf2b76b9a649e28b3383cc7181635b6e131a2ea",
-        "signature": "80398a64c93bbaaf20b351266df14d91b63aa084a8660d85e1190e78a531c96c",
+        "version": "748732c20a86a285f047f0bae66d0bece12a07c236a3e3557400760faefb9a33",
+        "signature": "6071ce5a89b2511611cdf4ee5863e2233f3d731e569a53724e96c878f435e088",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
@@ -3558,7 +3563,7 @@
       },
       "../src/controllers/auth.controller.ts": {
         "version": "2505e7478e9e48cb069d0287cfc40a5cabd04593d4b5023f662e7ce1fbd081b1",
-        "signature": "6f8cf7a33319628f5898f29253dc889d56e25743b6c1c149088e9e203524359c",
+        "signature": "87be5cc15a0354be129131084eb11ad287aa8cff10127bb4364afc9412fac59e",
         "affectsGlobalScope": false
       },
       "../src/controllers/chapters.controller.ts": {
@@ -3588,7 +3593,7 @@
       },
       "../src/controllers/index.ts": {
         "version": "3c2bd6cc13cb11d77b23f81e9ba69feec9eb6bc030084ef01c6734dfca9c4227",
-        "signature": "c147e56010fd70220b8c43a313d83f5e13ca998d561f6ac73f4289ed3a99bc19",
+        "signature": "0954e5c6297956145122dae79d626307e453c8642454b436b6fb9a6c26734466",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -19116,6 +19121,7 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/constants/index.ts",
+        "../src/services/dbtransaction.service.ts",
         "../src/services/email.service.ts",
         "../src/services/teachers.service.ts",
         "../src/services/tokens.service.ts",
@@ -19163,6 +19169,15 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
+      "../src/services/dbtransaction.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/services/users.service.ts"
+      ],
       "../src/services/dummySms.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -19200,6 +19215,7 @@
         "../src/services/chapters.service.ts",
         "../src/services/classes.service.ts",
         "../src/services/courses.service.ts",
+        "../src/services/dbtransaction.service.ts",
         "../src/services/dummySms.service.ts",
         "../src/services/email.service.ts",
         "../src/services/file.service.ts",
@@ -32050,6 +32066,7 @@
         "../node_modules/@nestjs/config/index.d.ts",
         "../node_modules/@nestjs/jwt/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts",
+        "../src/services/dbtransaction.service.ts",
         "../src/services/email.service.ts",
         "../src/services/teachers.service.ts",
         "../src/services/tokens.service.ts",
@@ -32070,6 +32087,9 @@
       "../src/services/db.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts"
       ],
+      "../src/services/dbtransaction.service.ts": [
+        "../src/services/users.service.ts"
+      ],
       "../src/services/email.service.ts": [
         "../src/services/nodemailer.service.ts"
       ],
@@ -32079,10 +32099,11 @@
       "../src/services/index.ts": [
         "../src/services/assets.service.ts",
         "../src/services/auth.service.ts",
-        "../src/services/classes.service.ts",
+        "../src/services/dbtransaction.service.ts",
         "../src/services/dummySms.service.ts",
         "../src/services/email.service.ts",
         "../src/services/file.service.ts",
+        "../src/services/liveStreams.service.ts",
         "../src/services/nodemailer.service.ts",
         "../src/services/products.service.ts",
         "../src/services/s3.service.ts",
@@ -33337,6 +33358,7 @@
       "../src/services/classes.service.ts",
       "../src/services/courses.service.ts",
       "../src/services/db.service.ts",
+      "../src/services/dbtransaction.service.ts",
       "../src/services/dummySms.service.ts",
       "../src/services/email.service.ts",
       "../src/services/file.service.ts",
