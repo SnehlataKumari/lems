@@ -115,6 +115,7 @@ let AuthController = (() => {
         }
         async editProfile(req, requestBody) {
             const { user: loggedInUser } = req;
+            console.log(requestBody);
             return await this.service.editProfile(loggedInUser, requestBody);
         }
     };
@@ -218,6 +219,9 @@ let AuthController = (() => {
     ], AuthController.prototype, "changePassword", null);
     __decorate([
         validatetoken_decorator_1.ValidateToken(),
+        common_1.UseInterceptors(platform_express_1.FileFieldsInterceptor([
+            { name: 'profileFile', maxCount: 1 },
+        ])),
         common_1.Post('edit-profile'),
         __param(0, common_1.Req()), __param(1, common_1.Body()),
         __metadata("design:type", Function),

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TeacherSchema = void 0;
 const mongoose = require("mongoose");
-var subjectSchema = new mongoose.Schema({
+const subjectSchema = new mongoose.Schema({
     Math: {
         type: Boolean,
     },
@@ -52,7 +52,7 @@ var subjectSchema = new mongoose.Schema({
         type: Boolean,
     },
 });
-var gradeToTeachSchema = new mongoose.Schema({
+const gradeToTeachSchema = new mongoose.Schema({
     '1 to 5': {
         type: Boolean,
     },
@@ -72,7 +72,7 @@ var gradeToTeachSchema = new mongoose.Schema({
         type: Boolean,
     },
 });
-var availableTimeSchema = new mongoose.Schema({
+const availableTimeSchema = new mongoose.Schema({
     '6-7 am': {
         type: Boolean,
     },
@@ -104,7 +104,7 @@ var availableTimeSchema = new mongoose.Schema({
         type: Boolean,
     },
 });
-var boardSchema = new mongoose.Schema({
+const boardSchema = new mongoose.Schema({
     CBSC: {
         type: Boolean,
     },

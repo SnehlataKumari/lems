@@ -1,17 +1,13 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { DBService } from './db.service';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { UsersService } from './users.service';
-import * as bcrypt from 'bcryptjs';
-// import { AuthService } from './auth.service';
 
 @Injectable()
 export class TeachersService extends DBService {
   constructor(@InjectModel('Teacher') model: Model<any> ,
     private userService: UsersService,
-
-    // private authService: AuthService
   ) {
     super(model);
   }

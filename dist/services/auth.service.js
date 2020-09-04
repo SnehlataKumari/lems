@@ -42,12 +42,15 @@ let AuthService = (() => {
             }
             return this.configs.get('HOSTFE_URL');
         }
+        getUserToken(userObj) {
+            return this.jwtService.sign(Object.assign(Object.assign({}, userObj), { profileImage: '' }));
+        }
         async signUp(requestBody, role = 'STUDENT') {
             const tokenType = constants_1.TOKEN_TYPES['VERIFY_EMAIL'].key;
             const hash = await this.encryptPassword(requestBody.password);
             const user = await this.userService.create(Object.assign(Object.assign({}, requestBody), { password: hash }));
             const userModel = this.userService.getPublicDetails(user);
-            const token = this.jwtService.sign(userModel);
+            const token = this.getUserToken(userModel.toJSON());
             await this.tokenService.create({
                 token,
                 type: tokenType,
@@ -66,8 +69,7 @@ let AuthService = (() => {
             const user = await this.userService.create(Object.assign(Object.assign({}, userObject), { password: hash, role: 'TEACHER' }));
             const userModel = this.userService.getPublicDetails(user);
             const dateOfBirth = teacherObject.dateOfBirth;
-            console.log(dateOfBirth, 'dddddddddddddddddddddddddddddddddddddddddddddddd');
-            const x = await this.teacherService.create(Object.assign(Object.assign({}, teacherObject), { userId: user._id, dateOfBirth: dateOfBirth, resume: files.resumeFile, screenShotOfInternet: files.internetConnectionFile }));
+            await this.teacherService.create(Object.assign(Object.assign({}, teacherObject), { userId: user._id, dateOfBirth: dateOfBirth, resume: files.resumeFile, screenShotOfInternet: files.internetConnectionFile }));
             await this.emailsService.sendVerificationLink(userModel, 'You have successfully signed-in with LEMS');
             return {
                 message: 'Verification link for Teacher is sent to your email!',
@@ -99,7 +101,7 @@ let AuthService = (() => {
             }
             await this.tokenService.deleteUsersToken(userModel, tokenType);
             const userObj = this.userService.getPublicDetails(userModel);
-            const token = this.jwtService.sign(userObj);
+            const token = this.getUserToken(userObj);
             await this.tokenService.create({
                 token,
                 type: tokenType,
@@ -119,7 +121,7 @@ let AuthService = (() => {
             if (!comparePassword) {
                 throw new common_1.UnauthorizedException('wrong password!');
             }
-            const token = this.jwtService.sign(userModel.toJSON());
+            const token = this.getUserToken(userModel.toJSON());
             await this.tokenService.delete({
                 type: tokenType,
                 userId: userModel._id,
@@ -139,7 +141,7 @@ let AuthService = (() => {
                 throw new common_1.UnauthorizedException('User not found!');
             }
             const user = this.userService.getPublicDetails(userModel);
-            const token = this.jwtService.sign(user);
+            const token = this.getUserToken(user);
             const forgotToken = await this.tokenService.create({
                 token,
                 type: tokenType,
@@ -187,11 +189,15 @@ let AuthService = (() => {
         async editProfile(loggedInUser, requestBody) {
             const userId = loggedInUser._id;
             const teacher = await this.teacherService.findOne({ userId: userId });
-            await this.userService.update(loggedInUser, requestBody.user);
             if (!teacher) {
                 throw new common_1.UnauthorizedException('user not found!');
             }
-            await this.teacherService.update(teacher, requestBody.teacher);
+            const userModel = await this.userService.update(loggedInUser, requestBody.user);
+            const teacherModel = await this.teacherService.update(teacher, requestBody.teacher);
+            return {
+                user: userModel,
+                teacher: teacherModel
+            };
         }
     };
     AuthService = __decorate([

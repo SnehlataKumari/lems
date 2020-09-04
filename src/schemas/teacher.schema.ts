@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-var subjectSchema = new mongoose.Schema({
+const subjectSchema = new mongoose.Schema({
   Math: {
     type: Boolean,
   },
@@ -10,40 +10,40 @@ var subjectSchema = new mongoose.Schema({
   Chemistry: {
     type: Boolean,
   },
-  Biology:  {
+  Biology: {
     type: Boolean,
   },
-  ComputerScience:  {
+  ComputerScience: {
     type: Boolean,
   },
-  English:  {
+  English: {
     type: Boolean,
   },
-  Hindi:  {
+  Hindi: {
     type: Boolean,
   },
-  Sanskrit:  {
+  Sanskrit: {
     type: Boolean,
   },
-  German:  {
+  German: {
     type: Boolean,
   },
-  French:  {
+  French: {
     type: Boolean,
   },
-  SocialStudies:  {
+  SocialStudies: {
     type: Boolean,
   },
-  EVS:  {
+  EVS: {
     type: Boolean,
   },
-  BussinessStudies:  {
+  BussinessStudies: {
     type: Boolean,
   },
-  Accountancy:  {
+  Accountancy: {
     type: Boolean,
   },
-  Arabic:  {
+  Arabic: {
     type: Boolean,
   },
   Others: {
@@ -51,7 +51,7 @@ var subjectSchema = new mongoose.Schema({
   },
 });
 
-var gradeToTeachSchema = new mongoose.Schema({
+const gradeToTeachSchema = new mongoose.Schema({
   '1 to 5': {
     type: Boolean,
   },
@@ -72,7 +72,7 @@ var gradeToTeachSchema = new mongoose.Schema({
   },
 });
 
-var availableTimeSchema = new mongoose.Schema({
+const availableTimeSchema = new mongoose.Schema({
   '6-7 am': {
     type: Boolean,
   },
@@ -106,7 +106,7 @@ var availableTimeSchema = new mongoose.Schema({
 });
 
 
-var boardSchema = new mongoose.Schema({
+const boardSchema = new mongoose.Schema({
   CBSC: {
     type: Boolean,
   },
@@ -120,6 +120,18 @@ var boardSchema = new mongoose.Schema({
     type: Boolean,
   },
 });
+
+/**
+ * A file has following structure.
+ * estination: "/home/it/Documents/practice/lems/lems-academy-backend/static/uploads"
+encoding: "7bit"
+fieldname: "resumeFile"
+filename: "Screenshot from 2020-09-02 03-19-30.png"
+mimetype: "image/png"
+originalname: "Screenshot from 2020-09-02 03-19-30.png"
+path: "/home/it/Documents/practice/lems/lems-academy-backend/static/uploads/Screenshot from 2020-09-02 03-19-30.png"
+size: 88776
+ */
 
 export const TeacherSchema = new mongoose.Schema(
   {
@@ -198,6 +210,7 @@ export const TeacherSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    // TODO: typhinting for type files
     resume: {
       type: [],
     },

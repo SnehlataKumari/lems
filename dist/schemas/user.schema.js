@@ -4,6 +4,9 @@ exports.UserSchema = void 0;
 const mongoose = require("mongoose");
 const constants_1 = require("../constants");
 exports.UserSchema = new mongoose.Schema({
+    profileImage: {
+        type: String,
+    },
     firstName: {
         type: String,
         required: [true, 'Name is required!'],

@@ -145,9 +145,13 @@ export class AuthController {
   }
 
   @ValidateToken()
+  @UseInterceptors(FileFieldsInterceptor([
+    { name: 'profileFile', maxCount: 1 },
+  ]))
   @Post('edit-profile')
   async editProfile(@Req() req, @Body() requestBody) {
     const { user: loggedInUser } = req;
+    console.log(requestBody);
     return await this.service.editProfile(loggedInUser, requestBody)
   }
 

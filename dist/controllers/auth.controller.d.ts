@@ -52,5 +52,8 @@ export declare class AuthController {
         data: any;
     }>;
     changePassword(req: any, requestBody: any): Promise<any>;
-    editProfile(req: any, requestBody: any): Promise<void>;
+    editProfile(req: any, requestBody: any): Promise<{
+        user: any;
+        teacher: any;
+    }>;
 }

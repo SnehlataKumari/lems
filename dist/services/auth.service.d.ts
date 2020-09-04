@@ -14,6 +14,7 @@ export declare class AuthService {
     private teacherService;
     constructor(userService: UsersService, tokenService: TokensService, configs: ConfigService, jwtService: JwtService, emailsService: EmailService, teacherService: TeachersService);
     hostUrl(role: any): any;
+    getUserToken(userObj: any): string;
     signUp(requestBody: any, role?: string): Promise<{
         message: string;
         userModel: any;
@@ -45,5 +46,8 @@ export declare class AuthService {
     isValidAuthToken(token: any): Promise<any>;
     getUserById(id: any): import("mongoose").DocumentQuery<any, any, {}>;
     changePassword(loggedInUser: any, requestBody: any): Promise<any>;
-    editProfile(loggedInUser: any, requestBody: any): Promise<void>;
+    editProfile(loggedInUser: any, requestBody: any): Promise<{
+        user: any;
+        teacher: any;
+    }>;
 }
