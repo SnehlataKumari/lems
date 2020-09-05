@@ -1802,7 +1802,7 @@
         "affectsGlobalScope": false
       },
       "../src/schemas/user.schema.ts": {
-        "version": "d4e30a2f946f1e9addf644f5dc37593a32ee48915d94b0a56f76e145263768ee",
+        "version": "2e894a0e61b99ddb3229c75cc86db1c55f4d3933b9971dfec5db845a433734ef",
         "signature": "33b6d9f5900752b91a05e8ec298b94fec72ab453cbb20021183b577561396086",
         "affectsGlobalScope": false
       },
@@ -1867,8 +1867,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/users.service.ts": {
-        "version": "4c7b3b692fc9d14fb27d9727e6d00e1a15043d9017d4248179a863eb04364ad4",
-        "signature": "f44f1f353cb654c9289c40e45107560b9f3d7946577cbf40d3fff7cc85c8a525",
+        "version": "da883cf8f52ccf1575a524ac0bdd044f7b4b8a0e86cfcfbbc8d1961946209328",
+        "signature": "b0cff834f0cddb5848c7d5c78376a40152042960890ec5dede8c8a880f12503d",
         "affectsGlobalScope": false
       },
       "../node_modules/aws-sdk/lib/error.d.ts": {
@@ -3287,8 +3287,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/auth.service.ts": {
-        "version": "70f6ae71d542e5abb1be902b240985e5655c72e43a63f72ec96ed1ea0051fdf1",
-        "signature": "2cc3bb918ccbb0b4d6db09dda2d4136c8b7068dabaca3183917e475ed807d493",
+        "version": "b7c7a093d71f4ed6ae6f6e44f080bed78ab7b238d2205f79d4495fa0636f711f",
+        "signature": "0069f659579f6686c30baf510e9e7470d1abba0c7e3cb199db0fea7e6383d6c1",
         "affectsGlobalScope": false
       },
       "../src/services/dummysms.service.ts": {
@@ -3328,7 +3328,7 @@
       },
       "../src/services/index.ts": {
         "version": "649c634008fae25bb6b14ffc61ea284f5872e7fd5b08ddea9479fd8e8277600d",
-        "signature": "3b60714597c78c48669c8287e27b4688df07219b0b62c07236aac280c77aac91",
+        "signature": "0e4c00c96cb105bf57f76c0604373ea6bfdad4a2b1ca89c03d2155f2a76794a0",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
@@ -3552,8 +3552,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/auth.controller.ts": {
-        "version": "a8582b9b6043f1f2751ec8cd4805f424687f596d3aae337c9c2295a523f21a95",
-        "signature": "6b8823d253cd67b381216eec36ac8f8cfc86a58f0a42d38f47e02b75d6e08ca3",
+        "version": "105256d468e310d5415f2888763aae9c2123a422160bae675220f4f9492c6106",
+        "signature": "15b2d60fec05c0371409e62489f304f8b131b462129e19c39d4863cc5ed8bd20",
         "affectsGlobalScope": false
       },
       "../src/controllers/chapters.controller.ts": {
@@ -3572,8 +3572,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/teachers.controller.ts": {
-        "version": "7dadcb74bad716ebb2368830a686884f6c5f71407de1d9b921077d0cc36c921c",
-        "signature": "43ee2f6b2a7982f1ddad7384f535068f9146b999bc48f521fc598187fc430a98",
+        "version": "0013b6a3cd44cc5744edd22f5a97b731e7cf8c2fef8586aa583a5e6c6f484c4c",
+        "signature": "d593126c39e05829b2f5a0bf09739d1475010ffcc65bb98e93a1149e4f749b3c",
         "affectsGlobalScope": false
       },
       "../src/controllers/products.controller.ts": {
@@ -18852,6 +18852,7 @@
         "../src/decorators/validatetoken.decorator.ts",
         "../src/pipes/joivalidation.pipe.ts",
         "../src/services/teachers.service.ts",
+        "../src/services/users.service.ts",
         "../src/utils/index.ts"
       ],
       "../src/controllers/users.controller.ts": [
@@ -31948,7 +31949,8 @@
       ],
       "../src/controllers/teachers.controller.ts": [
         "../src/controllers/resource.controller.ts",
-        "../src/services/teachers.service.ts"
+        "../src/services/teachers.service.ts",
+        "../src/services/users.service.ts"
       ],
       "../src/controllers/users.controller.ts": [
         "../src/controllers/resource.controller.ts",
@@ -32051,6 +32053,7 @@
       "../src/services/index.ts": [
         "../src/services/assets.service.ts",
         "../src/services/auth.service.ts",
+        "../src/services/classes.service.ts",
         "../src/services/dummysms.service.ts",
         "../src/services/email.service.ts",
         "../src/services/file.service.ts",
@@ -32058,8 +32061,7 @@
         "../src/services/products.service.ts",
         "../src/services/s3.service.ts",
         "../src/services/sms.service.ts",
-        "../src/services/teachers.service.ts",
-        "../src/services/version.service.ts"
+        "../src/services/teachers.service.ts"
       ],
       "../src/services/livestreams.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",

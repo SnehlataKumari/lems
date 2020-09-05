@@ -5,6 +5,7 @@ import { success } from 'src/utils';
 import Joi = require('@hapi/joi');
 import { JoiValidationPipe } from 'src/pipes/joivalidation.pipe';
 import { ValidateToken } from 'src/decorators/validatetoken.decorator';
+import { UsersService } from 'src/services/users.service';
 
 const acceptRequestSchema = Joi.object({
   accept: Joi.boolean()
@@ -12,7 +13,10 @@ const acceptRequestSchema = Joi.object({
 
 @Controller('teachers')
 export class TeachersController extends ResourceController {
-  constructor(service: TeachersService) {
+  constructor(
+    service: TeachersService,
+    private userService: UsersService
+  ) {
     super(service);
   }
 
@@ -35,6 +39,16 @@ export class TeachersController extends ResourceController {
   async findById(@Req() req) {
     const teacherId = req.teacherId;
     return success('List found successfully', this.service.findById(teacherId));
+  }
+
+  @Get(':teacherId/get-teacher-details')
+  async getTeachersDetails(@Param('teacherId') teacherId) {
+    const teacherModel = await this.service.findById(teacherId);
+    const userModel = await this.userService.findById(teacherModel.userId);
+    return success('Teacher found!', {
+      teacher: this.service.getPublicDetails(teacherModel),
+      user: this.userService.getPublicDetails(userModel)
+    });
   }
 
   @Delete(':teacherId')

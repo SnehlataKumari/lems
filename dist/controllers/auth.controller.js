@@ -36,8 +36,7 @@ const userSchema = Joi.object({
     lastName: Joi.string()
         .trim()
         .min(3)
-        .max(30)
-        .required(),
+        .max(30),
     phone: Joi.string()
         .trim()
         .min(10)
@@ -64,6 +63,9 @@ let AuthController = (() => {
             return this.config.get('HOST_URL');
         }
         async signUp(requestBody) {
+            return await this.service.signUp(requestBody);
+        }
+        async signUpStudent(requestBody) {
             return await this.service.signUp(requestBody);
         }
         async signupTeacher(requestBody, files) {
@@ -114,6 +116,7 @@ let AuthController = (() => {
             return await this.service.changePassword(loggedInUser, requestBody);
         }
         async editProfile(req, requestBody) {
+            console.log(req, 'reqreqreqr');
             const { user: loggedInUser } = req;
             return await this.service.editProfile(loggedInUser, requestBody);
         }
@@ -126,6 +129,13 @@ let AuthController = (() => {
         __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", Promise)
     ], AuthController.prototype, "signUp", null);
+    __decorate([
+        common_1.Post('sign-up-student'),
+        __param(0, common_1.Body()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], AuthController.prototype, "signUpStudent", null);
     __decorate([
         common_1.UseInterceptors(platform_express_1.FileFieldsInterceptor([
             { name: 'resumeFile', maxCount: 1 },

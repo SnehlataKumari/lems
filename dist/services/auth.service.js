@@ -45,20 +45,23 @@ let AuthService = (() => {
         async signUp(requestBody, role = 'STUDENT') {
             const tokenType = constants_1.TOKEN_TYPES['VERIFY_EMAIL'].key;
             const hash = await this.encryptPassword(requestBody.password);
-            const user = await this.userService.create(Object.assign(Object.assign({}, requestBody), { password: hash }));
-            const userModel = this.userService.getPublicDetails(user);
-            const token = this.jwtService.sign(userModel);
+            const userModel = await this.userService.create(Object.assign(Object.assign({}, requestBody), { password: hash }));
+            const userObj = this.userService.getPublicDetails(userModel);
+            const token = this.jwtService.sign({ userObj });
             await this.tokenService.create({
                 token,
                 type: tokenType,
                 userId: userModel._id,
             });
-            const link = `${this.hostUrl(role)}/auth/verify/${token}`;
+            const link = `${this.apiUrl(role)}/auth/verify/${token}`;
             await this.emailsService.sendVerificationLink(userModel, link);
             return {
                 message: 'Verification link sent to your email!',
                 userModel,
             };
+        }
+        apiUrl(role) {
+            return this.configs.get('HOST_URL');
         }
         async signUpTeacher(requestBody, files) {
             const { user: userObject, teacher: teacherObject } = requestBody;
@@ -66,7 +69,6 @@ let AuthService = (() => {
             const user = await this.userService.create(Object.assign(Object.assign({}, userObject), { password: hash, role: 'TEACHER' }));
             const userModel = this.userService.getPublicDetails(user);
             const dateOfBirth = teacherObject.dateOfBirth;
-            console.log(dateOfBirth, 'dddddddddddddddddddddddddddddddddddddddddddddddd');
             const x = await this.teacherService.create(Object.assign(Object.assign({}, teacherObject), { userId: user._id, dateOfBirth: dateOfBirth, resume: files.resumeFile, screenShotOfInternet: files.internetConnectionFile }));
             await this.emailsService.sendVerificationLink(userModel, 'You have successfully signed-in with LEMS');
             return {
@@ -186,6 +188,7 @@ let AuthService = (() => {
         }
         async editProfile(loggedInUser, requestBody) {
             const userId = loggedInUser._id;
+            console.log(userId, 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
             const teacher = await this.teacherService.findOne({ userId: userId });
             await this.userService.update(loggedInUser, requestBody.user);
             if (!teacher) {

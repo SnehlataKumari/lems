@@ -43,18 +43,18 @@ export class AuthService {
   async signUp(requestBody, role='STUDENT') {
     const tokenType = TOKEN_TYPES['VERIFY_EMAIL'].key;
     const hash = await this.encryptPassword(requestBody.password);
-    const user = await this.userService.create({
+    const userModel = await this.userService.create({
       ...requestBody,
       password: hash
     });
-    const userModel = this.userService.getPublicDetails(user);
-    const token = this.jwtService.sign(userModel);
+    const userObj = this.userService.getPublicDetails(userModel);
+    const token = this.jwtService.sign({userObj});
     await this.tokenService.create({
       token,
       type: tokenType,
       userId: userModel._id,
     });
-    const link = `${this.hostUrl(role)}/auth/verify/${token}`;
+    const link = `${this.apiUrl(role)}/auth/verify/${token}`;
     await this.emailsService.sendVerificationLink(userModel, link);
     return {
       message: 'Verification link sent to your email!',
@@ -62,6 +62,9 @@ export class AuthService {
     };
   }
 
+  apiUrl(role) {
+    return this.configs.get('HOST_URL');
+  }
   async signUpTeacher(requestBody,files) {
 
     // TODO: Adde transaction
@@ -98,8 +101,7 @@ export class AuthService {
 
     // TODO: Change teacher schema to have dateOfBirth of type Date
     const dateOfBirth = teacherObject.dateOfBirth;
-    console.log(dateOfBirth,'dddddddddddddddddddddddddddddddddddddddddddddddd');
-    
+  
     const x = await this.teacherService.create({ ...teacherObject, userId: user._id, dateOfBirth: dateOfBirth, resume: files.resumeFile, screenShotOfInternet: files.internetConnectionFile});
     // const link = `${this.hostUrl}/auth/verify/${token}`;
     await this.emailsService.sendVerificationLink(userModel,'You have successfully signed-in with LEMS');
@@ -247,8 +249,10 @@ export class AuthService {
 
   async editProfile(loggedInUser, requestBody) {
     const userId = loggedInUser._id;
+    console.log(userId,'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
+    
     const teacher = await this.teacherService.findOne({userId:userId});
-     await this.userService.update(loggedInUser, requestBody.user);
+    await this.userService.update(loggedInUser, requestBody.user);
    if(!teacher) {
      throw new UnauthorizedException('user not found!');
    }

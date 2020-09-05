@@ -38,6 +38,9 @@ let UsersService = (() => {
                 throw new common_1.BadRequestException(err.message);
             }
         }
+        getPublicDetails(model) {
+            return Object.assign(Object.assign({}, model.toJSON()), { password: null });
+        }
     };
     UsersService = __decorate([
         common_1.Injectable(),

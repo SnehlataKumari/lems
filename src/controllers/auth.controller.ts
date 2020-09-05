@@ -23,8 +23,8 @@ const userSchema = Joi.object({
   lastName: Joi.string()
     .trim()
     .min(3)
-    .max(30)
-    .required(),
+    .max(30),
+    // .required(),
   phone: Joi.string()
     .trim()
     .min(10)
@@ -57,6 +57,12 @@ export class AuthController {
   @JoiValidation(userSchema)
   @Post('sign-up')
   async signUp(@Body() requestBody) {
+    return await this.service.signUp(requestBody);
+  }
+  
+  // @JoiValidation(userSchema)
+  @Post('sign-up-student')
+  async signUpStudent(@Body() requestBody) {
     return await this.service.signUp(requestBody);
   }
 
@@ -147,6 +153,8 @@ export class AuthController {
   @ValidateToken()
   @Post('edit-profile')
   async editProfile(@Req() req, @Body() requestBody) {
+    console.log(req,'reqreqreqr');
+    
     const { user: loggedInUser } = req;
     return await this.service.editProfile(loggedInUser, requestBody)
   }
