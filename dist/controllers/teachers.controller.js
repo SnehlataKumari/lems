@@ -21,6 +21,7 @@ const Joi = require("@hapi/joi");
 const joivalidation_pipe_1 = require("../pipes/joivalidation.pipe");
 const validatetoken_decorator_1 = require("../decorators/validatetoken.decorator");
 const users_service_1 = require("../services/users.service");
+const platform_express_1 = require("@nestjs/platform-express");
 const acceptRequestSchema = Joi.object({
     accept: Joi.boolean()
 });
@@ -62,6 +63,9 @@ let TeachersController = (() => {
         async editTeacherProfile(requestBody, token) {
             await this.service.editTeacherProfile(requestBody, token);
             return utils_1.success('Profile updated successfully', {});
+        }
+        async updateProfile(teacherId, requestBody) {
+            return await this.service.updateProfile(teacherId, requestBody);
         }
     };
     __decorate([
@@ -113,6 +117,17 @@ let TeachersController = (() => {
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", Promise)
     ], TeachersController.prototype, "editTeacherProfile", null);
+    __decorate([
+        validatetoken_decorator_1.ValidateToken(),
+        common_1.UseInterceptors(platform_express_1.FileFieldsInterceptor([
+            { name: 'profileFile', maxCount: 1 },
+        ])),
+        common_1.Put(`:teacherId/update-profile`),
+        __param(0, common_1.Param('teacherId')), __param(1, common_1.Body()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object, Object]),
+        __metadata("design:returntype", Promise)
+    ], TeachersController.prototype, "updateProfile", null);
     TeachersController = __decorate([
         common_1.Controller('teachers'),
         __metadata("design:paramtypes", [teachers_service_1.TeachersService,

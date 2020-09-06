@@ -11,4 +11,8 @@ export declare class TeachersService extends DBService {
     findAll(where?: {}): import("mongoose").DocumentQuery<any[], any, {}>;
     findByToken(token: any): Promise<any>;
     editTeacherProfile(requestBody: any, token: any): Promise<any>;
+    updateProfile(teacherId: any, requestBody: any): Promise<{
+        user: any;
+        teacher: any;
+    }>;
 }

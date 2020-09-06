@@ -263,19 +263,18 @@ export class AuthService {
     return await this.userService.update(loggedInUser, { password: hashNewPassword });
   }
 
-  async editProfile(loggedInUser, requestBody) {
-    const userId = loggedInUser._id;
-    const teacher = await this.teacherService.findOne({ userId: userId });
-    if (!teacher) {
-      throw new UnauthorizedException('user not found!');
-    }
-    const userModel = await this.userService.update(loggedInUser, requestBody.user);
-    const teacherModel = await this.teacherService.update(teacher, requestBody.teacher);
-
-    return {
-      user: userModel,
-      teacher: teacherModel
-    }
-  }
+  // async editProfile(loggedInUser, requestBody) {
+  //   const userId = loggedInUser._id;
+  //   const teacher = await this.teacherService.findOne({ userId: userId });
+  //   if (!teacher) {
+  //     throw new UnauthorizedException('user not found!');
+  //   }
+  //   const userModel = await this.userService.update(loggedInUser, requestBody.user);
+  //   const teacherModel = await this.teacherService.update(teacher, requestBody.teacher);
+  //   return {
+  //     user: userModel,
+  //     teacher: teacherModel
+  //   }
+  // }
 
 }

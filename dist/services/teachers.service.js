@@ -54,6 +54,19 @@ let TeachersService = (() => {
             const teacherObject = await this.findOne(teacher.userId);
             return await this.update(teacherObject, requestBody.teacher);
         }
+        async updateProfile(teacherId, requestBody) {
+            const teacher = await this.findById(teacherId);
+            if (!teacher) {
+                throw new common_1.UnauthorizedException('user not found!');
+            }
+            const userId = teacher.userId;
+            const userModel = await this.userService.update(userId, requestBody.user);
+            const teacherModel = await this.update(teacherId, requestBody.teacher);
+            return {
+                user: userModel,
+                teacher: teacherModel
+            };
+        }
     };
     TeachersService = __decorate([
         common_1.Injectable(),

@@ -151,19 +151,19 @@ export const TeacherSchema = new mongoose.Schema(
       required: true,
     },
     primaryTeachingSubjects: {
-      type: [subjectSchema],
+      type: subjectSchema,
       required: true,
     },
     secondaryTeachingSubjects: {
-      type: [subjectSchema],
+      type: subjectSchema,
       required: true,
     },
     gradeToTeach: {
-      type: [gradeToTeachSchema],
+      type: gradeToTeachSchema,
       required: true,
     },
     board: {
-      type: [boardSchema],
+      type: boardSchema,
       required: true,
     },
     weekDaysTeachingHours: {
@@ -173,7 +173,7 @@ export const TeacherSchema = new mongoose.Schema(
       type: String,
     },
     availableTime: {
-      type: [availableTimeSchema],
+      type: availableTimeSchema,
     },
     currentOccupation: {
       type: String,

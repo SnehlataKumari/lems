@@ -115,12 +115,6 @@ let AuthController = (() => {
             const { user: loggedInUser } = req;
             return await this.service.changePassword(loggedInUser, requestBody);
         }
-        async editProfile(req, requestBody) {
-            console.log(req, 'reqreqreqr');
-            const { user: loggedInUser } = req;
-            console.log(requestBody);
-            return await this.service.editProfile(loggedInUser, requestBody);
-        }
     };
     __decorate([
         joivalidation_decorator_1.JoiValidation(userSchema),
@@ -227,17 +221,6 @@ let AuthController = (() => {
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", Promise)
     ], AuthController.prototype, "changePassword", null);
-    __decorate([
-        validatetoken_decorator_1.ValidateToken(),
-        common_1.UseInterceptors(platform_express_1.FileFieldsInterceptor([
-            { name: 'profileFile', maxCount: 1 },
-        ])),
-        common_1.Post('edit-profile'),
-        __param(0, common_1.Req()), __param(1, common_1.Body()),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object, Object]),
-        __metadata("design:returntype", Promise)
-    ], AuthController.prototype, "editProfile", null);
     AuthController = __decorate([
         common_1.Controller('auth'),
         __metadata("design:paramtypes", [config_1.ConfigService,

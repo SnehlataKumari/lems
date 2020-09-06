@@ -29,4 +29,5 @@ export declare class TeachersController extends ResourceController {
         message: string;
         data: any;
     }>;
+    updateProfile(teacherId: any, requestBody: any): Promise<any>;
 }

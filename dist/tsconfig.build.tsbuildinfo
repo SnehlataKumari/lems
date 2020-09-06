@@ -1837,7 +1837,7 @@
         "affectsGlobalScope": false
       },
       "../src/schemas/teacher.schema.ts": {
-        "version": "cf7108d179e3e648367906cead2923de630ea3b900b8a5c59180781eb312a578",
+        "version": "65f226bde516a623177a1d93710705dd0abaa68b3d77238beb45b2b7c6221768",
         "signature": "aec3f8aa77d9b6b77d52b22538cd6269dfa0d1f434afa8f0863871917724a6d5",
         "affectsGlobalScope": false
       },
@@ -3287,8 +3287,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/teachers.service.ts": {
-        "version": "b845c91c80a8589c38248e3cc38aba5fc1f049a020f7dc9547aebd39984dacb3",
-        "signature": "a05615fd5b747844b7aefe89e071eb14b91a3eeb63576146b6c3bc336bf7136a",
+        "version": "d5e5d06955106e0ef2a099e7ec16b1e8b2d6eb11fc55255dd7517d6b17e05b7b",
+        "signature": "1aea392c5ea417c87223206338640df22a0e7411d4a4b7e674acaed13f9b2fe8",
         "affectsGlobalScope": false
       },
       "../src/services/dbtransaction.service.ts": {
@@ -3297,8 +3297,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/auth.service.ts": {
-        "version": "dae260b3e23137083a027cdec51be99de2b4ff4a6926fe72826809ebbcceb0a9",
-        "signature": "7902cf6498b23d811abdc80dfd9772e144dfe8b8d01ed0e6d9a6b0f76e046be2",
+        "version": "c45f610337afdbeb9b6be53db79c840d83bbbb556429869a536d9cae74793a1b",
+        "signature": "12038812bd36802a2ec98672594db0ac8147185acb60d62f0db225ecf18488d4",
         "affectsGlobalScope": false
       },
       "../src/services/dummysms.service.ts": {
@@ -3338,7 +3338,7 @@
       },
       "../src/services/index.ts": {
         "version": "facfa486e261c3e6deef3c3fc34ebdf6be8999bd9ef01318b8b6d3a7789481e2",
-        "signature": "602b4ba2de26b9f476609815a663eb40aa7df05093614b4de1799bc777e3481c",
+        "signature": "e59cfa547c3a861b93d451cfbc8fb813f9870406521519e470c92d536857bca4",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
@@ -5762,8 +5762,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/auth.controller.ts": {
-        "version": "a8178152182038435f778689d2850fc83a7de0dcd5b2d2eb966204b4be5080af",
-        "signature": "24321789e41a7a4e3dfa8e06aa209f6d5dc371c68e6f7cd66413825683f2abcf",
+        "version": "e1cdb3830f3f8cc3a097d8b1ec6070ac46f2384e8f7d064c6f937f72975914db",
+        "signature": "a933b5706880df7aee1c6c9ca64c766b0c006f6ff033c7c7ffa675bf9e8dacfe",
         "affectsGlobalScope": false
       },
       "../src/controllers/chapters.controller.ts": {
@@ -5782,8 +5782,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/teachers.controller.ts": {
-        "version": "0013b6a3cd44cc5744edd22f5a97b731e7cf8c2fef8586aa583a5e6c6f484c4c",
-        "signature": "d593126c39e05829b2f5a0bf09739d1475010ffcc65bb98e93a1149e4f749b3c",
+        "version": "153b7e917e8f41e097f4c2cdd383d70bcb024203f73b4f1de8a54b6d23fd63a4",
+        "signature": "a52d5537a477ad0c21385fae0575f4b35ed15a9130a76198c7f0defb1868e40f",
         "affectsGlobalScope": false
       },
       "../src/controllers/products.controller.ts": {
@@ -5793,7 +5793,7 @@
       },
       "../src/controllers/index.ts": {
         "version": "baaa401dfc0f650cf2cf5c0e6cb087beffc10c80b695e66578f29b1047a93e67",
-        "signature": "31f74af1feb1552b29b9c4589c88fef3483ac31166c97e93957e5dc9b193052e",
+        "signature": "fd645f35754fc973ccfa9166160896545f33ccc268c2e91107c9df47d26724cc",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -18861,6 +18861,7 @@
       ],
       "../src/controllers/teachers.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/platform-express/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/hapi__joi/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",

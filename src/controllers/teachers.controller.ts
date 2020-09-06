@@ -1,4 +1,4 @@
-import { Controller, Get, Put, Delete, Body, Param, Post, Req } from '@nestjs/common';
+import { Controller, Get, Put, Delete, Body, Param, Post, Req, UseInterceptors } from '@nestjs/common';
 import { TeachersService } from 'src/services/teachers.service';
 import { ResourceController } from './resource.controller';
 import { success } from 'src/utils';
@@ -6,6 +6,7 @@ import Joi = require('@hapi/joi');
 import { JoiValidationPipe } from 'src/pipes/joivalidation.pipe';
 import { ValidateToken } from 'src/decorators/validatetoken.decorator';
 import { UsersService } from 'src/services/users.service';
+import { FileFieldsInterceptor } from '@nestjs/platform-express';
 
 const acceptRequestSchema = Joi.object({
   accept: Joi.boolean()
@@ -61,11 +62,20 @@ export class TeachersController extends ResourceController {
   async acceptRejectRegistrationRequest(@Body(new JoiValidationPipe(acceptRequestSchema)) requestBody, @Param('teacherId') teacherId ) {
     return await this.service.hasAcceptedRegistrationRequest (requestBody, teacherId);
   }
-
+// via Teacher-------------------------------------------------------------------------
   @Put('edit-teacher-profile')
   async editTeacherProfile(@Body() requestBody, @Param() token) {
     await this.service.editTeacherProfile(requestBody, token);
     return success('Profile updated successfully', {});
   }
+// via Admin---------------------------------------------------------------------------
 
+  @ValidateToken()
+  @UseInterceptors(FileFieldsInterceptor([
+    { name: 'profileFile', maxCount: 1 },
+  ]))
+  @Put(`:teacherId/update-profile`)
+  async updateProfile(@Param('teacherId') teacherId, @Body() requestBody) {
+    return await this.service.updateProfile(teacherId, requestBody);
+  }
 }

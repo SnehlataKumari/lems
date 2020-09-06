@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { DBService } from './db.service';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
@@ -39,12 +39,27 @@ export class TeachersService extends DBService {
     const teacher= await this.findOne(token);
     return teacher;
   }
+// via Teacher----------------------------------------------------------------------------
+
   async editTeacherProfile(requestBody, token) {
     const teacher = await this.findByToken(token);
     const user= await this.userService.findOne(teacher.userId);
     await this.userService.update(user, requestBody.user);
     const teacherObject = await this.findOne(teacher.userId);
     return await this.update(teacherObject, requestBody.teacher);
-
+  }
+// via Admin----------------------------------------------------------------------------------------------------
+  async updateProfile(teacherId, requestBody) {
+    const teacher = await this.findById(teacherId);
+    if (!teacher) {
+      throw new UnauthorizedException('user not found!');
+    }
+    const userId = teacher.userId;
+    const userModel = await this.userService.update(userId, requestBody.user);
+    const teacherModel = await this.update(teacherId, requestBody.teacher);
+    return {
+      user: userModel,
+      teacher: teacherModel
+    }
   }
 }
