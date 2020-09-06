@@ -30,7 +30,7 @@ let NodeMailerService = (() => {
                 from: this.config.get('GMAIL_ID'),
                 to,
                 subject,
-                text,
+                html: text,
             };
             await this.mailTransporter.sendMail(mailDetails, async function (err) {
                 if (err) {

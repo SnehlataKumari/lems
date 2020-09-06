@@ -54,7 +54,7 @@ export class AuthService {
       password: hash
     });
     const userObj = this.userService.getPublicDetails(userModel);
-    const token = this.jwtService.sign({userObj});
+    const token = this.jwtService.sign(userObj);
     await this.tokenService.create({
       token,
       type: tokenType,
@@ -121,14 +121,16 @@ export class AuthService {
       token,
       tokenType,
     );
+    console.log(user);
+    
     if (!isTokenExist) {
-      throw new UnauthorizedException('Invalid token!');
+      return `Email already verified! Click to login <a href="${this.hostUrl(user.role)}"> Login </a>`;
     }
     await this.tokenService.findByTokenAndTypeAndDelete(token, tokenType);
     const id = user._id;
     if (user) {
       await this.userService.findByIdAndUpdate(id, { isEmailVerified: true });
-      return `Email <b>${user.email}</b> Verified Successfully`;
+      return `Email <b>${user.email}</b> Verified Successfully; Click to login <a href="${this.hostUrl(user.role)}"> Login </a>`;
     }
   }
 
@@ -199,7 +201,8 @@ export class AuthService {
     });
 
     const link = `${this.hostUrl(role)}/reset-password/${token}`;
-    await this.emailsService.sendVerificationLink(userModel, link);
+    // await this.emailsService.sendVerificationLink(userModel, link);
+    await this.emailsService.sendResetPasswordLink(userModel, link);
     return {
       message: 'link sent to your email-address',
       forgotToken

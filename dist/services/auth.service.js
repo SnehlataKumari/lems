@@ -52,7 +52,7 @@ let AuthService = (() => {
             const hash = await this.encryptPassword(requestBody.password);
             const userModel = await this.userService.create(Object.assign(Object.assign({}, requestBody), { password: hash }));
             const userObj = this.userService.getPublicDetails(userModel);
-            const token = this.jwtService.sign({ userObj });
+            const token = this.jwtService.sign(userObj);
             await this.tokenService.create({
                 token,
                 type: tokenType,
@@ -99,14 +99,15 @@ let AuthService = (() => {
             const tokenType = constants_1.TOKEN_TYPES['VERIFY_EMAIL'].key;
             const user = this.jwtService.verify(token);
             const isTokenExist = await this.tokenService.findByTokenAndType(token, tokenType);
+            console.log(user);
             if (!isTokenExist) {
-                throw new common_1.UnauthorizedException('Invalid token!');
+                return `Email already verified! Click to login <a href="${this.hostUrl(user.role)}"> Login </a>`;
             }
             await this.tokenService.findByTokenAndTypeAndDelete(token, tokenType);
             const id = user._id;
             if (user) {
                 await this.userService.findByIdAndUpdate(id, { isEmailVerified: true });
-                return `Email <b>${user.email}</b> Verified Successfully`;
+                return `Email <b>${user.email}</b> Verified Successfully; Click to login <a href="${this.hostUrl(user.role)}"> Login </a>`;
             }
         }
         async resendVerificationLink(email, role = 'STUDENT') {
@@ -167,7 +168,7 @@ let AuthService = (() => {
                 userId: userModel._id,
             });
             const link = `${this.hostUrl(role)}/reset-password/${token}`;
-            await this.emailsService.sendVerificationLink(userModel, link);
+            await this.emailsService.sendResetPasswordLink(userModel, link);
             return {
                 message: 'link sent to your email-address',
                 forgotToken

@@ -4,4 +4,5 @@ export declare class EmailService {
     constructor(nodeMailerService: NodeMailerService);
     sendEmail(to: any, subject: any, text: any): Promise<void>;
     sendVerificationLink(user: any, link: any): Promise<void>;
+    sendResetPasswordLink(user: any, link: any): Promise<void>;
 }

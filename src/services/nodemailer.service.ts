@@ -20,7 +20,8 @@ export class NodeMailerService {
       from: this.config.get('GMAIL_ID'), // 'amanraza2507@gmail.com',
       to,
       subject,
-      text,
+      html:text,
+      // text,
     };
     await this.mailTransporter.sendMail(mailDetails, async function(err) {
       if (err) {

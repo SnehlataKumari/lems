@@ -17,4 +17,13 @@ export class EmailService {
     `;
     await this.sendEmail(user.email, subject, text);
   }
+  
+  async sendResetPasswordLink(user, link) {
+    const subject = `Reset Password Link`;
+    const text = `
+      <h1>Please click this link to reset your password</h1>
+      <a href='${link}'>${link}</a>
+    `;
+    await this.sendEmail(user.email, subject, text);
+  }
 }
