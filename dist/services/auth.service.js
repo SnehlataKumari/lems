@@ -50,9 +50,9 @@ let AuthService = (() => {
         async signUp(requestBody, role = 'STUDENT') {
             const tokenType = constants_1.TOKEN_TYPES['VERIFY_EMAIL'].key;
             const hash = await this.encryptPassword(requestBody.password);
-            const user = await this.userService.create(Object.assign(Object.assign({}, requestBody), { password: hash }));
-            const userModel = this.userService.getPublicDetails(user);
-            const token = this.getUserToken(userModel.toJSON());
+            const userModel = await this.userService.create(Object.assign(Object.assign({}, requestBody), { password: hash }));
+            const userObj = this.userService.getPublicDetails(userModel);
+            const token = this.jwtService.sign({ userObj });
             await this.tokenService.create({
                 token,
                 type: tokenType,
@@ -65,22 +65,16 @@ let AuthService = (() => {
                 userModel,
             };
         }
-        apiUrl(role) {
-            return this.configs.get('HOST_URL');
-        }
         async signUpTeacher(requestBody, files) {
             let userModel;
             let teacherModel;
             try {
                 const { user: userObject, teacher: teacherObject } = requestBody;
                 const hash = await this.encryptPassword(userObject.email);
-                console.log(userObject);
                 userModel = await this.userService.create(Object.assign(Object.assign({}, userObject), { password: hash, role: 'TEACHER' }));
-                console.log(userModel);
                 const user = this.userService.getPublicDetails(userModel);
                 const dateOfBirth = teacherObject.dateOfBirth;
                 teacherModel = await this.teacherService.create(Object.assign(Object.assign({}, teacherObject), { userId: user._id, dateOfBirth: dateOfBirth, resume: files.resumeFile, screenShotOfInternet: files.internetConnectionFile }));
-                console.log(teacherModel);
                 await this.emailsService.sendVerificationLink(user, 'You have successfully signed-in with LEMS');
                 return {
                     message: 'Verification link for Teacher is sent to your email!',
@@ -97,6 +91,9 @@ let AuthService = (() => {
                 }
                 throw error;
             }
+        }
+        apiUrl(role) {
+            return this.configs.get('HOST_URL');
         }
         async verifyToken(token) {
             const tokenType = constants_1.TOKEN_TYPES['VERIFY_EMAIL'].key;
@@ -202,7 +199,7 @@ let AuthService = (() => {
             return this.userService.findById(id);
         }
         async changePassword(loggedInUser, requestBody) {
-            const { oldPassword, newPassword, confirmPassword } = requestBody;
+            const { oldPassword, newPassword } = requestBody;
             const comparePassword = bcrypt.compareSync(oldPassword, loggedInUser.password);
             if (!comparePassword) {
                 throw new common_1.UnauthorizedException('wrong password!');
@@ -212,7 +209,6 @@ let AuthService = (() => {
         }
         async editProfile(loggedInUser, requestBody) {
             const userId = loggedInUser._id;
-            console.log(userId, 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
             const teacher = await this.teacherService.findOne({ userId: userId });
             if (!teacher) {
                 throw new common_1.UnauthorizedException('user not found!');

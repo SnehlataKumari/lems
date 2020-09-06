@@ -21,11 +21,11 @@ export declare class AuthService {
         message: string;
         userModel: any;
     }>;
-    apiUrl(role: any): any;
     signUpTeacher(requestBody: any, files: any): Promise<{
         message: string;
         user: any;
     }>;
+    apiUrl(role?: any): any;
     verifyToken(token: any): Promise<string>;
     resendVerificationLink(email: any, role?: string): Promise<{
         message: string;
