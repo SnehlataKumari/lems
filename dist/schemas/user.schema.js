@@ -13,7 +13,6 @@ exports.UserSchema = new mongoose.Schema({
     },
     lastName: {
         type: String,
-        required: [true, 'Name is required!'],
     },
     gender: {
         type: String,
@@ -28,6 +27,9 @@ exports.UserSchema = new mongoose.Schema({
         unique: true,
     },
     password: {
+        type: String,
+    },
+    grade: {
         type: String,
     },
     isEmailVerified: {

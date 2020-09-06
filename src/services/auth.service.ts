@@ -49,18 +49,18 @@ export class AuthService {
   async signUp(requestBody, role = 'STUDENT') {
     const tokenType = TOKEN_TYPES['VERIFY_EMAIL'].key;
     const hash = await this.encryptPassword(requestBody.password);
-    const user = await this.userService.create({
+    const userModel = await this.userService.create({
       ...requestBody,
       password: hash
     });
-    const userModel = this.userService.getPublicDetails(user);
-    const token = this.getUserToken(userModel.toJSON());
+    const userObj = this.userService.getPublicDetails(userModel);
+    const token = this.jwtService.sign({userObj});
     await this.tokenService.create({
       token,
       type: tokenType,
       userId: userModel._id,
     });
-    const link = `${this.hostUrl(role)}/auth/verify/${token}`;
+    const link = `${this.apiUrl(role)}/auth/verify/${token}`;
     await this.emailsService.sendVerificationLink(userModel, link);
     return {
       message: 'Verification link sent to your email!',
@@ -69,18 +69,11 @@ export class AuthService {
   }
 
   async signUpTeacher(requestBody, files) {
-    // console.log(requestBody.user);
-    
-    // return await this.transaction.transaction(async (options) => {});
     let userModel;
     let teacherModel;
     try {
       const { user: userObject, teacher: teacherObject } = requestBody;
       const hash = await this.encryptPassword(userObject.email);
-      // const tokenType = TOKEN_TYPES['VERIFY_EMAIL'].key;
-      // const hash = await this.encryptPassword(userObject.password);
-      // console.log(requestBody.user);
-      console.log(userObject);
       
       userModel = await this.userService.create({
         ...userObject,
@@ -88,8 +81,6 @@ export class AuthService {
         role: 'TEACHER'
       });
 
-      console.log(userModel);
-      
       const user = this.userService.getPublicDetails(userModel);
       // TODO: Change teacher schema to have dateOfBirth of type Date
       const dateOfBirth = teacherObject.dateOfBirth;
@@ -99,10 +90,6 @@ export class AuthService {
         resume: files.resumeFile,
         screenShotOfInternet: files.internetConnectionFile
       });
-
-      console.log(teacherModel);
-      
-
       // const link = `${this.hostUrl}/auth/verify/${token}`;
       await this.emailsService.sendVerificationLink(user, 'You have successfully signed-in with LEMS');
       return {
@@ -121,7 +108,10 @@ export class AuthService {
 
       throw error;
     }
-    
+  }
+
+  apiUrl(role?) {
+    return this.configs.get('HOST_URL');
   }
 
   async verifyToken(token) {
@@ -253,7 +243,7 @@ export class AuthService {
   }
 
   async changePassword(loggedInUser, requestBody) {
-    const { oldPassword, newPassword, confirmPassword } = requestBody;
+    const { oldPassword, newPassword } = requestBody;
     const comparePassword = bcrypt.compareSync(oldPassword, loggedInUser.password);
     if (!comparePassword) {
       throw new UnauthorizedException('wrong password!');

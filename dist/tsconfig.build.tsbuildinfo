@@ -1802,8 +1802,13 @@
         "affectsGlobalScope": false
       },
       "../src/schemas/user.schema.ts": {
+<<<<<<< HEAD
         "version": "f9d615a87704dd02c65867a441cfb4af8a506abb12d23ee5238e8d55d1998402",
         "signature": "1c21071f2c0d7d9779303a6a204301fb1576821e54fc756baf24e3e726ba2897",
+=======
+        "version": "2e894a0e61b99ddb3229c75cc86db1c55f4d3933b9971dfec5db845a433734ef",
+        "signature": "33b6d9f5900752b91a05e8ec298b94fec72ab453cbb20021183b577561396086",
+>>>>>>> AuthService-fixup
         "affectsGlobalScope": false
       },
       "../src/schemas/class.schema.ts": {
@@ -1872,8 +1877,13 @@
         "affectsGlobalScope": false
       },
       "../src/services/users.service.ts": {
+<<<<<<< HEAD
         "version": "bd545a4ab0ad66ef27a0d3d05c154c9d5aafe974193925c56a0e717500cc62d3",
         "signature": "aed508ba9dad4f1536caa2d4b34c52e671d79e6f1dd5e897aea747b3b8534dd9",
+=======
+        "version": "da883cf8f52ccf1575a524ac0bdd044f7b4b8a0e86cfcfbbc8d1961946209328",
+        "signature": "b0cff834f0cddb5848c7d5c78376a40152042960890ec5dede8c8a880f12503d",
+>>>>>>> AuthService-fixup
         "affectsGlobalScope": false
       },
       "../node_modules/aws-sdk/lib/error.d.ts": {
@@ -3297,8 +3307,13 @@
         "affectsGlobalScope": false
       },
       "../src/services/auth.service.ts": {
+<<<<<<< HEAD
         "version": "06b7f438391af3b18df469f934f51519216a577134108aa2deaaba3e680bf4a8",
         "signature": "2fe2ac813884d7d5547b3d917e6535c2fe0c2034586d68422af0af9014864782",
+=======
+        "version": "b7c7a093d71f4ed6ae6f6e44f080bed78ab7b238d2205f79d4495fa0636f711f",
+        "signature": "0069f659579f6686c30baf510e9e7470d1abba0c7e3cb199db0fea7e6383d6c1",
+>>>>>>> AuthService-fixup
         "affectsGlobalScope": false
       },
       "../src/services/dummySms.service.ts": {
@@ -3337,8 +3352,13 @@
         "affectsGlobalScope": false
       },
       "../src/services/index.ts": {
+<<<<<<< HEAD
         "version": "748732c20a86a285f047f0bae66d0bece12a07c236a3e3557400760faefb9a33",
         "signature": "6071ce5a89b2511611cdf4ee5863e2233f3d731e569a53724e96c878f435e088",
+=======
+        "version": "649c634008fae25bb6b14ffc61ea284f5872e7fd5b08ddea9479fd8e8277600d",
+        "signature": "0e4c00c96cb105bf57f76c0604373ea6bfdad4a2b1ca89c03d2155f2a76794a0",
+>>>>>>> AuthService-fixup
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
@@ -3562,8 +3582,13 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/auth.controller.ts": {
+<<<<<<< HEAD
         "version": "2505e7478e9e48cb069d0287cfc40a5cabd04593d4b5023f662e7ce1fbd081b1",
         "signature": "87be5cc15a0354be129131084eb11ad287aa8cff10127bb4364afc9412fac59e",
+=======
+        "version": "105256d468e310d5415f2888763aae9c2123a422160bae675220f4f9492c6106",
+        "signature": "15b2d60fec05c0371409e62489f304f8b131b462129e19c39d4863cc5ed8bd20",
+>>>>>>> AuthService-fixup
         "affectsGlobalScope": false
       },
       "../src/controllers/chapters.controller.ts": {
@@ -3582,8 +3607,13 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/teachers.controller.ts": {
+<<<<<<< HEAD
         "version": "ef4cc9310cccbb63003e0ca04807b460fa35e8f304723a62b1ac183cfdf713a7",
         "signature": "322c1bc3fa4a228d77ae6f68e037429b1e1bed8bf95a5ee49f65ecf8dfd9ddbf",
+=======
+        "version": "0013b6a3cd44cc5744edd22f5a97b731e7cf8c2fef8586aa583a5e6c6f484c4c",
+        "signature": "d593126c39e05829b2f5a0bf09739d1475010ffcc65bb98e93a1149e4f749b3c",
+>>>>>>> AuthService-fixup
         "affectsGlobalScope": false
       },
       "../src/controllers/products.controller.ts": {
@@ -18871,6 +18901,7 @@
         "../src/decorators/validatetoken.decorator.ts",
         "../src/pipes/joivalidation.pipe.ts",
         "../src/services/teachers.service.ts",
+        "../src/services/users.service.ts",
         "../src/utils/index.ts"
       ],
       "../src/controllers/users.controller.ts": [
@@ -31988,7 +32019,8 @@
       ],
       "../src/controllers/teachers.controller.ts": [
         "../src/controllers/resource.controller.ts",
-        "../src/services/teachers.service.ts"
+        "../src/services/teachers.service.ts",
+        "../src/services/users.service.ts"
       ],
       "../src/controllers/users.controller.ts": [
         "../src/controllers/resource.controller.ts",
@@ -32099,8 +32131,13 @@
       "../src/services/index.ts": [
         "../src/services/assets.service.ts",
         "../src/services/auth.service.ts",
+<<<<<<< HEAD
         "../src/services/dbtransaction.service.ts",
         "../src/services/dummySms.service.ts",
+=======
+        "../src/services/classes.service.ts",
+        "../src/services/dummysms.service.ts",
+>>>>>>> AuthService-fixup
         "../src/services/email.service.ts",
         "../src/services/file.service.ts",
         "../src/services/liveStreams.service.ts",

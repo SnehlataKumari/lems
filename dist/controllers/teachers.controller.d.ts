@@ -1,7 +1,9 @@
 import { TeachersService } from 'src/services/teachers.service';
 import { ResourceController } from './resource.controller';
+import { UsersService } from 'src/services/users.service';
 export declare class TeachersController extends ResourceController {
-    constructor(service: TeachersService);
+    private userService;
+    constructor(service: TeachersService, userService: UsersService);
     findAll(): Promise<{
         message: string;
         data: any;
@@ -11,6 +13,10 @@ export declare class TeachersController extends ResourceController {
         data: any;
     }>;
     findById(req: any): Promise<{
+        message: string;
+        data: any;
+    }>;
+    getTeachersDetails(teacherId: any): Promise<{
         message: string;
         data: any;
     }>;

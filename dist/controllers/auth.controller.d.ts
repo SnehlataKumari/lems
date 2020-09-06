@@ -11,6 +11,10 @@ export declare class AuthController {
         message: string;
         userModel: any;
     }>;
+    signUpStudent(requestBody: any): Promise<{
+        message: string;
+        userModel: any;
+    }>;
     signupTeacher(requestBody: any, files: any): Promise<{
         message: string;
         user: any;

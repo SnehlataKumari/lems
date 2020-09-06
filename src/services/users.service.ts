@@ -26,4 +26,8 @@ export class UsersService extends DBService {
       throw new BadRequestException(err.message);
     }
   }
+
+  getPublicDetails(model) {
+    return {...model.toJSON(), password: null};
+  }
 }

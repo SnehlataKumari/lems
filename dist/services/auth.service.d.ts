@@ -21,6 +21,7 @@ export declare class AuthService {
         message: string;
         userModel: any;
     }>;
+    apiUrl(role: any): any;
     signUpTeacher(requestBody: any, files: any): Promise<{
         message: string;
         user: any;

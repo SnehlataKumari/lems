@@ -58,12 +58,15 @@ let AuthService = (() => {
                 type: tokenType,
                 userId: userModel._id,
             });
-            const link = `${this.hostUrl(role)}/auth/verify/${token}`;
+            const link = `${this.apiUrl(role)}/auth/verify/${token}`;
             await this.emailsService.sendVerificationLink(userModel, link);
             return {
                 message: 'Verification link sent to your email!',
                 userModel,
             };
+        }
+        apiUrl(role) {
+            return this.configs.get('HOST_URL');
         }
         async signUpTeacher(requestBody, files) {
             let userModel;
@@ -209,6 +212,7 @@ let AuthService = (() => {
         }
         async editProfile(loggedInUser, requestBody) {
             const userId = loggedInUser._id;
+            console.log(userId, 'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
             const teacher = await this.teacherService.findOne({ userId: userId });
             if (!teacher) {
                 throw new common_1.UnauthorizedException('user not found!');

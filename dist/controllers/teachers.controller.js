@@ -20,13 +20,15 @@ const utils_1 = require("../utils");
 const Joi = require("@hapi/joi");
 const joivalidation_pipe_1 = require("../pipes/joivalidation.pipe");
 const validatetoken_decorator_1 = require("../decorators/validatetoken.decorator");
+const users_service_1 = require("../services/users.service");
 const acceptRequestSchema = Joi.object({
     accept: Joi.boolean()
 });
 let TeachersController = (() => {
     let TeachersController = class TeachersController extends resource_controller_1.ResourceController {
-        constructor(service) {
+        constructor(service, userService) {
             super(service);
+            this.userService = userService;
         }
         findAll() {
             return utils_1.success('List found successfully', this.service.findAll());
@@ -41,6 +43,14 @@ let TeachersController = (() => {
         async findById(req) {
             const teacherId = req.teacherId;
             return utils_1.success('List found successfully', this.service.findById(teacherId));
+        }
+        async getTeachersDetails(teacherId) {
+            const teacherModel = await this.service.findById(teacherId);
+            const userModel = await this.userService.findById(teacherModel.userId);
+            return utils_1.success('Teacher found!', {
+                teacher: this.service.getPublicDetails(teacherModel),
+                user: this.userService.getPublicDetails(userModel)
+            });
         }
         async deleteTeacherById(teacherId) {
             await this.service.deleteTeacherById(teacherId);
@@ -76,6 +86,13 @@ let TeachersController = (() => {
         __metadata("design:returntype", Promise)
     ], TeachersController.prototype, "findById", null);
     __decorate([
+        common_1.Get(':teacherId/get-teacher-details'),
+        __param(0, common_1.Param('teacherId')),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], TeachersController.prototype, "getTeachersDetails", null);
+    __decorate([
         common_1.Delete(':teacherId'),
         __param(0, common_1.Param('teacherId')),
         __metadata("design:type", Function),
@@ -98,7 +115,8 @@ let TeachersController = (() => {
     ], TeachersController.prototype, "editTeacherProfile", null);
     TeachersController = __decorate([
         common_1.Controller('teachers'),
-        __metadata("design:paramtypes", [teachers_service_1.TeachersService])
+        __metadata("design:paramtypes", [teachers_service_1.TeachersService,
+            users_service_1.UsersService])
     ], TeachersController);
     return TeachersController;
 })();
