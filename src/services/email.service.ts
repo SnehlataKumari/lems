@@ -26,4 +26,15 @@ export class EmailService {
     `;
     await this.sendEmail(user.email, subject, text);
   }
+  
+  async sendUpdatedPasswordNotification(userModel, currentPassword, link) {
+    const subject = `Updated New Password`;
+    const email = userModel.email;
+    const text = `
+      <h1> ${email } is your Email And "${currentPassword}" is your new password.
+      You can login by now</h1>
+      <a href='${link}' >${link}</a>
+    `;
+    await this.sendEmail(email, subject, text);
+  }
 }

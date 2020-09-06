@@ -1,12 +1,18 @@
-import { Controller, Get, Req } from '@nestjs/common';
+import { Controller, Get, Req, Post, Param, Body } from '@nestjs/common';
 import { UsersService } from 'src/services/users.service';
 import { ResourceController } from './resource.controller';
 import { success } from 'src/utils';
 import { ValidateToken } from 'src/decorators/validatetoken.decorator';
+import { UserBindingInstance } from 'twilio/lib/rest/chat/v2/service/user/userBinding';
+import { AuthService } from 'src/services/auth.service';
+import { EmailService } from 'src/services/email.service';
 
 @Controller('users')
 export class UsersController extends ResourceController {
-  constructor(service: UsersService) {
+  constructor(service: UsersService,
+    private authService: AuthService,
+    private emailsService: EmailService,
+    ) {
     super(service);
   }
 
@@ -15,4 +21,22 @@ export class UsersController extends ResourceController {
     return success('List found successfully', this.service.findAll());
   }
 
+  @Post(':userId/update-password')
+  async updatePassword(@Param('userId') userId, @Body() requestBody ) {
+    const { currentPassword } = requestBody;
+    const hashedPassword = await this.authService.encryptPassword(currentPassword);
+    const userModel = await this.service.changePassword(userId, hashedPassword);
+    return await this.afterUpdatePassword(userId, currentPassword);
+  }
+
+  async afterUpdatePassword(userId, currentPassword) {
+    const userModel = await this.service.findById(userId);
+    const email = userModel.email;
+    const role = userModel.role;
+    const link = `${this.authService.apiUrl(role)}`;
+    await this.emailsService.sendUpdatedPasswordNotification(userModel, currentPassword, link);
+    return {
+      message: `Password sent to ${userModel.firstName}'s email!`,
+    };
+  }
 }

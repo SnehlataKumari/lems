@@ -71,6 +71,7 @@ export class AuthService {
   async signUpTeacher(requestBody, files) {
     let userModel;
     let teacherModel;
+    const tokenType = TOKEN_TYPES['VERIFY_EMAIL'].key;
     try {
       const { user: userObject, teacher: teacherObject } = requestBody;
       const hash = await this.encryptPassword(userObject.email);
@@ -82,6 +83,14 @@ export class AuthService {
       });
 
       const user = this.userService.getPublicDetails(userModel);
+      const token = this.jwtService.sign(user);
+      await this.tokenService.create({
+        token,
+        type: tokenType,
+        userId: userModel._id,
+      });
+      const link = `${this.apiUrl(userModel.role)}/auth/verify/${token}`;
+
       // TODO: Change teacher schema to have dateOfBirth of type Date
       const dateOfBirth = teacherObject.dateOfBirth;
       teacherModel = await this.teacherService.create({
@@ -90,8 +99,7 @@ export class AuthService {
         resume: files.resumeFile,
         screenShotOfInternet: files.internetConnectionFile
       });
-      // const link = `${this.hostUrl}/auth/verify/${token}`;
-      await this.emailsService.sendVerificationLink(user, 'You have successfully signed-in with LEMS');
+      await this.emailsService.sendVerificationLink(userModel, link);
       return {
         message: 'Verification link for Teacher is sent to your email!',
         user,

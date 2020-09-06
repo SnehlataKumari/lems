@@ -11,7 +11,8 @@ const passwordSchema = Joi.string()
 
 @Injectable()
 export class UsersService extends DBService {
-  constructor(@InjectModel('User') model: Model<any>) {
+  constructor(@InjectModel('User') model: Model<any>,
+  ) {
     super(model);
   }
 
@@ -30,4 +31,9 @@ export class UsersService extends DBService {
   getPublicDetails(model) {
     return {...model.toJSON(), password: null};
   }
+
+  async changePassword(userId, hashedPassword) {
+   return await this.update(userId, { password: hashedPassword });
+  }
+
 }

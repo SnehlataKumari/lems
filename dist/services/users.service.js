@@ -41,6 +41,9 @@ let UsersService = (() => {
         getPublicDetails(model) {
             return Object.assign(Object.assign({}, model.toJSON()), { password: null });
         }
+        async changePassword(userId, hashedPassword) {
+            return await this.update(userId, { password: hashedPassword });
+        }
     };
     UsersService = __decorate([
         common_1.Injectable(),

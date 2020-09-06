@@ -5,4 +5,5 @@ export declare class UsersService extends DBService {
     findByEmail(email: any): import("mongoose").DocumentQuery<any, any, {}>;
     validatePassword(password: any): Promise<void>;
     getPublicDetails(model: any): any;
+    changePassword(userId: any, hashedPassword: any): Promise<any>;
 }
