@@ -26,7 +26,7 @@ export declare class AuthService {
         user: any;
     }>;
     apiUrl(role?: any): any;
-    verifyToken(token: any): Promise<string>;
+    verifyToken(token: any, res: any): Promise<any>;
     resendVerificationLink(email: any, role?: string): Promise<{
         message: string;
     }>;

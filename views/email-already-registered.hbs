@@ -1,0 +1,107 @@
+<html>
+
+<head>
+    <title>Thank you</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+        text-align: center;
+        background-color: #002b46;
+        height: 100vh;
+    }
+
+    h1 {
+        color: #fff;
+        font-family: 'Inconsolata', monospace;
+        font-weight: 600;
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    p {
+        color: #fff;
+        font-family: 'Inconsolata', monospace;
+        font-size: 15px;
+        margin: 0;
+    }
+
+    .thank-u {
+        position: relative;
+        vertical-align: center;
+        align-items: middle;
+        height: 100vh;
+        float: left;
+        width: 100%;
+    }
+
+    .btn-primary:not(:disabled):not(.disabled).active,
+    .btn-primary:not(:disabled):not(.disabled):active,
+    .show>.btn-primary.dropdown-toggle {
+        color: #fff;
+        background-color: #fff;
+        border-color: #fff;
+    }
+
+    .thank-top {
+        margin-top: 7rem;
+    }
+
+    .lead {
+        position: relative;
+        margin-top: 35px;
+    }
+
+    .btn-br {
+        position: relative;
+        padding: 2px 51px;
+        margin-top: 6px;
+        font-size: 25px;
+        background-color: #fff;
+        border: 1px solid #002b46;
+        font-weight: 600;
+        background-color: none;
+        color: #002b46 !important;
+    }
+
+    .btn-br:hover {
+        position: relative;
+        padding: 2px 51px;
+        font-size: 25px;
+        background-color: #fff;
+        border: 1px solid #002b46;
+        font-weight: 600;
+        background-color: none;
+        color: #002b46 !important;
+    }
+
+    .display-3 {
+        font-size: 4.2rem;
+        font-weight: 300;
+        margin-bottom: 0;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="thank-u text-center">
+            <div class="thank-top">
+                <h1 class="display-3">Thank You!</h1>
+                <p class="lead">Your email has already been verified.</p>
+                <p class="lead">
+                    <a href="{{loginLink}}" class="btn btn-primary btn-br btn-sm" role="button">Login</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

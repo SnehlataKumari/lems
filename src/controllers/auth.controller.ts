@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Body, Param, Request, UseInterceptors, UploadedFile, UploadedFiles, Put, Req } from '@nestjs/common';
+import { Controller, Post, Get, Body, Param, Request, UseInterceptors, UploadedFile, UploadedFiles, Put, Req, Render, Res } from '@nestjs/common';
 import { FileInterceptor, FileFieldsInterceptor } from '@nestjs/platform-express';
 import { AuthService } from 'src/services/auth.service';
 import { TokensService } from 'src/services/tokens.service';
@@ -9,6 +9,7 @@ import { ValidateToken } from 'src/decorators/validatetoken.decorator';
 import { LoggedInUser } from 'src/decorators/loggedinuser.decorator';
 import { success } from 'src/utils';
 import { TOKEN_TYPES } from 'src/constants';
+import { Response } from 'express';
 
 const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 const passwordSchema = Joi.string()
@@ -101,8 +102,9 @@ export class AuthController {
   }
 
   @Get('verify/:token')
-  async verify(@Param('token') token) {
-    return await this.service.verifyToken(token);
+  // @Render('thank-you')
+  async verify(@Param('token') token, @Res() res: Response) {
+    return await this.service.verifyToken(token, res);
   }
 
   @Post('forgot-password-teacher')

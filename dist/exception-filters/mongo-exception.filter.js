@@ -17,9 +17,22 @@ let MongooseExceptionFilter = (() => {
             const response = ctx.getResponse();
             const request = ctx.getRequest();
             const status = 401;
+            const excE = exception;
+            const errors = excE.errors;
+            const errorMessage = {};
+            for (const errorField in errors) {
+                if (errors.hasOwnProperty(errorField)) {
+                    const errorObject = errors[errorField];
+                    errorMessage[errorField] = errorObject.message;
+                }
+            }
+            let errorMessageStr = 'Please provide valid input';
+            if (errorMessage && Reflect.ownKeys(errorMessage).length) {
+                errorMessageStr = Object.values(errorMessage)[0];
+            }
             response.status(status).json({
                 statusCode: status,
-                message: 'Please provide valid input',
+                message: errorMessageStr,
                 error: exception.message,
                 timestamp: new Date().toISOString(),
                 path: request.url,

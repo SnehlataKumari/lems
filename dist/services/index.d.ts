@@ -10,5 +10,5 @@ import { NodeMailerService } from './nodemailer.service';
 import { TeachersService } from './teachers.service';
 import { ProductsService } from './products.service';
 import { DBTransactionService } from './dbtransaction.service';
-declare const _default: (typeof AssetsService | typeof ClassesService | typeof FileService | typeof AuthService | typeof S3Service | typeof SmsService | typeof DummySmsService | typeof NodeMailerService | typeof EmailService | typeof TeachersService | typeof ProductsService | typeof DBTransactionService)[];
+declare const _default: (typeof EmailService | typeof AssetsService | typeof ClassesService | typeof FileService | typeof AuthService | typeof S3Service | typeof SmsService | typeof DummySmsService | typeof NodeMailerService | typeof TeachersService | typeof ProductsService | typeof DBTransactionService)[];
 export default _default;

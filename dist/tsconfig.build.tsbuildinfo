@@ -3276,9 +3276,14 @@
         "signature": "6ea3b581407f7e9ae2d161d9176e3f9d427d9c9bdc28cf25b61e70c746df8ad2",
         "affectsGlobalScope": false
       },
+      "../node_modules/handlebars/types/index.d.ts": {
+        "version": "f3a68054f682f21cec1eb6bc37d3c4c7f73b7723c7256f8a1ccc75873024aaa6",
+        "signature": "f3a68054f682f21cec1eb6bc37d3c4c7f73b7723c7256f8a1ccc75873024aaa6",
+        "affectsGlobalScope": true
+      },
       "../src/services/email.service.ts": {
-        "version": "01067e54c2e1ccd63089daa924a667d351e0cf427ccacc006a1f23f523f14747",
-        "signature": "43fdf59727d0d993a5d46da6c1c2866cfae3e554f4a9e07bbd3ed969e95e9cea",
+        "version": "ee772da5d936e992442c1038802add71183a0fa6a3802b134bed424637eaf644",
+        "signature": "16ddac1c31da974a1301ebdef1a54f535ead8ab2871d9d51462ff675cc65998f",
         "affectsGlobalScope": false
       },
       "../src/utils/index.ts": {
@@ -3297,8 +3302,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/auth.service.ts": {
-        "version": "b8b3fea7ac89a4ca86f220e1b696c8f93577607eef1339bf96bcba45c2b63c7f",
-        "signature": "5c50022d18cbf8a745042ed8376904bbc2d769b7f300300b112db5ed5d522bad",
+        "version": "4aea9d55e72c0ee9016c20f1e56e84bd13c5ce8f5fb5233698597dfe493f972d",
+        "signature": "c61fd7028f2bb30489649c0df131f1bf95a2bc39bad5bf874d7cc18f0ade8fc3",
         "affectsGlobalScope": false
       },
       "../src/services/dummySms.service.ts": {
@@ -3338,7 +3343,7 @@
       },
       "../src/services/index.ts": {
         "version": "748732c20a86a285f047f0bae66d0bece12a07c236a3e3557400760faefb9a33",
-        "signature": "e3033311c2bbe75f3199831e1491b2d5ca1b85daf42e534efd222bffaef52de2",
+        "signature": "52eb13020943565abf7c09190bb1ffad9b1b2a7fedf8ff904535d237f25c9592",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
@@ -5762,8 +5767,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/auth.controller.ts": {
-        "version": "10f3a24728fd05240bf345dec9d77f1af6c4cc43876f3148cf852330f0652129",
-        "signature": "ca99bb8b8599dc35a06fd0ac926383a89562e3fb890f136c95b3cfa3dc18bd47",
+        "version": "ae0fa2cfd6cdf9cb6f2e77fbedb24168a7f3cf89c9c30b043e1dcc49cde8cce4",
+        "signature": "454fadf5bd31ecfc5fd545347e97a6d70893fbc70a599cb5d919647551c17bb7",
         "affectsGlobalScope": false
       },
       "../src/controllers/chapters.controller.ts": {
@@ -5827,12 +5832,12 @@
         "affectsGlobalScope": false
       },
       "../src/exception-filters/mongo-exception.filter.ts": {
-        "version": "5ef018fcab4a7154b6fa16943fefb0a2bf44f5f72291e413ac1185da07a98c69",
+        "version": "ab8c00a70583308702c0436335933c1fad0962fbedc975fd39d0d63fc5828355",
         "signature": "c18576246cb5cfc6bfaba7734b827d905222078b7223da24434c64411859382d",
         "affectsGlobalScope": false
       },
       "../src/main.ts": {
-        "version": "27a236b1818b3720df79b6996a76f47a7abaaf558e161aacb576c96badd6213e",
+        "version": "9b94218b208a83c00e01aa086a000be5d989ac579db743b687fdd5b04f916812",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -12459,6 +12464,13 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
+      "../node_modules/handlebars/types/index.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
       "../node_modules/jest-diff/build/cleanupSemantic.d.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
@@ -18754,6 +18766,7 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/config/index.d.ts",
         "../node_modules/@nestjs/platform-express/index.d.ts",
+        "../node_modules/@types/express/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/hapi__joi/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
@@ -18930,8 +18943,10 @@
       ],
       "../src/main.ts": [
         "../node_modules/@nestjs/core/index.d.ts",
+        "../node_modules/@nestjs/platform-express/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/path.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -19195,9 +19210,11 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/path.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../node_modules/handlebars/types/index.d.ts",
         "../src/services/nodemailer.service.ts"
       ],
       "../src/services/file.service.ts": [
@@ -25712,6 +25729,13 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
+      "../node_modules/handlebars/types/index.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
       "../node_modules/jest-diff/build/cleanupSemantic.d.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
@@ -31952,6 +31976,7 @@
       ],
       "../src/controllers/auth.controller.ts": [
         "../node_modules/@nestjs/config/index.d.ts",
+        "../node_modules/@types/express/index.d.ts",
         "../src/services/auth.service.ts",
         "../src/services/tokens.service.ts"
       ],
@@ -32769,6 +32794,7 @@
       "../node_modules/aws-sdk/lib/services/s3.d.ts",
       "../node_modules/aws-sdk/lib/shared-ini/ini-loader.d.ts",
       "../node_modules/axios/index.d.ts",
+      "../node_modules/handlebars/types/index.d.ts",
       "../node_modules/jest-diff/build/cleanupSemantic.d.ts",
       "../node_modules/jest-diff/build/diffLines.d.ts",
       "../node_modules/jest-diff/build/index.d.ts",

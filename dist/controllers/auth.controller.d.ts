@@ -1,6 +1,7 @@
 import { AuthService } from 'src/services/auth.service';
 import { TokensService } from 'src/services/tokens.service';
 import { ConfigService } from '@nestjs/config';
+import { Response } from 'express';
 export declare class AuthController {
     private config;
     private service;
@@ -34,7 +35,7 @@ export declare class AuthController {
         message: string;
         data: any;
     }>;
-    verify(token: any): Promise<string>;
+    verify(token: any, res: Response): Promise<any>;
     forgot(requestBody: any): Promise<{
         message: string;
         forgotToken: any;

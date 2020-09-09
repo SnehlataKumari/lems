@@ -122,23 +122,28 @@ export class AuthService {
     return this.configs.get('HOST_URL');
   }
 
-  async verifyToken(token) {
+  async verifyToken(token, res) {
     const tokenType = TOKEN_TYPES['VERIFY_EMAIL'].key;
     const user = this.jwtService.verify(token);
     const isTokenExist = await this.tokenService.findByTokenAndType(
       token,
       tokenType,
     );
-    console.log(user);
-    
     if (!isTokenExist) {
-      return `Email already verified! Click to login <a href="${this.hostUrl(user.role)}"> Login </a>`;
+      return res.render(
+        'email-already-registered',
+        { loginLink: this.hostUrl(user.role) },
+      );
     }
     await this.tokenService.findByTokenAndTypeAndDelete(token, tokenType);
     const id = user._id;
     if (user) {
       await this.userService.findByIdAndUpdate(id, { isEmailVerified: true });
-      return `Email <b>${user.email}</b> Verified Successfully; Click to login <a href="${this.hostUrl(user.role)}"> Login </a>`;
+
+      return res.render(
+        'thank-you',
+        { ...user, loginLink: this.hostUrl(user.role) },
+      );
     }
   }
 

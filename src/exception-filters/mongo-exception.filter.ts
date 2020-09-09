@@ -10,19 +10,25 @@ export class MongooseExceptionFilter implements ExceptionFilter {
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
     const status = 401;
-    // const errors = exception.errors;
-    // const errorMessage = {};
-    // for (const errorField in errors) {
-    //   if (errors.hasOwnProperty(errorField)) {
-    //     const errorObject = errors[errorField];
-    //     errorMessage[errorField] = errorObject.message;
-    //   }
-    // }
+    const excE = exception as any;
+
+    const errors = excE.errors;
+    const errorMessage = {};
+    for (const errorField in errors) {
+      if (errors.hasOwnProperty(errorField)) {
+        const errorObject = errors[errorField];
+        errorMessage[errorField] = errorObject.message;
+      }
+    }
 
     // TODO: Handle ValidationError, CastError Seperatly. And Give Error Message accordingly.
+    let errorMessageStr: any = 'Please provide valid input';
+    if (errorMessage && Reflect.ownKeys(errorMessage).length) {
+      errorMessageStr = Object.values(errorMessage)[0];
+    } 
     response.status(status).json({
       statusCode: status,
-      message: 'Please provide valid input',
+      message: errorMessageStr,
       error: exception.message,
       timestamp: new Date().toISOString(),
       path: request.url,

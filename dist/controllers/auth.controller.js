@@ -87,8 +87,8 @@ let AuthController = (() => {
             const { email, password } = requestBody;
             return await this.service.login({ email, password }, 'TEACHER');
         }
-        async verify(token) {
-            return await this.service.verifyToken(token);
+        async verify(token, res) {
+            return await this.service.verifyToken(token, res);
         }
         async forgot(requestBody) {
             const { email } = requestBody;
@@ -176,9 +176,9 @@ let AuthController = (() => {
     ], AuthController.prototype, "loginUser", null);
     __decorate([
         common_1.Get('verify/:token'),
-        __param(0, common_1.Param('token')),
+        __param(0, common_1.Param('token')), __param(1, common_1.Res()),
         __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
+        __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", Promise)
     ], AuthController.prototype, "verify", null);
     __decorate([

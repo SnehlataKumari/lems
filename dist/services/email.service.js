@@ -12,6 +12,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmailService = void 0;
 const nodemailer_service_1 = require("./nodemailer.service");
 const common_1 = require("@nestjs/common");
+const Handlebars = require("handlebars");
+const path = require("path");
+const fs_1 = require("fs");
 let EmailService = (() => {
     let EmailService = class EmailService {
         constructor(nodeMailerService) {
@@ -20,20 +23,31 @@ let EmailService = (() => {
         async sendEmail(to, subject, text) {
             this.nodeMailerService.sendEmail(to, subject, text);
         }
+        gettemplatePaths(templateName) {
+            return path.join(__dirname, '../../mail-templates', `${templateName}.html`);
+        }
+        getFileData(templateName) {
+            return fs_1.readFileSync(this.gettemplatePaths(templateName), 'utf8').toString();
+        }
+        getHandlebarTemplate(templateName) {
+            return Handlebars.compile(this.getFileData(templateName));
+        }
+        getTemlateVerificationLinkTemplate(user, link) {
+            const template = this.getHandlebarTemplate('verify-email');
+            return template({ link, name: user.firstName });
+        }
+        getTemlateResetPasswordLinkTemplate(user, link) {
+            const template = this.getHandlebarTemplate('forgot-password');
+            return template({ link, name: user.firstName });
+        }
         async sendVerificationLink(user, link) {
             const subject = `Email verification`;
-            const text = `
-      <h1>Please click this link to verify your email</h1>
-      <a href='${link}' >${link}</a>
-    `;
+            const text = this.getTemlateVerificationLinkTemplate(user, link);
             await this.sendEmail(user.email, subject, text);
         }
         async sendResetPasswordLink(user, link) {
             const subject = `Reset Password Link`;
-            const text = `
-      <h1>Please click this link to reset your password</h1>
-      <a href='${link}'>${link}</a>
-    `;
+            const text = this.getTemlateResetPasswordLinkTemplate(user, link);
             await this.sendEmail(user.email, subject, text);
         }
         async sendUpdatedPasswordNotification(userModel, currentPassword, link) {

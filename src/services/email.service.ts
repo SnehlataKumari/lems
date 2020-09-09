@@ -1,5 +1,8 @@
 import { NodeMailerService } from './nodemailer.service';
 import { Injectable } from '@nestjs/common';
+import * as Handlebars from 'handlebars';
+import * as path from 'path';
+import { readFileSync } from 'fs';
 
 @Injectable()
 export class EmailService {
@@ -9,21 +12,37 @@ export class EmailService {
     this.nodeMailerService.sendEmail(to, subject, text);
   }
 
+  gettemplatePaths(templateName) {
+    return path.join(__dirname, '../../mail-templates', `${templateName}.html`);
+  }
+
+  getFileData(templateName) {
+    return readFileSync(this.gettemplatePaths(templateName),'utf8').toString();
+  }
+
+  getHandlebarTemplate(templateName) {
+    return Handlebars.compile(this.getFileData(templateName));
+  }
+
+  getTemlateVerificationLinkTemplate(user, link) {
+    const template = this.getHandlebarTemplate('verify-email');
+    return template({link, name: user.firstName});
+  }
+
+  getTemlateResetPasswordLinkTemplate(user, link) {
+    const template = this.getHandlebarTemplate('forgot-password');
+    return template({link, name: user.firstName});
+  }
+
   async sendVerificationLink(user, link) {
     const subject = `Email verification`;
-    const text = `
-      <h1>Please click this link to verify your email</h1>
-      <a href='${link}' >${link}</a>
-    `;
+    const text = this.getTemlateVerificationLinkTemplate(user, link);
     await this.sendEmail(user.email, subject, text);
   }
   
   async sendResetPasswordLink(user, link) {
     const subject = `Reset Password Link`;
-    const text = `
-      <h1>Please click this link to reset your password</h1>
-      <a href='${link}'>${link}</a>
-    `;
+    const text = this.getTemlateResetPasswordLinkTemplate(user, link);
     await this.sendEmail(user.email, subject, text);
   }
   
