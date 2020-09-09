@@ -7,5 +7,5 @@ import { SubjectsController } from './subject.controller';
 import { PaymentsController } from './payments.controller';
 import { TeachersController } from './teachers.controller';
 import { ProductsController } from './products.controller';
-declare const _default: (typeof AuthController | typeof UsersController | typeof ClassesController | typeof AssetsController | typeof ChaptersController | typeof SubjectsController | typeof PaymentsController | typeof TeachersController | typeof ProductsController)[];
+declare const _default: (typeof UsersController | typeof ClassesController | typeof AssetsController | typeof AuthController | typeof ChaptersController | typeof SubjectsController | typeof PaymentsController | typeof TeachersController | typeof ProductsController)[];
 export default _default;

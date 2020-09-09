@@ -112,7 +112,6 @@ let AuthController = (() => {
             return utils_1.success('logged out successfully!', {});
         }
         async changePassword(req, requestBody) {
-            console.log(req, 'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr');
             const { user: loggedInUser } = req;
             return await this.service.changePassword(loggedInUser, requestBody);
         }
