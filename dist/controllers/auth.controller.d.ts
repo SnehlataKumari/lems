@@ -56,7 +56,7 @@ export declare class AuthController {
         message: string;
         data: any;
     }>;
-    changeTeacherPassword(req: any, requestBody: any): Promise<any>;
+    changePassword(req: any, requestBody: any): Promise<any>;
     editProfile(req: any, requestBody: any): Promise<{
         user: any;
         teacher: any;

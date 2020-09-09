@@ -206,7 +206,7 @@ let AuthService = (() => {
         getUserById(id) {
             return this.userService.findById(id);
         }
-        async changeTeacherPassword(loggedInUser, requestBody) {
+        async changePassword(loggedInUser, requestBody) {
             const { oldPassword, newPassword } = requestBody;
             const comparePassword = bcrypt.compareSync(oldPassword, loggedInUser.password);
             if (!comparePassword) {
@@ -215,7 +215,7 @@ let AuthService = (() => {
             const hashNewPassword = await this.encryptPassword(newPassword);
             return await this.userService.update(loggedInUser, { password: hashNewPassword });
         }
-        async editTeacherProfile(loggedInUser, requestBody) {
+        async editProfile(loggedInUser, requestBody) {
             const userId = loggedInUser._id;
             const teacher = await this.teacherService.findOne({ userId: userId });
             if (!teacher) {

@@ -21,8 +21,16 @@ export class UsersController extends ResourceController {
     return success('List found successfully', this.service.findAll());
   }
 
+  @ValidateToken()
+  @Get('get-user-details')
+  async getUserDetails(@Req() req) {  
+    const { user: loggedInUser } = req;
+    const studentModel = await this.service.findById(loggedInUser._id).populate('userId');
+    return success('Teacher found!', this.service.getPublicDetails(studentModel));
+  }
+
   @Get(':userId/get-user-details')
-  async getUserDetails(@Param('userId') userId) {
+  async getUsersDetails(@Param('userId') userId) {
     const userModel = await this.service.findById(userId);
     return success('user found!', {
       user: this.service.getPublicDetails(userModel)

@@ -30,7 +30,12 @@ let UsersController = (() => {
         findAll() {
             return utils_1.success('List found successfully', this.service.findAll());
         }
-        async getUserDetails(userId) {
+        async getUserDetails(req) {
+            const { user: loggedInUser } = req;
+            const studentModel = await this.service.findById(loggedInUser._id).populate('userId');
+            return utils_1.success('Teacher found!', this.service.getPublicDetails(studentModel));
+        }
+        async getUsersDetails(userId) {
             const userModel = await this.service.findById(userId);
             return utils_1.success('user found!', {
                 user: this.service.getPublicDetails(userModel)
@@ -60,12 +65,20 @@ let UsersController = (() => {
         __metadata("design:returntype", void 0)
     ], UsersController.prototype, "findAll", null);
     __decorate([
+        validatetoken_decorator_1.ValidateToken(),
+        common_1.Get('get-user-details'),
+        __param(0, common_1.Req()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], UsersController.prototype, "getUserDetails", null);
+    __decorate([
         common_1.Get(':userId/get-user-details'),
         __param(0, common_1.Param('userId')),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", Promise)
-    ], UsersController.prototype, "getUserDetails", null);
+    ], UsersController.prototype, "getUsersDetails", null);
     __decorate([
         common_1.Post(':userId/update-password'),
         __param(0, common_1.Param('userId')), __param(1, common_1.Body()),

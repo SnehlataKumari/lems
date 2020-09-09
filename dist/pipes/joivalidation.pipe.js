@@ -11,7 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.JoiValidationPipe = void 0;
 const common_1 = require("@nestjs/common");
+const joi_1 = require("@hapi/joi");
 let JoiValidationPipe = (() => {
+    var _a;
     let JoiValidationPipe = class JoiValidationPipe {
         constructor(schema) {
             this.schema = schema;
@@ -26,7 +28,7 @@ let JoiValidationPipe = (() => {
     };
     JoiValidationPipe = __decorate([
         common_1.Injectable(),
-        __metadata("design:paramtypes", [Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof joi_1.ObjectSchema !== "undefined" && joi_1.ObjectSchema) === "function" ? _a : Object])
     ], JoiValidationPipe);
     return JoiValidationPipe;
 })();

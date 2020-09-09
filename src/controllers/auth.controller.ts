@@ -146,10 +146,10 @@ export class AuthController {
   }
 // VIA TEACHER PANEL --------------------------------------------------------------------------------------
   @ValidateToken()
-  @Post('change-teacher-password')
-  async changeTeacherPassword(@Req() req, @Body() requestBody) {
+  @Post('change-password')
+  async changePassword(@Req() req, @Body() requestBody) { 
     const { user: loggedInUser } = req;
-    return await this.service.changeTeacherPassword(loggedInUser, requestBody)
+    return await this.service.changePassword(loggedInUser, requestBody)
   }
 
   // @ValidateToken()
@@ -157,10 +157,10 @@ export class AuthController {
   //   { name: 'profileFile', maxCount: 1 },
   // ]))
 // via TEACHER PANEL ------------------------------------------------------------------------------------
-  @Put('edit-teacher-profile')
+  @Put('edit-profile')
   async editProfile(@Req() req, @Body() requestBody) {
     const { user: loggedInUser } = req;
-    return await this.service.editTeacherProfile(loggedInUser, requestBody)
+    return await this.service.editProfile(loggedInUser, requestBody)
   }
 
   

@@ -48,8 +48,8 @@ export declare class AuthService {
     encryptPassword(password: any): Promise<any>;
     isValidAuthToken(token: any): Promise<any>;
     getUserById(id: any): import("mongoose").DocumentQuery<any, any, {}>;
-    changeTeacherPassword(loggedInUser: any, requestBody: any): Promise<any>;
-    editTeacherProfile(loggedInUser: any, requestBody: any): Promise<{
+    changePassword(loggedInUser: any, requestBody: any): Promise<any>;
+    editProfile(loggedInUser: any, requestBody: any): Promise<{
         user: any;
         teacher: any;
     }>;
