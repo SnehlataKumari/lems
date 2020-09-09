@@ -40,9 +40,14 @@ let MongoDBExceptionFilter = (() => {
             const request = ctx.getRequest();
             const status = 401;
             console.log(exception);
+            let errorMessage = 'Please provide valid input';
+            const error = exception;
+            if (exception.code === 11000) {
+                errorMessage = `Duplicate value for field ${String(Reflect.ownKeys(error.keyValue)[0])}.`;
+            }
             response.status(status).json({
                 statusCode: status,
-                message: 'Please provide valid input',
+                message: errorMessage,
                 error: exception.message,
                 timestamp: new Date().toISOString(),
                 path: request.url,

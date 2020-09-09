@@ -49,9 +49,14 @@ export class MongoDBExceptionFilter implements ExceptionFilter {
     // }
 
     // TODO: Handle ValidationError, CastError Seperatly. And Give Error Message accordingly.
+    let errorMessage = 'Please provide valid input';
+    const error = exception as any;
+    if (exception.code === 11000) {
+      errorMessage = `Duplicate value for field ${String(Reflect.ownKeys(error.keyValue)[0])}.`;
+    }
     response.status(status).json({
       statusCode: status,
-      message: 'Please provide valid input',
+      message: errorMessage,
       error: exception.message,
       timestamp: new Date().toISOString(),
       path: request.url,
