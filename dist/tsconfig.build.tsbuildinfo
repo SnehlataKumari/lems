@@ -3292,8 +3292,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/teachers.service.ts": {
-        "version": "d5e5d06955106e0ef2a099e7ec16b1e8b2d6eb11fc55255dd7517d6b17e05b7b",
-        "signature": "1aea392c5ea417c87223206338640df22a0e7411d4a4b7e674acaed13f9b2fe8",
+        "version": "c47e9c9534809a35a7014243c9370b774af5688443d0aae451923d8e8f1b63e9",
+        "signature": "03918a7bbaa91b41758db3dbab73a634a6bf274cfacc1ebfef3f36dba43509de",
         "affectsGlobalScope": false
       },
       "../src/services/dbtransaction.service.ts": {
@@ -3343,7 +3343,7 @@
       },
       "../src/services/index.ts": {
         "version": "facfa486e261c3e6deef3c3fc34ebdf6be8999bd9ef01318b8b6d3a7789481e2",
-        "signature": "f810e2c76d84cd375bde663f29fe2de23d4af52aa8912e4af4af817f098135e1",
+        "signature": "994602dcc4ae6ef67cf03846a16c4f66adcb9a979cab4e7cf089055594c55017",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
@@ -5767,7 +5767,7 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/auth.controller.ts": {
-        "version": "921373648ee19d2b0792926359a5e88557213679300f73e1d6cdd077942ce320",
+        "version": "0a17c50be39af59556b5a5bbd7539206031f983cdddc6dabfe5136dbc4490fc3",
         "signature": "b4bbdc7b49523a3bdddcb3a23ab9290d7c06fdad81e24be0feb38ee7b8ccb361",
         "affectsGlobalScope": false
       },
@@ -5798,7 +5798,7 @@
       },
       "../src/controllers/index.ts": {
         "version": "baaa401dfc0f650cf2cf5c0e6cb087beffc10c80b695e66578f29b1047a93e67",
-        "signature": "2da0e6fa6612df7f6094cc0bb2243a7308240ae7686ad69ff44ee9b5b02e570d",
+        "signature": "fd645f35754fc973ccfa9166160896545f33ccc268c2e91107c9df47d26724cc",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -32133,6 +32133,7 @@
       "../src/services/index.ts": [
         "../src/services/assets.service.ts",
         "../src/services/auth.service.ts",
+        "../src/services/classes.service.ts",
         "../src/services/dbtransaction.service.ts",
         "../src/services/dummysms.service.ts",
         "../src/services/email.service.ts",
@@ -32141,8 +32142,7 @@
         "../src/services/products.service.ts",
         "../src/services/s3.service.ts",
         "../src/services/sms.service.ts",
-        "../src/services/teachers.service.ts",
-        "../src/services/version.service.ts"
+        "../src/services/teachers.service.ts"
       ],
       "../src/services/livestreams.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",

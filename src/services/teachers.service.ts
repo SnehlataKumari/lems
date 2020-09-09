@@ -41,12 +41,13 @@ export class TeachersService extends DBService {
   }
 // via Teacher----------------------------------------------------------------------------
 
-  async editTeacherProfile(requestBody, token) {
-    const teacher = await this.findByToken(token);
-    const user= await this.userService.findOne(teacher.userId);
+  async editTeacherProfile(requestBody, loggedInUser) {
+    const teacher = await this.findOne({
+      userId: loggedInUser._id
+    });
+    const user= await this.userService.findById(teacher.userId);  
     await this.userService.update(user, requestBody.user);
-    const teacherObject = await this.findOne(teacher.userId);
-    return await this.update(teacherObject, requestBody.teacher);
+    return await this.update(teacher, requestBody.teacher);
   }
 // via Admin----------------------------------------------------------------------------------------------------
   async updateProfile(teacherId, requestBody) {

@@ -226,7 +226,11 @@ let AuthController = (() => {
         __metadata("design:returntype", Promise)
     ], AuthController.prototype, "changePassword", null);
     __decorate([
-        common_1.Put('edit-profile'),
+        validatetoken_decorator_1.ValidateToken(),
+        common_1.UseInterceptors(platform_express_1.FileFieldsInterceptor([
+            { name: 'profileFile', maxCount: 1 },
+        ])),
+        common_1.Put('edit-profile-teacher'),
         __param(0, common_1.Req()), __param(1, common_1.Body()),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object, Object]),
