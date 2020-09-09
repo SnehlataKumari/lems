@@ -21,6 +21,13 @@ export class UsersController extends ResourceController {
     return success('List found successfully', this.service.findAll());
   }
 
+  @Get(':userId/get-user-details')
+  async getUserDetails(@Param('userId') userId) {
+    const userModel = await this.service.findById(userId);
+    return success('user found!', {
+      user: this.service.getPublicDetails(userModel)
+    });
+  }
   @Post(':userId/update-password')
   async updatePassword(@Param('userId') userId, @Body() requestBody ) {
     const { currentPassword } = requestBody;

@@ -30,6 +30,12 @@ let UsersController = (() => {
         findAll() {
             return utils_1.success('List found successfully', this.service.findAll());
         }
+        async getUserDetails(userId) {
+            const userModel = await this.service.findById(userId);
+            return utils_1.success('user found!', {
+                user: this.service.getPublicDetails(userModel)
+            });
+        }
         async updatePassword(userId, requestBody) {
             const { currentPassword } = requestBody;
             const hashedPassword = await this.authService.encryptPassword(currentPassword);
@@ -53,6 +59,13 @@ let UsersController = (() => {
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", void 0)
     ], UsersController.prototype, "findAll", null);
+    __decorate([
+        common_1.Get(':userId/get-user-details'),
+        __param(0, common_1.Param('userId')),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], UsersController.prototype, "getUserDetails", null);
     __decorate([
         common_1.Post(':userId/update-password'),
         __param(0, common_1.Param('userId')), __param(1, common_1.Body()),

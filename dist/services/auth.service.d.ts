@@ -48,5 +48,9 @@ export declare class AuthService {
     encryptPassword(password: any): Promise<any>;
     isValidAuthToken(token: any): Promise<any>;
     getUserById(id: any): import("mongoose").DocumentQuery<any, any, {}>;
-    changePassword(loggedInUser: any, requestBody: any): Promise<any>;
+    changeTeacherPassword(loggedInUser: any, requestBody: any): Promise<any>;
+    editTeacherProfile(loggedInUser: any, requestBody: any): Promise<{
+        user: any;
+        teacher: any;
+    }>;
 }

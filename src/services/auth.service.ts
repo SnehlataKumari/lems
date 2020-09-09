@@ -167,7 +167,7 @@ export class AuthService {
   // TODO: pass role
   async login({ email, password }, role = 'STUDENT') {
     const tokenType = TOKEN_TYPES['LOGIN'].key;
-    const userModel = await this.userService.findOne({ email, role });
+    const userModel = await this.userService.findOne({ email: email.toLowerCase(), role }); 
     if (!userModel) {
       throw new UnauthorizedException('User not registered!');
     }
@@ -178,7 +178,6 @@ export class AuthService {
     // if (userModel.isEmailVerified !== true) {
     //   throw new UnauthorizedException('Email not verified!');
     // }
-
     const token = this.getUserToken(userModel.toJSON());
     await this.tokenService.delete({
       type: tokenType,
@@ -252,8 +251,8 @@ export class AuthService {
   getUserById(id) {
     return this.userService.findById(id);
   }
-
-  async changePassword(loggedInUser, requestBody) {
+//VIA TEACHER PANEL -----------------------------------------------------------------------------------
+  async changeTeacherPassword(loggedInUser, requestBody) {
     const { oldPassword, newPassword } = requestBody;
     const comparePassword = bcrypt.compareSync(oldPassword, loggedInUser.password);
     if (!comparePassword) {
@@ -262,19 +261,19 @@ export class AuthService {
     const hashNewPassword = await this.encryptPassword(newPassword);
     return await this.userService.update(loggedInUser, { password: hashNewPassword });
   }
-
-  // async editProfile(loggedInUser, requestBody) {
-  //   const userId = loggedInUser._id;
-  //   const teacher = await this.teacherService.findOne({ userId: userId });
-  //   if (!teacher) {
-  //     throw new UnauthorizedException('user not found!');
-  //   }
-  //   const userModel = await this.userService.update(loggedInUser, requestBody.user);
-  //   const teacherModel = await this.teacherService.update(teacher, requestBody.teacher);
-  //   return {
-  //     user: userModel,
-  //     teacher: teacherModel
-  //   }
-  // }
+// VIA TEACHER PANEL ---------------------------------------------------------------------------------
+  async editTeacherProfile(loggedInUser, requestBody) {
+    const userId = loggedInUser._id;
+    const teacher = await this.teacherService.findOne({ userId: userId });
+    if (!teacher) {
+      throw new UnauthorizedException('user not found!');
+    }
+    const userModel = await this.userService.update(loggedInUser, requestBody.user);
+    const teacherModel = await this.teacherService.update(teacher, requestBody.teacher);
+    return {
+      user: userModel,
+      teacher: teacherModel
+    }
+  }
 
 }

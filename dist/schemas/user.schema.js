@@ -22,14 +22,26 @@ exports.UserSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
+    parentEmail: {
+        type: String,
+    },
     phone: {
         type: Number,
         unique: true,
+    },
+    parentContactNumber: {
+        type: Number,
     },
     password: {
         type: String,
     },
     grade: {
+        type: String,
+    },
+    board: {
+        type: String,
+    },
+    target: {
         type: String,
     },
     isEmailVerified: {

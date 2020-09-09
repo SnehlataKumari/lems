@@ -10,6 +10,10 @@ export declare class UsersController extends ResourceController {
         message: string;
         data: any;
     }>;
+    getUserDetails(userId: any): Promise<{
+        message: string;
+        data: any;
+    }>;
     updatePassword(userId: any, requestBody: any): Promise<{
         message: string;
     }>;

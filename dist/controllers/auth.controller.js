@@ -111,9 +111,13 @@ let AuthController = (() => {
             await this.tokensService.deleteUsersToken(loggedInUser, tokenType);
             return utils_1.success('logged out successfully!', {});
         }
-        async changePassword(req, requestBody) {
+        async changeTeacherPassword(req, requestBody) {
             const { user: loggedInUser } = req;
-            return await this.service.changePassword(loggedInUser, requestBody);
+            return await this.service.changeTeacherPassword(loggedInUser, requestBody);
+        }
+        async editProfile(req, requestBody) {
+            const { user: loggedInUser } = req;
+            return await this.service.editTeacherProfile(loggedInUser, requestBody);
         }
     };
     __decorate([
@@ -215,12 +219,19 @@ let AuthController = (() => {
     ], AuthController.prototype, "logout", null);
     __decorate([
         validatetoken_decorator_1.ValidateToken(),
-        common_1.Post('change-password'),
+        common_1.Post('change-teacher-password'),
         __param(0, common_1.Req()), __param(1, common_1.Body()),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", Promise)
-    ], AuthController.prototype, "changePassword", null);
+    ], AuthController.prototype, "changeTeacherPassword", null);
+    __decorate([
+        common_1.Put('edit-teacher-profile'),
+        __param(0, common_1.Req()), __param(1, common_1.Body()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object, Object]),
+        __metadata("design:returntype", Promise)
+    ], AuthController.prototype, "editProfile", null);
     AuthController = __decorate([
         common_1.Controller('auth'),
         __metadata("design:paramtypes", [config_1.ConfigService,

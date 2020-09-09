@@ -142,23 +142,24 @@ export class AuthController {
     await this.tokensService.deleteUsersToken(loggedInUser, tokenType);
     return success('logged out successfully!', {});
   }
-
+// VIA TEACHER PANEL --------------------------------------------------------------------------------------
   @ValidateToken()
-  @Post('change-password')
-  async changePassword(@Req() req, @Body() requestBody) {
+  @Post('change-teacher-password')
+  async changeTeacherPassword(@Req() req, @Body() requestBody) {
     const { user: loggedInUser } = req;
-    return await this.service.changePassword(loggedInUser, requestBody)
+    return await this.service.changeTeacherPassword(loggedInUser, requestBody)
   }
 
   // @ValidateToken()
   // @UseInterceptors(FileFieldsInterceptor([
   //   { name: 'profileFile', maxCount: 1 },
   // ]))
+// via TEACHER PANEL ------------------------------------------------------------------------------------
+  @Put('edit-teacher-profile')
+  async editProfile(@Req() req, @Body() requestBody) {
+    const { user: loggedInUser } = req;
+    return await this.service.editTeacherProfile(loggedInUser, requestBody)
+  }
 
-  // @Put('edit-profile')
-  // async editProfile(@Req() req, @Body() requestBody) {
-  //   const { user: loggedInUser } = req;
-  //   return await this.service.editProfile(loggedInUser, requestBody)
-  // }
-
+  
 }
