@@ -75,13 +75,11 @@ export class AuthService {
     try {
       const { user: userObject, teacher: teacherObject } = requestBody;
       const hash = await this.encryptPassword(userObject.email);
-      
       userModel = await this.userService.create({
         ...userObject,
         password: hash,
         role: 'TEACHER'
-      });
-
+      });  
       const user = this.userService.getPublicDetails(userModel);
       const token = this.jwtService.sign(user);
       await this.tokenService.create({

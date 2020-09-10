@@ -3292,7 +3292,7 @@
         "affectsGlobalScope": false
       },
       "../src/services/teachers.service.ts": {
-        "version": "fb3fc38efd8de26fb74c777b61c3bb667e887d0f112f1f8cb8b25ff2fc06cdd4",
+        "version": "47917b64fb6e47bdf80f7dc661e40fcb0764249fd6ac69ca4cfe8e71de847aeb",
         "signature": "68e314eb5c0e5285f0883a35d65e415bf8e8c8e1188a98484021651056f76aec",
         "affectsGlobalScope": false
       },
@@ -3302,7 +3302,7 @@
         "affectsGlobalScope": false
       },
       "../src/services/auth.service.ts": {
-        "version": "d15bb57461cb66a6d06f46df158ff17deb2d9cef33b1367c706424ff7132f24e",
+        "version": "b14e09769f3422b0181028f3182fa2ddb04e57e8b0a07ac6d66687631a59e8ac",
         "signature": "18bd60d9f9ca9acaad2ba9ecf060588bca1d97c210ad4a6d27b49a645bbebeaf",
         "affectsGlobalScope": false
       },
@@ -5832,7 +5832,7 @@
         "affectsGlobalScope": false
       },
       "../src/exception-filters/mongo-exception.filter.ts": {
-        "version": "ab8c00a70583308702c0436335933c1fad0962fbedc975fd39d0d63fc5828355",
+        "version": "09712bb1a4f8fedce4f616b43c97f62b92baca3fe6306545e1c46a9ba4b341d9",
         "signature": "c18576246cb5cfc6bfaba7734b827d905222078b7223da24434c64411859382d",
         "affectsGlobalScope": false
       },
@@ -5844,6 +5844,11 @@
       "../src/pipes/index.ts": {
         "version": "76b685d887ed083f0e4ce3d0df5cae53bb5c5ec3b543c783dbf2e74695952d14",
         "signature": "dd214b9a5151d3e9b3194e26caa5428ece1f72e2525019d72ae3bfd87f22d2c1",
+        "affectsGlobalScope": false
+      },
+      "../src/services/students.service.ts": {
+        "version": "39b434a58694edc01362ac744588b21e3a8264988b15dc32b042102d160e9f4d",
+        "signature": "f624457a9c6ccffe1fe65368bc5a4224645dded84518c0199d97e025a5970ca1",
         "affectsGlobalScope": false
       },
       "../node_modules/twilio/lib/jwt/taskrouter/TaskRouterCapability.d.ts": {
@@ -19305,6 +19310,18 @@
         "../node_modules/@types/node/util.d.ts",
         "../src/services/dummySms.service.ts"
       ],
+      "../src/services/students.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/services/db.service.ts",
+        "../src/services/users.service.ts"
+      ],
       "../src/services/subject.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
@@ -32164,6 +32181,11 @@
         "../node_modules/@nestjs/config/index.d.ts",
         "../src/services/dummySms.service.ts"
       ],
+      "../src/services/students.service.ts": [
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../src/services/db.service.ts",
+        "../src/services/users.service.ts"
+      ],
       "../src/services/subject.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
         "../src/services/db.service.ts"
@@ -33403,6 +33425,7 @@
       "../src/services/products.service.ts",
       "../src/services/s3.service.ts",
       "../src/services/sms.service.ts",
+      "../src/services/students.service.ts",
       "../src/services/subject.service.ts",
       "../src/services/teachers.service.ts",
       "../src/services/tokens.service.ts",

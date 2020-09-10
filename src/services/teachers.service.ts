@@ -39,8 +39,8 @@ export class TeachersService extends DBService {
     const teacher= await this.findOne(token);
     return teacher;
   }
-// via Teacher----------------------------------------------------------------------------
 
+  // via Teacher----------------------------------------------------------------------------
   async editTeacherProfile(requestBody, loggedInUser) {
     const teacher = await this.findOne({
       userId: loggedInUser._id
@@ -49,7 +49,8 @@ export class TeachersService extends DBService {
     await this.userService.update(user, requestBody.user);
     return await this.update(teacher, requestBody.teacher);
   }
-// via Admin----------------------------------------------------------------------------------------------------
+  
+  // via Admin----------------------------------------------------------------------------------------------------
   async updateProfile(teacherId, requestBody) {
     const teacher = await this.findById(teacherId);
     if (!teacher) {

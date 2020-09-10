@@ -59,6 +59,9 @@ export class MongoDBExceptionFilter implements ExceptionFilter {
     const error = exception as any;
     if (exception.code === 11000) {
       errorMessage = `Duplicate value for field ${String(Reflect.ownKeys(error.keyValue)[0])}.`;
+      if (String(Reflect.ownKeys(error.keyValue)[0]) === 'email') {
+        errorMessage = ' Entered email already exists. Please try another one';
+      }
     }
     response.status(status).json({
       statusCode: status,
