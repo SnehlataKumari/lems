@@ -12,10 +12,12 @@ export const UserSchema = new mongoose.Schema(
     },
     lastName: {
       type: String,
+      default: null,
       // required: [true, 'Name is required!'],
     },
     gender: {
       type: String,
+      default: null,
       // enum: getKeys(GENDER),
     },
     email: {
@@ -25,6 +27,7 @@ export const UserSchema = new mongoose.Schema(
     },
     parentEmail: {
       type: String,
+      default: null,
     },
     phone: {
       type: Number,
@@ -32,6 +35,7 @@ export const UserSchema = new mongoose.Schema(
     },
     parentContactNumber: {
       type: Number,
+      default: null,
     },
     password: {
       type: String,
@@ -41,9 +45,11 @@ export const UserSchema = new mongoose.Schema(
     },
     board: {
       type: String,
+      default: null,
     },
    target: {
       type: String,
+     default: null,
     },
     isEmailVerified: {
       type: Boolean,

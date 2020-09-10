@@ -13,9 +13,11 @@ exports.UserSchema = new mongoose.Schema({
     },
     lastName: {
         type: String,
+        default: null,
     },
     gender: {
         type: String,
+        default: null,
     },
     email: {
         type: String,
@@ -24,6 +26,7 @@ exports.UserSchema = new mongoose.Schema({
     },
     parentEmail: {
         type: String,
+        default: null,
     },
     phone: {
         type: Number,
@@ -31,6 +34,7 @@ exports.UserSchema = new mongoose.Schema({
     },
     parentContactNumber: {
         type: Number,
+        default: null,
     },
     password: {
         type: String,
@@ -40,9 +44,11 @@ exports.UserSchema = new mongoose.Schema({
     },
     board: {
         type: String,
+        default: null,
     },
     target: {
         type: String,
+        default: null,
     },
     isEmailVerified: {
         type: Boolean,
