@@ -19,7 +19,40 @@ export const StudentSchema = new mongoose.Schema(
 			ref: 'User',
 			required: true,
 		},
-		preferedLanguage: String
+		preferedLanguage: String,
+		isThisParentLogin: Boolean,
+		education: {
+			board: String,
+			grade: String,
+			targetExam: String,
+			school: String,
+		},
+		guardians: [
+			{
+				guardianType: String,
+				firstName: String,
+				lastName: String,
+				mobileNumber: String,
+				email: String,
+			}
+		],
+
+		address: {
+			streetAddress: String,
+			streetAddress2: String,
+			city: String,
+			state: String,
+			country: String,
+			pincode: String,
+		},
+
+		studentActivities: {
+			interest: String,
+			pastPerformances: String,
+			schoolActivities: String,
+			strengths: String,
+		}
+
 	},
 	{
 		timestamps: true,

@@ -8,4 +8,8 @@ export declare class StudentsController extends ResourceController {
         message: string;
         data: any;
     }>;
+    updateStudentProfile(studentId: any, requestBody: any): Promise<{
+        message: string;
+        data: any;
+    }>;
 }

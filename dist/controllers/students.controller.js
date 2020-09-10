@@ -35,6 +35,22 @@ let StudentsController = (() => {
                 user: this.userService.getPublicDetails(loggedInUser)
             });
         }
+        async updateStudentProfile(studentId, requestBody) {
+            let studentModel = await this.service.findById(studentId);
+            if (!studentModel) {
+                throw new common_1.BadRequestException('Student not found!');
+            }
+            let userModel = await this.userService.findById(studentModel.userId);
+            if (!userModel) {
+                throw new common_1.BadRequestException('User not found!');
+            }
+            userModel = await this.userService.update(userModel, requestBody.user);
+            studentModel = await this.service.update(studentModel, requestBody.student);
+            return utils_1.success('Student Profile updated successfully!', {
+                user: this.userService.getPublicDetails(userModel),
+                teacher: this.service.getPublicDetails(studentModel)
+            });
+        }
     };
     __decorate([
         validatetoken_decorator_1.ValidateToken(),
@@ -44,6 +60,13 @@ let StudentsController = (() => {
         __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", Promise)
     ], StudentsController.prototype, "getTeacherDetails", null);
+    __decorate([
+        common_1.Put(':id/update-profile'),
+        __param(0, common_1.Param('id')), __param(1, common_1.Body()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object, Object]),
+        __metadata("design:returntype", Promise)
+    ], StudentsController.prototype, "updateStudentProfile", null);
     StudentsController = __decorate([
         common_1.Controller('students'),
         __metadata("design:paramtypes", [students_service_1.StudentsService,

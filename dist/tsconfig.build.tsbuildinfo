@@ -1857,7 +1857,7 @@
         "affectsGlobalScope": false
       },
       "../src/schemas/student.schema.ts": {
-        "version": "a6de06b5bb2df2ff59f9d34f7328272ebdce3cf411c74c2c390300dc0de7bc86",
+        "version": "a2fe4cd926cc963d83160a79ee33070244c8a13fde3e0e31372156322d2822c5",
         "signature": "f4eac248aeada3f16cdcc3b2e5b04d209ff973f5f272042dacbd57021d08c4a7",
         "affectsGlobalScope": false
       },
@@ -5807,13 +5807,13 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/students.controller.ts": {
-        "version": "71d123bac81baebb90db17815bc78598357c7300f8e98cfc4233dcaf29e8d8cf",
-        "signature": "2579e6f19f3ec8008c6d203aa317c97dc501ac08cafad90c0e8b10b4cd00b2d5",
+        "version": "ff2adb6fd17c70f344c06db02d852c7bac1850aa4a8adfd006f119ec5ad3f393",
+        "signature": "0e9ca8b49b32ff51b99500bc1d442e11460564b2538a54e64aedb41266d28867",
         "affectsGlobalScope": false
       },
       "../src/controllers/index.ts": {
         "version": "3a04fad0f623e8b205b58cc33ec3b18bb8925d1d058a7892e0ceaf736831fd13",
-        "signature": "8d597a8287a42f84cb9c82e0bdb65792284fe1fb68f6008db87baff194b1e747",
+        "signature": "3e2308c1ae7deebed9e66827470db6381d829f0aba197c577189190e7d2fd36e",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
