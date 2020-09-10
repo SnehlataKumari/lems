@@ -1,0 +1,1 @@
+{"version":3,"file":"student.schema.js","sourceRoot":"","sources":["../../src/schemas/student.schema.ts"],"names":[],"mappings":";;;AAAA,qCAAqC;AAcxB,QAAA,aAAa,GAAG,IAAI,QAAQ,CAAC,MAAM,CAC/C;IACC,MAAM,EAAE;QACP,IAAI,EAAE,QAAQ,CAAC,WAAW,CAAC,QAAQ;QACnC,GAAG,EAAE,MAAM;QACX,QAAQ,EAAE,IAAI;KACd;IACD,gBAAgB,EAAE,MAAM;CACxB,EACD;IACC,UAAU,EAAE,IAAI;CAChB,CACD,CAAC"}

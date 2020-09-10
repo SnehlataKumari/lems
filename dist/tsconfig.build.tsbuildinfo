@@ -1856,8 +1856,13 @@
         "signature": "57e8b432fe405c38787ff1e96127e78fcc04ccbc4a6995ad78453a5fd42909fc",
         "affectsGlobalScope": false
       },
+      "../src/schemas/student.schema.ts": {
+        "version": "a6de06b5bb2df2ff59f9d34f7328272ebdce3cf411c74c2c390300dc0de7bc86",
+        "signature": "f4eac248aeada3f16cdcc3b2e5b04d209ff973f5f272042dacbd57021d08c4a7",
+        "affectsGlobalScope": false
+      },
       "../src/schemas/index.ts": {
-        "version": "1c84aa5269c25db497d70af883f2470892456578c35137f7cf9dfe840d14bc71",
+        "version": "ad36bc4bcd9f2d82377142937e6c5a9ef9417dbae8bb5ae9c85917a56a91331e",
         "signature": "05ca961b1313b5478f303c7627c8f04d46056e5779c9b41560ee24a8d22195c7",
         "affectsGlobalScope": false
       },
@@ -3301,9 +3306,14 @@
         "signature": "f4c926a96587612e75d99eafc230ec1eadb80cf972ebae293d0fe2e6e3276f0e",
         "affectsGlobalScope": false
       },
+      "../src/services/students.service.ts": {
+        "version": "39b434a58694edc01362ac744588b21e3a8264988b15dc32b042102d160e9f4d",
+        "signature": "f624457a9c6ccffe1fe65368bc5a4224645dded84518c0199d97e025a5970ca1",
+        "affectsGlobalScope": false
+      },
       "../src/services/auth.service.ts": {
-        "version": "b14e09769f3422b0181028f3182fa2ddb04e57e8b0a07ac6d66687631a59e8ac",
-        "signature": "18bd60d9f9ca9acaad2ba9ecf060588bca1d97c210ad4a6d27b49a645bbebeaf",
+        "version": "20a3cb8f768805a986810be77f1eacb1abc9fafd5d497ab8dccc6a89f3daa206",
+        "signature": "dcb2e2fe922d3d626cf2ca78384c139d2290405390f46a3b05448bf00fbc9917",
         "affectsGlobalScope": false
       },
       "../src/services/dummySms.service.ts": {
@@ -3342,8 +3352,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/index.ts": {
-        "version": "748732c20a86a285f047f0bae66d0bece12a07c236a3e3557400760faefb9a33",
-        "signature": "9262bf7915324b6ed4f2a41c5418d34dde21c2fa3407f5a061085e0b6f4dfdb6",
+        "version": "c4c37799aa45a3f3ab6ae67e6486fccd0ac65a19840768ad88e4f57fce724198",
+        "signature": "d1e5742fee833c84ceb54a6e0b0d0cfe29e580400ac93232077369847f035af5",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
@@ -5796,9 +5806,14 @@
         "signature": "db3c0e05ad9d2adf17843dbdf4340bd69dcab5cff8625f16e6ec2be072675437",
         "affectsGlobalScope": false
       },
+      "../src/controllers/students.controller.ts": {
+        "version": "71d123bac81baebb90db17815bc78598357c7300f8e98cfc4233dcaf29e8d8cf",
+        "signature": "2579e6f19f3ec8008c6d203aa317c97dc501ac08cafad90c0e8b10b4cd00b2d5",
+        "affectsGlobalScope": false
+      },
       "../src/controllers/index.ts": {
-        "version": "3c2bd6cc13cb11d77b23f81e9ba69feec9eb6bc030084ef01c6734dfca9c4227",
-        "signature": "6c2c36bbe6a38707c89da09b5f332bac1e7abf64151b8785a0dc1ed0e3e6d52c",
+        "version": "3a04fad0f623e8b205b58cc33ec3b18bb8925d1d058a7892e0ceaf736831fd13",
+        "signature": "8d597a8287a42f84cb9c82e0bdb65792284fe1fb68f6008db87baff194b1e747",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -5844,11 +5859,6 @@
       "../src/pipes/index.ts": {
         "version": "76b685d887ed083f0e4ce3d0df5cae53bb5c5ec3b543c783dbf2e74695952d14",
         "signature": "dd214b9a5151d3e9b3194e26caa5428ece1f72e2525019d72ae3bfd87f22d2c1",
-        "affectsGlobalScope": false
-      },
-      "../src/services/students.service.ts": {
-        "version": "39b434a58694edc01362ac744588b21e3a8264988b15dc32b042102d160e9f4d",
-        "signature": "f624457a9c6ccffe1fe65368bc5a4224645dded84518c0199d97e025a5970ca1",
         "affectsGlobalScope": false
       },
       "../node_modules/twilio/lib/jwt/taskrouter/TaskRouterCapability.d.ts": {
@@ -18826,6 +18836,7 @@
         "../src/controllers/classes.controller.ts",
         "../src/controllers/payments.controller.ts",
         "../src/controllers/products.controller.ts",
+        "../src/controllers/students.controller.ts",
         "../src/controllers/subject.controller.ts",
         "../src/controllers/teachers.controller.ts",
         "../src/controllers/users.controller.ts"
@@ -18861,6 +18872,19 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/decorators/validatetoken.decorator.ts",
+        "../src/utils/index.ts"
+      ],
+      "../src/controllers/students.controller.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/controllers/resource.controller.ts",
+        "../src/decorators/validatetoken.decorator.ts",
+        "../src/services/students.service.ts",
+        "../src/services/users.service.ts",
         "../src/utils/index.ts"
       ],
       "../src/controllers/subject.controller.ts": [
@@ -19058,6 +19082,7 @@
         "../src/schemas/course.schema.ts",
         "../src/schemas/liveStream.schema.ts",
         "../src/schemas/product.schema.ts",
+        "../src/schemas/student.schema.ts",
         "../src/schemas/subject.schema.ts",
         "../src/schemas/teacher.schema.ts",
         "../src/schemas/token.schema.ts",
@@ -19074,6 +19099,14 @@
         "../node_modules/@types/node/util.d.ts"
       ],
       "../src/schemas/product.schema.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../src/schemas/student.schema.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
@@ -19148,6 +19181,7 @@
         "../src/constants/index.ts",
         "../src/services/dbtransaction.service.ts",
         "../src/services/email.service.ts",
+        "../src/services/students.service.ts",
         "../src/services/teachers.service.ts",
         "../src/services/tokens.service.ts",
         "../src/services/users.service.ts",
@@ -19251,6 +19285,7 @@
         "../src/services/products.service.ts",
         "../src/services/s3.service.ts",
         "../src/services/sms.service.ts",
+        "../src/services/students.service.ts",
         "../src/services/subject.service.ts",
         "../src/services/teachers.service.ts",
         "../src/services/tokens.service.ts",
@@ -32016,6 +32051,7 @@
         "../src/controllers/classes.controller.ts",
         "../src/controllers/payments.controller.ts",
         "../src/controllers/products.controller.ts",
+        "../src/controllers/students.controller.ts",
         "../src/controllers/subject.controller.ts",
         "../src/controllers/teachers.controller.ts",
         "../src/controllers/users.controller.ts"
@@ -32027,6 +32063,11 @@
       "../src/controllers/products.controller.ts": [
         "../src/controllers/resource.controller.ts",
         "../src/services/products.service.ts"
+      ],
+      "../src/controllers/students.controller.ts": [
+        "../src/controllers/resource.controller.ts",
+        "../src/services/students.service.ts",
+        "../src/services/users.service.ts"
       ],
       "../src/controllers/subject.controller.ts": [
         "../src/controllers/resource.controller.ts",
@@ -32092,6 +32133,9 @@
       "../src/schemas/product.schema.ts": [
         "../node_modules/@types/mongoose/index.d.ts"
       ],
+      "../src/schemas/student.schema.ts": [
+        "../node_modules/@types/mongoose/index.d.ts"
+      ],
       "../src/schemas/subject.schema.ts": [
         "../node_modules/@types/mongoose/index.d.ts"
       ],
@@ -32119,6 +32163,7 @@
         "../node_modules/@types/mongoose/index.d.ts",
         "../src/services/dbtransaction.service.ts",
         "../src/services/email.service.ts",
+        "../src/services/students.service.ts",
         "../src/services/teachers.service.ts",
         "../src/services/tokens.service.ts",
         "../src/services/users.service.ts"
@@ -32159,6 +32204,7 @@
         "../src/services/products.service.ts",
         "../src/services/s3.service.ts",
         "../src/services/sms.service.ts",
+        "../src/services/students.service.ts",
         "../src/services/teachers.service.ts"
       ],
       "../src/services/liveStreams.service.ts": [
@@ -33383,6 +33429,7 @@
       "../src/controllers/payments.controller.ts",
       "../src/controllers/products.controller.ts",
       "../src/controllers/resource.controller.ts",
+      "../src/controllers/students.controller.ts",
       "../src/controllers/subject.controller.ts",
       "../src/controllers/teachers.controller.ts",
       "../src/controllers/users.controller.ts",
@@ -33404,6 +33451,7 @@
       "../src/schemas/index.ts",
       "../src/schemas/liveStream.schema.ts",
       "../src/schemas/product.schema.ts",
+      "../src/schemas/student.schema.ts",
       "../src/schemas/subject.schema.ts",
       "../src/schemas/teacher.schema.ts",
       "../src/schemas/token.schema.ts",

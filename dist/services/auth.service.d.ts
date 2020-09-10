@@ -6,6 +6,7 @@ import { ConfigService } from '@nestjs/config';
 import { EmailService } from 'src/services/email.service';
 import { TeachersService } from './teachers.service';
 import { DBTransactionService } from './dbtransaction.service';
+import { StudentsService } from './students.service';
 export declare class AuthService {
     private userService;
     private tokenService;
@@ -14,7 +15,8 @@ export declare class AuthService {
     private emailsService;
     private teacherService;
     private transaction;
-    constructor(userService: UsersService, tokenService: TokensService, configs: ConfigService, jwtService: JwtService, emailsService: EmailService, teacherService: TeachersService, transaction: DBTransactionService);
+    private studentService;
+    constructor(userService: UsersService, tokenService: TokensService, configs: ConfigService, jwtService: JwtService, emailsService: EmailService, teacherService: TeachersService, transaction: DBTransactionService, studentService: StudentsService);
     hostUrl(role: any): any;
     getUserToken(userObj: any): string;
     signUp(requestBody: any, role?: string): Promise<{

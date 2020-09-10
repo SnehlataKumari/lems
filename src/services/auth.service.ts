@@ -13,6 +13,7 @@ import { success } from 'src/utils';
 import { TOKEN_TYPES } from 'src/constants';
 import { TeachersService } from './teachers.service';
 import { DBTransactionService } from './dbtransaction.service';
+import { StudentsService } from './students.service';
 
 @Injectable()
 export class AuthService {
@@ -23,7 +24,8 @@ export class AuthService {
     private jwtService: JwtService,
     private emailsService: EmailService,
     private teacherService: TeachersService,
-    private transaction: DBTransactionService
+    private transaction: DBTransactionService,
+    private studentService: StudentsService
   ) { }
 
   hostUrl(role) {
@@ -60,6 +62,9 @@ export class AuthService {
       type: tokenType,
       userId: userModel._id,
     });
+    if (role === 'STUDENT') {
+      await this.studentService.create({ userId: userModel._id,});
+    }
     const link = `${this.apiUrl(role)}/auth/verify/${token}`;
     await this.emailsService.sendVerificationLink(userModel, link);
     return {

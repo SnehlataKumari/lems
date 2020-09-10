@@ -21,9 +21,10 @@ const utils_1 = require("../utils");
 const constants_1 = require("../constants");
 const teachers_service_1 = require("./teachers.service");
 const dbtransaction_service_1 = require("./dbtransaction.service");
+const students_service_1 = require("./students.service");
 let AuthService = (() => {
     let AuthService = class AuthService {
-        constructor(userService, tokenService, configs, jwtService, emailsService, teacherService, transaction) {
+        constructor(userService, tokenService, configs, jwtService, emailsService, teacherService, transaction, studentService) {
             this.userService = userService;
             this.tokenService = tokenService;
             this.configs = configs;
@@ -31,6 +32,7 @@ let AuthService = (() => {
             this.emailsService = emailsService;
             this.teacherService = teacherService;
             this.transaction = transaction;
+            this.studentService = studentService;
         }
         hostUrl(role) {
             if (role === 'ADMIN') {
@@ -58,6 +60,9 @@ let AuthService = (() => {
                 type: tokenType,
                 userId: userModel._id,
             });
+            if (role === 'STUDENT') {
+                await this.studentService.create({ userId: userModel._id, });
+            }
             const link = `${this.apiUrl(role)}/auth/verify/${token}`;
             await this.emailsService.sendVerificationLink(userModel, link);
             return {
@@ -237,7 +242,8 @@ let AuthService = (() => {
             jwt_1.JwtService,
             email_service_1.EmailService,
             teachers_service_1.TeachersService,
-            dbtransaction_service_1.DBTransactionService])
+            dbtransaction_service_1.DBTransactionService,
+            students_service_1.StudentsService])
     ], AuthService);
     return AuthService;
 })();

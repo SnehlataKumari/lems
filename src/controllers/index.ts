@@ -7,6 +7,7 @@ import { SubjectsController } from './subject.controller';
 import { PaymentsController } from './payments.controller';
 import { TeachersController } from './teachers.controller';
 import { ProductsController } from './products.controller';
+import { StudentsController } from './students.controller';
 
 export default [
   UsersController,
@@ -17,5 +18,6 @@ export default [
   SubjectsController,
   PaymentsController,
   TeachersController,
-  ProductsController
+  ProductsController,
+  StudentsController
 ];

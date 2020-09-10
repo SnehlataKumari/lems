@@ -18,6 +18,7 @@ import { ProductsService } from './products.service';
 import { CoursesService } from './courses.service';
 import { LiveStreamsService } from './liveStreams.service';
 import { DBTransactionService } from './dbtransaction.service';
+import { StudentsService } from './students.service';
 export default [
   UsersService,
   AssetsService,
@@ -40,4 +41,5 @@ export default [
   CoursesService,
   LiveStreamsService,
   DBTransactionService,
+  StudentsService
 ];

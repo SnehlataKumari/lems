@@ -11,6 +11,7 @@ const teacher_schema_1 = require("./teacher.schema");
 const product_schema_1 = require("./product.schema");
 const course_schema_1 = require("./course.schema");
 const liveStream_schema_1 = require("./liveStream.schema");
+const student_schema_1 = require("./student.schema");
 exports.default = [
     { name: 'Class', schema: class_schema_1.ClassSchema },
     { name: 'User', schema: user_schema_1.UserSchema },
@@ -23,5 +24,6 @@ exports.default = [
     { name: 'Product', schema: product_schema_1.ProductSchema },
     { name: 'Course', schema: course_schema_1.CourseSchema },
     { name: 'LiveStream', schema: liveStream_schema_1.LiveStreamSchema },
+    { name: 'Student', schema: student_schema_1.StudentSchema },
 ];
 //# sourceMappingURL=index.js.map

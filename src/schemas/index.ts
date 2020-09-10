@@ -9,6 +9,7 @@ import { TeacherSchema } from './teacher.schema';
 import { ProductSchema } from "./product.schema";
 import { CourseSchema } from './course.schema';
 import { LiveStreamSchema } from './liveStream.schema';
+import { StudentSchema } from './student.schema';
 
 export default [
   { name: 'Class', schema: ClassSchema },
@@ -22,4 +23,5 @@ export default [
   { name: 'Product', schema: ProductSchema},
   { name: 'Course', schema: CourseSchema },
   { name: 'LiveStream', schema: LiveStreamSchema},
+  { name: 'Student', schema: StudentSchema},
 ];
