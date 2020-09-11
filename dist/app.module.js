@@ -10,7 +10,6 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
 const mongoose_1 = require("@nestjs/mongoose");
-const serve_static_1 = require("@nestjs/serve-static");
 const path_1 = require("path");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
@@ -22,7 +21,6 @@ const jwt_1 = require("@nestjs/jwt");
 const constants_1 = require("./constants");
 const passport_1 = require("@nestjs/passport");
 const jwt_strategy_1 = require("./passport/jwt.strategy");
-const platform_express_1 = require("@nestjs/platform-express");
 const multer = require("multer");
 const storage = multer.diskStorage({
     destination: path_1.join(__dirname, '..', 'static/uploads'),
@@ -40,12 +38,6 @@ let AppModule = (() => {
                 passport_1.PassportModule.register({ defaultStrategy: 'jwt' }),
                 mongoose_1.MongooseModule.forRoot(`mongodb://localhost/${process.env.DATABASE_NAME}`),
                 mongoose_1.MongooseModule.forFeature(schemas_1.default),
-                serve_static_1.ServeStaticModule.forRoot({
-                    rootPath: path_1.join(__dirname, '..', 'static'),
-                }),
-                platform_express_1.MulterModule.register({
-                    storage
-                }),
                 jwt_1.JwtModule.register({
                     secret: constants_1.JWT_CONSTANTS.secret,
                 }),

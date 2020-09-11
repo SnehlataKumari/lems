@@ -19,11 +19,16 @@ const utils_1 = require("../utils");
 const validatetoken_decorator_1 = require("../decorators/validatetoken.decorator");
 const users_service_1 = require("../services/users.service");
 const students_service_1 = require("../services/students.service");
+const platform_express_1 = require("@nestjs/platform-express");
+const multer_1 = require("multer");
+const path_1 = require("path");
+const config_1 = require("@nestjs/config");
 let StudentsController = (() => {
     let StudentsController = class StudentsController extends resource_controller_1.ResourceController {
-        constructor(service, userService) {
+        constructor(service, userService, config) {
             super(service);
             this.userService = userService;
+            this.config = config;
         }
         async getTeacherDetails(req) {
             const { user: loggedInUser } = req;
@@ -51,6 +56,25 @@ let StudentsController = (() => {
                 teacher: this.service.getPublicDetails(studentModel)
             });
         }
+        async updateStudentProfilePic(studentId, file) {
+            const hostUrl = this.config.get('HOST_URL');
+            const profileImagePath = `${hostUrl}/${file.path}`;
+            const studentModel = await this.service.findById(studentId);
+            if (!studentModel) {
+                throw new common_1.BadRequestException('Student not found!');
+            }
+            let userModel = await this.userService.findById(studentModel.userId);
+            if (!userModel) {
+                throw new common_1.BadRequestException('User not found!');
+            }
+            userModel = await this.userService.update(userModel, {
+                profileImage: profileImagePath
+            });
+            return utils_1.success('Profile pic uploaded successfully!', {
+                user: this.userService.getPublicDetails(userModel),
+                student: this.service.getPublicDetails(studentModel)
+            });
+        }
     };
     __decorate([
         validatetoken_decorator_1.ValidateToken(),
@@ -67,10 +91,27 @@ let StudentsController = (() => {
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", Promise)
     ], StudentsController.prototype, "updateStudentProfile", null);
+    __decorate([
+        common_1.Put(':id/update-profile-pic'),
+        common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
+            storage: multer_1.diskStorage({
+                destination: './avatars',
+                filename: (req, file, cb) => {
+                    const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('');
+                    return cb(null, `${randomName}${path_1.extname(file.originalname)}`);
+                }
+            })
+        })),
+        __param(0, common_1.Param('id')), __param(1, common_1.UploadedFile()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object, Object]),
+        __metadata("design:returntype", Promise)
+    ], StudentsController.prototype, "updateStudentProfilePic", null);
     StudentsController = __decorate([
         common_1.Controller('students'),
         __metadata("design:paramtypes", [students_service_1.StudentsService,
-            users_service_1.UsersService])
+            users_service_1.UsersService,
+            config_1.ConfigService])
     ], StudentsController);
     return StudentsController;
 })();

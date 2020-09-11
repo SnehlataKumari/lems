@@ -4,6 +4,7 @@
 /uploads
 /static
 # /dist
+/avatars
 
 # Logs
 logs

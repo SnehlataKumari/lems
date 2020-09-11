@@ -1147,8 +1147,8 @@
         "affectsGlobalScope": false
       },
       "../src/app.controller.ts": {
-        "version": "d23f676e91e8441fc92a819d44e1d2e853041b780ecdeecf6de3150fc9640a5c",
-        "signature": "93d0671dadff64ce6d3d818877d35eea9181b364bf21d06ea08329fd56b99d50",
+        "version": "158d2d39b389573f6845cc9761f9c854e80330bda7cf1460eb03aa27f5778256",
+        "signature": "cfde42721edafa81b70117fe9c545990afb12a64ed0e347a00dca06cd0687de6",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/config/dist/types/config.type.d.ts": {
@@ -5807,13 +5807,13 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/students.controller.ts": {
-        "version": "ff2adb6fd17c70f344c06db02d852c7bac1850aa4a8adfd006f119ec5ad3f393",
-        "signature": "0e9ca8b49b32ff51b99500bc1d442e11460564b2538a54e64aedb41266d28867",
+        "version": "2e08f9094160a3a8d87ed8800303c6761c8df92ee42c5c812965c2d641eb51b4",
+        "signature": "d3f1f9a1cc588b641907bb14651c36ffef315fb59cb98ad59dc038d7cd735f28",
         "affectsGlobalScope": false
       },
       "../src/controllers/index.ts": {
         "version": "3a04fad0f623e8b205b58cc33ec3b18bb8925d1d058a7892e0ceaf736831fd13",
-        "signature": "339de3e3ae2945ccc46833ac8b9ff699080f98c3aba0833fc6f3dc98caa977f7",
+        "signature": "3e2308c1ae7deebed9e66827470db6381d829f0aba197c577189190e7d2fd36e",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -5842,7 +5842,7 @@
         "affectsGlobalScope": false
       },
       "../src/app.module.ts": {
-        "version": "8fe968339e5314df9ea693a3a579de92356e8990948583385bda7aeb738eb2bf",
+        "version": "448dc7734b0d53c926adc7cf1dfd968a42d38070c246b1599393814708b459ad",
         "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644",
         "affectsGlobalScope": false
       },
@@ -18876,8 +18876,11 @@
       ],
       "../src/controllers/students.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/config/index.d.ts",
+        "../node_modules/@nestjs/platform-express/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/path.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -32065,6 +32068,7 @@
         "../src/services/products.service.ts"
       ],
       "../src/controllers/students.controller.ts": [
+        "../node_modules/@nestjs/config/index.d.ts",
         "../src/controllers/resource.controller.ts",
         "../src/services/students.service.ts",
         "../src/services/users.service.ts"
