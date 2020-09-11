@@ -27,6 +27,9 @@ export class SubjectsController extends ResourceController {
       req.user,
     );
 
+    console.log('asdff');
+    
+
     return success('Success!', assetsListWithisSubscribed);
   }
 
