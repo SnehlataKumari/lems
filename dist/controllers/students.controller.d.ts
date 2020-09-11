@@ -6,6 +6,14 @@ export declare class StudentsController extends ResourceController {
     private userService;
     private config;
     constructor(service: StudentsService, userService: UsersService, config: ConfigService);
+    findAll(): Promise<{
+        message: string;
+        data: any;
+    }>;
+    deleteResource(id: any): Promise<{
+        message: string;
+        data: any;
+    }>;
     getTeacherDetails(req: any): Promise<{
         message: string;
         data: any;

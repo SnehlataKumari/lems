@@ -1,4 +1,4 @@
-import { Controller, Get, Req, Put, Param, Body, BadRequestException, UseInterceptors, UploadedFile, Res } from '@nestjs/common';
+import { Controller, Get, Req, Put, Param, Body, BadRequestException, UseInterceptors, UploadedFile, Res, Delete } from '@nestjs/common';
 import { ResourceController } from './resource.controller';
 import { success } from 'src/utils';
 import { ValidateToken } from 'src/decorators/validatetoken.decorator';
@@ -17,6 +17,37 @@ export class StudentsController extends ResourceController {
 		private config: ConfigService
 	) {
 		super(service);
+	}
+
+	@ValidateToken()
+	@Get()
+	async findAll() {
+		const students = await this.service.findAll();
+		const studentsList = students.map(student => {
+			const userObj = this.userService.getPublicDetails(student.userId);
+			const studentObj = this.service.getPublicDetails(student);
+
+			return ({
+				user: userObj,
+				student: studentObj
+			})
+		});
+		return success('students found successfully', studentsList);
+	}
+
+	@ValidateToken()
+	@Delete('/:id')
+	async deleteResource(@Param('id') id) {
+		const studentModel = await this.service.findById(id);
+		if (!studentModel) {
+			throw new BadRequestException('Student not found!');
+		}
+
+		await this.userService.findByIdAndDelete(studentModel.userId);
+		await this.service.findByIdAndDelete(id);
+		return success('Resource deleted successfully!', {
+			id,
+		});
 	}
 
 	@ValidateToken()

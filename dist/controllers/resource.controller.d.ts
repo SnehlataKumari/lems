@@ -17,4 +17,8 @@ export declare class ResourceController {
         message: string;
         data: any;
     }>;
+    getResource(id: any): Promise<{
+        message: string;
+        data: any;
+    }>;
 }

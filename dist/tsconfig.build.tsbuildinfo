@@ -3307,8 +3307,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/students.service.ts": {
-        "version": "39b434a58694edc01362ac744588b21e3a8264988b15dc32b042102d160e9f4d",
-        "signature": "f624457a9c6ccffe1fe65368bc5a4224645dded84518c0199d97e025a5970ca1",
+        "version": "2e97c749e27998c55a9180bf9e1cfa19ce3b9d5ba341065923505d8b4b94a634",
+        "signature": "c9a3ef32cae1647b6ff4de7e2185f9bcccabc48149e47ead0c78d65935e14bf4",
         "affectsGlobalScope": false
       },
       "../src/services/auth.service.ts": {
@@ -3353,7 +3353,7 @@
       },
       "../src/services/index.ts": {
         "version": "c4c37799aa45a3f3ab6ae67e6486fccd0ac65a19840768ad88e4f57fce724198",
-        "signature": "5b10dfcc9a15521a00c53aec8ead2c7e2aab11e7c4dc548a33ce7b5f82e9f9de",
+        "signature": "dac75d30126935b87ca3a87b56f9f1b83e35cfa3067d9fa7c9be0389f4b995de",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
@@ -3462,8 +3462,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/resource.controller.ts": {
-        "version": "c1e579db21644fb15c63f7624d077ce2e8934b2707fc9e3899b363680b231574",
-        "signature": "9d30e84e206d2127bf15420ebc37f656584c1932caa0f67f4cc01b90694afbf3",
+        "version": "5e17d09abcf7d7d909de7a5988faa6ba3ca8bb43173c9a847de95b1ce8ced212",
+        "signature": "b0bafc90bf3e845bfd2098e4bc40c6f420b52150bb6253602d8a352e98fe9e61",
         "affectsGlobalScope": false
       },
       "../node_modules/twilio/lib/http/response.d.ts": {
@@ -5807,8 +5807,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/students.controller.ts": {
-        "version": "2e08f9094160a3a8d87ed8800303c6761c8df92ee42c5c812965c2d641eb51b4",
-        "signature": "d3f1f9a1cc588b641907bb14651c36ffef315fb59cb98ad59dc038d7cd735f28",
+        "version": "7b5f2e2d760e5f16a1316b6a1edc227da48b192aeb73bb24b8d9f4020fab87ea",
+        "signature": "7c3a62a8c380ed98923c754c7b0e5cc81f176e298e21f155b964d48e807606a9",
         "affectsGlobalScope": false
       },
       "../src/controllers/index.ts": {
@@ -32199,6 +32199,7 @@
       "../src/services/index.ts": [
         "../src/services/assets.service.ts",
         "../src/services/auth.service.ts",
+        "../src/services/classes.service.ts",
         "../src/services/dbtransaction.service.ts",
         "../src/services/dummySms.service.ts",
         "../src/services/email.service.ts",
@@ -32208,8 +32209,7 @@
         "../src/services/s3.service.ts",
         "../src/services/sms.service.ts",
         "../src/services/students.service.ts",
-        "../src/services/teachers.service.ts",
-        "../src/services/version.service.ts"
+        "../src/services/teachers.service.ts"
       ],
       "../src/services/liveStreams.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",

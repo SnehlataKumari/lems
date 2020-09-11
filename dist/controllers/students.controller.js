@@ -30,6 +30,29 @@ let StudentsController = (() => {
             this.userService = userService;
             this.config = config;
         }
+        async findAll() {
+            const students = await this.service.findAll();
+            const studentsList = students.map(student => {
+                const userObj = this.userService.getPublicDetails(student.userId);
+                const studentObj = this.service.getPublicDetails(student);
+                return ({
+                    user: userObj,
+                    student: studentObj
+                });
+            });
+            return utils_1.success('students found successfully', studentsList);
+        }
+        async deleteResource(id) {
+            const studentModel = await this.service.findById(id);
+            if (!studentModel) {
+                throw new common_1.BadRequestException('Student not found!');
+            }
+            await this.userService.findByIdAndDelete(studentModel.userId);
+            await this.service.findByIdAndDelete(id);
+            return utils_1.success('Resource deleted successfully!', {
+                id,
+            });
+        }
         async getTeacherDetails(req) {
             const { user: loggedInUser } = req;
             const teacherModel = await this.service.findOne({
@@ -76,6 +99,21 @@ let StudentsController = (() => {
             });
         }
     };
+    __decorate([
+        validatetoken_decorator_1.ValidateToken(),
+        common_1.Get(),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", Promise)
+    ], StudentsController.prototype, "findAll", null);
+    __decorate([
+        validatetoken_decorator_1.ValidateToken(),
+        common_1.Delete('/:id'),
+        __param(0, common_1.Param('id')),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], StudentsController.prototype, "deleteResource", null);
     __decorate([
         validatetoken_decorator_1.ValidateToken(),
         common_1.Get('get-student-details'),

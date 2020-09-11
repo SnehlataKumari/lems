@@ -37,4 +37,13 @@ export class ResourceController {
       this.service.findByIdAndUpdate(id, resourceObject),
     );
   }
+
+  @ValidateToken()
+  @Get('/:id')
+  async getResource(@Param('id') id) {
+    return success(
+      'Resource updated successfully!',
+      this.service.findById(id),
+    );
+  }
 }
