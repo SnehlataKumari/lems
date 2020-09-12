@@ -4062,7 +4062,7 @@
         "affectsGlobalScope": false
       },
       "../src/schemas/test.schema.ts": {
-        "version": "671cafd7d0b2e55bf87cf3c067c39f7a780801bf4ebed92ffd111ed61a0aa837",
+        "version": "ed0cc2a819781304bd80e993be084c7ebea039bf71581f9d873a9b7600d0e7a5",
         "signature": "683fefd963d85070e8f27ad3105641587078576cfd0c343d48cdb554764306c3",
         "affectsGlobalScope": false
       },
@@ -5517,7 +5517,7 @@
         "affectsGlobalScope": false
       },
       "../src/services/auth.service.ts": {
-        "version": "19ce019d3dd12ae04bf5316daa6fb674915015193abf673a7c7cee4e6765b425",
+        "version": "96184d95bd746cbf228aaf8035c361aa25a625b1c02f5b7765edd25ee1402b7f",
         "signature": "e3c202167c3291d25380f05dbfef3adc44a0376d30fcd9c8773efc53b50ce444",
         "affectsGlobalScope": false
       },
@@ -5822,8 +5822,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/test.controller.ts": {
-        "version": "c35253be0f8ca687b50f5f85e367e2c19e6d8da552d09b01bd2c8e322c6fbdfb",
-        "signature": "7e42887c05869a8bbb31a9c1b55714db58ed4d4529d32c75cb2a74fd65a897bb",
+        "version": "63cd383a38fb970109c96b112d27e23ba519c964bdec6108aca6fc1dd2e07324",
+        "signature": "2e6e8e210cb48eb5a5ed28d161f4a78eaef6d045fc2112a6abe0239226c1e3b2",
         "affectsGlobalScope": false
       },
       "../src/controllers/index.ts": {
@@ -18941,6 +18941,8 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/controllers/resource.controller.ts",
+        "../src/decorators/validatetoken.decorator.ts",
+        "../src/services/teachers.service.ts",
         "../src/services/test.service.ts",
         "../src/utils/index.ts"
       ],
@@ -32133,6 +32135,7 @@
       ],
       "../src/controllers/test.controller.ts": [
         "../src/controllers/resource.controller.ts",
+        "../src/services/teachers.service.ts",
         "../src/services/test.service.ts"
       ],
       "../src/controllers/users.controller.ts": [

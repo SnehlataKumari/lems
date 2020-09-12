@@ -4,9 +4,16 @@ import { NumberInstance } from 'twilio/lib/rest/pricing/v1/voice/number';
 
 export const TestSchema = new mongoose.Schema(
   {
-    teacherIdWhoCreatedTest: {
+
+    isApproved: Boolean,
+    teacher: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'Teacher',
+      // required: true,
+    },
+    user: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'User',
       // required: true,
     },
     testDificultyLevel: {

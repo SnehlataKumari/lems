@@ -4,9 +4,14 @@ exports.TestSchema = void 0;
 const mongoose = require("mongoose");
 const constants_1 = require("../constants");
 exports.TestSchema = new mongoose.Schema({
-    teacherIdWhoCreatedTest: {
+    isApproved: Boolean,
+    teacher: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Teacher',
+    },
+    user: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'User',
     },
     testDificultyLevel: {
         type: String,

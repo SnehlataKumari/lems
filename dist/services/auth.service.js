@@ -95,7 +95,6 @@ let AuthService = (() => {
                 };
             }
             catch (error) {
-                console.log(error);
                 if (userModel) {
                     await this.userService.removeModel(userModel);
                 }

@@ -108,8 +108,6 @@ export class AuthService {
         user,
       };
     } catch (error) {
-      console.log(error);
-      
       if(userModel) {
         await this.userService.removeModel(userModel);
       }
