@@ -4,4 +4,5 @@ export declare class AppController {
     constructor(appService: AppService);
     getHello(): string;
     sendPrivacyPolicy(): string;
+    serveAvatar(fileId: any, res: any): Promise<any>;
 }

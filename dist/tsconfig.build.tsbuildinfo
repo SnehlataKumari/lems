@@ -1147,8 +1147,8 @@
         "affectsGlobalScope": false
       },
       "../src/app.controller.ts": {
-        "version": "09240d740227564a64591cc17f925823a69e052c33837c47bc61fa413c652820",
-        "signature": "26e0d3b2e4c65811764cc6bfee16e902808e33a27110514e5330630c59980bb6",
+        "version": "158d2d39b389573f6845cc9761f9c854e80330bda7cf1460eb03aa27f5778256",
+        "signature": "cfde42721edafa81b70117fe9c545990afb12a64ed0e347a00dca06cd0687de6",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/config/dist/types/config.type.d.ts": {
@@ -3321,9 +3321,9 @@
         "signature": "acbee9f87bbb6f1e4c32c9ee3de3c68f63bcefd5ce1559e3d29fa6daabbbce07",
         "affectsGlobalScope": false
       },
-      "../node_modules/twilio/lib/rest/proxy/v1/service/session/interaction.d.ts": {
-        "version": "492d8aa8b9fcf76e887850da34959e63e9369151aa5806b851382d3fdb614a4a",
-        "signature": "492d8aa8b9fcf76e887850da34959e63e9369151aa5806b851382d3fdb614a4a",
+      "../src/services/students.service.ts": {
+        "version": "2e97c749e27998c55a9180bf9e1cfa19ce3b9d5ba341065923505d8b4b94a634",
+        "signature": "c9a3ef32cae1647b6ff4de7e2185f9bcccabc48149e47ead0c78d65935e14bf4",
         "affectsGlobalScope": false
       },
       "../node_modules/twilio/lib/rest/proxy/v1/service/session/participant/messageinteraction.d.ts": {
@@ -3366,9 +3366,9 @@
         "signature": "9f0cabc66ddc78dc994b62f85e1fd2eb9e7bc7256e4a9361d90dcbec32a28939",
         "affectsGlobalScope": false
       },
-      "../node_modules/twilio/lib/rest/serverless/v1/service/asset/assetversion.d.ts": {
-        "version": "b42aea846aa8d5f2d72639dc1a8f3175a3e18ded33b17b256e154febece1d067",
-        "signature": "b42aea846aa8d5f2d72639dc1a8f3175a3e18ded33b17b256e154febece1d067",
+      "../src/services/index.ts": {
+        "version": "c4c37799aa45a3f3ab6ae67e6486fccd0ac65a19840768ad88e4f57fce724198",
+        "signature": "dac75d30126935b87ca3a87b56f9f1b83e35cfa3067d9fa7c9be0389f4b995de",
         "affectsGlobalScope": false
       },
       "../node_modules/twilio/lib/rest/serverless/v1/service/asset.d.ts": {
@@ -3466,9 +3466,9 @@
         "signature": "c465d2b9bf6d0e58bac0d999a8113bc64b8a079a6db903c83caea178fc79c8d2",
         "affectsGlobalScope": false
       },
-      "../node_modules/twilio/lib/rest/studio/v1/flow/execution.d.ts": {
-        "version": "c9633509f2b8c867e030dad5efa3eaf60a0a94afcecac853b1e823663ad88387",
-        "signature": "c9633509f2b8c867e030dad5efa3eaf60a0a94afcecac853b1e823663ad88387",
+      "../src/controllers/resource.controller.ts": {
+        "version": "5e17d09abcf7d7d909de7a5988faa6ba3ca8bb43173c9a847de95b1ce8ced212",
+        "signature": "b0bafc90bf3e845bfd2098e4bc40c6f420b52150bb6253602d8a352e98fe9e61",
         "affectsGlobalScope": false
       },
       "../node_modules/twilio/lib/rest/studio/v1/flow.d.ts": {
@@ -5817,18 +5817,13 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/students.controller.ts": {
-        "version": "db2725a8d482c5e6d7b46b7a921284d488573a2d48e477b29c457f57c223463b",
-        "signature": "0b889eba816590b167e74d4976cf3d0edb6435e564a5c3bb01d74e6e6eaa210a",
-        "affectsGlobalScope": false
-      },
-      "../src/controllers/test.controller.ts": {
-        "version": "63cd383a38fb970109c96b112d27e23ba519c964bdec6108aca6fc1dd2e07324",
-        "signature": "2e6e8e210cb48eb5a5ed28d161f4a78eaef6d045fc2112a6abe0239226c1e3b2",
+        "version": "7b5f2e2d760e5f16a1316b6a1edc227da48b192aeb73bb24b8d9f4020fab87ea",
+        "signature": "7c3a62a8c380ed98923c754c7b0e5cc81f176e298e21f155b964d48e807606a9",
         "affectsGlobalScope": false
       },
       "../src/controllers/index.ts": {
-        "version": "b665a52550332272bee08b30b95dfff17a348fef725fc25ababe51fa27f15e25",
-        "signature": "3ebc5abf47740627166bd6c7859afff14f5eadd78d9b7b20265a629548fc04b1",
+        "version": "3a04fad0f623e8b205b58cc33ec3b18bb8925d1d058a7892e0ceaf736831fd13",
+        "signature": "3e2308c1ae7deebed9e66827470db6381d829f0aba197c577189190e7d2fd36e",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -5857,8 +5852,8 @@
         "affectsGlobalScope": false
       },
       "../src/app.module.ts": {
-        "version": "8e724ee575f850a18adcc918892641258b846d4bb2b6f657e84492f331986778",
-        "signature": "9fc7f7b6ad854404973b8cba8e6d883f758237991968e9a3965d716d46f1da88",
+        "version": "448dc7734b0d53c926adc7cf1dfd968a42d38070c246b1599393814708b459ad",
+        "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644",
         "affectsGlobalScope": false
       },
       "../src/exception-filters/mongo-exception.filter.ts": {
@@ -18892,8 +18887,11 @@
       ],
       "../src/controllers/students.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/config/index.d.ts",
+        "../node_modules/@nestjs/platform-express/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/path.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -32118,6 +32116,7 @@
         "../src/services/products.service.ts"
       ],
       "../src/controllers/students.controller.ts": [
+        "../node_modules/@nestjs/config/index.d.ts",
         "../src/controllers/resource.controller.ts",
         "../src/services/students.service.ts",
         "../src/services/users.service.ts"
@@ -32256,6 +32255,7 @@
       "../src/services/index.ts": [
         "../src/services/assets.service.ts",
         "../src/services/auth.service.ts",
+        "../src/services/classes.service.ts",
         "../src/services/dbtransaction.service.ts",
         "../src/services/dummysms.service.ts",
         "../src/services/email.service.ts",
@@ -32265,8 +32265,7 @@
         "../src/services/s3.service.ts",
         "../src/services/sms.service.ts",
         "../src/services/students.service.ts",
-        "../src/services/teachers.service.ts",
-        "../src/services/test.service.ts"
+        "../src/services/teachers.service.ts"
       ],
       "../src/services/livestreams.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",

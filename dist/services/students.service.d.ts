@@ -9,6 +9,7 @@ export declare class StudentsService extends DBService {
         message: string;
     }>;
     findAll(where?: {}): import("mongoose").DocumentQuery<any[], any, {}>;
+    findById(id: any): import("mongoose").DocumentQuery<any, any, {}>;
     findByToken(token: any): Promise<any>;
     editTeacherProfile(requestBody: any, loggedInUser: any): Promise<any>;
     updateProfile(teacherId: any, requestBody: any): Promise<{

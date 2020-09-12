@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import { privacy } from './privacy-policy';
 
@@ -14,5 +14,10 @@ export class AppController {
   @Get('privacy-policy')
   sendPrivacyPolicy(): string {
     return privacy;
+  }
+
+  @Get('avatars/:fileId')
+  async serveAvatar(@Param('fileId') fileId, @Res() res): Promise<any> {
+    res.sendFile(fileId, { root: 'avatars' });
   }
 }

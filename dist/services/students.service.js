@@ -43,6 +43,9 @@ let StudentsService = (() => {
         findAll(where = {}) {
             return super.findAll(where).populate('userId').sort('-_id');
         }
+        findById(id) {
+            return super.findById(id).populate('userId');
+        }
         async findByToken(token) {
             const teacher = await this.findOne(token);
             return teacher;

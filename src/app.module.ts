@@ -30,14 +30,14 @@ const storage = multer.diskStorage({
     PassportModule.register({ defaultStrategy: 'jwt' }),
     MongooseModule.forRoot(`mongodb://localhost/${process.env.DATABASE_NAME}`),
     MongooseModule.forFeature(schemas),
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'static'),
-    }),
-    MulterModule.register({
-      // dest: join(__dirname, '..', 'static/uploads'),
-      storage
-    }),
-    JwtModule.register({
+    // ServeStaticModule.forRoot({
+    //   rootPath: join(__dirname, '..', 'static'),
+    // }),
+    // MulterModule.register({
+    //   // dest: join(__dirname, '..', 'static/uploads'),
+    //   storage
+    // }),
+    JwtModule.register({  
       secret: JWT_CONSTANTS.secret,
     }),
   ],
