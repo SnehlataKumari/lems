@@ -8,6 +8,7 @@ import { PaymentsController } from './payments.controller';
 import { TeachersController } from './teachers.controller';
 import { ProductsController } from './products.controller';
 import { StudentsController } from './students.controller';
+import { TestController } from './test.controller';
 
 export default [
   UsersController,
@@ -19,5 +20,6 @@ export default [
   PaymentsController,
   TeachersController,
   ProductsController,
-  StudentsController
+  StudentsController,
+  TestController,
 ];

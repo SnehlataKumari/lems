@@ -10,6 +10,7 @@ const payments_controller_1 = require("./payments.controller");
 const teachers_controller_1 = require("./teachers.controller");
 const products_controller_1 = require("./products.controller");
 const students_controller_1 = require("./students.controller");
+const test_controller_1 = require("./test.controller");
 exports.default = [
     users_controller_1.UsersController,
     classes_controller_1.ClassesController,
@@ -20,6 +21,7 @@ exports.default = [
     payments_controller_1.PaymentsController,
     teachers_controller_1.TeachersController,
     products_controller_1.ProductsController,
-    students_controller_1.StudentsController
+    students_controller_1.StudentsController,
+    test_controller_1.TestController,
 ];
 //# sourceMappingURL=index.js.map

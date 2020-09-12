@@ -8,5 +8,6 @@ import { PaymentsController } from './payments.controller';
 import { TeachersController } from './teachers.controller';
 import { ProductsController } from './products.controller';
 import { StudentsController } from './students.controller';
-declare const _default: (typeof UsersController | typeof ClassesController | typeof AssetsController | typeof AuthController | typeof ChaptersController | typeof SubjectsController | typeof PaymentsController | typeof TeachersController | typeof ProductsController | typeof StudentsController)[];
+import { TestController } from './test.controller';
+declare const _default: (typeof TestController | typeof UsersController | typeof ClassesController | typeof AssetsController | typeof AuthController | typeof ChaptersController | typeof SubjectsController | typeof PaymentsController | typeof TeachersController | typeof ProductsController | typeof StudentsController)[];
 export default _default;
