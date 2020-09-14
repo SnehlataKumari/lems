@@ -118,6 +118,14 @@ const boardSchema = new mongoose.Schema({
         type: Boolean,
     },
 });
+const teachingHoursSchema = new mongoose.Schema({
+    weekDaysTeachingHours: {
+        type: String,
+    },
+    weekendsTeachingHours: {
+        type: String,
+    },
+});
 exports.TeacherSchema = new mongoose.Schema({
     userId: {
         type: mongoose.SchemaTypes.ObjectId,
@@ -150,11 +158,8 @@ exports.TeacherSchema = new mongoose.Schema({
         type: boardSchema,
         required: true,
     },
-    weekDaysTeachingHours: {
-        type: String,
-    },
-    weekendsTeachingHours: {
-        type: String,
+    teachingHours: {
+        type: teachingHoursSchema,
     },
     availableTime: {
         type: availableTimeSchema,

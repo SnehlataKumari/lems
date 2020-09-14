@@ -1837,7 +1837,7 @@
         "affectsGlobalScope": false
       },
       "../src/schemas/teacher.schema.ts": {
-        "version": "65f226bde516a623177a1d93710705dd0abaa68b3d77238beb45b2b7c6221768",
+        "version": "1a0cd8dd51869d4dff11f5cc344f05923ef87982b7a4e14a8439c2fb7659a24e",
         "signature": "aec3f8aa77d9b6b77d52b22538cd6269dfa0d1f434afa8f0863871917724a6d5",
         "affectsGlobalScope": false
       },
@@ -4082,7 +4082,7 @@
         "affectsGlobalScope": false
       },
       "../src/services/users.service.ts": {
-        "version": "064132605ac0dede6ff6736ad258460d93e07e835217e6cbd5ade20931d55691",
+        "version": "8b0364dee1fcc4fabe3e6f8c9f297706b66cbc5f1b46207b4d0b5a20074ee972",
         "signature": "1048e439171ac6168b25ac4e6349c697d19b47f907f92491e258dc8625f4e739",
         "affectsGlobalScope": false
       },

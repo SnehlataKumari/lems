@@ -121,6 +121,15 @@ const boardSchema = new mongoose.Schema({
   },
 });
 
+const teachingHoursSchema = new mongoose.Schema({
+  weekDaysTeachingHours: {
+    type: String,
+  },
+  weekendsTeachingHours: {
+    type: String,
+  },
+})
+
 /**
  * A file has following structure.
  * estination: "/home/it/Documents/practice/lems/lems-academy-backend/static/uploads"
@@ -166,11 +175,8 @@ export const TeacherSchema = new mongoose.Schema(
       type: boardSchema,
       required: true,
     },
-    weekDaysTeachingHours: {
-      type: String,
-    },
-    weekendsTeachingHours: {
-      type: String,
+    teachingHours:{
+      type: teachingHoursSchema,
     },
     availableTime: {
       type: availableTimeSchema,

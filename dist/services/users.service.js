@@ -42,7 +42,8 @@ let UsersService = (() => {
             return Object.assign(Object.assign({}, model.toJSON()), { password: null });
         }
         async changePassword(userId, hashedPassword) {
-            return await this.update(userId, { password: hashedPassword });
+            const userModel = await this.findById(userId);
+            return await this.update(userModel, { password: hashedPassword });
         }
     };
     UsersService = __decorate([
