@@ -76,6 +76,7 @@ export class TeachersController extends ResourceController {
   ]))
   @Put(`:teacherId/update-profile`)
   async updateProfile(@Param('teacherId') teacherId, @Body() requestBody) {
-    return await this.service.updateProfile(teacherId, requestBody);
+    console.log(teacherId,'tttttttttttttttttttttttttttt',requestBody,'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
+    // return await this.service.updateProfile(teacherId, requestBody);
   }
 }

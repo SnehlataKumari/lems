@@ -1147,8 +1147,8 @@
         "affectsGlobalScope": false
       },
       "../src/app.controller.ts": {
-        "version": "158d2d39b389573f6845cc9761f9c854e80330bda7cf1460eb03aa27f5778256",
-        "signature": "cfde42721edafa81b70117fe9c545990afb12a64ed0e347a00dca06cd0687de6",
+        "version": "39221598bb4fa5da31950141dda5061635645a648497610644b8fa2f36651977",
+        "signature": "ed1decda83502087738040d220fabcdda577d153e22717e6def533c9791eaa0d",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/config/dist/types/config.type.d.ts": {
@@ -3321,9 +3321,9 @@
         "signature": "acbee9f87bbb6f1e4c32c9ee3de3c68f63bcefd5ce1559e3d29fa6daabbbce07",
         "affectsGlobalScope": false
       },
-      "../src/services/students.service.ts": {
-        "version": "2e97c749e27998c55a9180bf9e1cfa19ce3b9d5ba341065923505d8b4b94a634",
-        "signature": "c9a3ef32cae1647b6ff4de7e2185f9bcccabc48149e47ead0c78d65935e14bf4",
+      "../node_modules/twilio/lib/rest/proxy/v1/service/session/interaction.d.ts": {
+        "version": "492d8aa8b9fcf76e887850da34959e63e9369151aa5806b851382d3fdb614a4a",
+        "signature": "492d8aa8b9fcf76e887850da34959e63e9369151aa5806b851382d3fdb614a4a",
         "affectsGlobalScope": false
       },
       "../node_modules/twilio/lib/rest/proxy/v1/service/session/participant/messageinteraction.d.ts": {
@@ -3366,9 +3366,9 @@
         "signature": "9f0cabc66ddc78dc994b62f85e1fd2eb9e7bc7256e4a9361d90dcbec32a28939",
         "affectsGlobalScope": false
       },
-      "../src/services/index.ts": {
-        "version": "c4c37799aa45a3f3ab6ae67e6486fccd0ac65a19840768ad88e4f57fce724198",
-        "signature": "dac75d30126935b87ca3a87b56f9f1b83e35cfa3067d9fa7c9be0389f4b995de",
+      "../node_modules/twilio/lib/rest/serverless/v1/service/asset/assetversion.d.ts": {
+        "version": "b42aea846aa8d5f2d72639dc1a8f3175a3e18ded33b17b256e154febece1d067",
+        "signature": "b42aea846aa8d5f2d72639dc1a8f3175a3e18ded33b17b256e154febece1d067",
         "affectsGlobalScope": false
       },
       "../node_modules/twilio/lib/rest/serverless/v1/service/asset.d.ts": {
@@ -3466,9 +3466,9 @@
         "signature": "c465d2b9bf6d0e58bac0d999a8113bc64b8a079a6db903c83caea178fc79c8d2",
         "affectsGlobalScope": false
       },
-      "../src/controllers/resource.controller.ts": {
-        "version": "5e17d09abcf7d7d909de7a5988faa6ba3ca8bb43173c9a847de95b1ce8ced212",
-        "signature": "b0bafc90bf3e845bfd2098e4bc40c6f420b52150bb6253602d8a352e98fe9e61",
+      "../node_modules/twilio/lib/rest/studio/v1/flow/execution.d.ts": {
+        "version": "c9633509f2b8c867e030dad5efa3eaf60a0a94afcecac853b1e823663ad88387",
+        "signature": "c9633509f2b8c867e030dad5efa3eaf60a0a94afcecac853b1e823663ad88387",
         "affectsGlobalScope": false
       },
       "../node_modules/twilio/lib/rest/studio/v1/flow.d.ts": {
@@ -5512,8 +5512,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/students.service.ts": {
-        "version": "b9bbe87d28f0e0adde69c67865f3f87956b576af85a3396fc5385519cd185244",
-        "signature": "b3edde59e1cd895f385a6bfe9a6ffd5a3f4f514121f20e30ac75b9ecf8d93143",
+        "version": "141b0aa09d486080a5af5a14fb037237b93a0b990acc2ad465fb6e4889c553e4",
+        "signature": "0959ff4c949d1838e5c2f9747d1743fdd0d35212512dd3209bf6cea2c54845c0",
         "affectsGlobalScope": false
       },
       "../src/services/auth.service.ts": {
@@ -5563,7 +5563,7 @@
       },
       "../src/services/index.ts": {
         "version": "daa9f0c7c182ea12828e6360ffc591079fbc4ea98cea94bf172c9b768c4745f5",
-        "signature": "5be01961869ea501731276573f97d2243f499ed237a07a50d0091db0d5f39552",
+        "signature": "15a8bd70c136ffd3db9c9eb764fc56513ba7a4837feb63fbf193a24404060509",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
@@ -5672,8 +5672,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/resource.controller.ts": {
-        "version": "0dc65aefea7531c3e61160fc4b436f9d996058077ad44e53e15beca9c66f3597",
-        "signature": "c3c4dee71b723db290bef6bd583cfae1b7b934f1246eb4cdc93ff641461be186",
+        "version": "a7622e511c1bf492134b979bd76b7a73a16c05c5c5f91e0843b387eb1a568167",
+        "signature": "bda24630323562bf4a8f36d8b10f950b149f3ec03ff88f7a804dce887f8e284b",
         "affectsGlobalScope": false
       },
       "../src/controllers/users.controller.ts": {
@@ -5807,8 +5807,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/teachers.controller.ts": {
-        "version": "153b7e917e8f41e097f4c2cdd383d70bcb024203f73b4f1de8a54b6d23fd63a4",
-        "signature": "a52d5537a477ad0c21385fae0575f4b35ed15a9130a76198c7f0defb1868e40f",
+        "version": "b46ef955c1f2815a07ae9878ad1a3c9fc33734015c275024efaff653b9e61a82",
+        "signature": "9e75351a8efd1ca1d91d217c0289a37482730378b86b64a6b1773c40c583dd77",
         "affectsGlobalScope": false
       },
       "../src/controllers/products.controller.ts": {
@@ -5817,13 +5817,18 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/students.controller.ts": {
-        "version": "7b5f2e2d760e5f16a1316b6a1edc227da48b192aeb73bb24b8d9f4020fab87ea",
-        "signature": "7c3a62a8c380ed98923c754c7b0e5cc81f176e298e21f155b964d48e807606a9",
+        "version": "a3fa22d1981a52d8106576b12d6b3bff8a3c3c2afcaa9080f793a8ed2ce1db14",
+        "signature": "b89c9deaf9bb51b8d8e0272aeac29bd37e163dba61c5136dd2ddd30de2d45b11",
+        "affectsGlobalScope": false
+      },
+      "../src/controllers/test.controller.ts": {
+        "version": "63cd383a38fb970109c96b112d27e23ba519c964bdec6108aca6fc1dd2e07324",
+        "signature": "2e6e8e210cb48eb5a5ed28d161f4a78eaef6d045fc2112a6abe0239226c1e3b2",
         "affectsGlobalScope": false
       },
       "../src/controllers/index.ts": {
-        "version": "3a04fad0f623e8b205b58cc33ec3b18bb8925d1d058a7892e0ceaf736831fd13",
-        "signature": "3e2308c1ae7deebed9e66827470db6381d829f0aba197c577189190e7d2fd36e",
+        "version": "b665a52550332272bee08b30b95dfff17a348fef725fc25ababe51fa27f15e25",
+        "signature": "c01816637bb4ef0d4a7894702079db809b3b278b4f011aa31c5fa70cd3c7ed16",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -5852,8 +5857,8 @@
         "affectsGlobalScope": false
       },
       "../src/app.module.ts": {
-        "version": "448dc7734b0d53c926adc7cf1dfd968a42d38070c246b1599393814708b459ad",
-        "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644",
+        "version": "d3ec7a64f665a01174e45196a232e2f2da9eb62563426965228dc5b65905d0f3",
+        "signature": "9fc7f7b6ad854404973b8cba8e6d883f758237991968e9a3965d716d46f1da88",
         "affectsGlobalScope": false
       },
       "../src/exception-filters/mongo-exception.filter.ts": {
