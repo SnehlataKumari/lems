@@ -61,10 +61,11 @@ let TeachersService = (() => {
                 throw new common_1.UnauthorizedException('user not found!');
             }
             const userId = teacher.userId;
-            const userModel = await this.userService.update(userId, requestBody.user);
-            const teacherModel = await this.update(teacherId, requestBody.teacher);
+            const userModel = await this.userService.findById(userId);
+            const userModal = await this.userService.update(userModel, requestBody.user);
+            const teacherModel = await this.update(teacher, requestBody.teacher);
             return {
-                user: userModel,
+                user: userModal,
                 teacher: teacherModel
             };
         }

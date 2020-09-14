@@ -1837,7 +1837,7 @@
         "affectsGlobalScope": false
       },
       "../src/schemas/teacher.schema.ts": {
-        "version": "1a0cd8dd51869d4dff11f5cc344f05923ef87982b7a4e14a8439c2fb7659a24e",
+        "version": "697ecfc6bb4a5fc0e565e47a6a8b7d6f4e3160f0d6c0a938c732ae5acfef689b",
         "signature": "aec3f8aa77d9b6b77d52b22538cd6269dfa0d1f434afa8f0863871917724a6d5",
         "affectsGlobalScope": false
       },
@@ -5502,7 +5502,7 @@
         "affectsGlobalScope": false
       },
       "../src/services/teachers.service.ts": {
-        "version": "c391314daa86a7a1af086323e3e4abb875e354b06999b5ce7f624ae5815b9524",
+        "version": "f8b2481a5a254785cccb8f814c98b34f56df2d5527bc11e5cb6fcaf2cd6471b8",
         "signature": "03918a7bbaa91b41758db3dbab73a634a6bf274cfacc1ebfef3f36dba43509de",
         "affectsGlobalScope": false
       },
@@ -5807,8 +5807,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/teachers.controller.ts": {
-        "version": "b46ef955c1f2815a07ae9878ad1a3c9fc33734015c275024efaff653b9e61a82",
-        "signature": "9e75351a8efd1ca1d91d217c0289a37482730378b86b64a6b1773c40c583dd77",
+        "version": "153b7e917e8f41e097f4c2cdd383d70bcb024203f73b4f1de8a54b6d23fd63a4",
+        "signature": "a52d5537a477ad0c21385fae0575f4b35ed15a9130a76198c7f0defb1868e40f",
         "affectsGlobalScope": false
       },
       "../src/controllers/products.controller.ts": {
@@ -5828,7 +5828,7 @@
       },
       "../src/controllers/index.ts": {
         "version": "b665a52550332272bee08b30b95dfff17a348fef725fc25ababe51fa27f15e25",
-        "signature": "c01816637bb4ef0d4a7894702079db809b3b278b4f011aa31c5fa70cd3c7ed16",
+        "signature": "873039e65a1fad27cd1a9823754e45595317130658eaa0146fb422ed86aa38dd",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {

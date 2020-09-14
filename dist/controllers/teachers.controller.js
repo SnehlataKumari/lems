@@ -65,7 +65,7 @@ let TeachersController = (() => {
             return utils_1.success('Profile updated successfully', {});
         }
         async updateProfile(teacherId, requestBody) {
-            console.log(teacherId, 'tttttttttttttttttttttttttttt', requestBody, 'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr');
+            return await this.service.updateProfile(teacherId, requestBody);
         }
     };
     __decorate([
