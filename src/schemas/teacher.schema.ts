@@ -121,14 +121,6 @@ const boardSchema = new mongoose.Schema({
   },
 });
 
-const teachingHoursSchema = new mongoose.Schema({
-  weekDaysTeachingHours: {
-    type: String,
-  },
-  weekendsTeachingHours: {
-    type: String,
-  },
-})
 
 /**
  * A file has following structure.
@@ -175,8 +167,13 @@ export const TeacherSchema = new mongoose.Schema(
       type: boardSchema,
       required: true,
     },
-    teachingHours:{
-      type: teachingHoursSchema,
+    teachingHours: {
+      weekdays: {
+        type: String,
+      },
+      weekends: {
+        type: String,
+      },
     },
     availableTime: {
       type: availableTimeSchema,
