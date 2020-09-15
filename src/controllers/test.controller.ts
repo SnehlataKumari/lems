@@ -20,9 +20,6 @@ export class TestController extends ResourceController {
     const teacherModel = await this.teacherService.findOne({
       userId: req.user._id
     });
-
-    console.log(teacherModel);
-    
     let createTestObj = {
       ...createObject,
     };

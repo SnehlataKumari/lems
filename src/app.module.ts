@@ -33,10 +33,10 @@ const storage = multer.diskStorage({
     // ServeStaticModule.forRoot({
     //   rootPath: join(__dirname, '..', 'static'),
     // }),
-    // MulterModule.register({
-    //   // dest: join(__dirname, '..', 'static/uploads'),
-    //   storage
-    // }),
+    MulterModule.register({
+      // dest: join(__dirname, '..', 'static/uploads'),
+      storage
+    }),
     JwtModule.register({  
       secret: JWT_CONSTANTS.secret,
     }),

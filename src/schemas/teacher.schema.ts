@@ -175,7 +175,7 @@ export const TeacherSchema = new mongoose.Schema(
         type: String,
       },
     },
-    availableTime: {
+    availableTimes: {
       type: availableTimeSchema,
     },
     currentOccupation: {

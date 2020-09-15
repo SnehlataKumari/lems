@@ -29,7 +29,6 @@ let TestController = (() => {
             const teacherModel = await this.teacherService.findOne({
                 userId: req.user._id
             });
-            console.log(teacherModel);
             let createTestObj = Object.assign({}, createObject);
             if (req.user.role !== 'ADMIN') {
                 createTestObj = Object.assign(Object.assign({}, createObject), { user: req.user._id, teacher: teacherModel._id });

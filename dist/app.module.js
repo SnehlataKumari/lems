@@ -21,6 +21,7 @@ const jwt_1 = require("@nestjs/jwt");
 const constants_1 = require("./constants");
 const passport_1 = require("@nestjs/passport");
 const jwt_strategy_1 = require("./passport/jwt.strategy");
+const platform_express_1 = require("@nestjs/platform-express");
 const multer = require("multer");
 const storage = multer.diskStorage({
     destination: path_1.join(__dirname, '..', 'static/uploads'),
@@ -38,6 +39,9 @@ let AppModule = (() => {
                 passport_1.PassportModule.register({ defaultStrategy: 'jwt' }),
                 mongoose_1.MongooseModule.forRoot(`mongodb://localhost/${process.env.DATABASE_NAME}`),
                 mongoose_1.MongooseModule.forFeature(schemas_1.default),
+                platform_express_1.MulterModule.register({
+                    storage
+                }),
                 jwt_1.JwtModule.register({
                     secret: constants_1.JWT_CONSTANTS.secret,
                 }),
