@@ -36,7 +36,7 @@ const assignToProductSchema = new mongoose.Schema({
 export const TestSchema = new mongoose.Schema(
   {
 
-    isApproved: Boolean,
+    
     teacher: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'Teacher',
@@ -95,18 +95,6 @@ export const TestSchema = new mongoose.Schema(
       }
     },
     questionDetails: {
-      subject: {
-        type: String
-      },
-      topic: {
-        type: String
-      },
-      questionType: {
-        type: String
-      },
-      language: {
-        type: String
-      },
       questions: [
         {
           questionTitle: {
@@ -126,7 +114,24 @@ export const TestSchema = new mongoose.Schema(
           },
           dificultyLevel: {
             type: String
-          }
+          },
+          subject: {
+            type: String
+          },
+          topic: {
+            type: String
+          },
+          questionType: {
+            type: String
+          },
+          language: {
+            type: String
+          },
+          options: [
+            new mongoose.Schema({
+              title: String
+            })
+          ]
         }
       ]
     },
@@ -143,15 +148,24 @@ export const TestSchema = new mongoose.Schema(
       }, 
       assignToProduct: {
         type: assignToProductSchema,
-      }, 
-      publishDetails: {
-        isPublished: Boolean,
-        startDate: Date,
-        startTime: String,
-        endDate: Date,
-        endTime: String
       },
-    }, 
+    },
+    publishDetails: {
+      isPublished: Boolean,
+      startDate: Date,
+      startTime: String,
+      endDate: Date,
+      endTime: String
+    },
+    requestSharedDate: {
+      type: String,
+    },
+    isApproved: Boolean,
+    isRejected: Boolean,
+    comment: {
+      type: String,
+    },
+   
   },
   {
     timestamps: true,

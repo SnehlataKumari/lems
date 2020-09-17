@@ -4062,7 +4062,7 @@
         "affectsGlobalScope": false
       },
       "../src/schemas/test.schema.ts": {
-        "version": "f9aa06a702a8ac629037be80cf214ca2e0166cd0a8321dc5e24c9a797fb4f027",
+        "version": "5bcb67b6aa8f0e447dd11022773e5d9f11ccde534a80e7c88c6efeb5f857676d",
         "signature": "683fefd963d85070e8f27ad3105641587078576cfd0c343d48cdb554764306c3",
         "affectsGlobalScope": false
       },
