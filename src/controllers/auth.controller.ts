@@ -64,7 +64,7 @@ export class AuthController {
   // @JoiValidation(userSchema)
   @Post('sign-up-student')
   async signUpStudent(@Body() requestBody) {
-    return await this.service.signUp(requestBody);
+    return await this.service.signUp(requestBody);    
   }
 
   @UseInterceptors(FileFieldsInterceptor([

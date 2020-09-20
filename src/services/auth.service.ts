@@ -15,6 +15,7 @@ import { TeachersService } from './teachers.service';
 import { DBTransactionService } from './dbtransaction.service';
 import { StudentsService } from './students.service';
 
+
 @Injectable()
 export class AuthService {
   constructor(
@@ -53,7 +54,7 @@ export class AuthService {
     const hash = await this.encryptPassword(requestBody.password);
     const userModel = await this.userService.create({
       ...requestBody,
-      password: hash
+      password: hash,
     });
     const userObj = this.userService.getPublicDetails(userModel);
     const token = this.jwtService.sign(userObj);
