@@ -9,5 +9,6 @@ export declare class SmsService {
         body: any;
         to: any;
     }): Promise<any>;
+    sendOtpToMobile(phone: any, otp: any): Promise<any>;
     sendOtp(user: any): Promise<any>;
 }

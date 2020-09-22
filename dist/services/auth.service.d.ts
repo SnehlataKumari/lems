@@ -25,7 +25,7 @@ export declare class AuthService {
     getUserToken(userObj: any): string;
     signUp(requestBody: any, role?: string): Promise<{
         message: string;
-        userModel: any;
+        data: any;
     }>;
     socialSignupStudent(requestBody: any): Promise<{
         message: string;

@@ -3,21 +3,23 @@ import { TokensService } from 'src/services/tokens.service';
 import { ConfigService } from '@nestjs/config';
 import { Response } from 'express';
 import { UsersService } from 'src/services/users.service';
+import { OtpService } from 'src/services/otp.service';
 export declare class AuthController {
     private config;
     private tokenService;
     private service;
     private userService;
+    private otpService;
     private tokensService;
-    constructor(config: ConfigService, tokenService: TokensService, service: AuthService, userService: UsersService, tokensService: TokensService);
+    constructor(config: ConfigService, tokenService: TokensService, service: AuthService, userService: UsersService, otpService: OtpService, tokensService: TokensService);
     get hostUrl(): any;
     signUp(requestBody: any): Promise<{
         message: string;
-        userModel: any;
+        data: any;
     }>;
     signUpStudent(requestBody: any): Promise<{
         message: string;
-        userModel: any;
+        data: any;
     }>;
     socialSignUpStudent(requestBody: any): Promise<{
         message: string;

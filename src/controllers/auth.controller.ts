@@ -189,7 +189,6 @@ export class AuthController {
       }
     }
 
-
     if (emailOrMobile.length === 10 && parseInt(emailOrMobile, 10) !== NaN) {
       where = {
         phone: emailOrMobile
@@ -208,8 +207,6 @@ export class AuthController {
 
     return userModel;
   }
-
-  
 
   @Post('send-otp')
   async sendOtp(@Body() requestBody) {
@@ -236,11 +233,13 @@ export class AuthController {
   async otpLogin(@Body() requestBody) {
     const tokenType = TOKEN_TYPES['LOGIN'].key;
     
-    const otpModel = await this.otpService.findOne({requestBody});
+    const otpModel = await this.otpService.findOne(requestBody);
 
     if (!otpModel) {
       throw new UnauthorizedException('Otp not matched!');
     }
+
+    await this.otpService.removeModel(otpModel);
 
     let where = {};
     if (isEmail(requestBody.emailOrMobile)) {
@@ -256,7 +255,7 @@ export class AuthController {
     const userModel = await this.userService.findOne(where);
     
     if (!userModel) {
-      return success('OTP verified', {});
+      return success('OTP verified', where);
     }
 
     await this.otpService.delete(requestBody);

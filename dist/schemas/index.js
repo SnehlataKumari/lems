@@ -14,6 +14,7 @@ const liveStream_schema_1 = require("./liveStream.schema");
 const student_schema_1 = require("./student.schema");
 const test_schema_1 = require("./test.schema");
 const socialLogin_schema_1 = require("./socialLogin.schema");
+const otp_schema_1 = require("./otp.schema");
 exports.default = [
     { name: 'Class', schema: class_schema_1.ClassSchema },
     { name: 'User', schema: user_schema_1.UserSchema },
@@ -29,5 +30,6 @@ exports.default = [
     { name: 'Student', schema: student_schema_1.StudentSchema },
     { name: 'Test', schema: test_schema_1.TestSchema },
     { name: 'SocialLogin', schema: socialLogin_schema_1.SocialLoginSchema },
+    { name: 'Otp', schema: otp_schema_1.OtpSchema },
 ];
 //# sourceMappingURL=index.js.map

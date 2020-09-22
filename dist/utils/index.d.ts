@@ -3,3 +3,5 @@ export declare const success: (message: string, data: any) => Promise<{
     data: any;
 }>;
 export declare const generateOTP: () => number;
+export declare const isEmail: (emailOrMobile: any) => boolean;
+export declare const isMobile: (emailOrMobile: any) => boolean;

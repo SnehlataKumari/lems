@@ -22,6 +22,7 @@ const dbtransaction_service_1 = require("./dbtransaction.service");
 const students_service_1 = require("./students.service");
 const test_service_1 = require("./test.service");
 const socialLogin_service_1 = require("./socialLogin.service");
+const otp_service_1 = require("./otp.service");
 exports.default = [
     users_service_1.UsersService,
     assets_service_1.AssetsService,
@@ -46,5 +47,6 @@ exports.default = [
     students_service_1.StudentsService,
     test_service_1.TestService,
     socialLogin_service_1.SocialLoginService,
+    otp_service_1.OtpService,
 ];
 //# sourceMappingURL=index.js.map

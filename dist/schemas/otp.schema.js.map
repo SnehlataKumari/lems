@@ -1,0 +1,1 @@
+{"version":3,"file":"otp.schema.js","sourceRoot":"","sources":["../../src/schemas/otp.schema.ts"],"names":[],"mappings":";;;AAAA,qCAAqC;AAErC,MAAM,SAAS,GAAG,IAAI,QAAQ,CAAC,MAAM,CACnC;IACE,aAAa,EAAE;QACb,IAAI,EAAE,MAAM;QACZ,QAAQ,EAAE,CAAC,IAAI,EAAE,6BAA6B,CAAC;KAChD;IACD,GAAG,EAAE,MAAM;CACZ,EACD;IACE,UAAU,EAAE,IAAI;CACjB,CACF,CAAC;AAEO,8BAAS"}

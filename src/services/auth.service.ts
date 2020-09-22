@@ -93,11 +93,11 @@ export class AuthService {
       ...requestBody,
     });
 
-    const socialLoginModel = await this.socialLoginService.create({
-      user: userModel._id,
-      socialLoginType: requestBody.socialLoginType,
-      socialLoginId: requestBody.socialLoginId,
-    });
+    // const socialLoginModel = await this.socialLoginService.create({
+    //   user: userModel._id,
+    //   socialLoginType: requestBody.socialLoginType,
+    //   socialLoginId: requestBody.socialLoginId,
+    // });
     await this.studentService.create({ userId: userModel._id,});
 
     const tokenType = TOKEN_TYPES['LOGIN'].key;
@@ -116,29 +116,30 @@ export class AuthService {
   }
 
   async socialLoginStudent(requestBody) {
-    let socialLoginModel = await this.socialLoginService.findOne({
-      socialLoginType: requestBody.socialLoginType,
-      socialLoginId: requestBody.socialLoginId,
+    // let socialLoginModel = await this.socialLoginService.findOne({
+    //   socialLoginType: requestBody.socialLoginType,
+    //   socialLoginId: requestBody.socialLoginId,
+    // });
+
+    const userModel = await this.userService.findOne({
+      email: requestBody.email,
     });
 
-    const user = await this.userService.findOne({
-      email: requestBody.email,
-    })
-    if (!socialLoginModel && !user) {
-      throw new UnauthorizedException('User not registered!');
-    } else {
-      socialLoginModel = await this.socialLoginService.create({
-        socialLoginType: requestBody.socialLoginType,
-        socialLoginId: requestBody.socialLoginId,
-        user: user._id
-      })
-    }
-
-    
-    const userModel = await this.userService.findOne({ _id: socialLoginModel.user, role: 'STUDENT' });
     if (!userModel) {
       throw new UnauthorizedException('User not registered!');
     }
+
+    // socialLoginModel = await this.socialLoginService.create({
+    //   socialLoginType: requestBody.socialLoginType,
+    //   socialLoginId: requestBody.socialLoginId,
+    //   user: user._id
+    // })
+    
+    
+    // const userModel = await this.userService.findOne({ _id: socialLoginModel.user });
+    // if (!userModel) {
+    //   throw new UnauthorizedException('User not registered!');
+    // }
 
     const tokenType = TOKEN_TYPES['LOGIN'].key;
     const token = this.getUserToken(userModel.toJSON());
