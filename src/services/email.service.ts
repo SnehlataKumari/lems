@@ -60,16 +60,19 @@ export class EmailService {
   async sendOtp(userModel) {
     const otp = userModel.otp;
     const email = userModel.email;
+    return this.sendOtpToEmail(email, otp);
+  }
+
+  async sendOtpToEmail(email, otp) {
     const subject = 'OTP to login';
-    
-    if(!email) {
+
+    if (!email) {
       return;
     }
 
     const html = `
       <h1>${otp}</h1> is your otp to login.
     `
-    await this.sendEmail(email, subject, html);
-
+    return await this.sendEmail(email, subject, html);
   }
 }

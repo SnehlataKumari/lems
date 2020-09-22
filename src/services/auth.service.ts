@@ -71,11 +71,21 @@ export class AuthService {
       await this.studentService.create({ userId: userModel._id,});
     }
     const link = `${this.apiUrl(role)}/auth/verify/${token}`;
+
+    const loginTokenType = TOKEN_TYPES['LOGIN'].key;
+    const loginToken = this.getUserToken(userModel.toJSON());
+    await this.tokenService.delete({
+      type: loginTokenType,
+      userId: userModel._id,
+    });
+    await this.tokenService.create({
+      loginToken,
+      type: loginTokenType,
+      userId: userModel._id,
+    });
+
     await this.emailsService.sendVerificationLink(userModel, link);
-    return {
-      message: 'Verification link sent to your email!',
-      userModel,
-    };
+    return success('Verification link sent to your email!', { user: userObj, token: loginToken });
   }
 
   async socialSignupStudent(requestBody) {
@@ -124,12 +134,13 @@ export class AuthService {
       })
     }
 
-    const tokenType = TOKEN_TYPES['LOGIN'].key;
+    
     const userModel = await this.userService.findOne({ _id: socialLoginModel.user, role: 'STUDENT' });
     if (!userModel) {
       throw new UnauthorizedException('User not registered!');
     }
 
+    const tokenType = TOKEN_TYPES['LOGIN'].key;
     const token = this.getUserToken(userModel.toJSON());
     await this.tokenService.delete({
       type: tokenType,

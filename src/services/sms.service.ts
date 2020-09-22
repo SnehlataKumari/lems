@@ -19,6 +19,18 @@ export class SmsService {
     return this.getClient().sendMessage({ body, to });
   }
 
+  async sendOtpToMobile(phone, otp) {
+    if (!phone) {
+      return;
+    }
+    const body = `Your otp to login in is ${otp}`;
+    const to = `+91${phone}`;
+    return this.sendMessage({
+      body,
+      to,
+    });
+  }
+
   async sendOtp(user) {
     if (!user.phone) {
       return;

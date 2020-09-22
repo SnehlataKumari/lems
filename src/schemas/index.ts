@@ -12,6 +12,7 @@ import { LiveStreamSchema } from './liveStream.schema';
 import { StudentSchema } from './student.schema';
 import { TestSchema } from './test.schema';
 import { SocialLoginSchema } from './socialLogin.schema';
+import { OtpSchema } from './otp.schema';
 
 export default [
   { name: 'Class', schema: ClassSchema },
@@ -28,4 +29,5 @@ export default [
   { name: 'Student', schema: StudentSchema},
   { name: 'Test', schema: TestSchema},
   { name: 'SocialLogin', schema: SocialLoginSchema},
+  { name: 'Otp', schema: OtpSchema},
 ];

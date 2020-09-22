@@ -7,10 +7,11 @@ import Joi = require('@hapi/joi');
 import { JoiValidation } from 'src/decorators/joivalidation.decorator';
 import { ValidateToken } from 'src/decorators/validatetoken.decorator';
 import { LoggedInUser } from 'src/decorators/loggedinuser.decorator';
-import { success } from 'src/utils';
+import { success, isEmail, isMobile } from 'src/utils';
 import { TOKEN_TYPES } from 'src/constants';
 import { Response } from 'express';
 import { UsersService } from 'src/services/users.service';
+import { OtpService } from 'src/services/otp.service';
 
 const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 const passwordSchema = Joi.string()
@@ -51,6 +52,7 @@ export class AuthController {
     private tokenService: TokensService,
     private service: AuthService,
     private userService: UsersService,
+    private otpService: OtpService,
     private tokensService: TokensService,
   ) {}
 
@@ -201,35 +203,63 @@ export class AuthController {
 
     const userModel = await this.userService.findOne(where);
     if (!userModel) {
-      // userModel = await this.userService.create({
-      //   ...where,
-      // });
-
       throw new UnauthorizedException('User not registered!');
     }
 
     return userModel;
   }
 
+  
+
   @Post('send-otp')
   async sendOtp(@Body() requestBody) {
-    const userModel = await this.getUserModel(requestBody);
-    await this.service.sendOtp(userModel);
-    return success('Otp sent!', this.userService.getPublicDetails(userModel));
+    let otpModel  = await this.otpService.findOne({
+      emailOrMobile: requestBody.emailOrMobile
+    });
+
+    if (!otpModel) {
+      otpModel = await this.otpService.create({
+        emailOrMobile: requestBody.emailOrMobile,
+        otp: this.otpService.generateOtp()
+      });
+    }
+    
+    if (isEmail(otpModel.emailOrMobile)) {
+      await this.otpService.sendOtpToEmail(otpModel.emailOrMobile, otpModel.otp);
+    } else if (isMobile(otpModel.emailOrMobile)) {
+      await this.otpService.sendOtpToMobile(otpModel.emailOrMobile, otpModel.otp);
+    }
+    return success('Otp sent!', {});
   }
 
   @Post('otp-login')
   async otpLogin(@Body() requestBody) {
     const tokenType = TOKEN_TYPES['LOGIN'].key;
     
-    const userModel = await this.getUserModel(requestBody);
-    if(userModel.otp !== requestBody.otp) {
+    const otpModel = await this.otpService.findOne({requestBody});
+
+    if (!otpModel) {
       throw new UnauthorizedException('Otp not matched!');
     }
+
+    let where = {};
+    if (isEmail(requestBody.emailOrMobile)) {
+      where = {
+        email: requestBody.emailOrMobile
+      }
+    } else {
+      where = {
+        phone: requestBody.emailOrMobile
+      }
+    }
+
+    const userModel = await this.userService.findOne(where);
     
-    await this.userService.update(userModel, {
-      otp: ''
-    });
+    if (!userModel) {
+      return success('OTP verified', {});
+    }
+
+    await this.otpService.delete(requestBody);
 
     const token = this.service.getUserToken(userModel.toJSON());
     await this.tokenService.delete({

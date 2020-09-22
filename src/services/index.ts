@@ -21,6 +21,7 @@ import { DBTransactionService } from './dbtransaction.service';
 import { StudentsService } from './students.service';
 import { TestService } from './test.service';
 import { SocialLoginService } from './socialLogin.service';
+import { OtpService } from './otp.service';
 export default [
   UsersService,
   AssetsService,
@@ -46,4 +47,5 @@ export default [
   StudentsService,
   TestService,
   SocialLoginService,
+  OtpService,
 ];
