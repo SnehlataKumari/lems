@@ -26,8 +26,11 @@ let SmsService = (() => {
             return this.getClient().sendMessage({ body, to });
         }
         async sendOtp(user) {
-            const body = `Your otp to login in rehani app is ${user.otp}`;
-            const to = `+91${user.mobileNumber}`;
+            if (!user.phone) {
+                return;
+            }
+            const body = `Your otp to login in is ${user.otp}`;
+            const to = `+91${user.phone}`;
             return this.sendMessage({
                 body,
                 to,

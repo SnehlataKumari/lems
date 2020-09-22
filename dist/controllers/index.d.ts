@@ -9,5 +9,5 @@ import { TeachersController } from './teachers.controller';
 import { ProductsController } from './products.controller';
 import { StudentsController } from './students.controller';
 import { TestController } from './test.controller';
-declare const _default: (typeof AuthController | typeof UsersController | typeof ClassesController | typeof AssetsController | typeof ChaptersController | typeof SubjectsController | typeof PaymentsController | typeof TeachersController | typeof ProductsController | typeof StudentsController | typeof TestController)[];
+declare const _default: (typeof UsersController | typeof ClassesController | typeof AssetsController | typeof AuthController | typeof ChaptersController | typeof SubjectsController | typeof PaymentsController | typeof TeachersController | typeof ProductsController | typeof StudentsController | typeof TestController)[];
 export default _default;

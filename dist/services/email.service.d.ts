@@ -11,4 +11,5 @@ export declare class EmailService {
     sendVerificationLink(user: any, link: any): Promise<void>;
     sendResetPasswordLink(user: any, link: any): Promise<void>;
     sendUpdatedPasswordNotification(userModel: any, currentPassword: any, link: any): Promise<void>;
+    sendOtp(userModel: any): Promise<void>;
 }

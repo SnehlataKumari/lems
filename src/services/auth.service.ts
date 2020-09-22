@@ -14,6 +14,8 @@ import { TOKEN_TYPES } from 'src/constants';
 import { TeachersService } from './teachers.service';
 import { DBTransactionService } from './dbtransaction.service';
 import { StudentsService } from './students.service';
+import { SmsService } from './sms.service';
+import { SocialLoginService } from './socialLogin.service';
 
 
 @Injectable()
@@ -24,8 +26,10 @@ export class AuthService {
     private configs: ConfigService,
     private jwtService: JwtService,
     private emailsService: EmailService,
+    private smsService: SmsService,
     private teacherService: TeachersService,
     private transaction: DBTransactionService,
+    private socialLoginService: SocialLoginService,
     private studentService: StudentsService
   ) { }
 
@@ -51,7 +55,7 @@ export class AuthService {
 
   async signUp(requestBody, role = 'STUDENT') {
     const tokenType = TOKEN_TYPES['VERIFY_EMAIL'].key;
-    const hash = await this.encryptPassword(requestBody.password);
+    const hash = await this.encryptPassword(String(requestBody.password));
     const userModel = await this.userService.create({
       ...requestBody,
       password: hash,
@@ -72,6 +76,72 @@ export class AuthService {
       message: 'Verification link sent to your email!',
       userModel,
     };
+  }
+
+  async socialSignupStudent(requestBody) {
+    const userModel = await this.userService.create({
+      ...requestBody,
+    });
+
+    const socialLoginModel = await this.socialLoginService.create({
+      user: userModel._id,
+      socialLoginType: requestBody.socialLoginType,
+      socialLoginId: requestBody.socialLoginId,
+    });
+    await this.studentService.create({ userId: userModel._id,});
+
+    const tokenType = TOKEN_TYPES['LOGIN'].key;
+    const token = this.getUserToken(userModel.toJSON());
+    await this.tokenService.delete({
+      type: tokenType,
+      userId: userModel._id,
+    });
+    await this.tokenService.create({
+      token,
+      type: tokenType,
+      userId: userModel._id,
+    });
+    const user = this.userService.getPublicDetails(userModel);
+    return success('logged in successfully!', { user, token });
+  }
+
+  async socialLoginStudent(requestBody) {
+    let socialLoginModel = await this.socialLoginService.findOne({
+      socialLoginType: requestBody.socialLoginType,
+      socialLoginId: requestBody.socialLoginId,
+    });
+
+    const user = await this.userService.findOne({
+      email: requestBody.email,
+    })
+    if (!socialLoginModel && !user) {
+      throw new UnauthorizedException('User not registered!');
+    } else {
+      socialLoginModel = await this.socialLoginService.create({
+        socialLoginType: requestBody.socialLoginType,
+        socialLoginId: requestBody.socialLoginId,
+        user: user._id
+      })
+    }
+
+    const tokenType = TOKEN_TYPES['LOGIN'].key;
+    const userModel = await this.userService.findOne({ _id: socialLoginModel.user, role: 'STUDENT' });
+    if (!userModel) {
+      throw new UnauthorizedException('User not registered!');
+    }
+
+    const token = this.getUserToken(userModel.toJSON());
+    await this.tokenService.delete({
+      type: tokenType,
+      userId: userModel._id,
+    });
+    await this.tokenService.create({
+      token,
+      type: tokenType,
+      userId: userModel._id,
+    });
+    const userObj = this.userService.getPublicDetails(userModel);
+    return success('logged in successfully!', { user: userObj, token });
   }
 
   async signUpTeacher(requestBody, files) {
@@ -281,6 +351,16 @@ export class AuthService {
       user: userModel,
       teacher: teacherModel
     }
+  }
+
+  async sendOtp(userModel) {
+    const otp = '0000';
+    await this.userService.update(userModel, {
+      otp
+    });
+    await this.emailsService.sendOtp(userModel);
+    await this.smsService.sendOtp(userModel);
+
   }
 
 }

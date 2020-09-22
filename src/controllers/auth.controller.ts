@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Body, Param, Request, UseInterceptors, UploadedFile, UploadedFiles, Put, Req, Render, Res } from '@nestjs/common';
+import { Controller, Post, Get, Body, Param, Request, UseInterceptors, UploadedFile, UploadedFiles, Put, Req, Render, Res, BadRequestException, UnauthorizedException } from '@nestjs/common';
 import { FileInterceptor, FileFieldsInterceptor } from '@nestjs/platform-express';
 import { AuthService } from 'src/services/auth.service';
 import { TokensService } from 'src/services/tokens.service';
@@ -10,6 +10,7 @@ import { LoggedInUser } from 'src/decorators/loggedinuser.decorator';
 import { success } from 'src/utils';
 import { TOKEN_TYPES } from 'src/constants';
 import { Response } from 'express';
+import { UsersService } from 'src/services/users.service';
 
 const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 const passwordSchema = Joi.string()
@@ -47,7 +48,9 @@ const teacherSchema = Joi.object({
 export class AuthController {
   constructor(
     private config: ConfigService,
+    private tokenService: TokensService,
     private service: AuthService,
+    private userService: UsersService,
     private tokensService: TokensService,
   ) {}
 
@@ -65,6 +68,11 @@ export class AuthController {
   @Post('sign-up-student')
   async signUpStudent(@Body() requestBody) {
     return await this.service.signUp(requestBody);    
+  }
+  
+  @Post('social-signup-student')
+  async socialSignUpStudent(@Body() requestBody) {
+    return await this.service.socialSignupStudent(requestBody);    
   }
 
   @UseInterceptors(FileFieldsInterceptor([
@@ -162,5 +170,84 @@ export class AuthController {
     return await this.service.editProfile(loggedInUser, requestBody)
   }
 
+
+  async getUserModel(requestBody) {
+    const joiSchema = Joi.object().keys({
+      email: Joi.string().email()
+    });
+
+    const { emailOrMobile } = requestBody;
+    let where;
+
+    const joiValidation = joiSchema.validate({ email: emailOrMobile });
+
+    if (!joiValidation.error) {
+      where = {
+        email: emailOrMobile
+      }
+    }
+
+
+    if (emailOrMobile.length === 10 && parseInt(emailOrMobile, 10) !== NaN) {
+      where = {
+        phone: emailOrMobile
+      }
+    }
+
+    if (!where) {
+      throw new BadRequestException('Please provide valid email or mobile');
+    }
+
+
+    const userModel = await this.userService.findOne(where);
+    if (!userModel) {
+      // userModel = await this.userService.create({
+      //   ...where,
+      // });
+
+      throw new UnauthorizedException('User not registered!');
+    }
+
+    return userModel;
+  }
+
+  @Post('send-otp')
+  async sendOtp(@Body() requestBody) {
+    const userModel = await this.getUserModel(requestBody);
+    await this.service.sendOtp(userModel);
+    return success('Otp sent!', this.userService.getPublicDetails(userModel));
+  }
+
+  @Post('otp-login')
+  async otpLogin(@Body() requestBody) {
+    const tokenType = TOKEN_TYPES['LOGIN'].key;
+    
+    const userModel = await this.getUserModel(requestBody);
+    if(userModel.otp !== requestBody.otp) {
+      throw new UnauthorizedException('Otp not matched!');
+    }
+    
+    await this.userService.update(userModel, {
+      otp: ''
+    });
+
+    const token = this.service.getUserToken(userModel.toJSON());
+    await this.tokenService.delete({
+      type: tokenType,
+      userId: userModel._id,
+    });
+    await this.tokenService.create({
+      token,
+      type: tokenType,
+      userId: userModel._id,
+    });
+    const user = this.userService.getPublicDetails(userModel);
+    return success('logged in successfully!', { user, token });
+  }
+
+  @Post('social-login-student')
+  socialLoginStudent(@Body() requestBody) {
+    return this.service.socialLoginStudent(requestBody);
+  }
   
 }

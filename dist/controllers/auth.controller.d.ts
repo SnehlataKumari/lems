@@ -2,11 +2,14 @@ import { AuthService } from 'src/services/auth.service';
 import { TokensService } from 'src/services/tokens.service';
 import { ConfigService } from '@nestjs/config';
 import { Response } from 'express';
+import { UsersService } from 'src/services/users.service';
 export declare class AuthController {
     private config;
+    private tokenService;
     private service;
+    private userService;
     private tokensService;
-    constructor(config: ConfigService, service: AuthService, tokensService: TokensService);
+    constructor(config: ConfigService, tokenService: TokensService, service: AuthService, userService: UsersService, tokensService: TokensService);
     get hostUrl(): any;
     signUp(requestBody: any): Promise<{
         message: string;
@@ -15,6 +18,10 @@ export declare class AuthController {
     signUpStudent(requestBody: any): Promise<{
         message: string;
         userModel: any;
+    }>;
+    socialSignUpStudent(requestBody: any): Promise<{
+        message: string;
+        data: any;
     }>;
     signupTeacher(requestBody: any, files: any): Promise<{
         message: string;
@@ -60,5 +67,18 @@ export declare class AuthController {
     editProfile(req: any, requestBody: any): Promise<{
         user: any;
         teacher: any;
+    }>;
+    getUserModel(requestBody: any): Promise<any>;
+    sendOtp(requestBody: any): Promise<{
+        message: string;
+        data: any;
+    }>;
+    otpLogin(requestBody: any): Promise<{
+        message: string;
+        data: any;
+    }>;
+    socialLoginStudent(requestBody: any): Promise<{
+        message: string;
+        data: any;
     }>;
 }

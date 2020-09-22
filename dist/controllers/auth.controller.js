@@ -24,6 +24,7 @@ const validatetoken_decorator_1 = require("../decorators/validatetoken.decorator
 const loggedinuser_decorator_1 = require("../decorators/loggedinuser.decorator");
 const utils_1 = require("../utils");
 const constants_1 = require("../constants");
+const users_service_1 = require("../services/users.service");
 const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 const passwordSchema = Joi.string()
     .pattern(passwordExpression);
@@ -54,9 +55,11 @@ const teacherSchema = Joi.object({
 }).unknown(true);
 let AuthController = (() => {
     let AuthController = class AuthController {
-        constructor(config, service, tokensService) {
+        constructor(config, tokenService, service, userService, tokensService) {
             this.config = config;
+            this.tokenService = tokenService;
             this.service = service;
+            this.userService = userService;
             this.tokensService = tokensService;
         }
         get hostUrl() {
@@ -67,6 +70,9 @@ let AuthController = (() => {
         }
         async signUpStudent(requestBody) {
             return await this.service.signUp(requestBody);
+        }
+        async socialSignUpStudent(requestBody) {
+            return await this.service.socialSignupStudent(requestBody);
         }
         async signupTeacher(requestBody, files) {
             return await this.service.signUpTeacher(requestBody, files);
@@ -119,6 +125,62 @@ let AuthController = (() => {
             const { user: loggedInUser } = req;
             return await this.service.editProfile(loggedInUser, requestBody);
         }
+        async getUserModel(requestBody) {
+            const joiSchema = Joi.object().keys({
+                email: Joi.string().email()
+            });
+            const { emailOrMobile } = requestBody;
+            let where;
+            const joiValidation = joiSchema.validate({ email: emailOrMobile });
+            if (!joiValidation.error) {
+                where = {
+                    email: emailOrMobile
+                };
+            }
+            if (emailOrMobile.length === 10 && parseInt(emailOrMobile, 10) !== NaN) {
+                where = {
+                    phone: emailOrMobile
+                };
+            }
+            if (!where) {
+                throw new common_1.BadRequestException('Please provide valid email or mobile');
+            }
+            const userModel = await this.userService.findOne(where);
+            if (!userModel) {
+                throw new common_1.UnauthorizedException('User not registered!');
+            }
+            return userModel;
+        }
+        async sendOtp(requestBody) {
+            const userModel = await this.getUserModel(requestBody);
+            await this.service.sendOtp(userModel);
+            return utils_1.success('Otp sent!', this.userService.getPublicDetails(userModel));
+        }
+        async otpLogin(requestBody) {
+            const tokenType = constants_1.TOKEN_TYPES['LOGIN'].key;
+            const userModel = await this.getUserModel(requestBody);
+            if (userModel.otp !== requestBody.otp) {
+                throw new common_1.UnauthorizedException('Otp not matched!');
+            }
+            await this.userService.update(userModel, {
+                otp: ''
+            });
+            const token = this.service.getUserToken(userModel.toJSON());
+            await this.tokenService.delete({
+                type: tokenType,
+                userId: userModel._id,
+            });
+            await this.tokenService.create({
+                token,
+                type: tokenType,
+                userId: userModel._id,
+            });
+            const user = this.userService.getPublicDetails(userModel);
+            return utils_1.success('logged in successfully!', { user, token });
+        }
+        socialLoginStudent(requestBody) {
+            return this.service.socialLoginStudent(requestBody);
+        }
     };
     __decorate([
         joivalidation_decorator_1.JoiValidation(userSchema),
@@ -135,6 +197,13 @@ let AuthController = (() => {
         __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", Promise)
     ], AuthController.prototype, "signUpStudent", null);
+    __decorate([
+        common_1.Post('social-signup-student'),
+        __param(0, common_1.Body()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], AuthController.prototype, "socialSignUpStudent", null);
     __decorate([
         common_1.UseInterceptors(platform_express_1.FileFieldsInterceptor([
             { name: 'resumeFile', maxCount: 1 },
@@ -236,10 +305,33 @@ let AuthController = (() => {
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", Promise)
     ], AuthController.prototype, "editProfile", null);
+    __decorate([
+        common_1.Post('send-otp'),
+        __param(0, common_1.Body()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], AuthController.prototype, "sendOtp", null);
+    __decorate([
+        common_1.Post('otp-login'),
+        __param(0, common_1.Body()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], AuthController.prototype, "otpLogin", null);
+    __decorate([
+        common_1.Post('social-login-student'),
+        __param(0, common_1.Body()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], AuthController.prototype, "socialLoginStudent", null);
     AuthController = __decorate([
         common_1.Controller('auth'),
         __metadata("design:paramtypes", [config_1.ConfigService,
+            tokens_service_1.TokensService,
             auth_service_1.AuthService,
+            users_service_1.UsersService,
             tokens_service_1.TokensService])
     ], AuthController);
     return AuthController;

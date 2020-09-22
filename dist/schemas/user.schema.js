@@ -9,7 +9,6 @@ exports.UserSchema = new mongoose.Schema({
     },
     firstName: {
         type: String,
-        required: [true, 'Name is required!'],
     },
     lastName: {
         type: String,
@@ -40,6 +39,9 @@ exports.UserSchema = new mongoose.Schema({
         enum: constants_1.getKeys(constants_1.USER_ROLES),
         default: constants_1.USER_ROLES['STUDENT'].key,
     },
+    otp: {
+        type: String,
+    }
 }, {
     timestamps: true,
 });

@@ -56,4 +56,20 @@ export class EmailService {
     `;
     await this.sendEmail(email, subject, text);
   }
+
+  async sendOtp(userModel) {
+    const otp = userModel.otp;
+    const email = userModel.email;
+    const subject = 'OTP to login';
+    
+    if(!email) {
+      return;
+    }
+
+    const html = `
+      <h1>${otp}</h1> is your otp to login.
+    `
+    await this.sendEmail(email, subject, html);
+
+  }
 }

@@ -8,7 +8,7 @@ export const UserSchema = new mongoose.Schema(
     },
     firstName: {
       type: String,
-      required: [true, 'Name is required!'],
+      // required: [true, 'Name is required!'],
     },
     lastName: {
       type: String,
@@ -41,6 +41,9 @@ export const UserSchema = new mongoose.Schema(
       enum: getKeys(USER_ROLES),
       default: USER_ROLES['STUDENT'].key,
     },
+    otp: {
+      type: String,
+    }
   },
   {
     timestamps: true,

@@ -7,21 +7,33 @@ import { EmailService } from 'src/services/email.service';
 import { TeachersService } from './teachers.service';
 import { DBTransactionService } from './dbtransaction.service';
 import { StudentsService } from './students.service';
+import { SmsService } from './sms.service';
+import { SocialLoginService } from './socialLogin.service';
 export declare class AuthService {
     private userService;
     private tokenService;
     private configs;
     private jwtService;
     private emailsService;
+    private smsService;
     private teacherService;
     private transaction;
+    private socialLoginService;
     private studentService;
-    constructor(userService: UsersService, tokenService: TokensService, configs: ConfigService, jwtService: JwtService, emailsService: EmailService, teacherService: TeachersService, transaction: DBTransactionService, studentService: StudentsService);
+    constructor(userService: UsersService, tokenService: TokensService, configs: ConfigService, jwtService: JwtService, emailsService: EmailService, smsService: SmsService, teacherService: TeachersService, transaction: DBTransactionService, socialLoginService: SocialLoginService, studentService: StudentsService);
     hostUrl(role: any): any;
     getUserToken(userObj: any): string;
     signUp(requestBody: any, role?: string): Promise<{
         message: string;
         userModel: any;
+    }>;
+    socialSignupStudent(requestBody: any): Promise<{
+        message: string;
+        data: any;
+    }>;
+    socialLoginStudent(requestBody: any): Promise<{
+        message: string;
+        data: any;
     }>;
     signUpTeacher(requestBody: any, files: any): Promise<{
         message: string;
@@ -55,4 +67,5 @@ export declare class AuthService {
         user: any;
         teacher: any;
     }>;
+    sendOtp(userModel: any): Promise<void>;
 }
