@@ -79,7 +79,7 @@ export class AuthService {
       userId: userModel._id,
     });
     await this.tokenService.create({
-      loginToken,
+      token: loginToken,
       type: loginTokenType,
       userId: userModel._id,
     });
