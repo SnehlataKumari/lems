@@ -102,6 +102,7 @@ let AuthService = (() => {
         async socialLoginStudent(requestBody) {
             const userModel = await this.userService.findOne({
                 email: requestBody.email,
+                isEmailVerified: true
             });
             if (!userModel) {
                 throw new common_1.UnauthorizedException('User not registered!');

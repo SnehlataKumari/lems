@@ -118,6 +118,7 @@ export class AuthService {
   async socialLoginStudent(requestBody) {
     const userModel = await this.userService.findOne({
       email: requestBody.email,
+      isEmailVerified: true
     });
 
     if (!userModel) {
