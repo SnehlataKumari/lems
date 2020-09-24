@@ -116,11 +116,6 @@ export class AuthService {
   }
 
   async socialLoginStudent(requestBody) {
-    // let socialLoginModel = await this.socialLoginService.findOne({
-    //   socialLoginType: requestBody.socialLoginType,
-    //   socialLoginId: requestBody.socialLoginId,
-    // });
-
     const userModel = await this.userService.findOne({
       email: requestBody.email,
     });
@@ -128,18 +123,6 @@ export class AuthService {
     if (!userModel) {
       throw new UnauthorizedException('User not registered!');
     }
-
-    // socialLoginModel = await this.socialLoginService.create({
-    //   socialLoginType: requestBody.socialLoginType,
-    //   socialLoginId: requestBody.socialLoginId,
-    //   user: user._id
-    // })
-    
-    
-    // const userModel = await this.userService.findOne({ _id: socialLoginModel.user });
-    // if (!userModel) {
-    //   throw new UnauthorizedException('User not registered!');
-    // }
 
     const tokenType = TOKEN_TYPES['LOGIN'].key;
     const token = this.getUserToken(userModel.toJSON());
@@ -259,6 +242,9 @@ export class AuthService {
     const userModel = await this.userService.findOne({ email: email.toLowerCase(), role }); 
     if (!userModel) {
       throw new UnauthorizedException('User not registered!');
+    }
+    if(!userModel.isEmailVerified) {
+      throw new UnauthorizedException('Please verify email to login!');
     }
     const comparePassword = bcrypt.compareSync(password, userModel.password);
     if (!comparePassword) {
