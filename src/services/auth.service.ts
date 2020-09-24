@@ -91,6 +91,7 @@ export class AuthService {
   async socialSignupStudent(requestBody) {
     const userModel = await this.userService.create({
       ...requestBody,
+      isEmailVerified: true
     });
 
     // const socialLoginModel = await this.socialLoginService.create({
@@ -117,8 +118,7 @@ export class AuthService {
 
   async socialLoginStudent(requestBody) {
     const userModel = await this.userService.findOne({
-      email: requestBody.email,
-      isEmailVerified: true
+      email: requestBody.email
     });
 
     if (!userModel) {

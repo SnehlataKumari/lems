@@ -83,7 +83,7 @@ let AuthService = (() => {
             return utils_1.success('Verification link sent to your email!', { user: userObj, token: loginToken });
         }
         async socialSignupStudent(requestBody) {
-            const userModel = await this.userService.create(Object.assign({}, requestBody));
+            const userModel = await this.userService.create(Object.assign(Object.assign({}, requestBody), { isEmailVerified: true }));
             await this.studentService.create({ userId: userModel._id, });
             const tokenType = constants_1.TOKEN_TYPES['LOGIN'].key;
             const token = this.getUserToken(userModel.toJSON());
@@ -101,8 +101,7 @@ let AuthService = (() => {
         }
         async socialLoginStudent(requestBody) {
             const userModel = await this.userService.findOne({
-                email: requestBody.email,
-                isEmailVerified: true
+                email: requestBody.email
             });
             if (!userModel) {
                 throw new common_1.UnauthorizedException('User not registered!');
