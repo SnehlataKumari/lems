@@ -247,6 +247,11 @@ export class AuthService {
     if(!userModel.isEmailVerified) {
       throw new UnauthorizedException('Please verify email to login!');
     }
+
+    if (!userModel.password) {
+      throw new UnauthorizedException('You have not setup password, Please reset password and then login again!');
+    }
+
     const comparePassword = bcrypt.compareSync(password, userModel.password);
     if (!comparePassword) {
       throw new UnauthorizedException('wrong password!');

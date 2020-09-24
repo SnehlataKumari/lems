@@ -201,6 +201,9 @@ let AuthService = (() => {
             if (!userModel.isEmailVerified) {
                 throw new common_1.UnauthorizedException('Please verify email to login!');
             }
+            if (!userModel.password) {
+                throw new common_1.UnauthorizedException('You have not setup password, Please reset password and then login again!');
+            }
             const comparePassword = bcrypt.compareSync(password, userModel.password);
             if (!comparePassword) {
                 throw new common_1.UnauthorizedException('wrong password!');
