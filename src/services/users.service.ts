@@ -3,6 +3,7 @@ import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { DBService } from './db.service';
 import * as Joi from '@hapi/joi';
+import { AuthService } from './auth.service';
 
 const passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 const passwordSchema = Joi.string()
@@ -11,7 +12,8 @@ const passwordSchema = Joi.string()
 
 @Injectable()
 export class UsersService extends DBService {
-  constructor(@InjectModel('User') model: Model<any>,
+  constructor(
+    @InjectModel('User') model: Model<any>,
   ) {
     super(model);
   }
@@ -29,7 +31,7 @@ export class UsersService extends DBService {
   }
 
   getPublicDetails(model) {
-    return {...model.toJSON(), password: null};
+    return { ...model.toJSON(), password: null };
   }
 
   async changePassword(userId, hashedPassword) {

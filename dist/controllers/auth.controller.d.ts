@@ -83,4 +83,5 @@ export declare class AuthController {
         message: string;
         data: any;
     }>;
+    passwordHash(text: any): Promise<any>;
 }

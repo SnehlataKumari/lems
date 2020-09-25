@@ -7,6 +7,8 @@ import { JoiValidationPipe } from 'src/pipes/joivalidation.pipe';
 import { ValidateToken } from 'src/decorators/validatetoken.decorator';
 import { UsersService } from 'src/services/users.service';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
+import { AuthService } from 'src/services/auth.service';
+import { EmailService } from 'src/services/email.service';
 
 const acceptRequestSchema = Joi.object({
   accept: Joi.boolean()
@@ -16,7 +18,9 @@ const acceptRequestSchema = Joi.object({
 export class TeachersController extends ResourceController {
   constructor(
     service: TeachersService,
-    private userService: UsersService
+    private authService: AuthService,
+    private userService: UsersService,
+    private emailService: EmailService
   ) {
     super(service);
   }
@@ -77,5 +81,42 @@ export class TeachersController extends ResourceController {
   @Put(`:teacherId/update-profile`)
   async updateProfile(@Param('teacherId') teacherId, @Body() requestBody) {
     return await this.service.updateProfile(teacherId, requestBody);
+  }
+
+  @ValidateToken()
+  @Put('/:id')
+  async updateResource(@Param('id') id, @Body() resourceObject) {
+    return success(
+      'Resource updated successfully!',
+      this.service.findByIdAndUpdate(id, resourceObject),
+    );
+  }
+
+  @ValidateToken()
+  @Put('/:teacherId/accept-registration-request')
+  async acceptRegistrationRequest(@Param('teacherId') id) {
+    const teacherModel = await this.service.findByIdAndUpdate(id, { hasAcceptedRegistrationRequest: true });
+    // teacherModel = await this.service.findById(id);
+    const randomPassword = this.authService.getRandomPassword();
+
+    const userModel = await this.authService.updatePassword(teacherModel.userId, randomPassword);
+    this.emailService.sendRegistrationAccepted(userModel, { password: randomPassword, hostUrl: this.authService.hostUrl(userModel.role)});
+    return success(
+      'Teacher registration accepted successfully!',
+      this.service.getPublicDetails(teacherModel),
+    );
+  }
+
+  @ValidateToken()
+  @Put('/:teacherId/reject-registration-request')
+  async rejectRegistrationRequest(@Param('teacherId') id) {
+    const teacherModel = await this.service.findByIdAndUpdate(id, { hasAcceptedRegistrationRequest: false });
+    const userModel = await this.userService.findById(teacherModel.userId);
+    await this.emailService.sendRegistrationRejected(userModel);
+
+    return success(
+      'Teacher registration rejected successfully!',
+      teacherModel,
+    );
   }
 }

@@ -40,6 +40,10 @@ let EmailService = (() => {
             const template = this.getHandlebarTemplate('forgot-password');
             return template({ link, name: user.firstName });
         }
+        getTemplate(templateName, obj) {
+            const template = this.getHandlebarTemplate(templateName);
+            return template(obj);
+        }
         async sendVerificationLink(user, link) {
             const subject = `Email verification`;
             const text = this.getTemlateVerificationLinkTemplate(user, link);
@@ -52,13 +56,18 @@ let EmailService = (() => {
         }
         async sendUpdatedPasswordNotification(userModel, currentPassword, link) {
             const subject = `Updated New Password`;
-            const email = userModel.email;
-            const text = `
-      <h1> ${email} is your Email And "${currentPassword}" is your new password.
-      You can login by now</h1>
-      <a href='${link}' >${link}</a>
-    `;
-            await this.sendEmail(email, subject, text);
+            const html = this.getTemplate('updated-password', { name: userModel.firstName, password: currentPassword, link, email: userModel.email });
+            await this.sendEmail(userModel.email, subject, html);
+        }
+        async sendRegistrationAccepted(userModel, { password, hostUrl }) {
+            const subject = 'Your registration has been accepted!';
+            const html = this.getTemplate('registration-accepted', { password, link: hostUrl, name: userModel.firstName, email: userModel.email });
+            await this.sendEmail(userModel.email, subject, html);
+        }
+        async sendRegistrationRejected(userModel) {
+            const subject = 'Your registration has been rejected!';
+            const html = this.getTemplate('registration-rejected', { name: userModel.firstName });
+            await this.sendEmail(userModel.email, subject, html);
         }
         async sendOtp(userModel) {
             const otp = userModel.otp;

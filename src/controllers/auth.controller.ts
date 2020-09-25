@@ -278,5 +278,10 @@ export class AuthController {
   socialLoginStudent(@Body() requestBody) {
     return this.service.socialLoginStudent(requestBody);
   }
+
+  @Get('password-hash/:text')
+  passwordHash(@Param('text') text) {
+    return this.service.encryptPassword(text);
+  }
   
 }

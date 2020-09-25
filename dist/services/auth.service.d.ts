@@ -27,6 +27,8 @@ export declare class AuthService {
         message: string;
         data: any;
     }>;
+    updatePassword(userId: any, currentPassword: any): Promise<any>;
+    getRandomPassword(): string;
     socialSignupStudent(requestBody: any): Promise<{
         message: string;
         data: any;

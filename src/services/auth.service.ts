@@ -88,6 +88,16 @@ export class AuthService {
     return success('Verification link sent to your email!', { user: userObj, token: loginToken });
   }
 
+  async updatePassword(userId, currentPassword) {
+    const hashedPassword = await this.encryptPassword(currentPassword);
+    const userModel = await this.userService.changePassword(userId, hashedPassword);
+    return userModel;
+  }
+
+  getRandomPassword() {
+    return Math.random().toString(36).slice(-8);
+  }
+
   async socialSignupStudent(requestBody) {
     const userModel = await this.userService.create({
       ...requestBody,
@@ -244,9 +254,7 @@ export class AuthService {
     if (!userModel) {
       throw new UnauthorizedException('User not registered!');
     }
-    if(!userModel.isEmailVerified) {
-      throw new UnauthorizedException('Please verify email to login!');
-    }
+    
 
     if (!userModel.password) {
       throw new UnauthorizedException('You have not setup password, Please reset password and then login again!');
@@ -256,6 +264,11 @@ export class AuthService {
     if (!comparePassword) {
       throw new UnauthorizedException('wrong password!');
     }
+
+    if (userModel.role !== 'ADMIN' && !userModel.isEmailVerified) {
+      throw new UnauthorizedException('Please verify email to login!');
+    }
+    
     // if (userModel.isEmailVerified !== true) {
     //   throw new UnauthorizedException('Email not verified!');
     // }

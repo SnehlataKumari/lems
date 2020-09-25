@@ -39,8 +39,7 @@ export class UsersController extends ResourceController {
   @Post(':userId/update-password')
   async updatePassword(@Param('userId') userId, @Body() requestBody ) {
     const { currentPassword } = requestBody;
-    const hashedPassword = await this.authService.encryptPassword(currentPassword);
-    const userModel = await this.service.changePassword(userId, hashedPassword);
+    await this.authService.updatePassword(userId, currentPassword);
     return await this.afterUpdatePassword(userId, currentPassword);
   }
 
@@ -48,7 +47,7 @@ export class UsersController extends ResourceController {
     const userModel = await this.service.findById(userId);
     const email = userModel.email;
     const role = userModel.role;
-    const link = `${this.authService.apiUrl(role)}`;
+    const link = `${this.authService.hostUrl(role)}`;
     await this.emailsService.sendUpdatedPasswordNotification(userModel, currentPassword, link);
     return {
       message: `Password sent to ${userModel.firstName}'s email!`,

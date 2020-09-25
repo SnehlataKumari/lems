@@ -22,14 +22,18 @@ const joivalidation_pipe_1 = require("../pipes/joivalidation.pipe");
 const validatetoken_decorator_1 = require("../decorators/validatetoken.decorator");
 const users_service_1 = require("../services/users.service");
 const platform_express_1 = require("@nestjs/platform-express");
+const auth_service_1 = require("../services/auth.service");
+const email_service_1 = require("../services/email.service");
 const acceptRequestSchema = Joi.object({
     accept: Joi.boolean()
 });
 let TeachersController = (() => {
     let TeachersController = class TeachersController extends resource_controller_1.ResourceController {
-        constructor(service, userService) {
+        constructor(service, authService, userService, emailService) {
             super(service);
+            this.authService = authService;
             this.userService = userService;
+            this.emailService = emailService;
         }
         findAll() {
             return utils_1.success('List found successfully', this.service.findAll());
@@ -66,6 +70,22 @@ let TeachersController = (() => {
         }
         async updateProfile(teacherId, requestBody) {
             return await this.service.updateProfile(teacherId, requestBody);
+        }
+        async updateResource(id, resourceObject) {
+            return utils_1.success('Resource updated successfully!', this.service.findByIdAndUpdate(id, resourceObject));
+        }
+        async acceptRegistrationRequest(id) {
+            const teacherModel = await this.service.findByIdAndUpdate(id, { hasAcceptedRegistrationRequest: true });
+            const randomPassword = this.authService.getRandomPassword();
+            const userModel = await this.authService.updatePassword(teacherModel.userId, randomPassword);
+            this.emailService.sendRegistrationAccepted(userModel, { password: randomPassword, hostUrl: this.authService.hostUrl(userModel.role) });
+            return utils_1.success('Teacher registration accepted successfully!', this.service.getPublicDetails(teacherModel));
+        }
+        async rejectRegistrationRequest(id) {
+            const teacherModel = await this.service.findByIdAndUpdate(id, { hasAcceptedRegistrationRequest: false });
+            const userModel = await this.userService.findById(teacherModel.userId);
+            await this.emailService.sendRegistrationRejected(userModel);
+            return utils_1.success('Teacher registration rejected successfully!', teacherModel);
         }
     };
     __decorate([
@@ -128,10 +148,36 @@ let TeachersController = (() => {
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", Promise)
     ], TeachersController.prototype, "updateProfile", null);
+    __decorate([
+        validatetoken_decorator_1.ValidateToken(),
+        common_1.Put('/:id'),
+        __param(0, common_1.Param('id')), __param(1, common_1.Body()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object, Object]),
+        __metadata("design:returntype", Promise)
+    ], TeachersController.prototype, "updateResource", null);
+    __decorate([
+        validatetoken_decorator_1.ValidateToken(),
+        common_1.Put('/:teacherId/accept-registration-request'),
+        __param(0, common_1.Param('teacherId')),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], TeachersController.prototype, "acceptRegistrationRequest", null);
+    __decorate([
+        validatetoken_decorator_1.ValidateToken(),
+        common_1.Put('/:teacherId/reject-registration-request'),
+        __param(0, common_1.Param('teacherId')),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], TeachersController.prototype, "rejectRegistrationRequest", null);
     TeachersController = __decorate([
         common_1.Controller('teachers'),
         __metadata("design:paramtypes", [teachers_service_1.TeachersService,
-            users_service_1.UsersService])
+            auth_service_1.AuthService,
+            users_service_1.UsersService,
+            email_service_1.EmailService])
     ], TeachersController);
     return TeachersController;
 })();

@@ -210,6 +210,9 @@ let AuthController = (() => {
         socialLoginStudent(requestBody) {
             return this.service.socialLoginStudent(requestBody);
         }
+        passwordHash(text) {
+            return this.service.encryptPassword(text);
+        }
     };
     __decorate([
         joivalidation_decorator_1.JoiValidation(userSchema),
@@ -355,6 +358,13 @@ let AuthController = (() => {
         __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", void 0)
     ], AuthController.prototype, "socialLoginStudent", null);
+    __decorate([
+        common_1.Get('password-hash/:text'),
+        __param(0, common_1.Param('text')),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], AuthController.prototype, "passwordHash", null);
     AuthController = __decorate([
         common_1.Controller('auth'),
         __metadata("design:paramtypes", [config_1.ConfigService,

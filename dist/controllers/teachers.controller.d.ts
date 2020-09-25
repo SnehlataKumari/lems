@@ -1,9 +1,13 @@
 import { TeachersService } from 'src/services/teachers.service';
 import { ResourceController } from './resource.controller';
 import { UsersService } from 'src/services/users.service';
+import { AuthService } from 'src/services/auth.service';
+import { EmailService } from 'src/services/email.service';
 export declare class TeachersController extends ResourceController {
+    private authService;
     private userService;
-    constructor(service: TeachersService, userService: UsersService);
+    private emailService;
+    constructor(service: TeachersService, authService: AuthService, userService: UsersService, emailService: EmailService);
     findAll(): Promise<{
         message: string;
         data: any;
@@ -30,4 +34,16 @@ export declare class TeachersController extends ResourceController {
         data: any;
     }>;
     updateProfile(teacherId: any, requestBody: any): Promise<any>;
+    updateResource(id: any, resourceObject: any): Promise<{
+        message: string;
+        data: any;
+    }>;
+    acceptRegistrationRequest(id: any): Promise<{
+        message: string;
+        data: any;
+    }>;
+    rejectRegistrationRequest(id: any): Promise<{
+        message: string;
+        data: any;
+    }>;
 }
