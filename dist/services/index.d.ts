@@ -12,5 +12,5 @@ import { ProductsService } from './products.service';
 import { DBTransactionService } from './dbtransaction.service';
 import { StudentsService } from './students.service';
 import { OtpService } from './otp.service';
-declare const _default: (typeof EmailService | typeof AssetsService | typeof ClassesService | typeof FileService | typeof AuthService | typeof S3Service | typeof SmsService | typeof DummySmsService | typeof NodeMailerService | typeof TeachersService | typeof ProductsService | typeof DBTransactionService | typeof StudentsService | typeof OtpService)[];
+declare const _default: (typeof AssetsService | typeof ClassesService | typeof FileService | typeof AuthService | typeof S3Service | typeof SmsService | typeof DummySmsService | typeof NodeMailerService | typeof EmailService | typeof TeachersService | typeof ProductsService | typeof DBTransactionService | typeof StudentsService | typeof OtpService)[];
 export default _default;
