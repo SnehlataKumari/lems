@@ -262,7 +262,7 @@ export class AuthService {
 
     const comparePassword = bcrypt.compareSync(password, userModel.password);
     if (!comparePassword) {
-      throw new UnauthorizedException('wrong password!');
+      throw new UnauthorizedException('Old password is incorrect!');
     }
 
     if (userModel.role !== 'ADMIN' && !userModel.isEmailVerified) {
