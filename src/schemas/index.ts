@@ -11,6 +11,7 @@ import { CourseSchema } from './course.schema';
 import { LiveStreamSchema } from './liveStream.schema';
 import { StudentSchema } from './student.schema';
 import { TestSchema } from './test.schema';
+import { LeaveSchema } from './leave.schema';
 
 export default [
   { name: 'Class', schema: ClassSchema },
@@ -26,4 +27,5 @@ export default [
   { name: 'LiveStream', schema: LiveStreamSchema},
   { name: 'Student', schema: StudentSchema},
   { name: 'Test', schema: TestSchema},
+  { name: 'Leave', schema: LeaveSchema},
 ];

@@ -4066,8 +4066,13 @@
         "signature": "683fefd963d85070e8f27ad3105641587078576cfd0c343d48cdb554764306c3",
         "affectsGlobalScope": false
       },
+      "../src/schemas/leave.schema.ts": {
+        "version": "cf06b6101a950d80911079f0bf7ec0f6247031c8a609b1be65656d576f6c9fbe",
+        "signature": "d139882758d2e76cbcb08c0793100a68082aee78d56b5fa12de0634bb7cd8825",
+        "affectsGlobalScope": false
+      },
       "../src/schemas/index.ts": {
-        "version": "4ba799b7487a7b1115a221b5f1f1a8b8334e2c0ef5411c3af05c907d72e872c9",
+        "version": "2d71eecefd610b257e4d1dc309475a251ebdc15f5e10b8c4600644429e6cb45f",
         "signature": "d44bdcd4f74fae62b3e4900e347298d7ca322c9441794795b395dc7db1fda182",
         "affectsGlobalScope": false
       },
@@ -5517,7 +5522,7 @@
         "affectsGlobalScope": false
       },
       "../src/services/auth.service.ts": {
-        "version": "19b9974d648a5fc2997062941dd9dfc420dfb8c1653d952c77af64ceab86ce3d",
+        "version": "6e0d0939f9187767a2ff3a7719e3e3d59afbee90484a2848385515b07b0c51ae",
         "signature": "e3c202167c3291d25380f05dbfef3adc44a0376d30fcd9c8773efc53b50ce444",
         "affectsGlobalScope": false
       },
@@ -5561,9 +5566,14 @@
         "signature": "366b5df158d2b4385d93c1ac0d64c6fcefecfa8af38e6f68372b77929f03e150",
         "affectsGlobalScope": false
       },
+      "../src/services/leave.service.ts": {
+        "version": "16f02c4dc1e41f8c4668a7da3be3fe605de38b9afd2319b0f49c390d11ab4243",
+        "signature": "2843f4007503ecc891cf246ae1deb1a0b736d0042f16bb469f427f92287849a3",
+        "affectsGlobalScope": false
+      },
       "../src/services/index.ts": {
-        "version": "daa9f0c7c182ea12828e6360ffc591079fbc4ea98cea94bf172c9b768c4745f5",
-        "signature": "2281996aa11eb1613ec87ac53610973cb0ac5cd86897a8b2e8c10e9b7f49a561",
+        "version": "afc6ed37350d95dca71db6e82606b34f4519708e474a2ab57ba637e82b85864a",
+        "signature": "15a8bd70c136ffd3db9c9eb764fc56513ba7a4837feb63fbf193a24404060509",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
@@ -5826,9 +5836,14 @@
         "signature": "2e6e8e210cb48eb5a5ed28d161f4a78eaef6d045fc2112a6abe0239226c1e3b2",
         "affectsGlobalScope": false
       },
+      "../src/controllers/leave.controller.ts": {
+        "version": "2b5cc8b4e5f9ec4ecd24142e16e30fabac64d5bd1c62dc7b42e49bc3d047f7a5",
+        "signature": "888f83150c3987c98c1c9ad402f92e589b32118981a0660e21b371d40d252c6f",
+        "affectsGlobalScope": false
+      },
       "../src/controllers/index.ts": {
-        "version": "b665a52550332272bee08b30b95dfff17a348fef725fc25ababe51fa27f15e25",
-        "signature": "8fd436e175fa4e57343ed353a118bc5f99f4aabe53ea7de43a2df76c876fa555",
+        "version": "894323d3e959e5558036cbb1008ff78b2c5ea2d5424c34c45a0a50977753a98b",
+        "signature": "055a5ca96e8b4eca011b9e82185e55ed474a6ef63607f7440170ff7d1ccb0289",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -18849,6 +18864,7 @@
         "../src/controllers/auth.controller.ts",
         "../src/controllers/chapters.controller.ts",
         "../src/controllers/classes.controller.ts",
+        "../src/controllers/leave.controller.ts",
         "../src/controllers/payments.controller.ts",
         "../src/controllers/products.controller.ts",
         "../src/controllers/students.controller.ts",
@@ -18856,6 +18872,21 @@
         "../src/controllers/teachers.controller.ts",
         "../src/controllers/test.controller.ts",
         "../src/controllers/users.controller.ts"
+      ],
+      "../src/controllers/leave.controller.ts": [
+        "../node_modules/@nestjs/common/decorators/http/request-mapping.decorator.d.ts",
+        "../node_modules/@nestjs/common/decorators/http/route-params.decorator.d.ts",
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/controllers/resource.controller.ts",
+        "../src/decorators/validatetoken.decorator.ts",
+        "../src/services/leave.service.ts",
+        "../src/services/teachers.service.ts",
+        "../src/utils/index.ts"
       ],
       "../src/controllers/payments.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -19112,6 +19143,7 @@
         "../src/schemas/chapter.schema.ts",
         "../src/schemas/class.schema.ts",
         "../src/schemas/course.schema.ts",
+        "../src/schemas/leave.schema.ts",
         "../src/schemas/livestream.schema.ts",
         "../src/schemas/product.schema.ts",
         "../src/schemas/student.schema.ts",
@@ -19121,6 +19153,14 @@
         "../src/schemas/token.schema.ts",
         "../src/schemas/user.schema.ts",
         "../src/schemas/version.schema.ts"
+      ],
+      "../src/schemas/leave.schema.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
       ],
       "../src/schemas/livestream.schema.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -19217,7 +19257,6 @@
         "../node_modules/@nestjs/config/index.d.ts",
         "../node_modules/@nestjs/jwt/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/hapi__joi/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
@@ -19324,6 +19363,7 @@
         "../src/services/dummysms.service.ts",
         "../src/services/email.service.ts",
         "../src/services/file.service.ts",
+        "../src/services/leave.service.ts",
         "../src/services/livestreams.service.ts",
         "../src/services/nodemailer.service.ts",
         "../src/services/products.service.ts",
@@ -19336,6 +19376,17 @@
         "../src/services/tokens.service.ts",
         "../src/services/users.service.ts",
         "../src/services/version.service.ts"
+      ],
+      "../src/services/leave.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/services/db.service.ts"
       ],
       "../src/services/livestreams.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -32105,6 +32156,7 @@
         "../src/controllers/auth.controller.ts",
         "../src/controllers/chapters.controller.ts",
         "../src/controllers/classes.controller.ts",
+        "../src/controllers/leave.controller.ts",
         "../src/controllers/payments.controller.ts",
         "../src/controllers/products.controller.ts",
         "../src/controllers/students.controller.ts",
@@ -32112,6 +32164,11 @@
         "../src/controllers/teachers.controller.ts",
         "../src/controllers/test.controller.ts",
         "../src/controllers/users.controller.ts"
+      ],
+      "../src/controllers/leave.controller.ts": [
+        "../src/controllers/resource.controller.ts",
+        "../src/services/leave.service.ts",
+        "../src/services/teachers.service.ts"
       ],
       "../src/controllers/payments.controller.ts": [
         "../src/controllers/resource.controller.ts",
@@ -32188,6 +32245,9 @@
         "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../src/schemas/index.ts": [
+        "../node_modules/@types/mongoose/index.d.ts"
+      ],
+      "../src/schemas/leave.schema.ts": [
         "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../src/schemas/livestream.schema.ts": [
@@ -32272,6 +32332,10 @@
         "../src/services/sms.service.ts",
         "../src/services/students.service.ts",
         "../src/services/teachers.service.ts"
+      ],
+      "../src/services/leave.service.ts": [
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../src/services/db.service.ts"
       ],
       "../src/services/livestreams.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
@@ -33496,6 +33560,7 @@
       "../src/controllers/chapters.controller.ts",
       "../src/controllers/classes.controller.ts",
       "../src/controllers/index.ts",
+      "../src/controllers/leave.controller.ts",
       "../src/controllers/payments.controller.ts",
       "../src/controllers/products.controller.ts",
       "../src/controllers/resource.controller.ts",
@@ -33520,6 +33585,7 @@
       "../src/schemas/class.schema.ts",
       "../src/schemas/course.schema.ts",
       "../src/schemas/index.ts",
+      "../src/schemas/leave.schema.ts",
       "../src/schemas/livestream.schema.ts",
       "../src/schemas/product.schema.ts",
       "../src/schemas/student.schema.ts",
@@ -33540,6 +33606,7 @@
       "../src/services/email.service.ts",
       "../src/services/file.service.ts",
       "../src/services/index.ts",
+      "../src/services/leave.service.ts",
       "../src/services/livestreams.service.ts",
       "../src/services/nodemailer.service.ts",
       "../src/services/products.service.ts",

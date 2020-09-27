@@ -20,6 +20,7 @@ import { LiveStreamsService } from './liveStreams.service';
 import { DBTransactionService } from './dbtransaction.service';
 import { StudentsService } from './students.service';
 import { TestService } from './test.service';
+import { LeaveService } from './leave.service';
 export default [
   UsersService,
   AssetsService,
@@ -44,4 +45,5 @@ export default [
   DBTransactionService,
   StudentsService,
   TestService,
+  LeaveService,
 ];

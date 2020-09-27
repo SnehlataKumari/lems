@@ -9,6 +9,7 @@ import { TeachersController } from './teachers.controller';
 import { ProductsController } from './products.controller';
 import { StudentsController } from './students.controller';
 import { TestController } from './test.controller';
+import { LeaveController } from './leave.controller';
 
 export default [
   UsersController,
@@ -22,4 +23,5 @@ export default [
   ProductsController,
   StudentsController,
   TestController,
+  LeaveController,
 ];
