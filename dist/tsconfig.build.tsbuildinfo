@@ -1837,7 +1837,7 @@
         "affectsGlobalScope": false
       },
       "../src/schemas/teacher.schema.ts": {
-        "version": "56c200c20c2a8ae230b97e22ebbd4b5c0933e2bd6beabb1eda248d2d38c324b0",
+        "version": "6baeaddea4751d41ef418e5952b66ed5f766963263e5b427b8d013233d80d587",
         "signature": "552cfd3010b3e87320b1169cbd6d7e3bed0da74e73b25b8921885c9304beb9ed",
         "affectsGlobalScope": false
       },

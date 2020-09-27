@@ -209,8 +209,7 @@ exports.TeacherSchema = new mongoose.Schema({
         type: String
     },
     hasAcceptedRegistrationRequest: {
-        type: Boolean,
-        default: false,
+        type: Boolean
     },
 }, {
     timestamps: true,
