@@ -65,7 +65,7 @@ let AuthService = (() => {
                 userId: userModel._id,
             });
             if (role === 'STUDENT') {
-                await this.studentService.create({ userId: userModel._id, });
+                await this.studentService.create({ userId: userModel._id, education: { grade: requestBody.grade } });
             }
             const link = `${this.apiUrl(role)}/auth/verify/${token}`;
             const loginTokenType = constants_1.TOKEN_TYPES['LOGIN'].key;
@@ -211,7 +211,7 @@ let AuthService = (() => {
             }
             const comparePassword = bcrypt.compareSync(password, userModel.password);
             if (!comparePassword) {
-                throw new common_1.UnauthorizedException('Old password is incorrect!');
+                throw new common_1.UnauthorizedException('Incorrect credential!');
             }
             if (userModel.role !== 'ADMIN' && !userModel.isEmailVerified) {
                 throw new common_1.UnauthorizedException('Please verify email to login!');
@@ -284,7 +284,7 @@ let AuthService = (() => {
             const { oldPassword, newPassword } = requestBody;
             const comparePassword = bcrypt.compareSync(oldPassword, loggedInUser.password);
             if (!comparePassword) {
-                throw new common_1.UnauthorizedException('wrong password!');
+                throw new common_1.UnauthorizedException('Old password is incorrect!');
             }
             const hashNewPassword = await this.encryptPassword(newPassword);
             return await this.userService.update(loggedInUser, { password: hashNewPassword });

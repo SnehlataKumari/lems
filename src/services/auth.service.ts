@@ -68,7 +68,7 @@ export class AuthService {
       userId: userModel._id,
     });
     if (role === 'STUDENT') {
-      await this.studentService.create({ userId: userModel._id,});
+      await this.studentService.create({ userId: userModel._id, education: {grade: requestBody.grade}});
     }
     const link = `${this.apiUrl(role)}/auth/verify/${token}`;
 
@@ -261,7 +261,7 @@ export class AuthService {
 
     const comparePassword = bcrypt.compareSync(password, userModel.password);
     if (!comparePassword) {
-      throw new UnauthorizedException('Old password is incorrect!');
+      throw new UnauthorizedException('Incorrect credential!');
     }
 
     if (userModel.role !== 'ADMIN' && !userModel.isEmailVerified) {
@@ -352,7 +352,7 @@ export class AuthService {
     const { oldPassword, newPassword } = requestBody;
     const comparePassword = bcrypt.compareSync(oldPassword, loggedInUser.password);
     if (!comparePassword) {
-      throw new UnauthorizedException('wrong password!');
+      throw new UnauthorizedException('Old password is incorrect!');
     }
     const hashNewPassword = await this.encryptPassword(newPassword);
     return await this.userService.update(loggedInUser, { password: hashNewPassword });
