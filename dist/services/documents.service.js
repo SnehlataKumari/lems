@@ -12,23 +12,29 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LeaveService = void 0;
+exports.DocumentsService = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("mongoose");
 const mongoose_2 = require("@nestjs/mongoose");
 const db_service_1 = require("./db.service");
-let LeaveService = (() => {
-    let LeaveService = class LeaveService extends db_service_1.DBService {
-        constructor(model) {
+const file_service_1 = require("./file.service");
+let DocumentsService = (() => {
+    let DocumentsService = class DocumentsService extends db_service_1.DBService {
+        constructor(model, fileService) {
             super(model);
+            this.fileService = fileService;
+        }
+        async saveFile(file) {
+            return this.fileService.saveFile(file);
         }
     };
-    LeaveService = __decorate([
+    DocumentsService = __decorate([
         common_1.Injectable(),
-        __param(0, mongoose_2.InjectModel('Leave')),
-        __metadata("design:paramtypes", [mongoose_1.Model])
-    ], LeaveService);
-    return LeaveService;
+        __param(0, mongoose_2.InjectModel('Document')),
+        __metadata("design:paramtypes", [mongoose_1.Model,
+            file_service_1.FileService])
+    ], DocumentsService);
+    return DocumentsService;
 })();
-exports.LeaveService = LeaveService;
-//# sourceMappingURL=teacherLeave.service.js.map
+exports.DocumentsService = DocumentsService;
+//# sourceMappingURL=documents.service.js.map

@@ -33,6 +33,7 @@
     "@nestjs/serve-static": "^2.1.1",
     "aws-sdk": "^2.683.0",
     "bcryptjs": "^2.4.3",
+    "csv-parser": "^2.3.3",
     "handlebars": "^4.7.6",
     "hbs": "^4.1.1",
     "lodash": "^4.17.15",

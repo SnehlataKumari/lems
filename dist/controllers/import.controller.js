@@ -12,34 +12,30 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TestService = void 0;
-const mongoose_1 = require("@nestjs/mongoose");
-const db_service_1 = require("./db.service");
+exports.ImportController = void 0;
 const common_1 = require("@nestjs/common");
-const mongoose_2 = require("mongoose");
-const Joi = require("@hapi/joi");
-const userSchem = Joi.object({
-    name: Joi.string().required(),
-    username: Joi.string().required(),
-    password: Joi.string().required(),
-    email: Joi.string().email().required(),
-    mobileNumber: Joi.string().min(10).max(10).required()
-});
-let TestService = (() => {
-    let TestService = class TestService extends db_service_1.DBService {
-        constructor(model) {
-            super(model);
+const import_service_1 = require("../services/import.service");
+let ImportController = (() => {
+    let ImportController = class ImportController {
+        constructor(service) {
+            this.service = service;
         }
-        validateUserJson(userObject) {
-            return userSchem.validateAsync(userObject, { allowUnknown: true });
+        async importQuestions(requestBody) {
+            return this.service.importQuestions(requestBody);
         }
     };
-    TestService = __decorate([
-        common_1.Injectable(),
-        __param(0, mongoose_1.InjectModel('Test')),
-        __metadata("design:paramtypes", [mongoose_2.Model])
-    ], TestService);
-    return TestService;
+    __decorate([
+        common_1.Post('questions'),
+        __param(0, common_1.Body()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], ImportController.prototype, "importQuestions", null);
+    ImportController = __decorate([
+        common_1.Controller('import'),
+        __metadata("design:paramtypes", [import_service_1.ImportService])
+    ], ImportController);
+    return ImportController;
 })();
-exports.TestService = TestService;
-//# sourceMappingURL=test.service.js.map
+exports.ImportController = ImportController;
+//# sourceMappingURL=import.controller.js.map

@@ -32,7 +32,9 @@ let StudentsController = (() => {
         }
         async findAll() {
             const students = await this.service.findAll();
-            const studentsList = students.map(student => {
+            const studentsList = students
+                .filter((student) => !!student.userId)
+                .map(student => {
                 const userObj = this.userService.getPublicDetails(student.userId);
                 const studentObj = this.service.getPublicDetails(student);
                 return ({

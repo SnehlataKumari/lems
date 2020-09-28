@@ -10,5 +10,7 @@ import { ProductsController } from './products.controller';
 import { StudentsController } from './students.controller';
 import { TestController } from './test.controller';
 import { LeaveController } from './leave.controller';
-declare const _default: (typeof UsersController | typeof ClassesController | typeof AssetsController | typeof AuthController | typeof ChaptersController | typeof SubjectsController | typeof PaymentsController | typeof TeachersController | typeof ProductsController | typeof StudentsController | typeof TestController | typeof LeaveController)[];
+import { DocumentsController } from './documents.controller';
+import { ImportController } from './import.controller';
+declare const _default: (typeof ImportController | typeof UsersController | typeof ClassesController | typeof AssetsController | typeof AuthController | typeof ChaptersController | typeof SubjectsController | typeof PaymentsController | typeof TeachersController | typeof ProductsController | typeof StudentsController | typeof TestController | typeof LeaveController | typeof DocumentsController)[];
 export default _default;

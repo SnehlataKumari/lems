@@ -12,6 +12,8 @@ const products_controller_1 = require("./products.controller");
 const students_controller_1 = require("./students.controller");
 const test_controller_1 = require("./test.controller");
 const leave_controller_1 = require("./leave.controller");
+const documents_controller_1 = require("./documents.controller");
+const import_controller_1 = require("./import.controller");
 exports.default = [
     users_controller_1.UsersController,
     classes_controller_1.ClassesController,
@@ -25,5 +27,7 @@ exports.default = [
     students_controller_1.StudentsController,
     test_controller_1.TestController,
     leave_controller_1.LeaveController,
+    documents_controller_1.DocumentsController,
+    import_controller_1.ImportController
 ];
 //# sourceMappingURL=index.js.map

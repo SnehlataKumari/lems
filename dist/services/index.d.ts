@@ -12,5 +12,7 @@ import { ProductsService } from './products.service';
 import { DBTransactionService } from './dbtransaction.service';
 import { StudentsService } from './students.service';
 import { OtpService } from './otp.service';
-declare const _default: (typeof AssetsService | typeof ClassesService | typeof FileService | typeof AuthService | typeof S3Service | typeof SmsService | typeof DummySmsService | typeof NodeMailerService | typeof EmailService | typeof TeachersService | typeof ProductsService | typeof DBTransactionService | typeof StudentsService | typeof OtpService)[];
+import { DocumentsService } from './documents.service';
+import { ImportService } from './import.service';
+declare const _default: (typeof ImportService | typeof AssetsService | typeof ClassesService | typeof FileService | typeof AuthService | typeof S3Service | typeof SmsService | typeof DummySmsService | typeof NodeMailerService | typeof EmailService | typeof TeachersService | typeof ProductsService | typeof DBTransactionService | typeof StudentsService | typeof OtpService | typeof DocumentsService)[];
 export default _default;

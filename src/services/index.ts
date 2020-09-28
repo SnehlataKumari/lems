@@ -23,6 +23,8 @@ import { TestService } from './test.service';
 import { SocialLoginService } from './socialLogin.service';
 import { OtpService } from './otp.service';
 import { LeaveService } from './leave.service';
+import { DocumentsService } from './documents.service';
+import { ImportService } from './import.service';
 export default [
   UsersService,
   AssetsService,
@@ -50,4 +52,6 @@ export default [
   SocialLoginService,
   OtpService,
   LeaveService,
+  DocumentsService,
+  ImportService
 ];

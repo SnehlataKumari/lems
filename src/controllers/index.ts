@@ -10,6 +10,8 @@ import { ProductsController } from './products.controller';
 import { StudentsController } from './students.controller';
 import { TestController } from './test.controller';
 import { LeaveController } from './leave.controller';
+import { DocumentsController } from './documents.controller';
+import { ImportController } from './import.controller';
 
 export default [
   UsersController,
@@ -24,4 +26,6 @@ export default [
   StudentsController,
   TestController,
   LeaveController,
+  DocumentsController,
+  ImportController
 ];

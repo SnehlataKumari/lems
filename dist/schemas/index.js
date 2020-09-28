@@ -16,6 +16,7 @@ const test_schema_1 = require("./test.schema");
 const socialLogin_schema_1 = require("./socialLogin.schema");
 const otp_schema_1 = require("./otp.schema");
 const leave_schema_1 = require("./leave.schema");
+const document_schema_1 = require("./document.schema");
 exports.default = [
     { name: 'Class', schema: class_schema_1.ClassSchema },
     { name: 'User', schema: user_schema_1.UserSchema },
@@ -33,5 +34,6 @@ exports.default = [
     { name: 'SocialLogin', schema: socialLogin_schema_1.SocialLoginSchema },
     { name: 'Otp', schema: otp_schema_1.OtpSchema },
     { name: 'Leave', schema: leave_schema_1.LeaveSchema },
+    { name: 'Document', schema: document_schema_1.DocumentSchema },
 ];
 //# sourceMappingURL=index.js.map

@@ -14,6 +14,7 @@ import { TestSchema } from './test.schema';
 import { SocialLoginSchema } from './socialLogin.schema';
 import { OtpSchema } from './otp.schema';
 import { LeaveSchema } from './leave.schema';
+import { DocumentSchema } from './document.schema';
 
 export default [
   { name: 'Class', schema: ClassSchema },
@@ -32,4 +33,5 @@ export default [
   { name: 'SocialLogin', schema: SocialLoginSchema},
   { name: 'Otp', schema: OtpSchema},
   { name: 'Leave', schema: LeaveSchema},
+  { name: 'Document', schema: DocumentSchema},
 ];
