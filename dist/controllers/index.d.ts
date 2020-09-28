@@ -12,5 +12,5 @@ import { TestController } from './test.controller';
 import { LeaveController } from './leave.controller';
 import { DocumentsController } from './documents.controller';
 import { ImportController } from './import.controller';
-declare const _default: (typeof ImportController | typeof UsersController | typeof ClassesController | typeof AssetsController | typeof AuthController | typeof ChaptersController | typeof SubjectsController | typeof PaymentsController | typeof TeachersController | typeof ProductsController | typeof StudentsController | typeof TestController | typeof LeaveController | typeof DocumentsController)[];
+declare const _default: (typeof UsersController | typeof ClassesController | typeof AssetsController | typeof AuthController | typeof ChaptersController | typeof SubjectsController | typeof PaymentsController | typeof TeachersController | typeof ProductsController | typeof StudentsController | typeof TestController | typeof LeaveController | typeof DocumentsController | typeof ImportController)[];
 export default _default;

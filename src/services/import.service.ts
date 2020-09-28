@@ -7,9 +7,9 @@ import { join } from 'path';
 @Injectable()
 export class ImportService {
   constructor(private documentService: DocumentsService) {
-    this.importQuestions({
-      documentId: '5f720ef8e29b8d12081e82b5'
-    })
+    // this.importQuestions({
+    //   documentId: '5f720ef8e29b8d12081e82b5'
+    // })
   }
   async importQuestions(requestBody) {
     const documentModel = await this.documentService.findById(requestBody.documentId);

@@ -17,9 +17,6 @@ let ImportService = (() => {
     let ImportService = class ImportService {
         constructor(documentService) {
             this.documentService = documentService;
-            this.importQuestions({
-                documentId: '5f720ef8e29b8d12081e82b5'
-            });
         }
         async importQuestions(requestBody) {
             const documentModel = await this.documentService.findById(requestBody.documentId);
