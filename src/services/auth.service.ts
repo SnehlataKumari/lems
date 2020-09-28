@@ -254,7 +254,6 @@ export class AuthService {
     if (!userModel) {
       throw new UnauthorizedException('User not registered!');
     }
-    
 
     if (!userModel.password) {
       throw new UnauthorizedException('You have not setup password, Please reset password and then login again!');
@@ -269,9 +268,12 @@ export class AuthService {
       throw new UnauthorizedException('Please verify email to login!');
     }
     
-    // if (userModel.isEmailVerified !== true) {
-    //   throw new UnauthorizedException('Email not verified!');
-    // }
+    if (userModel.role === 'TEACHER') {
+      const teacherModel = await this.teacherService.findOne({userId: userModel._id});
+      if (teacherModel && teacherModel.hasAcceptedRegistrationRequest === false) {
+        throw new UnauthorizedException('Your registration request has been declined!');
+      }
+    }
     const token = this.getUserToken(userModel.toJSON());
     await this.tokenService.delete({
       type: tokenType,

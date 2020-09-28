@@ -216,6 +216,12 @@ let AuthService = (() => {
             if (userModel.role !== 'ADMIN' && !userModel.isEmailVerified) {
                 throw new common_1.UnauthorizedException('Please verify email to login!');
             }
+            if (userModel.role === 'TEACHER') {
+                const teacherModel = await this.teacherService.findOne({ userId: userModel._id });
+                if (teacherModel && teacherModel.hasAcceptedRegistrationRequest === false) {
+                    throw new common_1.UnauthorizedException('Your registration request has been declined!');
+                }
+            }
             const token = this.getUserToken(userModel.toJSON());
             await this.tokenService.delete({
                 type: tokenType,
