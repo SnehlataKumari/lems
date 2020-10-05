@@ -213,7 +213,7 @@ let AuthService = (() => {
             if (!comparePassword) {
                 throw new common_1.UnauthorizedException('Incorrect credential!');
             }
-            if (userModel.role !== 'ADMIN' && !userModel.isEmailVerified) {
+            if (userModel.role === 'TEACHER' && !userModel.isEmailVerified) {
                 throw new common_1.UnauthorizedException('Please verify email to login!');
             }
             if (userModel.role === 'TEACHER') {

@@ -166,7 +166,7 @@ exports.TeacherSchema = new mongoose.Schema({
         required: true,
     },
     dateOfBirth: {
-        type: [],
+        type: Date,
     },
     typeOfInternetConnection: {
         type: String,

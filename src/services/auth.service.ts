@@ -264,7 +264,7 @@ export class AuthService {
       throw new UnauthorizedException('Incorrect credential!');
     }
 
-    if (userModel.role !== 'ADMIN' && !userModel.isEmailVerified) {
+    if (userModel.role === 'TEACHER' && !userModel.isEmailVerified) {
       throw new UnauthorizedException('Please verify email to login!');
     }
     

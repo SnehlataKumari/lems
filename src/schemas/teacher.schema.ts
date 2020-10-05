@@ -183,8 +183,7 @@ export const TeacherSchema = new mongoose.Schema(
       required: true,
     },
     dateOfBirth: {
-      type: [],
-      // type: String,
+      type: Date,
     },
     typeOfInternetConnection: {
       type: String,
