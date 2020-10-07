@@ -26,4 +26,8 @@ export declare class StudentsController extends ResourceController {
         message: string;
         data: any;
     }>;
+    updateStudentProfilePicBase64(studentId: any, file: any, requestBody: any): Promise<{
+        message: string;
+        data: any;
+    }>;
 }

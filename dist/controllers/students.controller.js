@@ -100,6 +100,23 @@ let StudentsController = (() => {
                 student: this.service.getPublicDetails(studentModel)
             });
         }
+        async updateStudentProfilePicBase64(studentId, file, requestBody) {
+            const studentModel = await this.service.findById(studentId);
+            if (!studentModel) {
+                throw new common_1.BadRequestException('Student not found!');
+            }
+            let userModel = await this.userService.findById(studentModel.userId);
+            if (!userModel) {
+                throw new common_1.BadRequestException('User not found!');
+            }
+            userModel = await this.userService.update(userModel, {
+                profileImage: requestBody.file
+            });
+            return utils_1.success('Profile pic uploaded successfully!', {
+                user: this.userService.getPublicDetails(userModel),
+                student: this.service.getPublicDetails(studentModel)
+            });
+        }
     };
     __decorate([
         validatetoken_decorator_1.ValidateToken(),
@@ -147,6 +164,22 @@ let StudentsController = (() => {
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", Promise)
     ], StudentsController.prototype, "updateStudentProfilePic", null);
+    __decorate([
+        common_1.Put(':id/update-profile-pic-base64'),
+        common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
+            storage: multer_1.diskStorage({
+                destination: './avatars',
+                filename: (req, file, cb) => {
+                    const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('');
+                    return cb(null, `${randomName}${path_1.extname(file.originalname)}`);
+                }
+            })
+        })),
+        __param(0, common_1.Param('id')), __param(1, common_1.UploadedFile()), __param(2, common_1.Body()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object, Object, Object]),
+        __metadata("design:returntype", Promise)
+    ], StudentsController.prototype, "updateStudentProfilePicBase64", null);
     StudentsController = __decorate([
         common_1.Controller('students'),
         __metadata("design:paramtypes", [students_service_1.StudentsService,

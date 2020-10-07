@@ -5867,8 +5867,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/students.controller.ts": {
-        "version": "c452a0c6e193957b9ee9d5636898332444faa2a67909b285ff4b3a9686b5f628",
-        "signature": "b89c9deaf9bb51b8d8e0272aeac29bd37e163dba61c5136dd2ddd30de2d45b11",
+        "version": "c94de9c7c9ef4c1c2c66886fb4a5828e003b2a945799bc02ff4164889006558b",
+        "signature": "d503bbbae70ea4e4811387ea65cb7079d0b92e071ae31ce04657794a552f697d",
         "affectsGlobalScope": false
       },
       "../src/controllers/test.controller.ts": {
@@ -5893,7 +5893,7 @@
       },
       "../src/controllers/index.ts": {
         "version": "27510e9ee053e2d55786e45c139a961a48c3f653610042b6559f5d9c7b878b93",
-        "signature": "33cf866a3f656b09a652e7442cfcb2b56e6b2a5947034985ded98413093f9a29",
+        "signature": "897c888da2932d2e3075f3f254ecc6b84546db04b9aba59d8a4941670b14a06e",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {

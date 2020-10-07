@@ -118,6 +118,37 @@ export class StudentsController extends ResourceController {
 			user: this.userService.getPublicDetails(userModel),
 			student: this.service.getPublicDetails(studentModel)
 		});
+  }
+
+	@Put(':id/update-profile-pic-base64')
+	@UseInterceptors(FileInterceptor('file', {
+		storage: diskStorage({
+			destination: './avatars',
+			filename: (req, file, cb) => {
+				const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('')
+				return cb(null, `${randomName}${extname(file.originalname)}`)
+			}
+		})
+	}))
+	async updateStudentProfilePicBase64(@Param('id') studentId, @UploadedFile() file, @Body() requestBody) {
+
+		const studentModel = await this.service.findById(studentId);
+		if(!studentModel) {
+			throw new BadRequestException('Student not found!');
+		}
+		let userModel = await this.userService.findById(studentModel.userId);
+		if(!userModel) {
+			throw new BadRequestException('User not found!');
+		}
+    
+		userModel = await this.userService.update(userModel, {
+			profileImage: requestBody.file
+		});
+
+		return success('Profile pic uploaded successfully!', {
+			user: this.userService.getPublicDetails(userModel),
+			student: this.service.getPublicDetails(studentModel)
+		});
 	}
 	
 }
