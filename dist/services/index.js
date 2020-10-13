@@ -26,6 +26,7 @@ const otp_service_1 = require("./otp.service");
 const leave_service_1 = require("./leave.service");
 const documents_service_1 = require("./documents.service");
 const import_service_1 = require("./import.service");
+const liveClass_service_1 = require("./liveClass.service");
 exports.default = [
     users_service_1.UsersService,
     assets_service_1.AssetsService,
@@ -53,6 +54,7 @@ exports.default = [
     otp_service_1.OtpService,
     leave_service_1.LeaveService,
     documents_service_1.DocumentsService,
-    import_service_1.ImportService
+    import_service_1.ImportService,
+    liveClass_service_1.LiveClassService,
 ];
 //# sourceMappingURL=index.js.map

@@ -25,6 +25,7 @@ import { OtpService } from './otp.service';
 import { LeaveService } from './leave.service';
 import { DocumentsService } from './documents.service';
 import { ImportService } from './import.service';
+import { LiveClassService } from './liveClass.service';
 export default [
   UsersService,
   AssetsService,
@@ -53,5 +54,6 @@ export default [
   OtpService,
   LeaveService,
   DocumentsService,
-  ImportService
+  ImportService,
+  LiveClassService,
 ];

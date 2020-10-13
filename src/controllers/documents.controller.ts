@@ -1,7 +1,6 @@
 import { Controller, Body, Post, Put, Param, Get, Req, UseGuards, UseInterceptors, UploadedFile, Res } from '@nestjs/common';
 import { ResourceController } from './resource.controller';
 import { success } from 'src/utils';
-// import { JwtAuthGuard } from 'src/passport/auth.guard';
 import { DocumentsService } from 'src/services/documents.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ConfigService } from '@nestjs/config';
@@ -14,23 +13,9 @@ export class DocumentsController extends ResourceController {
     super(service)
   }
 
-  // @UseGuards(JwtAuthGuard)
-  @Get()
-  async findAllAssets(@Req() req) {
-    const assetsList = await this.service.findAll();
-    return success('List found successfully', assetsList);
-  }
-
   @Post()
   async createAsset(@Body() createObject) {
     return success('Asset created successfully!', this.service.create({ ...createObject }));
-  }
-
-  // @UseGuards(JwtAuthGuard)
-  @Get('role-wise')
-  async getRoleBasedDocuments(@Req() req) {
-    const {user} = req;
-    return success('Documents find successfully', this.service.find({roles: user.role}));
   }
 
   @Post('upload')

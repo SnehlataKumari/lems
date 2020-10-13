@@ -4,15 +4,7 @@ import { ConfigService } from '@nestjs/config';
 export declare class DocumentsController extends ResourceController {
     private config;
     constructor(config: ConfigService, service: DocumentsService);
-    findAllAssets(req: any): Promise<{
-        message: string;
-        data: any;
-    }>;
     createAsset(createObject: any): Promise<{
-        message: string;
-        data: any;
-    }>;
-    getRoleBasedDocuments(req: any): Promise<{
         message: string;
         data: any;
     }>;

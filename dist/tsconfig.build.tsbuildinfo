@@ -4086,19 +4086,24 @@
         "signature": "9f0939867fb9cee9c268b605c8bb6662526a0408e7c0f7be0ad1654946d215e2",
         "affectsGlobalScope": false
       },
+      "../node_modules/@types/hapi__joi/index.d.ts": {
+        "version": "2c16d2d0e5ff2a2741c2b1e108d388316e4494ddcd394f46155516816bacc32a",
+        "signature": "2c16d2d0e5ff2a2741c2b1e108d388316e4494ddcd394f46155516816bacc32a",
+        "affectsGlobalScope": false
+      },
+      "../src/schemas/liveclass.schema.ts": {
+        "version": "e040f039e127a3886b0c2e1389c9b4a3c54a993929505d1bbcd7caf4e08e9628",
+        "signature": "3f40052a6d656f79e52b629e767b772090a0d003aa91c7356f039a9c913bada9",
+        "affectsGlobalScope": false
+      },
       "../src/schemas/index.ts": {
-        "version": "3c783cef27241c4cef4b1f5471755c7dc95c85f7fa9f72153c93bfbd1c05e723",
+        "version": "e1b4b9383dbc2d2b4b5ee71492e0f90a37ac23037e37fa6d08314320f24c8e20",
         "signature": "d44bdcd4f74fae62b3e4900e347298d7ca322c9441794795b395dc7db1fda182",
         "affectsGlobalScope": false
       },
       "../src/services/db.service.ts": {
         "version": "98f61b56d033903cf9ec60a60ad30e5d8675c80165f172709e8f875dd0cdd6cd",
         "signature": "7c76ea9c3451df4989c3040e7e1befc4f54df8e4abde740976e0c4ccbdd25819",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/hapi__joi/index.d.ts": {
-        "version": "2c16d2d0e5ff2a2741c2b1e108d388316e4494ddcd394f46155516816bacc32a",
-        "signature": "2c16d2d0e5ff2a2741c2b1e108d388316e4494ddcd394f46155516816bacc32a",
         "affectsGlobalScope": false
       },
       "../src/services/tokens.service.ts": {
@@ -5611,9 +5616,14 @@
         "signature": "664047db7659eee56b05196f0123520cc7de6afa46fd0726acb9ef3cfb8c54f9",
         "affectsGlobalScope": false
       },
+      "../src/services/liveclass.service.ts": {
+        "version": "b08d5b758d51f483296d24aa483cb71c514e1f0e855f9915e6f28261f34724a3",
+        "signature": "87473c307c9a91560fcc1199a21b3e904252d8b8708169fce5f3747d02901850",
+        "affectsGlobalScope": false
+      },
       "../src/services/index.ts": {
-        "version": "ec384db6e6e063ebc6cbfcd14456c63443e46e2e4a3e6909f56792d7e5b46dce",
-        "signature": "23c10f79d43b4025f9bcc457f7006c7bd88b7b9aeb934f268766774fb1fadcdc",
+        "version": "c185a2d7db7e0b5f94b6a4c56438e07d33805cb73ae2d684b51a71b43ef748c8",
+        "signature": "9a76c8ffd1eac1e7a830bb7bff30d66deabd4e412cee009b998adcebaac2171e",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
@@ -5882,8 +5892,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/documents.controller.ts": {
-        "version": "402135898bb66e1ed13c24151552e0fc3096198b564127be3d18a9540eb6becb",
-        "signature": "b34795feb85645ef49b5431c28f3a2a7a904847c67ac799c54f86eb3dc4869df",
+        "version": "a56e10c80d25280bc5022da20f6211d8aaef513e6560945f2e91667c8f3d8936",
+        "signature": "6ce7848d23915583a3981ef159381ee3eabfd7f2765237c3594a202e3bb145cd",
         "affectsGlobalScope": false
       },
       "../src/controllers/import.controller.ts": {
@@ -5891,9 +5901,19 @@
         "signature": "dbe3192414aafba4f14496a47ee117376eca7aa96c8d7ce6d68717eeb8270770",
         "affectsGlobalScope": false
       },
+      "../node_modules/moment/ts3.1-typings/moment.d.ts": {
+        "version": "673bdee11352042a96fbdee991b7b0897a2bccebcd8e445e867e5a46048982ba",
+        "signature": "673bdee11352042a96fbdee991b7b0897a2bccebcd8e445e867e5a46048982ba",
+        "affectsGlobalScope": false
+      },
+      "../src/controllers/liveclass.controller.ts": {
+        "version": "1748aed3a749151d00bb064bcbfffaff86f4aacf855087cf14bc2814ece1565f",
+        "signature": "d2c7883a11ecaa424b25784305e3652ae5135d52c63bc05e1e090b2e450fd698",
+        "affectsGlobalScope": false
+      },
       "../src/controllers/index.ts": {
-        "version": "27510e9ee053e2d55786e45c139a961a48c3f653610042b6559f5d9c7b878b93",
-        "signature": "897c888da2932d2e3075f3f254ecc6b84546db04b9aba59d8a4941670b14a06e",
+        "version": "7df1fa418c6273bee31a2bd2fedcb0a941f9c299c5c8221b6669c72defb628d7",
+        "signature": "51bc79749d4de5b9e295dee2737f70d6cd7347895348b0a2a074257cdc40c697",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -12618,6 +12638,13 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
+      "../node_modules/moment/ts3.1-typings/moment.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
       "../node_modules/passport-custom/lib/index.d.ts": [
         "../node_modules/@types/express/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -18950,6 +18977,7 @@
         "../src/controllers/documents.controller.ts",
         "../src/controllers/import.controller.ts",
         "../src/controllers/leave.controller.ts",
+        "../src/controllers/liveclass.controller.ts",
         "../src/controllers/payments.controller.ts",
         "../src/controllers/products.controller.ts",
         "../src/controllers/students.controller.ts",
@@ -18971,6 +18999,20 @@
         "../src/decorators/validatetoken.decorator.ts",
         "../src/services/leave.service.ts",
         "../src/services/teachers.service.ts",
+        "../src/utils/index.ts"
+      ],
+      "../src/controllers/liveclass.controller.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/moment/ts3.1-typings/moment.d.ts",
+        "../src/controllers/resource.controller.ts",
+        "../src/decorators/validatetoken.decorator.ts",
+        "../src/services/liveclass.service.ts",
         "../src/utils/index.ts"
       ],
       "../src/controllers/payments.controller.ts": [
@@ -19241,6 +19283,7 @@
         "../src/schemas/course.schema.ts",
         "../src/schemas/document.schema.ts",
         "../src/schemas/leave.schema.ts",
+        "../src/schemas/liveclass.schema.ts",
         "../src/schemas/livestream.schema.ts",
         "../src/schemas/otp.schema.ts",
         "../src/schemas/product.schema.ts",
@@ -19255,6 +19298,15 @@
       ],
       "../src/schemas/leave.schema.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../src/schemas/liveclass.schema.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/hapi__joi/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -19507,6 +19559,7 @@
         "../src/services/file.service.ts",
         "../src/services/import.service.ts",
         "../src/services/leave.service.ts",
+        "../src/services/liveclass.service.ts",
         "../src/services/livestreams.service.ts",
         "../src/services/nodemailer.service.ts",
         "../src/services/otp.service.ts",
@@ -19532,6 +19585,18 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/services/db.service.ts"
+      ],
+      "../src/services/liveclass.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/services/db.service.ts",
+        "../src/services/teachers.service.ts"
       ],
       "../src/services/livestreams.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -26121,6 +26186,13 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
+      "../node_modules/moment/ts3.1-typings/moment.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
       "../node_modules/passport-custom/lib/index.d.ts": [
         "../node_modules/@types/express/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -32352,6 +32424,7 @@
         "../src/controllers/documents.controller.ts",
         "../src/controllers/import.controller.ts",
         "../src/controllers/leave.controller.ts",
+        "../src/controllers/liveclass.controller.ts",
         "../src/controllers/payments.controller.ts",
         "../src/controllers/products.controller.ts",
         "../src/controllers/students.controller.ts",
@@ -32364,6 +32437,10 @@
         "../src/controllers/resource.controller.ts",
         "../src/services/leave.service.ts",
         "../src/services/teachers.service.ts"
+      ],
+      "../src/controllers/liveclass.controller.ts": [
+        "../src/controllers/resource.controller.ts",
+        "../src/services/liveclass.service.ts"
       ],
       "../src/controllers/payments.controller.ts": [
         "../src/controllers/resource.controller.ts",
@@ -32448,6 +32525,9 @@
         "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../src/schemas/leave.schema.ts": [
+        "../node_modules/@types/mongoose/index.d.ts"
+      ],
+      "../src/schemas/liveclass.schema.ts": [
         "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../src/schemas/livestream.schema.ts": [
@@ -32537,24 +32617,30 @@
       "../src/services/index.ts": [
         "../src/services/assets.service.ts",
         "../src/services/auth.service.ts",
+        "../src/services/classes.service.ts",
         "../src/services/dbtransaction.service.ts",
         "../src/services/documents.service.ts",
         "../src/services/dummysms.service.ts",
         "../src/services/email.service.ts",
         "../src/services/file.service.ts",
         "../src/services/import.service.ts",
+        "../src/services/liveclass.service.ts",
         "../src/services/nodemailer.service.ts",
         "../src/services/otp.service.ts",
         "../src/services/products.service.ts",
         "../src/services/s3.service.ts",
         "../src/services/sms.service.ts",
-        "../src/services/sociallogin.service.ts",
         "../src/services/students.service.ts",
         "../src/services/teachers.service.ts"
       ],
       "../src/services/leave.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
         "../src/services/db.service.ts"
+      ],
+      "../src/services/liveclass.service.ts": [
+        "../node_modules/@types/mongoose/index.d.ts",
+        "../src/services/db.service.ts",
+        "../src/services/teachers.service.ts"
       ],
       "../src/services/livestreams.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
@@ -33232,6 +33318,7 @@
       "../node_modules/jest-diff/build/index.d.ts",
       "../node_modules/jest-diff/build/printdiffs.d.ts",
       "../node_modules/jest-diff/build/types.d.ts",
+      "../node_modules/moment/ts3.1-typings/moment.d.ts",
       "../node_modules/passport-custom/lib/index.d.ts",
       "../node_modules/pretty-format/build/index.d.ts",
       "../node_modules/pretty-format/build/types.d.ts",
@@ -33793,6 +33880,7 @@
       "../src/controllers/import.controller.ts",
       "../src/controllers/index.ts",
       "../src/controllers/leave.controller.ts",
+      "../src/controllers/liveclass.controller.ts",
       "../src/controllers/payments.controller.ts",
       "../src/controllers/products.controller.ts",
       "../src/controllers/resource.controller.ts",
@@ -33819,6 +33907,7 @@
       "../src/schemas/document.schema.ts",
       "../src/schemas/index.ts",
       "../src/schemas/leave.schema.ts",
+      "../src/schemas/liveclass.schema.ts",
       "../src/schemas/livestream.schema.ts",
       "../src/schemas/otp.schema.ts",
       "../src/schemas/product.schema.ts",
@@ -33844,6 +33933,7 @@
       "../src/services/import.service.ts",
       "../src/services/index.ts",
       "../src/services/leave.service.ts",
+      "../src/services/liveclass.service.ts",
       "../src/services/livestreams.service.ts",
       "../src/services/nodemailer.service.ts",
       "../src/services/otp.service.ts",

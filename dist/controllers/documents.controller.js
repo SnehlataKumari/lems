@@ -25,16 +25,8 @@ let DocumentsController = (() => {
             super(service);
             this.config = config;
         }
-        async findAllAssets(req) {
-            const assetsList = await this.service.findAll();
-            return utils_1.success('List found successfully', assetsList);
-        }
         async createAsset(createObject) {
             return utils_1.success('Asset created successfully!', this.service.create(Object.assign({}, createObject)));
-        }
-        async getRoleBasedDocuments(req) {
-            const { user } = req;
-            return utils_1.success('Documents find successfully', this.service.find({ roles: user.role }));
         }
         async uploadFile(file) {
             const filename = file.filename;
@@ -70,26 +62,12 @@ let DocumentsController = (() => {
         }
     };
     __decorate([
-        common_1.Get(),
-        __param(0, common_1.Req()),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
-        __metadata("design:returntype", Promise)
-    ], DocumentsController.prototype, "findAllAssets", null);
-    __decorate([
         common_1.Post(),
         __param(0, common_1.Body()),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", Promise)
     ], DocumentsController.prototype, "createAsset", null);
-    __decorate([
-        common_1.Get('role-wise'),
-        __param(0, common_1.Req()),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
-        __metadata("design:returntype", Promise)
-    ], DocumentsController.prototype, "getRoleBasedDocuments", null);
     __decorate([
         common_1.Post('upload'),
         common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {})),

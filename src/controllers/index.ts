@@ -12,6 +12,7 @@ import { TestController } from './test.controller';
 import { LeaveController } from './leave.controller';
 import { DocumentsController } from './documents.controller';
 import { ImportController } from './import.controller';
+import { LiveClassController } from './liveClass.controller';
 
 export default [
   UsersController,
@@ -27,5 +28,7 @@ export default [
   TestController,
   LeaveController,
   DocumentsController,
-  ImportController
+  ImportController,
+  LiveClassController,
+
 ];
