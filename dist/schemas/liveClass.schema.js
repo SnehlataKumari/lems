@@ -11,7 +11,11 @@ const LiveClassSchema = new mongoose.Schema({
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'User',
     },
-    allowedWatchCount: {
+    allowedNoOfStudents: {
+        type: Number,
+        required: true
+    },
+    allowedNoOfDemoStudents: {
         type: Number,
         required: true
     },
@@ -32,7 +36,7 @@ const LiveClassSchema = new mongoose.Schema({
         required: true
     },
     quizStartTime: {
-        type: Number,
+        type: String,
         required: true
     },
     selectedGroup: {
@@ -44,7 +48,7 @@ const LiveClassSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    time: {
+    quizEndTime: {
         type: String,
         required: true
     },

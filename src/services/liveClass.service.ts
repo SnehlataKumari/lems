@@ -28,7 +28,7 @@ export class LiveClassService extends DBService {
     const teacherId = teacher._id;
     const liveClassesList = await this.find({
       teacher: teacherId,
-      // hasAcceptedRequest: true
+      hasAcceptedRequest: true
     }).sort('-_id');
     return liveClassesList;
     
