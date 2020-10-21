@@ -47,6 +47,9 @@ exports.ProductSchema = new mongoose.Schema({
         priceToCompare: {
             type: Number,
         },
+        chargeTax: {
+            type: Boolean,
+        },
     },
     publishProduct: {
         startPublishDate: {
@@ -55,8 +58,9 @@ exports.ProductSchema = new mongoose.Schema({
         endPublishDate: {
             type: String,
         },
+        publish: Boolean
     },
 }, {
-    timestamps: true
+    timestamps: true,
 });
 //# sourceMappingURL=product.schema.js.map

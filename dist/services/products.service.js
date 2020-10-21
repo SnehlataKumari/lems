@@ -19,7 +19,6 @@ const mongoose_2 = require("@nestjs/mongoose");
 const db_service_1 = require("./db.service");
 const courses_service_1 = require("./courses.service");
 const liveStreams_service_1 = require("./liveStreams.service");
-const utils_1 = require("../utils");
 let ProductsService = (() => {
     let ProductsService = class ProductsService extends db_service_1.DBService {
         constructor(model, coursesService, liveStreamsService) {
@@ -29,6 +28,13 @@ let ProductsService = (() => {
         }
         findAll() {
             return super.findAll().populate('productImageId').populate('user').sort('-_id');
+        }
+        findById(id) {
+            return super
+                .findById(id)
+                .populate('productImageId')
+                .populate('user')
+                .sort('-_id');
         }
         async createProduct(body, userId) {
             return this.create(Object.assign(Object.assign({}, body), { user: userId }));
