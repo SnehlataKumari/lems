@@ -26,8 +26,18 @@ let ProductsService = (() => {
             this.coursesService = coursesService;
             this.liveStreamsService = liveStreamsService;
         }
-        async addProduct(requestBody) {
-            return await this.create(requestBody);
+        findAll() {
+            return super.findAll().populate('productImageId').populate('user').sort('-_id');
+        }
+        findById(id) {
+            return super
+                .findById(id)
+                .populate('productImageId')
+                .populate('user')
+                .sort('-_id');
+        }
+        async createProduct(body, userId) {
+            return this.create(Object.assign(Object.assign({}, body), { user: userId }));
         }
         async addCourse(requestBody) {
             return await this.coursesService.create(requestBody);

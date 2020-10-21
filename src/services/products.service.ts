@@ -14,9 +14,25 @@ export class ProductsService extends DBService {
     super(model);
   }
 
-  async addProduct(requestBody) {
-    return await this.create(requestBody);
+  findAll() {
+    return super.findAll().populate('productImageId').populate('user').sort('-_id');
   }
+
+  findById(id) {
+    return super
+      .findById(id)
+      .populate('productImageId')
+      .populate('user')
+      .sort('-_id');
+  }
+
+  async createProduct(body, userId) {
+    return this.create({ ...body, user: userId });
+  }
+
+  // async addProduct(requestBody) {
+  //   return await this.create(requestBody);
+  // }
 
   async addCourse(requestBody) {
     return await this.coursesService.create(requestBody);

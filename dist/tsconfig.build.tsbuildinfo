@@ -1842,7 +1842,11 @@
         "affectsGlobalScope": false
       },
       "../src/schemas/product.schema.ts": {
+<<<<<<< HEAD
         "version": "b10edcf10d1e2448deeec392a2b9a7c9ee49c5a1248e62c010479021b9f514ae",
+=======
+        "version": "36f1763b2c443b89ec84ffea88197f3f534d1e2654a458c3a6aef7f27346bfa1",
+>>>>>>> product
         "signature": "c66cf2a075b8c9591d51abf08afabe15561ce99a32555626c19d5f98a56c690b",
         "affectsGlobalScope": false
       },
@@ -5587,8 +5591,13 @@
         "affectsGlobalScope": false
       },
       "../src/services/products.service.ts": {
+<<<<<<< HEAD
         "version": "80a746783cf65211d06d1bb769a0a779a6b16a159e52e61d0643b4a34493e8e8",
         "signature": "6eeb8d0ffee61ae4e8fd39ecb2433df5dd98d5b400c9bc21b29661b8c1c3ff31",
+=======
+        "version": "e4ec817c8781692df4e329c8c44c47c75d7872b9be54b24e677ad13b01a56182",
+        "signature": "01295a5fc5d699282de6e6cbef8209931252bf5e07dba5dfad05703c569f3f47",
+>>>>>>> product
         "affectsGlobalScope": false
       },
       "../src/services/test.service.ts": {
@@ -5623,7 +5632,11 @@
       },
       "../src/services/index.ts": {
         "version": "6a40cede2dcd6ef40bf4c170fef937712ec944e2403bab7225317db76d0f7878",
+<<<<<<< HEAD
         "signature": "3f38057def0b3d2c172b84633e5ad6a7481ba212bb2e61afc8526b6ba7d41161",
+=======
+        "signature": "6ed04b1d7626493be64e9aa36bfe2de14eac55df9759dbda2dcdd57fea6655a3",
+>>>>>>> product
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
@@ -5872,8 +5885,13 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/products.controller.ts": {
+<<<<<<< HEAD
         "version": "9e2862f8b56974fb3e727b0ba99da43b165c196ed1b970584468d2b4b73c290f",
         "signature": "db3c0e05ad9d2adf17843dbdf4340bd69dcab5cff8625f16e6ec2be072675437",
+=======
+        "version": "b9a254fe4a4453517d6bcab1fe0243dcefa36976d56de513026ef3cc9a81d2aa",
+        "signature": "29985e1bcdafe13ab99e391b2a404f2e651d3529849ed42c00100b3d0be23344",
+>>>>>>> product
         "affectsGlobalScope": false
       },
       "../src/controllers/students.controller.ts": {
@@ -5913,7 +5931,11 @@
       },
       "../src/controllers/index.ts": {
         "version": "afc591c805a3e29c21d853deafbf024c22f7ad8d884f8d7e8af3cdc436f8c4ae",
+<<<<<<< HEAD
         "signature": "ceaf77564ce6171f114b0ba6ff2ca3e3361df750ec25e41343f621aa68a65f27",
+=======
+        "signature": "59c5a0f1dad26df1351ca35674585cc3ed03d64e81381ed5e29a5f07d01da369",
+>>>>>>> product
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -19035,6 +19057,7 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/controllers/resource.controller.ts",
+        "../src/decorators/validatetoken.decorator.ts",
         "../src/services/products.service.ts",
         "../src/utils/index.ts"
       ],
