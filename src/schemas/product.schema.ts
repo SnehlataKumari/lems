@@ -1,6 +1,11 @@
 import * as mongoose from 'mongoose';
 
 export const ProductSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: 'User',
+    // required: true,
+  },
   productName: {
     type: String,
     required: true,
@@ -24,28 +29,33 @@ export const ProductSchema = new mongoose.Schema({
   courseRestriction: {
     type: String,
   },
-  sampleCourse: {
-    type: String,
-  },
-  productImage: {
-    type: String,
+  productImageId: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: 'Document',
   },
   productDescription: {
     type: String,
   },
-  price: {
-    type: Number,
-    required: true,
-  },
-  priceToCompare: {
-    type: Number,
-    required: true,
-  },
-  starPublishDate: {
+  sampleCourse: {
     type: String,
   },
-  endPublishDate: {
-    type: String,
+  decideCost: {
+    price: {
+      type: Number,
+      // required: true,
+    },
+    priceToCompare: {
+      type: Number,
+      // required: true,
+    },
+  },
+  publishProduct: {
+    startPublishDate: {
+      type: String,
+    },
+    endPublishDate: {
+      type: String,
+    },
   },
 },
   {

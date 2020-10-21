@@ -6,10 +6,17 @@ export declare class ProductsController extends ResourceController {
         message: string;
         data: any;
     }>;
-    addProduct(requestBody: any): Promise<{
+    getTestById(testId: any): Promise<{
         message: string;
         data: any;
     }>;
+    createProduct(request: any): Promise<{
+        message: string;
+        data: any;
+    }>;
+    validateStreamCode({ productCode }: {
+        productCode: any;
+    }): Promise<boolean>;
     addCourse(requestBody: any): Promise<{
         message: string;
         data: any;

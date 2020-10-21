@@ -1842,7 +1842,7 @@
         "affectsGlobalScope": false
       },
       "../src/schemas/product.schema.ts": {
-        "version": "474b556201952067319a6a527eb0d8ee91691673edb9d195da04ef70b9591d23",
+        "version": "cd1b718d6288bc97b6dded3c4a76dc23ec42439c4e76d4ff22487ff85bb5ac68",
         "signature": "3745323fee3693fafa9e5219b197d836d79d61d114577a182da83b989c67e5d4",
         "affectsGlobalScope": false
       },
@@ -5587,8 +5587,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/products.service.ts": {
-        "version": "2574c09d5e5fca5c296512209b306d625e5c9babecb7dfa79d965253b504727a",
-        "signature": "64323f8a6e524d49d8ef304f471d2dbc974ba7d7a754ccfe7dc6b16699b751f8",
+        "version": "183667ff16e599df3287255912723bc3c53b3239bd5d175f54fc088eea8ee892",
+        "signature": "7ac8f267d181ff1239c13eeaf3f28a48c9a9a5dce410d82821ecc4c44524f907",
         "affectsGlobalScope": false
       },
       "../src/services/test.service.ts": {
@@ -5623,7 +5623,7 @@
       },
       "../src/services/index.ts": {
         "version": "c185a2d7db7e0b5f94b6a4c56438e07d33805cb73ae2d684b51a71b43ef748c8",
-        "signature": "9a76c8ffd1eac1e7a830bb7bff30d66deabd4e412cee009b998adcebaac2171e",
+        "signature": "08a17592b0ee8c3279cce08c0dfa19b66305884add1a35ae0328c56b536ac838",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
@@ -5872,8 +5872,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/products.controller.ts": {
-        "version": "b01d10c6fa5b1cf6f4a306e551a057e5b76edd4cdec9030ea73c37ff44961736",
-        "signature": "98124f8f5d50cdc4dee6b18e12154661e6c68b1b66bea2c84a9236a825b9ebdd",
+        "version": "d2a2d4ef3e4e6b83a4bbb422108cb6ff36956c35ce9793379b74243cde94de6d",
+        "signature": "6f5ce611736eb21a992c75ad74ab9426c81ecaf6b91ddd4e072ee0a17866d8f2",
         "affectsGlobalScope": false
       },
       "../src/controllers/students.controller.ts": {
@@ -5913,7 +5913,7 @@
       },
       "../src/controllers/index.ts": {
         "version": "7df1fa418c6273bee31a2bd2fedcb0a941f9c299c5c8221b6669c72defb628d7",
-        "signature": "51bc79749d4de5b9e295dee2737f70d6cd7347895348b0a2a074257cdc40c697",
+        "signature": "419cfa187d21be3f8de2c623103af5dd005c7dc699e9142337531763ac4bb972",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -19035,6 +19035,7 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/controllers/resource.controller.ts",
+        "../src/decorators/validatetoken.decorator.ts",
         "../src/services/products.service.ts",
         "../src/utils/index.ts"
       ],
@@ -19642,7 +19643,8 @@
         "../node_modules/@types/node/util.d.ts",
         "../src/services/courses.service.ts",
         "../src/services/db.service.ts",
-        "../src/services/livestreams.service.ts"
+        "../src/services/livestreams.service.ts",
+        "../src/utils/index.ts"
       ],
       "../src/services/s3.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",

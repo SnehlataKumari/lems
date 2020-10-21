@@ -15,5 +15,5 @@ import { OtpService } from './otp.service';
 import { DocumentsService } from './documents.service';
 import { ImportService } from './import.service';
 import { LiveClassService } from './liveClass.service';
-declare const _default: (typeof LiveClassService | typeof AssetsService | typeof ClassesService | typeof FileService | typeof AuthService | typeof S3Service | typeof SmsService | typeof DummySmsService | typeof NodeMailerService | typeof EmailService | typeof TeachersService | typeof ProductsService | typeof DBTransactionService | typeof StudentsService | typeof OtpService | typeof DocumentsService | typeof ImportService)[];
+declare const _default: (typeof ProductsService | typeof AssetsService | typeof ClassesService | typeof FileService | typeof AuthService | typeof S3Service | typeof SmsService | typeof DummySmsService | typeof NodeMailerService | typeof EmailService | typeof TeachersService | typeof DBTransactionService | typeof StudentsService | typeof OtpService | typeof DocumentsService | typeof ImportService | typeof LiveClassService)[];
 export default _default;

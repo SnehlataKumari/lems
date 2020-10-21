@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const resource_controller_1 = require("./resource.controller");
 const utils_1 = require("../utils");
 const products_service_1 = require("../services/products.service");
+const validatetoken_decorator_1 = require("../decorators/validatetoken.decorator");
 let ProductsController = (() => {
     let ProductsController = class ProductsController extends resource_controller_1.ResourceController {
         constructor(service) {
@@ -25,9 +26,22 @@ let ProductsController = (() => {
         findAll() {
             return utils_1.success('List found successfully', this.service.findAll());
         }
-        async addProduct(requestBody) {
-            const product = await this.service.addProduct(requestBody);
-            return utils_1.success('product created successfully', { product });
+        async getTestById(testId) {
+            const productModel = await this.service.findById(testId);
+            return utils_1.success('Product found!', this.service.getPublicDetails(productModel));
+        }
+        async createProduct(request) {
+            const body = request.body;
+            const userId = request.user._id;
+            return utils_1.success('Product Created Successfully', await this.service.createProduct(body, userId));
+        }
+        ;
+        async validateStreamCode({ productCode }) {
+            const product = await this.service.findOne({ productCode: productCode });
+            if (product === null) {
+                return true;
+            }
+            return false;
         }
         async addCourse(requestBody) {
             const course = await this.service.addCourse(requestBody);
@@ -45,12 +59,27 @@ let ProductsController = (() => {
         __metadata("design:returntype", void 0)
     ], ProductsController.prototype, "findAll", null);
     __decorate([
-        common_1.Post('add-product'),
+        common_1.Get(':productId'),
+        __param(0, common_1.Param('productId')),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], ProductsController.prototype, "getTestById", null);
+    __decorate([
+        validatetoken_decorator_1.ValidateToken(),
+        common_1.Post(),
+        __param(0, common_1.Req()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], ProductsController.prototype, "createProduct", null);
+    __decorate([
+        common_1.Post('/validate-product-code'),
         __param(0, common_1.Body()),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", Promise)
-    ], ProductsController.prototype, "addProduct", null);
+    ], ProductsController.prototype, "validateStreamCode", null);
     __decorate([
         common_1.Post('add-course'),
         __param(0, common_1.Body()),

@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Get, Injectable, Param } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { DBService } from './db.service';
 import { CoursesService } from 'src/services/courses.service';
 import { LiveStreamsService } from './liveStreams.service';
+import { success } from 'src/utils';
 
 @Injectable()
 export class ProductsService extends DBService {
@@ -14,9 +15,17 @@ export class ProductsService extends DBService {
     super(model);
   }
 
-  async addProduct(requestBody) {
-    return await this.create(requestBody);
+  findAll() {
+    return super.findAll().populate('productImageId').populate('user').sort('-_id');
   }
+
+  async createProduct(body, userId) {
+    return this.create({ ...body, user: userId });
+  }
+
+  // async addProduct(requestBody) {
+  //   return await this.create(requestBody);
+  // }
 
   async addCourse(requestBody) {
     return await this.coursesService.create(requestBody);
