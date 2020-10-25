@@ -35,7 +35,7 @@ const LiveClassSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    quizStartTime: {
+    classStartTime: {
         type: String,
         required: true
     },
@@ -48,7 +48,7 @@ const LiveClassSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    quizEndTime: {
+    classEndTime: {
         type: String,
         required: true
     },

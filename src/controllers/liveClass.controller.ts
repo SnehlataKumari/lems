@@ -44,8 +44,10 @@ export class LiveClassController extends ResourceController {
 
     // moment(dat).isBefore();
   const classesList=  await this.service.getLiveClassByTeacherId(userId);
+
   // const classes = this.service.getPublicDetails(classesList);s
     const groupedClasses = groupBy(classesList, (classs) => {
+      
       if (moment(classs.date).isSame(moment(), 'day')) {
         return 'TODAY';
       } else if (moment(classs.date).isBefore()) {
@@ -56,7 +58,6 @@ export class LiveClassController extends ResourceController {
 
       return 'DEFAULT';
     });
-
 
     return success(
       'Live classes list found successfully!',
