@@ -20,6 +20,7 @@ const utils_1 = require("../utils");
 const resource_controller_1 = require("./resource.controller");
 const lodash_1 = require("lodash");
 const moment = require("moment");
+const agora_access_token_1 = require("agora-access-token");
 let LiveClassController = (() => {
     let LiveClassController = class LiveClassController extends resource_controller_1.ResourceController {
         constructor(service) {
@@ -68,6 +69,26 @@ let LiveClassController = (() => {
             const liveClassModel = await this.service.findByIdAndUpdate(id, { hasAcceptedRequest: false, rejectionReason: rejectionReason.rejectionReason });
             return utils_1.success('Live class request rejected!', liveClassModel);
         }
+        async getResource(id) {
+            const liveClass = await this.service.findById(id);
+            const appID = '0963340bf9fb45ca84026e1da0a4287f';
+            const channelName = 'liveClass._id';
+            const appCertificate = 'afd9e56a27074913a64a1864f3c16087';
+            const uid = 0;
+            const role = agora_access_token_1.RtcRole.PUBLISHER;
+            const expirationTimeInSeconds = 3600;
+            const currentTimestamp = Math.floor(Date.now() / 1000);
+            const privilegeExpiredTs = currentTimestamp + expirationTimeInSeconds;
+            const tokenA = agora_access_token_1.RtcTokenBuilder.buildTokenWithUid(appID, appCertificate, channelName, uid, role, privilegeExpiredTs);
+            const agoraLiveClassConfig = {
+                appID,
+                channelName,
+                uid,
+                role,
+                tokenA
+            };
+            return utils_1.success('Resource updated successfully!', Object.assign(Object.assign({}, liveClass.toJSON()), { agoraLiveClassConfig }));
+        }
     };
     __decorate([
         validatetoken_decorator_1.ValidateToken(),
@@ -108,6 +129,14 @@ let LiveClassController = (() => {
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", Promise)
     ], LiveClassController.prototype, "rejectLiveClassRequest", null);
+    __decorate([
+        validatetoken_decorator_1.ValidateToken(),
+        common_1.Get('/:id'),
+        __param(0, common_1.Param('id')),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], LiveClassController.prototype, "getResource", null);
     LiveClassController = __decorate([
         common_1.Controller('live-class'),
         __metadata("design:paramtypes", [liveClass_service_1.LiveClassService])

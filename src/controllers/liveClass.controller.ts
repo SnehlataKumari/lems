@@ -1,11 +1,11 @@
 import { Body, Controller, Get, Param, Post, Put, Req } from '@nestjs/common';
-import { isValidObjectId } from 'mongoose';
 import { ValidateToken } from 'src/decorators/validatetoken.decorator';
 import { LiveClassService } from 'src/services/liveClass.service';
 import { success } from 'src/utils';
 import { ResourceController } from './resource.controller';
 import { groupBy } from 'lodash';
 import * as moment from 'moment';
+import {RtcTokenBuilder, RtcRole} from 'agora-access-token';
 
 @Controller('live-class')
 export class LiveClassController extends ResourceController {
@@ -15,6 +15,7 @@ export class LiveClassController extends ResourceController {
   ) {
     super(service);
   }
+
   @ValidateToken()
   @Post()
   async createLiveClass(@Req() request ) {
@@ -87,6 +88,37 @@ export class LiveClassController extends ResourceController {
     return success(
       'Live class request rejected!',
       liveClassModel
+    );
+  }
+
+  @ValidateToken()
+  @Get('/:id')
+  async getResource(@Param('id') id) {
+    const liveClass = await this.service.findById(id);
+    const appID = '0963340bf9fb45ca84026e1da0a4287f';
+    // const channelName = liveClass._id;
+    const channelName = 'liveClass._id';
+    const appCertificate = 'afd9e56a27074913a64a1864f3c16087';
+
+    const uid = 0;
+    // const account = uuidv4();
+    const role = RtcRole.PUBLISHER;
+    const expirationTimeInSeconds = 3600;
+    const currentTimestamp = Math.floor(Date.now() / 1000);
+    const privilegeExpiredTs = currentTimestamp + expirationTimeInSeconds;
+    const tokenA = RtcTokenBuilder.buildTokenWithUid(appID, appCertificate, channelName, uid, role, privilegeExpiredTs);
+
+    const agoraLiveClassConfig = {
+      appID,
+      channelName,
+      uid,
+      role,
+      tokenA
+    };
+
+    return success(
+      'Resource updated successfully!',
+      {...liveClass.toJSON(), agoraLiveClassConfig}
     );
   }
 
