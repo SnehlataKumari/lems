@@ -37,7 +37,6 @@ let LiveClassService = (() => {
             const teacherId = teacher._id;
             const liveClassesList = await this.find({
                 teacher: teacherId,
-                hasAcceptedRequest: true
             }).sort('-_id');
             return liveClassesList;
         }

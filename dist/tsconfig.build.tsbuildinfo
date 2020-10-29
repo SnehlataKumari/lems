@@ -5617,7 +5617,7 @@
         "affectsGlobalScope": false
       },
       "../src/services/liveclass.service.ts": {
-        "version": "14df0fa38e9b6ac8c5747da8dc93386ed047876382f17443d8004f085a0e8f20",
+        "version": "b08d5b758d51f483296d24aa483cb71c514e1f0e855f9915e6f28261f34724a3",
         "signature": "87473c307c9a91560fcc1199a21b3e904252d8b8708169fce5f3747d02901850",
         "affectsGlobalScope": false
       },
