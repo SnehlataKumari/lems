@@ -27,6 +27,7 @@ const leave_service_1 = require("./leave.service");
 const documents_service_1 = require("./documents.service");
 const import_service_1 = require("./import.service");
 const liveClass_service_1 = require("./liveClass.service");
+const agora_service_1 = require("./agora.service");
 exports.default = [
     users_service_1.UsersService,
     assets_service_1.AssetsService,
@@ -56,5 +57,6 @@ exports.default = [
     documents_service_1.DocumentsService,
     import_service_1.ImportService,
     liveClass_service_1.LiveClassService,
+    agora_service_1.AgoraService
 ];
 //# sourceMappingURL=index.js.map

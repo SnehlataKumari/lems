@@ -4207,8 +4207,13 @@
         "affectsGlobalScope": false
       },
       "../src/services/users.service.ts": {
+<<<<<<< HEAD
         "version": "b3d7139aafc0da5b16ac1be7e1872d5e445e324bf19d5ad03e8bc4d7c174bcbf",
         "signature": "1048e439171ac6168b25ac4e6349c697d19b47f907f92491e258dc8625f4e739",
+=======
+        "version": "ec7b8a81b61a16f4a0fd318e5e77abbdb19a03379ccea61c589c9c0e40e1a55f",
+        "signature": "1b1d295e322ed78c19697c5627e26790f0b32ec0155cde11364414cfb4aecc39",
+>>>>>>> Chat Support
         "affectsGlobalScope": false
       },
       "../node_modules/aws-sdk/lib/error.d.ts": {
@@ -5621,9 +5626,19 @@
         "signature": "87473c307c9a91560fcc1199a21b3e904252d8b8708169fce5f3747d02901850",
         "affectsGlobalScope": false
       },
+      "../src/services/agora.service.ts": {
+        "version": "fec73886483b94e837c68d7b2caa34f2d8b0feb35c8756fff109552ef774df66",
+        "signature": "98e5cd860e8b85aec93a2b7536fac550e19ad6deae74cb74f6b6fff533694927",
+        "affectsGlobalScope": false
+      },
       "../src/services/index.ts": {
+<<<<<<< HEAD
         "version": "c185a2d7db7e0b5f94b6a4c56438e07d33805cb73ae2d684b51a71b43ef748c8",
         "signature": "08a17592b0ee8c3279cce08c0dfa19b66305884add1a35ae0328c56b536ac838",
+=======
+        "version": "cfb6c30e5b191749dd270aef8b11ecbbd176f0e9b81ced40b8acb7e94f4a56d7",
+        "signature": "f1916b709b1679718b0500ee9b1502df0a5f9e50e6eaad9d2dc5e2f925f59ca3",
+>>>>>>> Chat Support
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
@@ -5737,8 +5752,13 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/users.controller.ts": {
+<<<<<<< HEAD
         "version": "2c3554cf6402015ee224878248a162be2a26d21553a9307a1cb3675de1db54a8",
         "signature": "ff50a36a6d92940b90abf1788eda80b3754fdebda29f823499a55c7aebec273d",
+=======
+        "version": "167de2ef08b25122cc12765f1b3852fbdd8bec75c42f227b35b8560a1afaac5c",
+        "signature": "a49f687bcb2620d7c249f8d318457630a4046e6a8552afb5496ef7fd7968543e",
+>>>>>>> Chat Support
         "affectsGlobalScope": false
       },
       "../src/controllers/classes.controller.ts": {
@@ -5916,9 +5936,19 @@
         "signature": "73924de07d58fd13bd612e692a53b692bb425265561e08136b79822d4e93cd04",
         "affectsGlobalScope": false
       },
+      "../src/controllers/agora.controller.ts": {
+        "version": "662081c6bba934421fb157630911f8c0ee7b8fbe1b616db21881417e6674840c",
+        "signature": "6ec12bcd8510f486638c1a5ee08ececc06dc0ded7a4b40d6b0aeb3931af5c91f",
+        "affectsGlobalScope": false
+      },
       "../src/controllers/index.ts": {
+<<<<<<< HEAD
         "version": "7df1fa418c6273bee31a2bd2fedcb0a941f9c299c5c8221b6669c72defb628d7",
         "signature": "419cfa187d21be3f8de2c623103af5dd005c7dc699e9142337531763ac4bb972",
+=======
+        "version": "76fa6cb04dafabf20cc96bc367a380d58084cbef504af4ea6047b0c37cbcbc5a",
+        "signature": "5553a54a97d2be21e20def02e106edf294683002588d88caaebe63078b8a6abe",
+>>>>>>> Chat Support
         "affectsGlobalScope": false
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -18893,6 +18923,16 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
+      "../src/controllers/agora.controller.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/agora-access-token/index.d.ts",
+        "../src/utils/index.ts"
+      ],
       "../src/controllers/assets.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -18982,6 +19022,7 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../src/controllers/agora.controller.ts",
         "../src/controllers/assets.controller.ts",
         "../src/controllers/auth.controller.ts",
         "../src/controllers/chapters.controller.ts",
@@ -19419,6 +19460,14 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
+      "../src/services/agora.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
       "../src/services/assets.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
@@ -19560,6 +19609,7 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
+        "../src/services/agora.service.ts",
         "../src/services/assets.service.ts",
         "../src/services/auth.service.ts",
         "../src/services/chapters.service.ts",
@@ -32437,6 +32487,7 @@
         "../src/services/import.service.ts"
       ],
       "../src/controllers/index.ts": [
+        "../src/controllers/agora.controller.ts",
         "../src/controllers/assets.controller.ts",
         "../src/controllers/auth.controller.ts",
         "../src/controllers/chapters.controller.ts",
@@ -32635,6 +32686,7 @@
         "../src/services/documents.service.ts"
       ],
       "../src/services/index.ts": [
+        "../src/services/agora.service.ts",
         "../src/services/assets.service.ts",
         "../src/services/auth.service.ts",
         "../src/services/classes.service.ts",
@@ -33893,6 +33945,7 @@
       "../src/app.module.ts",
       "../src/app.service.ts",
       "../src/constants/index.ts",
+      "../src/controllers/agora.controller.ts",
       "../src/controllers/assets.controller.ts",
       "../src/controllers/auth.controller.ts",
       "../src/controllers/chapters.controller.ts",
@@ -33940,6 +33993,7 @@
       "../src/schemas/token.schema.ts",
       "../src/schemas/user.schema.ts",
       "../src/schemas/version.schema.ts",
+      "../src/services/agora.service.ts",
       "../src/services/assets.service.ts",
       "../src/services/auth.service.ts",
       "../src/services/chapters.service.ts",

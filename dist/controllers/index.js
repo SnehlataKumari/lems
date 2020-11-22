@@ -15,6 +15,7 @@ const leave_controller_1 = require("./leave.controller");
 const documents_controller_1 = require("./documents.controller");
 const import_controller_1 = require("./import.controller");
 const liveClass_controller_1 = require("./liveClass.controller");
+const agora_controller_1 = require("./agora.controller");
 exports.default = [
     users_controller_1.UsersController,
     classes_controller_1.ClassesController,
@@ -31,5 +32,6 @@ exports.default = [
     documents_controller_1.DocumentsController,
     import_controller_1.ImportController,
     liveClass_controller_1.LiveClassController,
+    agora_controller_1.AgoraComponent
 ];
 //# sourceMappingURL=index.js.map

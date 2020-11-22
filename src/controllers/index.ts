@@ -13,6 +13,7 @@ import { LeaveController } from './leave.controller';
 import { DocumentsController } from './documents.controller';
 import { ImportController } from './import.controller';
 import { LiveClassController } from './liveClass.controller';
+import {AgoraComponent} from './agora.controller';
 
 export default [
   UsersController,
@@ -30,5 +31,5 @@ export default [
   DocumentsController,
   ImportController,
   LiveClassController,
-
+  AgoraComponent
 ];

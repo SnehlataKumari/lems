@@ -12,10 +12,12 @@ const passwordSchema = Joi.string()
 
 @Injectable()
 export class UsersService extends DBService {
-  constructor(
-    @InjectModel('User') model: Model<any>,
-  ) {
+  constructor(@InjectModel('User') model: Model<any>) {
     super(model);
+  }
+
+  getAdmins() {
+    return this.find({ role: 'ADMIN' });
   }
 
   findByEmail(email) {
@@ -38,5 +40,4 @@ export class UsersService extends DBService {
     const userModel = await this.findById(userId);
     return await this.update(userModel, { password: hashedPassword });
   }
-
 }

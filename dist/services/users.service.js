@@ -27,6 +27,9 @@ let UsersService = (() => {
         constructor(model) {
             super(model);
         }
+        getAdmins() {
+            return this.find({ role: 'ADMIN' });
+        }
         findByEmail(email) {
             return this.findOne({ email });
         }

@@ -26,6 +26,7 @@ import { LeaveService } from './leave.service';
 import { DocumentsService } from './documents.service';
 import { ImportService } from './import.service';
 import { LiveClassService } from './liveClass.service';
+import { AgoraService } from './agora.service';
 export default [
   UsersService,
   AssetsService,
@@ -56,4 +57,5 @@ export default [
   DocumentsService,
   ImportService,
   LiveClassService,
+  AgoraService
 ];

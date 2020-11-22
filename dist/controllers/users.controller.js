@@ -30,15 +30,20 @@ let UsersController = (() => {
         findAll() {
             return utils_1.success('List found successfully', this.service.findAll());
         }
+        getAdmins() {
+            return this.service.getAdmins();
+        }
         async getUserDetails(req) {
             const { user: loggedInUser } = req;
-            const studentModel = await this.service.findById(loggedInUser._id).populate('userId');
+            const studentModel = await this.service
+                .findById(loggedInUser._id)
+                .populate('userId');
             return utils_1.success('Teacher found!', this.service.getPublicDetails(studentModel));
         }
         async getUsersDetails(userId) {
             const userModel = await this.service.findById(userId);
             return utils_1.success('user found!', {
-                user: this.service.getPublicDetails(userModel)
+                user: this.service.getPublicDetails(userModel),
             });
         }
         async updatePassword(userId, requestBody) {
@@ -63,6 +68,12 @@ let UsersController = (() => {
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", void 0)
     ], UsersController.prototype, "findAll", null);
+    __decorate([
+        common_1.Get('get-admins'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], UsersController.prototype, "getAdmins", null);
     __decorate([
         validatetoken_decorator_1.ValidateToken(),
         common_1.Get('get-user-details'),

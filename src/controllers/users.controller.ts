@@ -9,10 +9,11 @@ import { EmailService } from 'src/services/email.service';
 
 @Controller('users')
 export class UsersController extends ResourceController {
-  constructor(service: UsersService,
+  constructor(
+    service: UsersService,
     private authService: AuthService,
     private emailsService: EmailService,
-    ) {
+  ) {
     super(service);
   }
 
@@ -21,23 +22,33 @@ export class UsersController extends ResourceController {
     return success('List found successfully', this.service.findAll());
   }
 
+  @Get('get-admins')
+  getAdmins() {
+    return this.service.getAdmins();
+  }
+
   @ValidateToken()
   @Get('get-user-details')
-  async getUserDetails(@Req() req) {  
+  async getUserDetails(@Req() req) {
     const { user: loggedInUser } = req;
-    const studentModel = await this.service.findById(loggedInUser._id).populate('userId');
-    return success('Teacher found!', this.service.getPublicDetails(studentModel));
+    const studentModel = await this.service
+      .findById(loggedInUser._id)
+      .populate('userId');
+    return success(
+      'Teacher found!',
+      this.service.getPublicDetails(studentModel),
+    );
   }
 
   @Get(':userId/get-user-details')
   async getUsersDetails(@Param('userId') userId) {
     const userModel = await this.service.findById(userId);
     return success('user found!', {
-      user: this.service.getPublicDetails(userModel)
+      user: this.service.getPublicDetails(userModel),
     });
   }
   @Post(':userId/update-password')
-  async updatePassword(@Param('userId') userId, @Body() requestBody ) {
+  async updatePassword(@Param('userId') userId, @Body() requestBody) {
     const { currentPassword } = requestBody;
     await this.authService.updatePassword(userId, currentPassword);
     return await this.afterUpdatePassword(userId, currentPassword);
@@ -48,7 +59,11 @@ export class UsersController extends ResourceController {
     const email = userModel.email;
     const role = userModel.role;
     const link = `${this.authService.hostUrl(role)}`;
-    await this.emailsService.sendUpdatedPasswordNotification(userModel, currentPassword, link);
+    await this.emailsService.sendUpdatedPasswordNotification(
+      userModel,
+      currentPassword,
+      link,
+    );
     return {
       message: `Password sent to ${userModel.firstName}'s email!`,
     };

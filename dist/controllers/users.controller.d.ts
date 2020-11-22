@@ -10,6 +10,7 @@ export declare class UsersController extends ResourceController {
         message: string;
         data: any;
     }>;
+    getAdmins(): any;
     getUserDetails(req: any): Promise<{
         message: string;
         data: any;
