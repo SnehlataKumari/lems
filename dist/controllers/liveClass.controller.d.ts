@@ -3,7 +3,23 @@ import { ResourceController } from './resource.controller';
 export declare class LiveClassController extends ResourceController {
     service: LiveClassService;
     constructor(service: LiveClassService);
+    getLiveClassCreatedByTeacher(): Promise<{
+        message: string;
+        data: any;
+    }>;
+    getLiveClassCreatedByAdmin(): Promise<{
+        message: string;
+        data: any;
+    }>;
+    deleteLiveClassById(liveClassId: any): Promise<{
+        message: string;
+        data: any;
+    }>;
     createLiveClass(request: any): Promise<{
+        message: string;
+        data: any;
+    }>;
+    createLiveClassByAdmin(request: any): Promise<{
         message: string;
         data: any;
     }>;

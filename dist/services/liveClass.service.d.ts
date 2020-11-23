@@ -6,5 +6,9 @@ export declare class LiveClassService extends DBService {
     constructor(model: Model<any>, teacherService: TeachersService);
     findAll(): import("mongoose").DocumentQuery<any[], any, {}>;
     createLiveClass(body: any, userId: any): Promise<any>;
+    createLiveClassByAdmin(body: any): Promise<void>;
     getLiveClassByTeacherId(userId: any): Promise<any[]>;
+    getLiveClassCreatedByTeacher(): Promise<any[]>;
+    getLiveClassCreatedByAdmin(): Promise<any[]>;
+    deleteLiveClassById(liveClassId: any): Promise<boolean>;
 }

@@ -27,10 +27,26 @@ let LiveClassController = (() => {
             super(service);
             this.service = service;
         }
+        async getLiveClassCreatedByTeacher() {
+            return utils_1.success('List Found successfully', await this.service.getLiveClassCreatedByTeacher());
+        }
+        async getLiveClassCreatedByAdmin() {
+            return utils_1.success('List Found successfully', await this.service.getLiveClassCreatedByAdmin());
+        }
+        async deleteLiveClassById(liveClassId) {
+            await this.service.deleteLiveClassById(liveClassId);
+            return utils_1.success('Live Class deleted successfully', {});
+        }
         async createLiveClass(request) {
             const body = request.body;
             const userId = request.user._id;
             return utils_1.success('Live class added!', await this.service.createLiveClass(body, userId));
+        }
+        ;
+        async createLiveClassByAdmin(request) {
+            const body = request.body;
+            console.log(body);
+            return utils_1.success('Live class added!', await this.service.createLiveClassByAdmin(body));
         }
         ;
         async validateStreamCode({ streamCode }) {
@@ -92,6 +108,27 @@ let LiveClassController = (() => {
     };
     __decorate([
         validatetoken_decorator_1.ValidateToken(),
+        common_1.Get(),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", Promise)
+    ], LiveClassController.prototype, "getLiveClassCreatedByTeacher", null);
+    __decorate([
+        validatetoken_decorator_1.ValidateToken(),
+        common_1.Get('by-admin'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", Promise)
+    ], LiveClassController.prototype, "getLiveClassCreatedByAdmin", null);
+    __decorate([
+        common_1.Delete(':liveClassId'),
+        __param(0, common_1.Param('liveClassId')),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], LiveClassController.prototype, "deleteLiveClassById", null);
+    __decorate([
+        validatetoken_decorator_1.ValidateToken(),
         common_1.Post(),
         __param(0, common_1.Req()),
         __metadata("design:type", Function),
@@ -99,6 +136,15 @@ let LiveClassController = (() => {
         __metadata("design:returntype", Promise)
     ], LiveClassController.prototype, "createLiveClass", null);
     __decorate([
+        validatetoken_decorator_1.ValidateToken(),
+        common_1.Post('/by-admin'),
+        __param(0, common_1.Req()),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], LiveClassController.prototype, "createLiveClassByAdmin", null);
+    __decorate([
+        validatetoken_decorator_1.ValidateToken(),
         common_1.Post('/validate-stream-code'),
         __param(0, common_1.Body()),
         __metadata("design:type", Function),

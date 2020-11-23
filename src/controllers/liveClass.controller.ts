@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put, Req } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Req } from '@nestjs/common';
 import { ValidateToken } from 'src/decorators/validatetoken.decorator';
 import { LiveClassService } from 'src/services/liveClass.service';
 import { success } from 'src/utils';
@@ -17,9 +17,35 @@ export class LiveClassController extends ResourceController {
   }
 
   @ValidateToken()
+  @Get()
+  async getLiveClassCreatedByTeacher() {
+    return success (
+      'List Found successfully',
+      await this.service.getLiveClassCreatedByTeacher()
+      );
+  }
+
+  @ValidateToken()
+  @Get('by-admin')
+  async getLiveClassCreatedByAdmin() {
+    return success(
+      'List Found successfully',
+      await this.service.getLiveClassCreatedByAdmin()
+    );
+  }
+
+  @Delete(':liveClassId')
+  async deleteLiveClassById(@Param('liveClassId') liveClassId) {
+    await this.service.deleteLiveClassById(liveClassId);
+    return success('Live Class deleted successfully', {});
+  }
+
+
+  @ValidateToken()
   @Post()
   async createLiveClass(@Req() request ) {
     const body = request.body; 
+    // console.log(body);
     const userId = request.user._id;
     return success(
       'Live class added!',
@@ -27,6 +53,18 @@ export class LiveClassController extends ResourceController {
     );
   };
 
+  @ValidateToken()
+  @Post('/by-admin')
+  async createLiveClassByAdmin(@Req() request) {
+    const body = request.body;
+    console.log(body);
+    return success(
+      'Live class added!',
+      await this.service.createLiveClassByAdmin(body),
+    );
+  };
+
+  @ValidateToken()
   @Post('/validate-stream-code')
   async validateStreamCode(@Body() {streamCode}) {
     const liveClass= await this.service.findOne({streamCode: streamCode});

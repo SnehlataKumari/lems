@@ -64,6 +64,10 @@ const LiveClassSchema = new mongoose.Schema({
   hasAcceptedRequest: {
     type: Boolean,
   },
+  isCreatedByAdmin: {
+    type: Boolean,
+    default: false,
+  },
   rejectionReason: {
     type: String,
   },

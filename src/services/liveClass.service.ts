@@ -23,6 +23,17 @@ export class LiveClassService extends DBService {
     return this.create({...body, teacher: teacherId, user: userId});
   }
 
+  async createLiveClassByAdmin(body) {
+    try {
+      const response = await this.create({ ...body, hasAcceptedRequest: true, isCreatedByAdmin: true});
+      console.log(response);
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+
   async getLiveClassByTeacherId( userId ) {
     const teacher = await this.teacherService.findOne({ userId: userId });
     const teacherId = teacher._id;
@@ -32,5 +43,25 @@ export class LiveClassService extends DBService {
     }).sort('-_id');
     return liveClassesList;
     
+  }
+
+  async getLiveClassCreatedByTeacher() {
+    const liveClassesList = await this.find(
+      { isCreatedByAdmin: false }
+    ).populate('posterDocumentId').populate('teacher').populate('user').sort('-_id');
+    return liveClassesList;
+  }
+
+  async getLiveClassCreatedByAdmin() {
+    const liveClassesList = await this.find(
+      { isCreatedByAdmin: true }
+    ).populate('posterDocumentId').populate('teacher').populate('user').sort('-_id');
+    return liveClassesList;
+  }
+
+  async deleteLiveClassById(liveClassId) {
+    const liveClassModel = await this.findById(liveClassId);
+    liveClassModel.remove();
+    return true;
   }
 }

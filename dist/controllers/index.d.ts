@@ -14,5 +14,5 @@ import { DocumentsController } from './documents.controller';
 import { ImportController } from './import.controller';
 import { LiveClassController } from './liveClass.controller';
 import { AgoraComponent } from './agora.controller';
-declare const _default: (typeof UsersController | typeof ClassesController | typeof AssetsController | typeof AuthController | typeof ChaptersController | typeof SubjectsController | typeof PaymentsController | typeof TeachersController | typeof ProductsController | typeof StudentsController | typeof TestController | typeof LeaveController | typeof DocumentsController | typeof ImportController | typeof LiveClassController | typeof AgoraComponent)[];
+declare const _default: (typeof LiveClassController | typeof UsersController | typeof ClassesController | typeof AssetsController | typeof AuthController | typeof ChaptersController | typeof SubjectsController | typeof PaymentsController | typeof TeachersController | typeof ProductsController | typeof StudentsController | typeof TestController | typeof LeaveController | typeof DocumentsController | typeof ImportController | typeof AgoraComponent)[];
 export default _default;
