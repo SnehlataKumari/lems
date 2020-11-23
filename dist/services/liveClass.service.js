@@ -35,10 +35,8 @@ let LiveClassService = (() => {
         async createLiveClassByAdmin(body) {
             try {
                 const response = await this.create(Object.assign(Object.assign({}, body), { hasAcceptedRequest: true, isCreatedByAdmin: true }));
-                console.log(response);
             }
             catch (error) {
-                console.log(error);
             }
         }
         async getLiveClassByTeacherId(userId) {

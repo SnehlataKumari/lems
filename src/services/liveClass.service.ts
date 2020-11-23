@@ -25,12 +25,8 @@ export class LiveClassService extends DBService {
 
   async createLiveClassByAdmin(body) {
     try {
-      const response = await this.create({ ...body, hasAcceptedRequest: true, isCreatedByAdmin: true});
-      console.log(response);
-      
+      const response = await this.create({ ...body, hasAcceptedRequest: true, isCreatedByAdmin: true}); 
     } catch (error) {
-      console.log(error);
-      
     }
   }
 

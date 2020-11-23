@@ -45,7 +45,6 @@ export class LiveClassController extends ResourceController {
   @Post()
   async createLiveClass(@Req() request ) {
     const body = request.body; 
-    // console.log(body);
     const userId = request.user._id;
     return success(
       'Live class added!',
@@ -57,7 +56,6 @@ export class LiveClassController extends ResourceController {
   @Post('/by-admin')
   async createLiveClassByAdmin(@Req() request) {
     const body = request.body;
-    console.log(body);
     return success(
       'Live class added!',
       await this.service.createLiveClassByAdmin(body),

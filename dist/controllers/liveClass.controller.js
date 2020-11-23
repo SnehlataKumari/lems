@@ -45,7 +45,6 @@ let LiveClassController = (() => {
         ;
         async createLiveClassByAdmin(request) {
             const body = request.body;
-            console.log(body);
             return utils_1.success('Live class added!', await this.service.createLiveClassByAdmin(body));
         }
         ;
