@@ -4092,7 +4092,7 @@
         "affectsGlobalScope": false
       },
       "../src/schemas/liveclass.schema.ts": {
-        "version": "4b97c5d084ff384df906e3f9aad76c855de20d5411cca8c21230def89aeab198",
+        "version": "8073a1a365ccf0cadb19b957543b65d73a877f69772e3157cdd5f9af9fba8e26",
         "signature": "3f40052a6d656f79e52b629e767b772090a0d003aa91c7356f039a9c913bada9",
         "affectsGlobalScope": false
       },
@@ -5617,8 +5617,8 @@
         "affectsGlobalScope": false
       },
       "../src/services/liveclass.service.ts": {
-        "version": "2e11fedb5b141f826c00fae732b1444eedb725bb068a061c10b75af21817edf5",
-        "signature": "12b254ccfe80dcdf3629d8d32e9f325e17b9eb4768f7f8afb903261b79a19cbe",
+        "version": "c785fbb40d01dde65d1f1dba99193173f997e922efb0e78e40da5ffd59f49d39",
+        "signature": "c91aa1d18e030296378c82f68808bdad2b5daa16546e9819b4b636c4bbd1a537",
         "affectsGlobalScope": false
       },
       "../src/services/agora.service.ts": {
@@ -5917,8 +5917,8 @@
         "affectsGlobalScope": false
       },
       "../src/controllers/liveclass.controller.ts": {
-        "version": "96d1fd5eaf6c2c37582f37e4ef530081f85ae981ae7383bc8fc22bf456975611",
-        "signature": "cb9d7adf4de34da393b89415f18687b1e99365a065c47441f0e002cba10c4a5f",
+        "version": "b95cdd52e1c3a37e607190186f78d42d9548d7a1832acd964236550851c216c2",
+        "signature": "d4016203ea07d6191d5bb5bb394c1b6d428e24a0435026868430f1d2572203a8",
         "affectsGlobalScope": false
       },
       "../src/controllers/agora.controller.ts": {

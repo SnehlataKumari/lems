@@ -10,5 +10,6 @@ export declare class LiveClassService extends DBService {
     getLiveClassByTeacherId(userId: any): Promise<any[]>;
     getLiveClassCreatedByTeacher(): Promise<any[]>;
     getLiveClassCreatedByAdmin(): Promise<any[]>;
+    getLiveDemoClasses(): Promise<any[]>;
     deleteLiveClassById(liveClassId: any): Promise<boolean>;
 }

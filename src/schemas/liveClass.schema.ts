@@ -71,6 +71,9 @@ const LiveClassSchema = new mongoose.Schema({
   rejectionReason: {
     type: String,
   },
+  isDemoClass: {
+    type: Boolean
+  }
 },
   {
     timestamps: true

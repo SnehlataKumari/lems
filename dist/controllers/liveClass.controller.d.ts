@@ -11,6 +11,10 @@ export declare class LiveClassController extends ResourceController {
         message: string;
         data: any;
     }>;
+    getLiveDemoClasses(): Promise<{
+        message: string;
+        data: any;
+    }>;
     deleteLiveClassById(liveClassId: any): Promise<{
         message: string;
         data: any;

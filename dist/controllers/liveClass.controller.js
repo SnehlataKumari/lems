@@ -33,6 +33,9 @@ let LiveClassController = (() => {
         async getLiveClassCreatedByAdmin() {
             return utils_1.success('List Found successfully', await this.service.getLiveClassCreatedByAdmin());
         }
+        async getLiveDemoClasses() {
+            return utils_1.success('List Found successfully', await this.service.getLiveDemoClasses());
+        }
         async deleteLiveClassById(liveClassId) {
             await this.service.deleteLiveClassById(liveClassId);
             return utils_1.success('Live Class deleted successfully', {});
@@ -45,6 +48,7 @@ let LiveClassController = (() => {
         ;
         async createLiveClassByAdmin(request) {
             const body = request.body;
+            console.log(body);
             return utils_1.success('Live class added!', await this.service.createLiveClassByAdmin(body));
         }
         ;
@@ -119,6 +123,12 @@ let LiveClassController = (() => {
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", Promise)
     ], LiveClassController.prototype, "getLiveClassCreatedByAdmin", null);
+    __decorate([
+        common_1.Get('demo-classes'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", Promise)
+    ], LiveClassController.prototype, "getLiveDemoClasses", null);
     __decorate([
         common_1.Delete(':liveClassId'),
         __param(0, common_1.Param('liveClassId')),

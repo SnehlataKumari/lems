@@ -37,6 +37,7 @@ let LiveClassService = (() => {
                 const response = await this.create(Object.assign(Object.assign({}, body), { hasAcceptedRequest: true, isCreatedByAdmin: true }));
             }
             catch (error) {
+                console.log(error);
             }
         }
         async getLiveClassByTeacherId(userId) {
@@ -54,6 +55,10 @@ let LiveClassService = (() => {
         async getLiveClassCreatedByAdmin() {
             const liveClassesList = await this.find({ isCreatedByAdmin: true }).populate('posterDocumentId').populate('teacher').populate('user').sort('-_id');
             return liveClassesList;
+        }
+        async getLiveDemoClasses() {
+            const liveDemoClassesList = await this.find({ isDemoClass: true }).populate('posterDocumentId').populate('teacher').populate('user').sort('-_id');
+            return liveDemoClassesList;
         }
         async deleteLiveClassById(liveClassId) {
             const liveClassModel = await this.findById(liveClassId);

@@ -27,6 +27,8 @@ export class LiveClassService extends DBService {
     try {
       const response = await this.create({ ...body, hasAcceptedRequest: true, isCreatedByAdmin: true}); 
     } catch (error) {
+      console.log(error);
+      
     }
   }
 
@@ -53,6 +55,13 @@ export class LiveClassService extends DBService {
       { isCreatedByAdmin: true }
     ).populate('posterDocumentId').populate('teacher').populate('user').sort('-_id');
     return liveClassesList;
+  }
+
+  async getLiveDemoClasses() {
+    const liveDemoClassesList = await this.find(
+      { isDemoClass: true }
+    ).populate('posterDocumentId').populate('teacher').populate('user').sort('-_id');
+    return liveDemoClassesList;
   }
 
   async deleteLiveClassById(liveClassId) {

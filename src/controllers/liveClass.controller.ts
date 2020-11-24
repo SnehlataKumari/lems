@@ -34,6 +34,14 @@ export class LiveClassController extends ResourceController {
     );
   }
 
+  @Get('demo-classes')
+  async getLiveDemoClasses() {
+    return success(
+      'List Found successfully',
+      await this.service.getLiveDemoClasses()
+    );
+  }
+
   @Delete(':liveClassId')
   async deleteLiveClassById(@Param('liveClassId') liveClassId) {
     await this.service.deleteLiveClassById(liveClassId);
@@ -56,6 +64,7 @@ export class LiveClassController extends ResourceController {
   @Post('/by-admin')
   async createLiveClassByAdmin(@Req() request) {
     const body = request.body;
+    console.log(body);
     return success(
       'Live class added!',
       await this.service.createLiveClassByAdmin(body),
