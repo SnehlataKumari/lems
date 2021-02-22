@@ -43,6 +43,13 @@ export class LiveClassService extends DBService {
     
   }
 
+  async getAllLiveClasses() {
+    const liveClassesList = await this.findAll().populate('posterDocumentId').populate('teacher').populate('user').sort('-_id');
+    console.log(liveClassesList.length);
+    
+    return liveClassesList;
+  }
+
   async getLiveClassCreatedByTeacher() {
     const liveClassesList = await this.find(
       { isCreatedByAdmin: false }

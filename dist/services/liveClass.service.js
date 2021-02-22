@@ -48,6 +48,11 @@ let LiveClassService = (() => {
             }).sort('-_id');
             return liveClassesList;
         }
+        async getAllLiveClasses() {
+            const liveClassesList = await this.findAll().populate('posterDocumentId').populate('teacher').populate('user').sort('-_id');
+            console.log(liveClassesList.length);
+            return liveClassesList;
+        }
         async getLiveClassCreatedByTeacher() {
             const liveClassesList = await this.find({ isCreatedByAdmin: false }).populate('posterDocumentId').populate('teacher').populate('user').sort('-_id');
             return liveClassesList;

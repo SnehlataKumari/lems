@@ -7,6 +7,10 @@ export declare class LiveClassController extends ResourceController {
         message: string;
         data: any;
     }>;
+    getAllLiveClasses(): Promise<{
+        message: string;
+        data: any;
+    }>;
     getLiveClassCreatedByAdmin(): Promise<{
         message: string;
         data: any;
@@ -39,6 +43,10 @@ export declare class LiveClassController extends ResourceController {
         data: any;
     }>;
     rejectLiveClassRequest(id: any, rejectionReason: any): Promise<{
+        message: string;
+        data: any;
+    }>;
+    getLiveClassAttendDetail(id: any): Promise<{
         message: string;
         data: any;
     }>;

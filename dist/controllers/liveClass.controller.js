@@ -30,6 +30,25 @@ let LiveClassController = (() => {
         async getLiveClassCreatedByTeacher() {
             return utils_1.success('List Found successfully', await this.service.getLiveClassCreatedByTeacher());
         }
+        async getAllLiveClasses() {
+            const classesList = await this.service.getAllLiveClasses();
+            const groupedClasses = lodash_1.groupBy(classesList, (classs) => {
+                if (moment(classs.date).isSame(moment(), 'day')) {
+                    return 'TODAY';
+                }
+                else if (moment(classs.date).isBefore()) {
+                    return 'PAST';
+                }
+                else if (moment(classs.date).isAfter()) {
+                    return 'FUTURE';
+                }
+                return 'DEFAULT';
+            });
+            return utils_1.success('Live classes list found successfully!', {
+                classesList,
+                groupedClasses
+            });
+        }
         async getLiveClassCreatedByAdmin() {
             return utils_1.success('List Found successfully', await this.service.getLiveClassCreatedByAdmin());
         }
@@ -88,6 +107,26 @@ let LiveClassController = (() => {
             const liveClassModel = await this.service.findByIdAndUpdate(id, { hasAcceptedRequest: false, rejectionReason: rejectionReason.rejectionReason });
             return utils_1.success('Live class request rejected!', liveClassModel);
         }
+        async getLiveClassAttendDetail(id) {
+            const liveClass = await this.service.findById(id);
+            const appID = '0963340bf9fb45ca84026e1da0a4287f';
+            const channelName = 'liveClass._id';
+            const appCertificate = 'afd9e56a27074913a64a1864f3c16087';
+            const uid = 0;
+            const role = agora_access_token_1.RtcRole.SUBSCRIBER;
+            const expirationTimeInSeconds = 3600;
+            const currentTimestamp = Math.floor(Date.now() / 1000);
+            const privilegeExpiredTs = currentTimestamp + expirationTimeInSeconds;
+            const tokenA = agora_access_token_1.RtcTokenBuilder.buildTokenWithUid(appID, appCertificate, channelName, uid, role, privilegeExpiredTs);
+            const agoraLiveClassConfig = {
+                appID,
+                channelName,
+                uid,
+                role,
+                tokenA
+            };
+            return utils_1.success('Resource updated successfully!', Object.assign(Object.assign({}, liveClass.toJSON()), { agoraLiveClassConfig }));
+        }
         async getResource(id) {
             const liveClass = await this.service.findById(id);
             const appID = '0963340bf9fb45ca84026e1da0a4287f';
@@ -116,6 +155,13 @@ let LiveClassController = (() => {
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", Promise)
     ], LiveClassController.prototype, "getLiveClassCreatedByTeacher", null);
+    __decorate([
+        validatetoken_decorator_1.ValidateToken(),
+        common_1.Get('all-live-classes'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", Promise)
+    ], LiveClassController.prototype, "getAllLiveClasses", null);
     __decorate([
         validatetoken_decorator_1.ValidateToken(),
         common_1.Get('by-admin'),
@@ -184,6 +230,14 @@ let LiveClassController = (() => {
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", Promise)
     ], LiveClassController.prototype, "rejectLiveClassRequest", null);
+    __decorate([
+        validatetoken_decorator_1.ValidateToken(),
+        common_1.Get('/:id/attendClass'),
+        __param(0, common_1.Param('id')),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], LiveClassController.prototype, "getLiveClassAttendDetail", null);
     __decorate([
         validatetoken_decorator_1.ValidateToken(),
         common_1.Get('/:id'),
